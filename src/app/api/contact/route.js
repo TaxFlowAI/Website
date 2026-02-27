@@ -108,26 +108,9 @@ export async function POST(request) {
         return { forwardedTo: null, forwardError: e?.message || "Network error" };
       }
     }
+    // Broker Engine forwarding disabled for now — Brokers enquiries still succeed; no external forward.
     if (consultationService === "brokers") {
-      try {
-        const r = await fetch(`${origin}/api/broker-engine`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(leadPayload),
-        });
-        const d = await r.json().catch(() => ({}));
-        if (r.ok && d.forwarded) {
-          if (process.env.NODE_ENV === "development") console.log("[Contact API] ✓ Forwarded to Broker Engine (Brokers)");
-          return { forwardedTo: "broker-engine", forwardError: null };
-        }
-        if (!r.ok && process.env.NODE_ENV === "development") {
-          console.log("[Contact API] Broker Engine forward failed:", r.status, d);
-        }
-        return { forwardedTo: null, forwardError: d.error || `HTTP ${r.status}` };
-      } catch (e) {
-        if (process.env.NODE_ENV === "development") console.log("[Contact API] Broker Engine forward error:", e?.message);
-        return { forwardedTo: null, forwardError: e?.message || "Network error" };
-      }
+      return { forwardedTo: null, forwardError: null };
     }
     return { forwardedTo: null, forwardError: null };
   };
