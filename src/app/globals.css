@@ -248,3 +248,272 @@ body {
   .taxflow-pricing-card:hover { transform: none; }
   .taxflow-pricing-featured { transform: none; }
 }
+
+/* ================================================================
+   TaxFlowAI Compliance Pages (Privacy Policy, Collection Notice, Terms)
+   Applied only to /taxflow/* compliance routes.
+   ================================================================ */
+
+.compliance-page {
+  min-height: 100vh;
+  background: #0f0f1a;
+  color: #c8c8dc;
+  display: flex;
+  flex-direction: column;
+}
+
+.compliance-header {
+  background: #0a0a14;
+  border-bottom: 1px solid rgba(45, 212, 168, 0.15);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.compliance-brand {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.compliance-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  flex: 1;
+}
+
+.compliance-title {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.compliance-subtitle {
+  color: #2dd4a8;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.compliance-meta {
+  color: #666680;
+  font-size: 0.82rem;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.compliance-entity-box {
+  background: rgba(45, 212, 168, 0.04);
+  border: 1px solid rgba(45, 212, 168, 0.15);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: #a0a0b8;
+}
+
+.compliance-entity-box strong {
+  color: #c8c8dc;
+}
+
+.compliance-toc {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+
+.compliance-toc h2 {
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toc-link {
+  display: block;
+  color: #2dd4a8;
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 4px 0;
+  line-height: 1.5;
+}
+
+.toc-link:hover {
+  color: #5be8c4;
+  text-decoration: underline;
+}
+
+.compliance-section {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.compliance-section:last-of-type {
+  border-bottom: none;
+}
+
+.compliance-section h2 {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 3px solid #2dd4a8;
+}
+
+.compliance-section p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #b0b0c8;
+  margin-bottom: 12px;
+  text-align: justify;
+}
+
+.compliance-section p:last-child {
+  margin-bottom: 0;
+}
+
+.compliance-link-bottom {
+  margin-top: 24px;
+}
+
+.compliance-link-bottom a {
+  color: #2dd4a8;
+  text-decoration: none;
+}
+
+.compliance-link-bottom a:hover {
+  text-decoration: underline;
+}
+
+.compliance-contact {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(45, 212, 168, 0.15);
+}
+
+.compliance-contact h2 {
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.compliance-contact p {
+  color: #a0a0b8;
+  font-size: 0.85rem;
+  margin: 4px 0;
+}
+
+.compliance-back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 18px;
+  background: rgba(45, 212, 168, 0.15);
+  border: 1px solid rgba(45, 212, 168, 0.3);
+  border-radius: 8px;
+  color: #2dd4a8;
+  font-size: 0.85rem;
+  cursor: pointer;
+  z-index: 50;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.compliance-back-to-top:hover {
+  background: rgba(45, 212, 168, 0.25);
+  border-color: rgba(45, 212, 168, 0.5);
+}
+
+.compliance-page-footer {
+  background: #0a0a14;
+  border-top: 1px solid rgba(45, 212, 168, 0.15);
+  padding: 20px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #555;
+}
+
+.compliance-page-footer a {
+  color: #2dd4a8;
+  text-decoration: none;
+}
+
+.compliance-page-footer a:hover {
+  text-decoration: underline;
+}
+
+.compliance-page-footer span {
+  color: #444;
+  margin: 0 6px;
+}
+
+@media (max-width: 640px) {
+  .compliance-content {
+    padding: 24px 16px 40px;
+  }
+
+  .compliance-title {
+    font-size: 1.4rem;
+  }
+
+  .compliance-toc {
+    padding: 14px 16px;
+  }
+
+  .compliance-section p {
+    text-align: left;
+  }
+}
+
+/* TaxFlowAI app footer (all /taxflow/* pages) */
+.app-footer-taxflow {
+  background: #0a0a14;
+  border-top: 1px solid rgba(45, 212, 168, 0.15);
+  padding: 24px 20px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #666680;
+  margin-top: auto;
+}
+
+.footer-content-taxflow {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-brand-taxflow {
+  color: #888;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+}
+
+.footer-links-taxflow {
+  margin-bottom: 12px;
+}
+
+.footer-links-taxflow a {
+  color: #2dd4a8;
+  text-decoration: none;
+  margin: 0 4px;
+}
+
+.footer-links-taxflow a:hover {
+  text-decoration: underline;
+  color: #5be8c4;
+}
+
+.footer-separator-taxflow {
+  color: #444;
+  margin: 0 4px;
+}
+
+.footer-entities-taxflow {
+  color: #555;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}

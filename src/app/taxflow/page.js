@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import FrontlineLogoMark from "@/components/FrontlineLogoMark";
+import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 
 const HOW_STEPS = [
   {
@@ -362,8 +363,8 @@ export default function TaxFlowPage() {
           <div className={`mt-16 grid gap-8 lg:grid-cols-3 lg:items-stretch ${visibleSections.has("pricing") ? "taxflow-fade-in visible" : "taxflow-fade-in"}`}>
             <div className="taxflow-pricing-card rounded-2xl border border-white/10 bg-[#111827] p-8 transition-all duration-200">
               <h3 className="text-xl font-bold text-white">Individual</h3>
-              <p className="mt-2 text-4xl font-bold text-[#00FCB8]">From $330</p>
-              <p className="text-sm text-gray-500">/year</p>
+              <p className="mt-2 text-4xl font-bold text-[#00FCB8]">From $20</p>
+              <p className="text-sm text-gray-500">/month</p>
               <div className="my-6 h-px bg-white/10" aria-hidden />
               <ul className="space-y-3 text-sm text-white">
                 {["Individual tax return lodgement", "TaxFlowAI portal access", "Document upload & storage", "Deadline tracking & reminders", "Direct accountant access"].map((f) => (
@@ -380,11 +381,11 @@ export default function TaxFlowPage() {
             <div className="taxflow-pricing-card taxflow-pricing-featured relative rounded-2xl border-t-4 border-[#00FCB8] border-white/20 bg-[#00FCB8]/5 p-8 transition-all duration-200">
               <p className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#00FCB8] px-4 py-1 text-xs font-bold text-[#0A1628]">Most Popular</p>
               <h3 className="mt-2 text-xl font-bold text-white">Business</h3>
-              <p className="mt-2 text-4xl font-bold text-[#00FCB8]">From $880</p>
-              <p className="text-sm text-gray-500">/year</p>
+              <p className="mt-2 text-4xl font-bold text-[#00FCB8]">From $150</p>
+              <p className="text-sm text-gray-500">/month</p>
               <div className="my-6 h-px bg-white/10" aria-hidden />
               <ul className="space-y-3 text-sm text-white">
-                {["Everything in Individual", "Business tax return", "BAS & GST lodgements", "PAYG & payroll support", "Bookkeeping & cloud accounting", "Priority response times"].map((f) => (
+                {["Everything in Individual", "Business tax return", "BAS & GST lodgements", "Bookkeeping & cloud accounting", "Simple financial reporting", "Priority response times"].map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <span className="text-[#00FCB8]">✓</span> {f}
                   </li>
@@ -401,7 +402,7 @@ export default function TaxFlowPage() {
               <p className="text-sm text-gray-500">tailored to your needs</p>
               <div className="my-6 h-px bg-white/10" aria-hidden />
               <ul className="space-y-3 text-sm text-white">
-                {["Everything in Business", "ASIC & corporate secretarial", "CGT & investment property tax", "Entity structuring & setup", "FBT returns", "Dedicated account manager"].map((f) => (
+                {["Everything in Business", "ASIC & corporate secretarial", "CGT & investment property tax", "Entity structuring & setup", "FBT returns", "Payroll"].map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <span className="text-[#00FCB8]">✓</span> {f}
                   </li>
@@ -443,75 +444,12 @@ export default function TaxFlowPage() {
             Tax and accounting services provided by E&amp;A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the technology platform.
           </p>
           <p className="mt-8 text-sm text-gray-500">
-            Questions? Call us: <a href="tel:+61422959486" className="text-[#00FCB8] hover:underline">+61 422 959 486</a> or email <a href="mailto:operations@frontline.financial" className="text-[#00FCB8] hover:underline">operations@frontline.financial</a>
+            Questions? Call us: <a href="tel:+61422959486" className="text-[#00FCB8] hover:underline">+61 422 959 486</a> or email <a href="mailto:taxflowai@frontline.financial" className="text-[#00FCB8] hover:underline">taxflowai@frontline.financial</a>
           </p>
         </div>
       </section>
 
-      {/* TAXFLOWAI FOOTER */}
-      <footer className="border-t border-[#00FCB8]/15 bg-[#060D1A] px-4 py-16 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <p className="font-bold text-lg">
-                <span className="text-white">TaxFlow</span>
-                <span className="text-[#00FCB8]">AI</span>
-              </p>
-              <p className="mt-2 text-sm text-gray-500">TaxFlowAI is the platform.</p>
-              <p className="mt-1 text-sm text-gray-500">Tax services by E&amp;A Advisory Pty Ltd</p>
-              <p className="mt-1 text-sm text-gray-500">Registered Tax Agent</p>
-              <a href="https://eaadvisory.com.au/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-[#00FCB8] transition hover:underline">eaadvisory.com.au</a>
-              <div className="mt-4 flex gap-4">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 transition hover:text-[#00FCB8]" aria-label="LinkedIn">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" /></svg>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 transition hover:text-[#00FCB8]" aria-label="Instagram">
-                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" /></svg>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Product</h4>
-              <ul className="mt-4 space-y-2 text-sm text-gray-500">
-                <li><a href="#features" className="transition hover:text-[#00FCB8]">Features</a></li>
-                <li><a href="#how-it-works" className="transition hover:text-[#00FCB8]">How It Works</a></li>
-                <li><a href="#pricing" className="transition hover:text-[#00FCB8]">Pricing</a></li>
-                <li><a href="#signin" className="transition hover:text-[#00FCB8]">Sign In</a></li>
-                <li><a href="#get-started" className="transition hover:text-[#00FCB8]">Get Started</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Services</h4>
-              <p className="mt-2 text-xs italic text-gray-500">Provided by E&amp;A Advisory Pty Ltd</p>
-              <ul className="mt-4 space-y-2 text-sm text-gray-500">
-                <li><a href="/brokers" className="transition hover:text-[#00FCB8]">Individual Tax</a></li>
-                <li><a href="/brokers" className="transition hover:text-[#00FCB8]">Business Tax</a></li>
-                <li><a href="/brokers" className="transition hover:text-[#00FCB8]">BAS &amp; GST</a></li>
-                <li><a href="/brokers" className="transition hover:text-[#00FCB8]">Bookkeeping</a></li>
-                <li><Link href="/" className="transition hover:text-[#00FCB8]">All Services</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Contact</h4>
-              <ul className="mt-4 space-y-2 text-sm text-gray-500">
-                <li><a href="tel:+61422959486" className="transition hover:text-[#00FCB8]">+61 422 959 486</a></li>
-                <li><a href="mailto:operations@frontline.financial" className="transition hover:text-[#00FCB8]">operations@frontline.financial</a></li>
-                <li>150 George Street Parramatta 2150</li>
-                <li><Link href="/" className="text-[#00FCB8] transition hover:underline">Visit Frontline Financial →</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 border-t border-white/10 pt-8">
-            <div className="flex flex-col items-center justify-between gap-4 text-xs text-gray-500 md:flex-row">
-              <p>TaxFlowAI © 2025 · Tax services by E&amp;A Advisory Pty Ltd (Registered Tax Agent) · Platform by Frontline Financial Group · ABN 39 693 731 396</p>
-              <div className="flex gap-4">
-                <a href="/privacy" className="transition hover:text-[#00FCB8]">Privacy Policy</a>
-                <a href="/terms" className="transition hover:text-[#00FCB8]">Terms of Service</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <TaxFlowAppFooter />
     </div>
   );
 }
