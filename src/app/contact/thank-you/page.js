@@ -1,11 +1,17 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 
-export default function ThankYouPage() {
+function ThankYouContent() {
+  // #region agent log
+  try {
+    fetch('http://127.0.0.1:7899/ingest/98f5fc50-8397-45b4-bfca-14bf99b0e66d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'64368a'},body:JSON.stringify({sessionId:'64368a',hypothesisId:'H3',location:'thank-you/page.js:ThankYouContent',message:'ThankYouContent entered, about to call useSearchParams',data:{},timestamp:Date.now()})}).catch(()=>{});
+  } catch (_) {}
+  // #endregion
   const searchParams = useSearchParams();
   const team = searchParams.get("team") || "team";
   const forwarded = searchParams.get("forwarded") || "";
@@ -185,5 +191,26 @@ export default function ThankYouPage() {
       </main>
       <LayoutFooter />
     </div>
+  );
+}
+
+function ThankYouFallback() {
+  return (
+    <div className="min-h-screen bg-[#1C5472] font-sans flex items-center justify-center">
+      <p className="text-[#00FCB8] font-medium">Loading...</p>
+    </div>
+  );
+}
+
+export default function ThankYouPage() {
+  // #region agent log
+  try {
+    fetch('http://127.0.0.1:7899/ingest/98f5fc50-8397-45b4-bfca-14bf99b0e66d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'64368a'},body:JSON.stringify({sessionId:'64368a',hypothesisId:'H2',location:'thank-you/page.js:ThankYouPage',message:'ThankYouPage default export rendering',data:{},timestamp:Date.now()})}).catch(()=>{});
+  } catch (_) {}
+  // #endregion
+  return (
+    <Suspense fallback={<ThankYouFallback />}>
+      <ThankYouContent />
+    </Suspense>
   );
 }
