@@ -1,26 +1,250 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F5EF;
+  --foreground: #1C5472;
+  --dark-blue: #1C5472;
+  --teal: #39B2B2;
+  --aqua: #00FCB8;
+  --offwhite: #F5F5EF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dark-blue: var(--dark-blue);
+  --color-teal: var(--teal);
+  --color-aqua: var(--aqua);
+  --color-offwhite: var(--offwhite);
+  --font-sans: var(--font-dm-sans);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Force light theme — no dark mode overrides */
+html,
+body {
+  background-color: #F5F5EF !important;
+  color: #1C5472 !important;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html,
+  body {
+    background-color: #F5F5EF !important;
+    color: #1C5472 !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Hero: very slow shifting gradient */
+@keyframes heroGradientShift {
+  0%, 100% { background-color: #F5F5EF; }
+  50% { background-color: #F8F6F0; }
+}
+
+/* Floating dashboard card */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Trophy shimmer */
+@keyframes trophyShimmer {
+  0% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.9; filter: brightness(1.15); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+/* Dot grid for off-white sections — teal at 5% opacity */
+.section-dot-grid {
+  background-color: #F5F5EF;
+  background-image: radial-gradient(circle, rgba(57, 178, 178, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Dot grid for dark blue sections — white at 5% opacity */
+.section-dot-grid-dark {
+  background-color: #1C5472;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.hero-gradient-animate {
+  animation: heroGradientShift 8s ease-in-out infinite;
+}
+
+.float-animate {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-animate-delay {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.trophy-shimmer {
+  animation: trophyShimmer 2.5s ease-in-out infinite;
+}
+
+/* Trust badge icons: subtle shimmer matching Figma */
+.trust-badge-icon-animate {
+  animation: trophyShimmer 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trust-badge-icon-animate {
+    animation: none;
+  }
+}
+
+/* Multi-card review carousel: step per breakpoint */
+.review-carousel-track {
+  transform: translateX(calc(-1 * var(--review-index, 0) * 100%));
+}
+@media (min-width: 768px) {
+  .review-carousel-track {
+    transform: translateX(calc(-1 * var(--review-index, 0) * 50%));
+  }
+}
+@media (min-width: 1024px) {
+  .review-carousel-track {
+    transform: translateX(calc(-1 * var(--review-index, 0) * 33.333%));
+  }
+}
+
+/* TaxFlowAI teaser: same palette as /taxflow — #0A1628, #0E1E35 */
+@keyframes taxflowGradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.taxflow-teaser-bg {
+  background: linear-gradient(135deg, #0A1628 0%, #0E1E35 50%, #0A1628 100%);
+  background-size: 200% 200%;
+  animation: taxflowGradientShift 12s ease-in-out infinite;
+}
+
+/* TaxFlowAI demo card float */
+@keyframes taxflowCardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.taxflow-card-float {
+  animation: taxflowCardFloat 4s ease-in-out infinite;
+}
+
+/* Thank-you page: draw-on checkmark */
+@keyframes drawCheck {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+.check-draw-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawCheck 0.5s ease-out 0.2s forwards;
+}
+
+/* CTA banner diagonal stripe overlay */
+.cta-stripe-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(255, 255, 255, 0.08) 20px,
+    rgba(255, 255, 255, 0.08) 40px
+  );
+}
+
+/* ========== TaxFlowAI redesign ========== */
+.taxflow-hero-heading {
+  font-family: var(--font-heading-tf), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.taxflow-nav-link {
+  position: relative;
+}
+.taxflow-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #00FCB8;
+  transition: width 0.25s ease;
+}
+.taxflow-nav-link:hover::after {
+  width: 100%;
+}
+
+.taxflow-logo-ai-shimmer {
+  background: linear-gradient(90deg, #00FCB8, #39B2B2, #00FCB8);
+  background-size: 200% 100%;
+  animation: taxflow-ai-shimmer 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes taxflow-ai-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.taxflow-btn-primary:hover {
+  box-shadow: 0 0 20px rgba(0, 252, 184, 0.3);
+}
+.taxflow-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.taxflow-ticker {
+  display: flex;
+  gap: 2rem;
+  animation: taxflow-ticker-scroll 40s linear infinite;
+}
+@keyframes taxflow-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .taxflow-ticker { animation: none; }
+}
+
+.taxflow-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.taxflow-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .taxflow-fade-in { opacity: 1; transform: none; }
+  .taxflow-fade-in.visible { transform: none; }
+}
+
+.taxflow-pricing-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 252, 184, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 252, 184, 0.08);
+}
+@media (min-width: 1024px) {
+  .taxflow-pricing-featured {
+    transform: scale(1.02);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .taxflow-pricing-card:hover { transform: none; }
+  .taxflow-pricing-featured { transform: none; }
 }

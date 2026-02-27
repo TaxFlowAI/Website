@@ -1,0 +1,21 @@
+# COMPLIANCE RULES — MUST FOLLOW
+
+1. This website serves TWO separate legal entities:
+   - Frontline Financial Brokers (home loans/refinance) — Licensee: AFG, ACL 389087
+   - Frontline Financial: Asset Solutions (car/personal loans) — Licensee: Fintelligence, ACL 511803
+
+2. Every page belongs to one entity or is shared. Check src/config/entities.js for the mapping (ROUTE_ENTITY_MAP).
+
+3. NEVER show Brokers compliance documents on Asset Solutions pages, or vice versa.
+
+4. Every form that collects personal information MUST include the correct entity's consent checkbox linking to the correct Credit Guide and Privacy Consent. Use the FormConsent component with the correct entity prop.
+
+5. When creating a new page, ALWAYS add it to ROUTE_ENTITY_MAP in src/config/entities.js.
+
+6. When creating a new form, ALWAYS use the FormConsent component with the correct entity (ENTITY.BROKERS, ENTITY.ASSET_SOLUTIONS, or ENTITY.SHARED).
+
+7. The ComplianceFooter component appears above the site footer on every page and automatically shows the correct entity's compliance text based on the current route. On /financial-calculators it responds to the active tab via ComplianceEntityContext.
+
+8. On the /financial-calculators page, compliance content (and ComplianceFooter via context) switches based on the active tab: Mortgage/Refinance → Brokers; Car/Personal Loan → Asset Solutions.
+
+9. Entity details (CRN, ACL, contact info, addresses) must come from ENTITY_CONFIG in src/config/entities.js — never hardcode these values directly in page components.
