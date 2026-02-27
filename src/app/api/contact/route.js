@@ -12,9 +12,6 @@ function getRecipient(teamMember) {
 }
 
 export async function POST(request) {
-  // #region agent log
-  fetch("http://127.0.0.1:7899/ingest/98f5fc50-8397-45b4-bfca-14bf99b0e66d", { method: "POST", headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "b6dfca" }, body: JSON.stringify({ sessionId: "b6dfca", location: "src/app/api/contact/route.js:POST", message: "Contact API POST invoked", data: { hasStaticImport: false }, timestamp: Date.now(), hypothesisId: "H1" }) }).catch(() => {});
-  // #endregion
   let body;
   try {
     body = await request.json();
@@ -150,9 +147,6 @@ export async function POST(request) {
     const nodemailerModule = process.env.NODEMAILER_MODULE || "nodemailer";
     nodemailer = (await import(nodemailerModule)).default;
   } catch (e) {
-    // #region agent log
-    fetch("http://127.0.0.1:7899/ingest/98f5fc50-8397-45b4-bfca-14bf99b0e66d", { method: "POST", headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "b6dfca" }, body: JSON.stringify({ sessionId: "b6dfca", location: "src/app/api/contact/route.js:nodemailer import", message: "nodemailer import failed", data: { err: String(e?.message || e) }, timestamp: Date.now(), hypothesisId: "H2" }) }).catch(() => {});
-    // #endregion
     if (process.env.NODE_ENV === "development") {
       console.log("[Contact API] nodemailer not installed. Run: npm install nodemailer");
     }
