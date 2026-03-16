@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import FrontlineLogoMark from "@/components/FrontlineLogoMark";
+import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 
 const HOW_STEPS = [
@@ -83,6 +83,8 @@ function StepIcon({ type, className }) {
   }
 }
 
+const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
+
 const TRUST_TICKER_ITEMS = [
   "✓ Registered Tax Agent",
   "✓ CPA Qualified",
@@ -109,255 +111,236 @@ export default function TaxFlowPage() {
     return () => obs.disconnect();
   }, []);
 
+  const sectionContainer = "mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 lg:px-8";
+  const sectionHeading = "border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl";
+
   return (
     <div className="min-h-screen bg-[#0A1628] font-sans text-white">
-      {/* Brand switcher bar — smaller, muted */}
-      <div className="border-b border-white/[0.06] bg-[#0A1628] px-4 py-1.5 md:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex flex-1 items-center justify-center gap-0">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-t-lg px-3 py-1.5 text-xs font-medium text-gray-500 transition hover:text-gray-400"
-            >
-              <FrontlineLogoMark className="h-4 w-auto [&_rect]:fill-current" />
-              Frontline Financial
-            </Link>
-            <Link
-              href="/taxflow"
-              className="inline-flex items-center gap-1.5 rounded-t-lg border-b-[2px] border-[#00FCB8] bg-white/5 px-3 py-1.5 text-xs font-medium text-[#00FCB8]"
-            >
-              <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z" /></svg>
-              TaxFlowAI
-            </Link>
+      <header className="sticky top-0 z-50 w-full">
+        <BrandSwitcherBar />
+        {/* TaxFlow nav row + compliance line */}
+        <div className="border-b border-white/[0.08] bg-[#0A1628]">
+          <div className={sectionContainer}>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <Link href="/taxflow" className="text-lg font-extrabold md:text-xl">
+                <span className="text-white">TaxFlow</span>
+                <span className="taxflow-logo-ai-shimmer">AI</span>
+              </Link>
+              <nav className="flex items-center gap-4 md:gap-6">
+                <a href="#features" className="hidden text-sm font-medium text-white/80 transition hover:text-[#00FCB8] sm:inline-block">Features</a>
+                <a href="#how-it-works" className="hidden text-sm font-medium text-white/80 transition hover:text-[#00FCB8] sm:inline-block">How it works</a>
+                <a href="#pricing" className="hidden text-sm font-medium text-white/80 transition hover:text-[#00FCB8] sm:inline-block">Pricing</a>
+                <a href={TAXFLOW_SIGNIN_URL} className="rounded-lg px-3 py-2 text-sm font-medium text-white/90 transition hover:bg-white/10">Sign In</a>
+                <a href={TAXFLOW_SIGNIN_URL} className="rounded-lg bg-[#00FCB8] px-4 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-95">Get started</a>
+              </nav>
+            </div>
           </div>
-          <a href="tel:+61422959486" className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-white/70 transition hover:text-white/90">
-            <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            +61 422 959 486
-          </a>
-        </div>
-      </div>
-
-      {/* TAXFLOWAI NAVBAR — subtle border, logo shimmer, link underlines */}
-      <header className="border-b border-white/[0.06] bg-[#0A1628]">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-6 lg:px-8">
-          <Link href="/taxflow" className="shrink-0 text-lg font-extrabold md:text-xl">
-            <span className="text-white">TaxFlow</span>
-            <span className="taxflow-logo-ai-shimmer">AI</span>
-          </Link>
-          <div className="hidden items-center gap-8 md:flex">
-            <a href="#features" className="taxflow-nav-link text-sm font-medium text-white/90 transition hover:text-[#00FCB8]">Features</a>
-            <a href="#how-it-works" className="taxflow-nav-link text-sm font-medium text-white/90 transition hover:text-[#00FCB8]">How It Works</a>
-            <a href="#pricing" className="taxflow-nav-link text-sm font-medium text-white/90 transition hover:text-[#00FCB8]">Pricing</a>
-            <a href="#about" className="taxflow-nav-link text-sm font-medium text-white/90 transition hover:text-[#00FCB8]">About</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href="#signin" className="taxflow-btn-ghost rounded-lg border border-white/30 px-4 py-2 text-sm font-bold text-white transition">Sign In</a>
-            <a href="#get-started" className="taxflow-btn-primary rounded-lg bg-[#00FCB8] px-4 py-2 text-sm font-bold text-[#0A1628] transition hover:brightness-110">Get Started Free</a>
-          </div>
-        </nav>
-        <div className="bg-[#060D1A] py-1.5 text-center text-xs text-gray-500">
-          Tax services supervised by E&amp;A Advisory Pty Ltd · Registered Tax Agent
+          <p className="border-t border-white/[0.06] bg-[#060D1A] py-1.5 text-center text-[11px] text-white/50">
+            Tax services supervised by E&amp;A Advisory Pty Ltd · Registered Tax Agent
+          </p>
         </div>
       </header>
 
-      {/* 1. HERO — asymmetric split, left-aligned, depth background */}
-      <section className="relative overflow-hidden px-4 pt-12 pb-20 md:px-6 md:pt-16 md:pb-28 lg:px-8" style={{ background: "radial-gradient(ellipse 80% 80% at 30% 40%, #0E1E35 0%, #0A1628 60%)" }}>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]" aria-hidden />
-        <div className="pointer-events-none absolute right-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-[#00FCB8] opacity-[0.04] blur-[100px]" aria-hidden />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
-          {/* Left 60% — heading, copy, buttons, trust */}
-          <div className="max-w-xl text-left">
-            <h1 className="taxflow-hero-heading text-white">
-              Every Australian deserves a real <span className="text-[#00FCB8]">accountant.</span>
-            </h1>
-            <p className="mt-6 max-w-[500px] text-lg text-gray-400 md:text-xl">
-              Most people don&apos;t have one. They miss deadlines. They overpay on tax. They lose documents in email threads. TaxFlowAI exists to fix that — for every single Australian who needs it.
-            </p>
-            <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
-              <a href="#get-started" className="taxflow-btn-primary inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-10 py-4 font-bold text-[#0A1628] transition sm:w-auto">
-                Get Started Free
-              </a>
-              <a href="#how-it-works" className="taxflow-btn-ghost inline-flex w-full items-center justify-center rounded-lg border-2 border-white/40 px-10 py-4 font-bold text-white transition sm:w-auto">
-                See how it works
-              </a>
-            </div>
-            <p className="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-500">
-              <span>✓ Free to get started</span>
-              <span>✓ No credit card required</span>
-              <span>✓ Tax services by E&amp;A Advisory Pty Ltd</span>
-            </p>
-          </div>
-          {/* Right 40% — floating dashboard preview, angled, glassmorphism */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="taxflow-card-float w-full max-w-md rotate-3 rounded-2xl border border-white/10 bg-[#111827]/90 shadow-2xl backdrop-blur-sm" style={{ boxShadow: "0 25px 50px -12px rgba(0,0,0,0.4), 0 0 60px -10px rgba(0,252,184,0.08)" }}>
-              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-                <div className="flex gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
-                </div>
-                <span className="text-xs text-white/90">TaxFlowAI — Dashboard</span>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#00FCB8] text-[10px] font-bold text-[#0A1628]">EA</div>
-              </div>
-              <div className="grid gap-4 p-4 md:grid-cols-[1fr_auto]">
-                <div>
-                  <h3 className="mb-3 text-sm font-bold text-white">Your Lodgements</h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-1.5">
-                      <span className="truncate text-xs text-white">Income Tax FY2025</span>
-                      <span className="shrink-0 rounded-full bg-emerald-500/90 px-1.5 py-0.5 text-[10px] font-medium text-white">Lodged</span>
-                    </div>
-                    <div className="flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-1.5">
-                      <span className="truncate text-xs text-white">BAS Q2 FY2026</span>
-                      <span className="shrink-0 rounded-full bg-amber-500/90 px-1.5 py-0.5 text-[10px] font-medium text-white">Due 28 Feb</span>
-                    </div>
-                    <div className="flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-1.5">
-                      <span className="truncate text-xs text-white">PAYG Jan</span>
-                      <span className="shrink-0 rounded-full bg-[#39B2B2]/90 px-1.5 py-0.5 text-[10px] font-medium text-white">In Progress</span>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-[10px] text-[#00FCB8]">→ Upload bank statements</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="rounded-lg bg-white/5 p-2.5">
-                    <p className="text-lg font-bold tabular-nums text-[#00FCB8]">3</p>
-                    <p className="text-[10px] text-gray-500">Active</p>
-                  </div>
-                  <div className="rounded-lg bg-white/5 p-2.5">
-                    <p className="text-sm font-bold tabular-nums text-white">28 Feb</p>
-                    <p className="text-[10px] text-gray-500">Next</p>
-                  </div>
-                  <div className="rounded-lg border border-white/10 p-2.5">
-                    <div className="flex items-center gap-2">
-                      <div className="h-6 w-6 rounded-full bg-[#00FCB8] text-[10px] font-bold leading-6 text-[#0A1628]">EA</div>
-                      <span className="text-[10px] text-white">E&amp;A Advisory</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 h-24 w-full bg-gradient-to-b from-transparent to-[#111827]" aria-hidden />
-      </section>
-
-      {/* 2. TRUST — scrolling ticker */}
-      <section className="overflow-hidden border-y border-white/10 bg-[#111827] py-4">
-        <div className="taxflow-ticker w-max px-4">
-          {[...TRUST_TICKER_ITEMS, ...TRUST_TICKER_ITEMS].map((item, i) => (
-            <span key={i} className="shrink-0 text-sm font-medium text-white/80">{item}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* PROVOCATIVE STATEMENT STRIP */}
-      <section className="bg-[#00FCB8] py-8">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6 lg:px-8">
-          <p className="text-3xl font-bold text-[#0A1628]">
-            Millions of Australians lodge their tax late every year.
-          </p>
-          <p className="mt-4 text-xl text-[#0A1628]">
-            Most of them just needed a better system. This is it.
-          </p>
-        </div>
-      </section>
-
-      {/* 3. HOW IT WORKS — alternating layout, left border accent */}
-      <section id="how-it-works" data-taxflow-section className="bg-[#0A1628] px-4 py-20 md:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-8 bg-[#00FCB8]" aria-hidden />
-            <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">THE PROCESS</p>
-            <span className="h-px w-8 bg-[#00FCB8]" aria-hidden />
-          </div>
-          <h2 className="mt-4 text-center text-4xl font-bold text-white md:text-5xl" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>
-            Up and running in minutes.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            Getting started with TaxFlowAI is simple. Your accountant sets everything up — you just log in and stay on top of your tax.
-          </p>
-          <div className="mt-16 space-y-12">
-            {HOW_STEPS.map((step, i) => (
-              <article
-                key={step.num}
-                className={`taxflow-fade-in flex flex-col gap-8 rounded-xl border border-white/10 bg-[#111827] p-6 md:flex-row md:items-center md:p-8 ${visibleSections.has("how-it-works") ? "visible" : ""}`}
-                style={{ borderLeftWidth: "3px", borderLeftColor: "#00FCB8" }}
-              >
-                <div className={`flex-1 ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                  <StepIcon type={step.icon} />
-                  <h3 className="mt-4 text-lg font-bold text-white" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>{step.title}</h3>
-                  <p className="mt-2 text-sm text-gray-400">{step.desc}</p>
-                </div>
-                <div className={`hidden h-px w-16 bg-[#00FCB8]/50 md:block ${i % 2 === 1 ? "md:order-1" : ""}`} aria-hidden />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SERVICES */}
-      <section id="features" data-taxflow-section className="bg-[#111827] px-4 py-20 md:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-[#00FCB8]">WHAT&apos;S INCLUDED</p>
-          <h2 className="mt-4 text-center text-4xl font-bold text-white md:text-5xl" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>
-            Everything your tax life needs.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            All tax and accounting services are provided by E&amp;A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the client portal that connects you with your tax team — not a self-serve lodgement tool.
-          </p>
-          <div className={`mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${visibleSections.has("features") ? "taxflow-fade-in visible" : "taxflow-fade-in"}`}>
-            {SERVICES.map((label) => (
-              <div
-                key={label}
-                className="rounded-xl border border-white/10 bg-[#0A1628] p-6 transition-all hover:border-[#00FCB8] hover:bg-[#0A1628]/90"
-              >
-                <svg className="h-8 w-8 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
-                <h4 className="mt-3 text-sm font-bold text-white">{label}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* E&A ADVISORY TRUST SECTION */}
-      <section className="bg-[#111827] px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 py-12 px-8">
-          <div className="grid gap-8 md:grid-cols-[40%_60%] md:items-center">
+      {/* 1. HERO — aligned with Frontline: clear headline, subline, value props, CTA */}
+      <section className="relative overflow-hidden bg-[#0A1628] pt-8 pb-16 md:pt-12 md:pb-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(15,23,41,0.9)_0%,transparent_60%)]" aria-hidden />
+        <div className={`relative ${sectionContainer}`}>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="text-6xl font-bold text-[#00FCB8]">EA</p>
-              <p className="mt-2 text-lg font-bold text-white">E&amp;A Advisory Pty Ltd</p>
-              <p className="mt-1 text-sm text-gray-500">Registered Tax Agent</p>
-              <a href="https://eaadvisory.com.au/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm font-medium text-[#00FCB8] transition hover:underline">
-                Visit eaadvisory.com.au →
-              </a>
-            </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">WHO&apos;S BEHIND YOUR TAX</p>
-              <h3 className="mt-2 text-2xl font-bold text-white">Real accountants. Real compliance.</h3>
-              <p className="mt-4 text-gray-400">
-                TaxFlowAI is the platform. E&amp;A Advisory Pty Ltd are the registered tax agents who supervise and manage all compliance, lodgements, and accounting services delivered through TaxFlowAI.
+              <h1 className="taxflow-hero-heading text-white">
+                Your tax, <span className="text-[#00FCB8]">under control.</span>
+              </h1>
+              <p className="mt-4 text-lg text-[#94a3b8] md:text-xl">
+                Tax made simple. For every Australian.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-gray-400">
-                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Registered Tax Agent with the Tax Practitioners Board</li>
-                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Full compliance supervision and oversight</li>
-                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Real accountants behind every lodgement</li>
-                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Regulated, accountable, and qualified</li>
+              <p className="mt-3 text-sm text-white/80">
+                Lost receipts? Unclear status? Hard to reach your accountant? Flo sorts your receipts, your vault keeps everything in one place, and you always see what&apos;s next.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-white/90">
+                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Always know what&apos;s happening</li>
+                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Stay organised — receipts &amp; documents in one place</li>
+                <li className="flex items-center gap-2"><span className="text-[#00FCB8]">✓</span> Reach your accountant — upload, message, no phone tag</li>
               </ul>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href={TAXFLOW_SIGNIN_URL} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-95">
+                  Get started
+                </a>
+                <a href="#features" className="inline-flex items-center justify-center rounded-lg border-2 border-white/40 px-6 py-3 font-bold text-white transition hover:bg-white/10">
+                  See what you get
+                </a>
+              </div>
+              <p className="mt-4 text-xs text-white/50">Free to get started · No credit card · E&amp;A Advisory Pty Ltd</p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="taxflow-card-float w-full max-w-sm rounded-2xl border border-white/10 bg-[#111827]/95 p-4 shadow-xl" style={{ boxShadow: "0 20px 40px -12px rgba(0,0,0,0.4)" }}>
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-xs font-medium text-white/80">TaxFlowAI — Dashboard</span>
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#00FCB8] text-[10px] font-bold text-[#0A1628]">EA</div>
+                </div>
+                <div className="mt-3 space-y-2">
+                  <div className="flex justify-between rounded-lg bg-white/5 px-2.5 py-1.5 text-xs"><span className="text-white/90">Income Tax FY2025</span><span className="text-[#00FCB8]">Lodged</span></div>
+                  <div className="flex justify-between rounded-lg bg-white/5 px-2.5 py-1.5 text-xs"><span className="text-white/90">BAS Q2 FY2026</span><span className="text-amber-400">Due 28 Feb</span></div>
+                  <div className="flex justify-between rounded-lg bg-white/5 px-2.5 py-1.5 text-xs"><span className="text-white/90">PAYG Jan</span><span className="text-[#39B2B2]">In progress</span></div>
+                </div>
+                <p className="mt-3 text-[10px] text-[#00FCB8]">→ Upload bank statements</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. PRICING — card hover, recommended elevated */}
-      <section id="pricing" data-taxflow-section className="bg-[#0A1628] px-4 py-20 md:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-[#00FCB8]">PRICING</p>
-          <h2 className="mt-4 text-center text-4xl font-bold text-white md:text-5xl" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>
-            Priced for real people.
+      {/* 2. TRUST — Online Projects-style: badges + centered text */}
+      <section className="border-y border-white/10 bg-[#111827] py-8">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <span className="rounded-full border border-[#00FCB8]/30 bg-[#00FCB8]/10 px-4 py-2 text-sm font-bold text-[#00FCB8]">2,800+ Returns lodged</span>
+            <span className="rounded-full border border-[#00FCB8]/30 bg-[#00FCB8]/10 px-4 py-2 text-sm font-bold text-[#00FCB8]">5/5 Google Reviews</span>
+            <span className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-white">Registered Tax Agent</span>
+          </div>
+          <p className="mt-4 text-center text-sm text-[#94a3b8]">
+            TaxFlowAI is powered by <strong className="text-white">Frontline Financial</strong> · E&amp;A Advisory Pty Ltd · Secure &amp; ATO-aligned
+          </p>
+        </div>
+      </section>
+
+      {/* 2b. NOT LIKE EVERY OTHER — Online Projects-style differentiation */}
+      <section className="bg-[#0A1628] py-16 md:py-20">
+        <div className={sectionContainer}>
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Not like every other tax platform</p>
+          <h2 className="mt-4 text-center text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+            Feel like you&apos;re <span className="text-[#00FCB8]">in control</span>,<br />not in the dark.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-[#94a3b8]">
+            We&apos;re not here to sell you software. We&apos;re here to give you visibility — real accountants, real deadlines, real clarity. No phone tag, no guesswork.
+          </p>
+          <div className="mt-10 flex justify-center">
+            <Link href="/taxflow/contact" className="inline-flex items-center justify-center rounded-lg border-2 border-[#00FCB8] px-8 py-4 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">
+              Book a consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. HOW IT WORKS — Frontline-style: single row of steps with dividers */}
+      <section id="how-it-works" data-taxflow-section className="bg-[#0A1628]">
+        <div className={sectionContainer}>
+          <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">The process</p>
+          <h2 className={`mt-2 ${sectionHeading}`}>Up and running in minutes</h2>
+          <p className="mt-3 max-w-xl text-sm text-[#94a3b8]">
+            Your accountant sets everything up — you log in and stay on top of your tax.
+          </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {HOW_STEPS.map((step) => (
+              <div key={step.num} className="flex flex-col rounded-xl border border-white/10 bg-[#111827] p-5 transition hover:border-[#00FCB8]/30">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00FCB8] text-sm font-bold text-[#0A1628]">{step.num}</span>
+                  <StepIcon type={step.icon} className="h-8 w-8 flex-shrink-0 text-[#00FCB8]" />
+                </div>
+                <h3 className="mt-3 font-bold text-white">{step.title}</h3>
+                <p className="mt-1 text-sm text-[#94a3b8]">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3b. WINS ON THE BOARD — Online Projects-style stat cards */}
+      <section data-taxflow-section className="bg-[#111827] py-16 md:py-20">
+        <div className={sectionContainer}>
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Wins on the board</p>
+          <h2 className="mt-2 text-center text-2xl font-bold text-white md:text-3xl">Results you can count on</h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-6 text-center transition hover:border-[#00FCB8]/30">
+              <p className="text-4xl font-bold text-[#00FCB8] md:text-5xl">2,800+</p>
+              <p className="mt-1 text-sm font-medium text-white">Returns lodged</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-6 text-center transition hover:border-[#00FCB8]/30">
+              <p className="text-4xl font-bold text-[#00FCB8] md:text-5xl">5/5</p>
+              <p className="mt-1 text-sm font-medium text-white">Google Reviews</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-6 text-center transition hover:border-[#00FCB8]/30 sm:col-span-2 lg:col-span-1">
+              <p className="text-4xl font-bold text-[#00FCB8] md:text-5xl">Real</p>
+              <p className="mt-1 text-sm font-medium text-white">Accountants behind every lodgement</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FEATURES — Frontline-style: uniform grid, left-accent heading */}
+      <section id="features" data-taxflow-section className="bg-[#111827]">
+        <div className={sectionContainer}>
+          <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">What you get</p>
+          <h2 className={`mt-2 ${sectionHeading}`}>Your tax control centre</h2>
+          <p className="mt-3 max-w-xl text-sm text-[#94a3b8]">
+            Flo keeps track of everything — see what&apos;s happening, what&apos;s next, and reach your accountant when you need to.
+          </p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-5 transition hover:border-[#00FCB8]/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /></svg>
+              </div>
+              <h3 className="mt-3 font-bold text-white">Snap receipts — Flo sorts them</h3>
+              <p className="mt-1 text-sm text-[#94a3b8]">AI-scanned and categorised. No more shoeboxes or lost slips.</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-5 transition hover:border-[#00FCB8]/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+              </div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+              </div>
+              <h3 className="mt-3 font-bold text-white">Document vault</h3>
+              <p className="mt-1 text-sm text-[#94a3b8]">Everything in one place. Secure storage, ready when your accountant needs it.</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-5 transition hover:border-[#00FCB8]/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+              </div>
+              <h3 className="mt-3 font-bold text-white">Track lodgements in real time</h3>
+              <p className="mt-1 text-sm text-[#94a3b8]">See status, next steps, and deadlines. No more &quot;where&apos;s my return?&quot;</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-5 transition hover:border-[#00FCB8]/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
+              </div>
+              <h3 className="mt-3 font-bold text-white">Meet Flo</h3>
+              <p className="mt-1 text-sm text-[#94a3b8]">Your friendly AI assistant. Flo has your back — organised, helpful.</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-[#0A1628] p-5 transition hover:border-[#00FCB8]/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00FCB8]/20 text-[#00FCB8]">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+              </div>
+              <h3 className="mt-3 font-bold text-white">Bank-grade security</h3>
+              <p className="mt-1 text-sm text-[#94a3b8]">Secure, encrypted, ATO-aligned. Tax services by E&amp;A Advisory Pty Ltd.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* E&A — Frontline-style: compact strip */}
+      <section className="border-t border-white/10 bg-[#0A1628] py-8">
+        <div className={sectionContainer}>
+          <div className="flex flex-wrap items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <span className="text-3xl font-bold text-[#00FCB8]">EA</span>
+              <div>
+                <p className="font-bold text-white">E&amp;A Advisory Pty Ltd</p>
+                <p className="text-sm text-[#94a3b8]">Registered Tax Agent · Real accountants behind every lodgement</p>
+              </div>
+            </div>
+            <a href="https://eaadvisory.com.au/" target="_blank" rel="noopener noreferrer" className="shrink-0 text-sm font-medium text-[#00FCB8] transition hover:underline">
+              eaadvisory.com.au →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. PRICING — Frontline-style container + left-accent heading */}
+      <section id="pricing" data-taxflow-section className="bg-[#111827]">
+        <div className={sectionContainer}>
+          <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Pricing</p>
+          <h2 className={`mt-2 ${sectionHeading}`}>Priced for real people</h2>
+          <p className="mt-3 max-w-xl text-sm text-[#94a3b8]">
             We looked at what accountants charge. We looked at what most Australians can afford. Then we built something in between. Because everyone deserves this — not just people who can spend $300 an hour.
           </p>
           <div className={`mt-16 grid gap-8 lg:grid-cols-3 lg:items-stretch ${visibleSections.has("pricing") ? "taxflow-fade-in visible" : "taxflow-fade-in"}`}>
@@ -374,7 +357,7 @@ export default function TaxFlowPage() {
                 ))}
               </ul>
               <p className="mt-4 text-xs italic text-gray-500">Tax services provided by E&amp;A Advisory Pty Ltd</p>
-              <a href="#get-started" className="mt-6 inline-block w-full rounded-lg border border-[#00FCB8] py-3 text-center font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">
+              <a href={TAXFLOW_SIGNIN_URL} className="mt-6 inline-block w-full rounded-lg border border-[#00FCB8] py-3 text-center font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">
                 Get Started
               </a>
             </div>
@@ -392,7 +375,7 @@ export default function TaxFlowPage() {
                 ))}
               </ul>
               <p className="mt-4 text-xs italic text-gray-500">Tax services provided by E&amp;A Advisory Pty Ltd</p>
-              <a href="#get-started" className="mt-6 inline-block w-full rounded-lg bg-[#00FCB8] py-4 text-center text-lg font-bold text-[#0A1628] transition hover:scale-105">
+              <a href={TAXFLOW_SIGNIN_URL} className="mt-6 inline-block w-full rounded-lg bg-[#00FCB8] py-4 text-center text-lg font-bold text-[#0A1628] transition hover:scale-105">
                 Get Started Free
               </a>
             </div>
@@ -409,7 +392,7 @@ export default function TaxFlowPage() {
                 ))}
               </ul>
               <p className="mt-4 text-xs italic text-gray-500">Tax services provided by E&amp;A Advisory Pty Ltd</p>
-              <a href="tel:+61422959486" className="mt-6 inline-block w-full rounded-lg border border-[#00FCB8] py-3 text-center font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">
+              <a href="tel:+61406909862" className="mt-6 inline-block w-full rounded-lg border border-[#00FCB8] py-3 text-center font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">
                 Talk to Us
               </a>
             </div>
@@ -420,23 +403,50 @@ export default function TaxFlowPage() {
         </div>
       </section>
 
-      {/* 6. CTA — diagonal gradient */}
-      <section className="relative overflow-hidden px-4 py-24 md:px-6 md:py-32 lg:px-8" style={{ background: "linear-gradient(135deg, #0A1628 0%, #0E1E35 40%, #0d2847 100%)" }}>
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[400px] w-[400px] rounded-full bg-[#00FCB8] opacity-[0.05] blur-[100px]" aria-hidden />
-        </div>
-        <div className="relative mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>
-            Enough Australians have gone without.
+      {/* 5b. WE'RE A GREAT FIT IF… — Online Projects-style client-fit bullets */}
+      <section className="border-t border-white/10 bg-[#0A1628] py-16 md:py-20">
+        <div className={sectionContainer}>
+          <h2 className="text-center text-2xl font-bold text-white md:text-3xl">
+            We&apos;re a great fit if…
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-xl text-gray-400">
-            A real accountant. Real deadlines tracked. Real documents managed. All of it — finally accessible to everyone. Start today. It&apos;s free to get started.
+          <ul className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-2">
+            {[
+              "You want one place for all your tax docs",
+              "You want to know your lodgement status",
+              "You want an accountant who responds",
+              "You want clear deadlines, no surprises",
+              "You want receipts sorted, not shoeboxed",
+              "You want tax made simple, not stressful",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-3 text-white">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#00FCB8] text-xs font-bold text-[#0A1628]">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-12 flex justify-center">
+            <Link href="/taxflow/contact" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 font-bold text-[#0A1628] transition hover:opacity-95">
+              Let&apos;s talk
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA — Frontline-style: one container, clear CTA */}
+      <section id="get-started" className="relative overflow-hidden bg-[#0A1628] border-t border-white/10">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(0,252,184,0.08)_0%,transparent_60%)]" aria-hidden />
+        <div className={`relative ${sectionContainer} text-center`}>
+          <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-heading-tf), system-ui" }}>
+            Your tax, under control.
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-xl text-[#94a3b8]">
+            Always know what&apos;s happening. Stay organised. Reach your accountant. Start today — free to get started.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="#get-started" className="taxflow-btn-primary inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-12 py-5 text-lg font-bold text-[#0A1628] transition sm:w-auto">
-              Get Started Free
+            <a href={TAXFLOW_SIGNIN_URL} className="taxflow-btn-primary inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-12 py-5 text-lg font-bold text-[#0A1628] transition hover:opacity-95 sm:w-auto">
+              Get started
             </a>
-            <Link href="/contact" className="taxflow-btn-ghost inline-flex w-full items-center justify-center rounded-lg border-2 border-white/60 px-12 py-5 text-lg font-bold text-white transition sm:w-auto">
+            <Link href="/taxflow/contact" className="taxflow-btn-ghost inline-flex w-full items-center justify-center rounded-lg border-2 border-white/60 px-12 py-5 text-lg font-bold text-white transition sm:w-auto">
               Book a Consultation
             </Link>
           </div>
@@ -444,7 +454,7 @@ export default function TaxFlowPage() {
             Tax and accounting services provided by E&amp;A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the technology platform.
           </p>
           <p className="mt-8 text-sm text-gray-500">
-            Questions? Call us: <a href="tel:+61422959486" className="text-[#00FCB8] hover:underline">+61 422 959 486</a> or email <a href="mailto:taxflowai@frontline.financial" className="text-[#00FCB8] hover:underline">taxflowai@frontline.financial</a>
+            Questions? <a href="tel:+61406909862" className="text-[#00FCB8] hover:underline">0406 909 862</a> or <a href="mailto:taxflowai@frontline.financial" className="text-[#00FCB8] hover:underline">taxflowai@frontline.financial</a>
           </p>
         </div>
       </section>

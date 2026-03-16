@@ -2,6 +2,19 @@
 
 import Link from "next/link";
 
+const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
+const TAXFLOW_PHONE = "0406 909 862";
+const TAXFLOW_PHONE_LINK = "tel:+61406909862";
+
+/**
+ * TaxFlowAI app footer — DO NOT CHANGE structure/legal links.
+ * Non-negotiable: keep exactly as-is:
+ * - E&A Advisory Pty Ltd — Powered by TaxFlowAI
+ * - Privacy Policy | Collection Notice | Terms of Service | Verify Tax Agent (TAN: 26100253)
+ * - Tax Agent and Platform/ASIC entity details
+ * - Copyright line (TaxFlowAI © 2025 · Tax services by E&A Advisory · Platform by Frontline Financial Group)
+ * See docs/DESIGN-BRIEF-TAXFLOWAI-WEBSITE.md
+ */
 export default function TaxFlowAppFooter() {
   return (
     <footer className="app-footer-taxflow border-t border-[#00FCB8]/15 bg-[#060D1A] px-4 py-16 md:px-6 lg:px-8">
@@ -84,12 +97,12 @@ export default function TaxFlowAppFooter() {
                 </a>
               </li>
               <li>
-                <a href="#signin" className="transition hover:text-[#00FCB8]">
+                <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
                   Sign In
                 </a>
               </li>
               <li>
-                <a href="#get-started" className="transition hover:text-[#00FCB8]">
+                <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
                   Get Started
                 </a>
               </li>
@@ -137,10 +150,10 @@ export default function TaxFlowAppFooter() {
             <ul className="mt-4 space-y-2 text-sm text-gray-500">
               <li>
                 <a
-                  href="tel:+61422959486"
+                  href={TAXFLOW_PHONE_LINK}
                   className="transition hover:text-[#00FCB8]"
                 >
-                  +61 422 959 486
+                  {TAXFLOW_PHONE}
                 </a>
               </li>
               <li>

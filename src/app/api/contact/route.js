@@ -5,9 +5,11 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function getRecipient(teamMember) {
   const hassan = process.env.CONTACT_EMAIL_HASSAN || "hassan@frontline.financial";
   const sham = process.env.CONTACT_EMAIL_SHAM || "sham@frontline.financial";
+  const taxflow = process.env.CONTACT_EMAIL_TAXFLOW || "taxflowai@frontline.financial";
   const def = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
   if (teamMember === "hassan") return hassan;
   if (teamMember === "sham") return sham;
+  if (teamMember === "taxflow") return taxflow;
   return def;
 }
 
