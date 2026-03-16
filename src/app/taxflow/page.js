@@ -24,7 +24,7 @@ const HOW_STEPS = [
   {
     num: 3,
     title: "Your dashboard is live",
-    desc: "See all your accounts — Personal, Sole Trader, Company, Trust, Partnership, SMSF — with live lodgement status.",
+    desc: "See all your accounts — Personal, Sole Trader, Company, Trust, Partnership — with live lodgement status.",
     icon: "key",
   },
   {
@@ -38,7 +38,7 @@ const HOW_STEPS = [
 const PORTAL_FEATURES = [
   {
     title: "Dashboard",
-    desc: "Dynamic status hero. All accounts at a glance — Personal, Sole Trader, Company, Trust, Partnership, SMSF — with lodgement counts, overdue warnings, and one-tap actions.",
+    desc: "Dynamic status hero. All accounts at a glance — Personal, Sole Trader, Company, Trust, Partnership — with lodgement counts, overdue warnings, and one-tap actions.",
     icon: "grid",
     badge: null,
   },
@@ -98,7 +98,6 @@ const ACCOUNT_TYPES = [
   { label: "Company", icon: "🏢" },
   { label: "Trust", icon: "🔐" },
   { label: "Partnership", icon: "🤝" },
-  { label: "SMSF", icon: "💰" },
 ];
 
 function FeatureIcon({ type }) {
@@ -260,7 +259,7 @@ export default function TaxFlowPage() {
                   <span className="rounded-full px-2 py-0.5 text-[10px] font-bold text-white" style={{ background: ACCENT }}>All good</span>
                 </div>
                 <div className="mt-2 grid grid-cols-3 gap-1.5">
-                  {["Personal", "Company", "SMSF"].map((acct) => (
+                  {["Personal", "Company", "Trust"].map((acct) => (
                     <div key={acct} className="rounded-lg px-2 py-1.5 text-center text-[9px] font-medium" style={{ background: accentLight, color: ACCENT }}>{acct}</div>
                   ))}
                 </div>
@@ -322,7 +321,7 @@ export default function TaxFlowPage() {
           </p>
           <div className="mt-10 flex justify-center">
             <a href={TAXFLOW_SIGNIN_URL} className="inline-flex items-center justify-center rounded-lg border-2 px-8 py-4 font-bold transition hover:opacity-80" style={{ borderColor: ACCENT, color: ACCENT }}>
-              Sign up for free
+              Sign up to get started
             </a>
           </div>
         </div>
@@ -427,8 +426,35 @@ export default function TaxFlowPage() {
                 ))}
               </ul>
             </div>
-            {/* Flo chat mockup */}
-            <div className="flex justify-center">
+            {/* Flo chat mockup + robot */}
+            <div className="flex flex-col items-center gap-6">
+              {/* Friendly robot character */}
+              <div className="flex justify-center taxflow-robot-bounce" aria-hidden>
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
+                  {/* Robot body - rounded rectangle */}
+                  <rect x="20" y="45" width="80" height="55" rx="12" fill={ACCENT} opacity="0.9" />
+                  <rect x="24" y="49" width="72" height="47" rx="8" fill="#0A1628" />
+                  {/* Head */}
+                  <rect x="35" y="15" width="50" height="38" rx="8" fill={ACCENT} />
+                  <rect x="39" y="19" width="42" height="30" rx="6" fill="#0A1628" />
+                  {/* Eyes - friendly and expressive */}
+                  <ellipse cx="48" cy="32" rx="6" ry="7" fill={ACCENT} />
+                  <ellipse cx="72" cy="32" rx="6" ry="7" fill={ACCENT} />
+                  <circle cx="49" cy="31" r="2" fill="#0A1628" />
+                  <circle cx="73" cy="31" r="2" fill="#0A1628" />
+                  {/* Smile */}
+                  <path d="M52 42 Q60 48 68 42" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" fill="none" />
+                  {/* Antenna with bobble */}
+                  <line x1="60" y1="15" x2="60" y2="5" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="60" cy="3" r="3" fill={ACCENT} />
+                  {/* Arms - waving */}
+                  <path d="M20 58 Q5 50 8 65 Q12 75 20 70" stroke={ACCENT} strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.9" />
+                  <path d="M100 58 Q115 50 112 65 Q108 75 100 70" stroke={ACCENT} strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.9" />
+                  {/* Panel/screen on chest */}
+                  <rect x="42" y="58" width="36" height="18" rx="4" fill={ACCENT} opacity="0.3" />
+                  <text x="60" y="70" textAnchor="middle" fill={ACCENT} fontSize="10" fontWeight="bold">D1–D10</text>
+                </svg>
+              </div>
               <div className="w-full max-w-xs rounded-2xl p-4 shadow-lg" style={{ border: `1px solid ${border}`, background: cardBg }}>
                 <div className="flex items-center gap-2 pb-3" style={{ borderBottom: `1px solid ${border}` }}>
                   <span className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white" style={{ background: ACCENT }}>F</span>

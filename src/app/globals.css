@@ -137,6 +137,16 @@ body {
   animation: taxflowCardFloat 4s ease-in-out infinite;
 }
 
+/* Flo robot - gentle friendly bounce */
+@keyframes taxflowRobotBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.taxflow-robot-bounce {
+  animation: taxflowRobotBounce 3s ease-in-out infinite;
+}
+
 /* Thank-you page: draw-on checkmark */
 @keyframes drawCheck {
   from { stroke-dashoffset: 100; }
