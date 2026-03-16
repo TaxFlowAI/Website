@@ -193,7 +193,6 @@ export default function TaxFlowPage() {
               <nav className="flex items-center gap-3 md:gap-5">
                 <a href="#features" className="hidden text-sm font-medium transition hover:opacity-100 sm:inline-block" style={{ color: `${textPrimary}b3` }}>Features</a>
                 <a href="#how-it-works" className="hidden text-sm font-medium transition hover:opacity-100 sm:inline-block" style={{ color: `${textPrimary}b3` }}>How it works</a>
-                <a href="#pricing" className="hidden text-sm font-medium transition hover:opacity-100 sm:inline-block" style={{ color: `${textPrimary}b3` }}>Pricing</a>
                 <button
                   onClick={() => setIsDark(!isDark)}
                   aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -322,9 +321,9 @@ export default function TaxFlowPage() {
             We&apos;re not here to sell you software. We&apos;re here to give you visibility — real accountants, real deadlines, real clarity.
           </p>
           <div className="mt-10 flex justify-center">
-            <Link href="/taxflow/contact" className="inline-flex items-center justify-center rounded-lg border-2 px-8 py-4 font-bold transition hover:opacity-80" style={{ borderColor: ACCENT, color: ACCENT }}>
-              Book a consultation
-            </Link>
+            <a href={TAXFLOW_SIGNIN_URL} className="inline-flex items-center justify-center rounded-lg border-2 px-8 py-4 font-bold transition hover:opacity-80" style={{ borderColor: ACCENT, color: ACCENT }}>
+              Sign up for free
+            </a>
           </div>
         </div>
       </section>
@@ -346,26 +345,6 @@ export default function TaxFlowPage() {
                 </div>
                 <h3 className="mt-3 font-bold" style={{ color: textPrimary }}>{step.title}</h3>
                 <p className="mt-1 text-sm" style={{ color: textMuted }}>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3b. WINS */}
-      <section data-taxflow-section className="py-16 md:py-20" style={{ background: bg2 }}>
-        <div className={sectionContainer}>
-          <p className="text-center text-xs font-bold uppercase tracking-widest" style={{ color: ACCENT }}>Wins on the board</p>
-          <h2 className="mt-2 text-center text-2xl font-bold md:text-3xl" style={{ color: textPrimary }}>Results you can count on</h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { val: "2,800+", label: "Returns lodged" },
-              { val: "5/5", label: "Google Reviews" },
-              { val: "Real", label: "Accountants behind every lodgement" },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-xl p-6 text-center transition" style={{ border: `1px solid ${border}`, background: cardAlt }}>
-                <p className="text-4xl font-bold md:text-5xl" style={{ color: ACCENT }}>{stat.val}</p>
-                <p className="mt-1 text-sm font-medium" style={{ color: textPrimary }}>{stat.label}</p>
               </div>
             ))}
           </div>
@@ -494,94 +473,7 @@ export default function TaxFlowPage() {
         </div>
       </section>
 
-      {/* 5. PRICING */}
-      <section id="pricing" data-taxflow-section style={{ background: bg2 }}>
-        <div className={sectionContainer}>
-          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: ACCENT }}>Pricing</p>
-          <h2 className="mt-2 border-l-4 pl-4 text-3xl font-bold md:text-4xl" style={{ borderColor: ACCENT, color: textPrimary }}>Priced for real people</h2>
-          <p className="mt-3 max-w-xl text-sm" style={{ color: textMuted }}>
-            We looked at what accountants charge. We looked at what most Australians can afford. Then we built something in between.
-          </p>
-          <div className={`mt-16 grid gap-8 lg:grid-cols-3 lg:items-stretch ${visibleSections.has("pricing") ? "taxflow-fade-in visible" : "taxflow-fade-in"}`}>
-            {/* Individual */}
-            <div className="taxflow-pricing-card rounded-2xl p-8 transition-all duration-200" style={{ border: `1px solid ${border}`, background: cardBg }}>
-              <h3 className="text-xl font-bold" style={{ color: textPrimary }}>Individual</h3>
-              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>Free</p>
-              <div className="my-6 h-px" style={{ background: border }} />
-              <ul className="space-y-3 text-sm">
-                {["Individual tax return lodgement", "TaxFlowAI portal access", "Document upload & storage", "AI receipt scanning (Flo)", "Vehicle logbook", "Deadline tracking & reminders", "Direct accountant access"].map((f) => (
-                  <li key={f} className="flex items-center gap-2" style={{ color: textPrimary }}><span style={{ color: ACCENT }}>✓</span> {f}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-xs italic" style={{ color: textMuted }}>Tax services by E&amp;A Advisory Pty Ltd</p>
-              <a href={TAXFLOW_SIGNIN_URL} className="mt-6 inline-block w-full rounded-lg border py-3 text-center font-bold transition hover:opacity-80" style={{ borderColor: ACCENT, color: ACCENT }}>Get Started</a>
-            </div>
-            {/* Business */}
-            <div className="taxflow-pricing-card taxflow-pricing-featured relative rounded-2xl border-t-4 p-8 transition-all duration-200" style={{ borderColor: ACCENT, background: isDark ? "rgba(0,129,138,0.05)" : "rgba(0,129,138,0.04)" }}>
-              <p className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ background: ACCENT }}>Most Popular</p>
-              <h3 className="mt-2 text-xl font-bold" style={{ color: textPrimary }}>Business</h3>
-              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>Custom</p>
-              <p className="text-sm" style={{ color: textMuted }}>tailored to your needs</p>
-              <div className="my-6 h-px" style={{ background: border }} />
-              <ul className="space-y-3 text-sm">
-                {["Everything in Individual", "Business tax return", "BAS & GST lodgements", "Investment property tax", "Bookkeeping & cloud accounting", "ASIC compliance tasks", "Priority response times"].map((f) => (
-                  <li key={f} className="flex items-center gap-2" style={{ color: textPrimary }}><span style={{ color: ACCENT }}>✓</span> {f}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-xs italic" style={{ color: textMuted }}>Tax services by E&amp;A Advisory Pty Ltd</p>
-              <a href="tel:+61406909862" className="mt-6 inline-block w-full rounded-lg py-4 text-center text-lg font-bold text-white transition hover:opacity-90" style={{ background: ACCENT }}>Talk to Us</a>
-            </div>
-            {/* Premium */}
-            <div className="taxflow-pricing-card rounded-2xl p-8 transition-all duration-200" style={{ border: `1px solid ${border}`, background: cardBg }}>
-              <h3 className="text-xl font-bold" style={{ color: textPrimary }}>Premium</h3>
-              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>Custom</p>
-              <p className="text-sm" style={{ color: textMuted }}>tailored to your needs</p>
-              <div className="my-6 h-px" style={{ background: border }} />
-              <ul className="space-y-3 text-sm">
-                {["Everything in Business", "ASIC & corporate secretarial", "CGT & investment property tax", "SMSF management", "Entity structuring & setup", "FBT returns", "Payroll & STP"].map((f) => (
-                  <li key={f} className="flex items-center gap-2" style={{ color: textPrimary }}><span style={{ color: ACCENT }}>✓</span> {f}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-xs italic" style={{ color: textMuted }}>Tax services by E&amp;A Advisory Pty Ltd</p>
-              <a href="tel:+61406909862" className="mt-6 inline-block w-full rounded-lg border py-3 text-center font-bold transition hover:opacity-80" style={{ borderColor: ACCENT, color: ACCENT }}>Talk to Us</a>
-            </div>
-          </div>
-          <p className="mt-8 text-center text-sm italic" style={{ color: textMuted }}>
-            Prices shown are indicative starting points. Final pricing depends on complexity and scope. All prices include GST. Tax and accounting services are provided by E&amp;A Advisory Pty Ltd, Registered Tax Agent.
-          </p>
-        </div>
-      </section>
-
-      {/* 5b. GREAT FIT */}
-      <section className="py-16 md:py-20" style={{ borderTop: `1px solid ${border}`, background: bg1 }}>
-        <div className={sectionContainer}>
-          <h2 className="text-center text-2xl font-bold md:text-3xl" style={{ color: textPrimary }}>
-            We&apos;re a great fit if…
-          </h2>
-          <ul className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-2">
-            {[
-              "You want one place for all your tax docs",
-              "You want to know your lodgement status",
-              "You want an accountant who responds",
-              "You want clear deadlines, no surprises",
-              "You want receipts sorted, not shoeboxed",
-              "You want tax made simple, not stressful",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-3" style={{ color: textPrimary }}>
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: ACCENT }}>✓</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-12 flex justify-center">
-            <Link href="/taxflow/contact" className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-bold text-white transition hover:opacity-90" style={{ background: ACCENT }}>
-              Let&apos;s talk
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. CTA */}
+      {/* 5. CTA */}
       <section id="get-started" className="relative overflow-hidden" style={{ borderTop: `1px solid ${border}`, background: bg1 }}>
         <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(0,129,138,0.08) 0%, transparent 60%)" }} aria-hidden />
         <div className={`relative ${sectionContainer} text-center`}>
@@ -591,13 +483,10 @@ export default function TaxFlowPage() {
           <p className="mx-auto mt-6 max-w-xl text-xl" style={{ color: textMuted }}>
             Always know what&apos;s happening. Stay organised. Reach your accountant. Start today — free to get started.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex justify-center">
             <a href={TAXFLOW_SIGNIN_URL} className="taxflow-btn-primary inline-flex w-full items-center justify-center rounded-lg px-12 py-5 text-lg font-bold text-white transition hover:opacity-90 sm:w-auto" style={{ background: ACCENT }}>
               Get started
             </a>
-            <Link href="/taxflow/contact" className="taxflow-btn-ghost inline-flex w-full items-center justify-center rounded-lg border-2 px-12 py-5 text-lg font-bold transition hover:opacity-80 sm:w-auto" style={{ borderColor: `${textPrimary}66`, color: textPrimary }}>
-              Book a Consultation
-            </Link>
           </div>
           <p className="mt-6 text-center text-xs" style={{ color: `${textPrimary}66` }}>
             Tax and accounting services provided by E&amp;A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the technology platform.

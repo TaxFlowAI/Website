@@ -87,7 +87,6 @@ export default function TaxFlowContactPage() {
               </Link>
               <nav className="flex items-center gap-4 md:gap-6">
                 <Link href="/taxflow#features" className="hidden text-sm font-medium text-white/80 transition hover:text-[#00FCB8] sm:inline-block">Features</Link>
-                <Link href="/taxflow#pricing" className="hidden text-sm font-medium text-white/80 transition hover:text-[#00FCB8] sm:inline-block">Pricing</Link>
                 <a href={TAXFLOW_SIGNIN_URL} className="rounded-lg px-3 py-2 text-sm font-medium text-white/90 transition hover:bg-white/10">Sign In</a>
                 <a href={TAXFLOW_SIGNIN_URL} className="rounded-lg bg-[#00FCB8] px-4 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-95">Get started</a>
               </nav>

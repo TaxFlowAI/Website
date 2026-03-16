@@ -280,7 +280,7 @@ export default function Home() {
                 </svg>
               ))}
             </div>
-            <span className="text-sm">5/5 · 44+ Reviews — View all</span>
+            <span className="text-sm">5/5 · Reviews — View all</span>
           </a>
           <div className="relative mt-10 flex items-center gap-2 md:gap-4">
             <button type="button" onClick={() => setReviewIndex((i) => (i - 1 + GOOGLE_REVIEWS.length) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-full bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Previous reviews">

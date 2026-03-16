@@ -92,11 +92,6 @@ export default function TaxFlowAppFooter() {
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="transition hover:text-[#00FCB8]">
-                  Pricing
-                </a>
-              </li>
-              <li>
                 <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
                   Sign In
                 </a>

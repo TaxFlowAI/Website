@@ -431,7 +431,7 @@ export default function ContactPage() {
                 <span className="font-medium text-[#1C5472]">Google Reviews</span>
               </div>
               <div className="mt-2 flex text-amber-400" aria-hidden>★★★★★</div>
-              <p className="font-bold text-[#1C5472]">5/5 · 44+ Reviews</p>
+              <p className="font-bold text-[#1C5472]">5/5 · Reviews</p>
               <p className="mt-2 text-sm italic text-[#1C5472]">
                 &ldquo;The team at Frontline Financial are extraordinary at what they do.&rdquo; — Oliver S.
               </p>
