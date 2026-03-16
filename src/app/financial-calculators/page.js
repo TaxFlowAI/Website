@@ -102,7 +102,7 @@ function BrokingCTA() {
           </div>
         </div>
         <div className="hidden md:block">
-          <CTAProfilePhoto caption="Hassan Arif JP" src="/images/DSC01459.png?v=2" />
+          <CTAProfilePhoto caption="Hassan Arif JP" src="/images/DSC01459.png?v=3" />
         </div>
       </div>
     </div>
