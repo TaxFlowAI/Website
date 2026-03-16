@@ -8,6 +8,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: "TaxFlowAI — Your Tax Life, Organised",
+  icons: {
+    icon: "/favicon-taxflow.svg",
+  },
 };
 
 export default function TaxFlowLayout({ children }) {
