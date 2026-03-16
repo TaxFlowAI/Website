@@ -61,8 +61,6 @@ export const ROUTE_ENTITY_MAP = {
   "/credit-guide": ENTITY.BROKERS,
   "/privacy-consent": ENTITY.BROKERS,
   "/calculator-disclaimer-broking": ENTITY.BROKERS,
-  "/free-eligibility-test-home-loans": ENTITY.BROKERS,
-  "/free-eligibility-test": ENTITY.BROKERS,
 
   // ---- ASSET SOLUTIONS pages ----
   "/assetsolutions": ENTITY.ASSET_SOLUTIONS,
@@ -70,7 +68,6 @@ export const ROUTE_ENTITY_MAP = {
   "/credit-guide-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/calculator-disclaimer-asset-solutions": ENTITY.ASSET_SOLUTIONS,
-  "/free-eligibility-test-asset-finance": ENTITY.ASSET_SOLUTIONS,
 
   // ---- SHARED pages ----
   "/": ENTITY.SHARED,

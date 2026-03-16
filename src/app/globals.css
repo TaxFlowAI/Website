@@ -179,7 +179,7 @@ body {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: #00818A;
+  background: #00FCB8;
   transition: width 0.25s ease;
 }
 .taxflow-nav-link:hover::after {
@@ -187,7 +187,7 @@ body {
 }
 
 .taxflow-logo-ai-shimmer {
-  background: linear-gradient(90deg, #00818A, #4FB3BC, #00818A);
+  background: linear-gradient(90deg, #00FCB8, #39B2B2, #00FCB8);
   background-size: 200% 100%;
   animation: taxflow-ai-shimmer 4s ease-in-out infinite;
   -webkit-background-clip: text;
@@ -200,7 +200,7 @@ body {
 }
 
 .taxflow-btn-primary:hover {
-  box-shadow: 0 0 20px rgba(0, 129, 138, 0.35);
+  box-shadow: 0 0 20px rgba(0, 252, 184, 0.3);
 }
 .taxflow-btn-ghost:hover {
   background: rgba(255, 255, 255, 0.05);
@@ -236,8 +236,8 @@ body {
 
 .taxflow-pricing-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 129, 138, 0.5);
-  box-shadow: 0 12px 40px rgba(0, 129, 138, 0.1);
+  border-color: rgba(0, 252, 184, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 252, 184, 0.08);
 }
 @media (min-width: 1024px) {
   .taxflow-pricing-featured {

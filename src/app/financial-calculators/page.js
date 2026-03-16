@@ -93,10 +93,7 @@ function BrokingCTA() {
             Get a <strong>FREE home loan eligibility assessment</strong> — no obligation, no credit check impact.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link href="/free-eligibility-test-home-loans" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
-              Start Free Eligibility Test →
-            </Link>
-            <a href="tel:+61422959486" className="inline-flex items-center justify-center rounded-lg border-2 border-white px-6 py-3 font-bold text-white transition hover:bg-white/10">
+            <a href="tel:+61422959486" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
               Call Hassan: 0422 959 486
             </a>
           </div>
@@ -119,10 +116,7 @@ function AssetCTA() {
             Get a <strong>FREE car loan eligibility check</strong> — fast approvals, competitive rates. Sham — Award-winning finance broker, FY25.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link href="/free-eligibility-test-asset-finance" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
-              Start Free Eligibility Check →
-            </Link>
-            <a href="tel:+61450553877" className="inline-flex items-center justify-center rounded-lg border-2 border-white px-6 py-3 font-bold text-white transition hover:bg-white/10">
+            <a href="tel:+61450553877" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
               Call Sham: 0450 553 877
             </a>
           </div>
@@ -142,13 +136,10 @@ function PersonalLoanCTA() {
         <div className="min-w-0 flex-1">
           <h3 className="text-xl font-bold md:text-2xl">💰 Need funds for something important?</h3>
           <p className="mt-2 text-[#39B2B2]">
-            Get a <strong>FREE personal loan eligibility check</strong> — no obligation. Sham — Award-winning finance broker, FY25.
+            Fast approvals, competitive rates. Sham — Award-winning finance broker, FY25.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link href="/free-eligibility-test-asset-finance" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
-              Start Free Eligibility Check →
-            </Link>
-            <a href="tel:+61450553877" className="inline-flex items-center justify-center rounded-lg border-2 border-white px-6 py-3 font-bold text-white transition hover:bg-white/10">
+            <a href="tel:+61450553877" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
               Call Sham: 0450 553 877
             </a>
           </div>

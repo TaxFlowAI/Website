@@ -10,14 +10,7 @@ function ThankYouContent() {
   const searchParams = useSearchParams();
   const team = searchParams.get("team") || "team";
   const forwarded = searchParams.get("forwarded") || "";
-  const contactQuery = [
-    searchParams.get("fn") && `fn=${encodeURIComponent(searchParams.get("fn"))}`,
-    searchParams.get("ln") && `ln=${encodeURIComponent(searchParams.get("ln"))}`,
-    searchParams.get("em") && `em=${encodeURIComponent(searchParams.get("em"))}`,
-    searchParams.get("ph") && `ph=${encodeURIComponent(searchParams.get("ph"))}`,
-  ].filter(Boolean).join("&");
-
-  const isBrokers = team === "brokers";
+const isBrokers = team === "brokers";
   const isAssetSolutions = team === "asset-solutions";
   const isHassan = team === "hassan";
   const isSham = team === "sham";
@@ -71,16 +64,9 @@ function ThankYouContent() {
                     Interest rates can change quickly. We&apos;ll call you within 1 business day to discuss your situation and start your free assessment — so you can lock in the right loan for you sooner.
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-white/90">
-                    <li className="flex items-center gap-2">✓ Free home loan eligibility check</li>
                     <li className="flex items-center gap-2">✓ Access to 30+ lenders</li>
                     <li className="flex items-center gap-2">✓ No obligation, no cost to you</li>
                   </ul>
-                  <Link
-                    href={contactQuery ? `/free-eligibility-test-home-loans?${contactQuery}` : "/free-eligibility-test-home-loans"}
-                    className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition hover:opacity-90"
-                  >
-                    Start free eligibility test →
-                  </Link>
                 </div>
               )}
               {isAssetSolutions && (
@@ -94,12 +80,6 @@ function ThankYouContent() {
                     <li className="flex items-center gap-2">✓ Equipment & machinery finance</li>
                     <li className="flex items-center gap-2">✓ Commercial fleet solutions</li>
                   </ul>
-                  <Link
-                    href="/free-eligibility-test-asset-finance"
-                    className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition hover:opacity-90"
-                  >
-                    Free eligibility check for asset finance →
-                  </Link>
                 </div>
               )}
             </div>

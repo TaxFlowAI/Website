@@ -6,7 +6,7 @@ import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 
 const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
-const ACCENT = "#00818A";
+const ACCENT = "#00FCB8";
 
 const HOW_STEPS = [
   {
@@ -50,7 +50,7 @@ const PORTAL_FEATURES = [
   },
   {
     title: "Document Vault",
-    desc: "Password-protected secure repository. Tax docs, vehicle documents, and receipts — each with accountant assignment status badges. Auto-locks after 45 minutes of inactivity.",
+    desc: "Password-protected secure repository. Tax docs, vehicle documents, and receipts — each with accountant assignment status badges.",
     icon: "lock",
     badge: "Encrypted",
   },
@@ -65,12 +65,6 @@ const PORTAL_FEATURES = [
     desc: "Track all rental and investment properties inline. Date first received rent, purchase date, notes — add, edit, and delete directly from the dashboard.",
     icon: "home",
     badge: null,
-  },
-  {
-    title: "Profile & Bank Details",
-    desc: "Masked TFN with reveal toggle, BSB lookup with live institution name, and password-protected bank detail reveal with 30-second visibility timeout.",
-    icon: "user",
-    badge: "Bank-grade security",
   },
   {
     title: "Lodgement Tracking",
@@ -136,7 +130,7 @@ function FeatureIcon({ type }) {
 }
 
 function StepIcon({ type }) {
-  const cls = "h-8 w-8 flex-shrink-0 text-[#00818A]";
+  const cls = "h-8 w-8 flex-shrink-0 text-[#00FCB8]";
   switch (type) {
     case "gear":
       return <svg className={cls} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
@@ -300,7 +294,6 @@ export default function TaxFlowPage() {
         <div className="mx-auto max-w-4xl px-4">
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {[
-              { label: "2,800+ Returns lodged", accent: true },
               { label: "5/5 Google Reviews", accent: true },
               { label: "Registered Tax Agent", accent: false },
               { label: "ATO-Aligned", accent: false },
@@ -402,6 +395,14 @@ export default function TaxFlowPage() {
                 <p className="mt-1 text-sm" style={{ color: textMuted }}>{feat.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Your security matters */}
+          <div className="mt-16 rounded-2xl p-8 md:p-10" style={{ border: `1px solid ${border}`, background: cardBg }}>
+            <h3 className="text-xl font-bold md:text-2xl" style={{ color: textPrimary }}>Your security matters</h3>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed" style={{ color: textMuted }}>
+              We take the protection of your data seriously. Your information is encrypted in transit and at rest, stored on secure infrastructure, and accessed only by authorised personnel. We follow industry-standard practices to keep your tax documents and personal details safe — so you can focus on your tax, not on worrying about security.
+            </p>
           </div>
         </div>
       </section>
@@ -505,8 +506,7 @@ export default function TaxFlowPage() {
             {/* Individual */}
             <div className="taxflow-pricing-card rounded-2xl p-8 transition-all duration-200" style={{ border: `1px solid ${border}`, background: cardBg }}>
               <h3 className="text-xl font-bold" style={{ color: textPrimary }}>Individual</h3>
-              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>From $20</p>
-              <p className="text-sm" style={{ color: textMuted }}>/month</p>
+              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>Free</p>
               <div className="my-6 h-px" style={{ background: border }} />
               <ul className="space-y-3 text-sm">
                 {["Individual tax return lodgement", "TaxFlowAI portal access", "Document upload & storage", "AI receipt scanning (Flo)", "Vehicle logbook", "Deadline tracking & reminders", "Direct accountant access"].map((f) => (
@@ -520,8 +520,8 @@ export default function TaxFlowPage() {
             <div className="taxflow-pricing-card taxflow-pricing-featured relative rounded-2xl border-t-4 p-8 transition-all duration-200" style={{ borderColor: ACCENT, background: isDark ? "rgba(0,129,138,0.05)" : "rgba(0,129,138,0.04)" }}>
               <p className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-bold text-white" style={{ background: ACCENT }}>Most Popular</p>
               <h3 className="mt-2 text-xl font-bold" style={{ color: textPrimary }}>Business</h3>
-              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>From $150</p>
-              <p className="text-sm" style={{ color: textMuted }}>/month</p>
+              <p className="mt-2 text-4xl font-bold" style={{ color: ACCENT }}>Custom</p>
+              <p className="text-sm" style={{ color: textMuted }}>tailored to your needs</p>
               <div className="my-6 h-px" style={{ background: border }} />
               <ul className="space-y-3 text-sm">
                 {["Everything in Individual", "Business tax return", "BAS & GST lodgements", "Investment property tax", "Bookkeeping & cloud accounting", "ASIC compliance tasks", "Priority response times"].map((f) => (
@@ -529,7 +529,7 @@ export default function TaxFlowPage() {
                 ))}
               </ul>
               <p className="mt-4 text-xs italic" style={{ color: textMuted }}>Tax services by E&amp;A Advisory Pty Ltd</p>
-              <a href={TAXFLOW_SIGNIN_URL} className="mt-6 inline-block w-full rounded-lg py-4 text-center text-lg font-bold text-white transition hover:opacity-90" style={{ background: ACCENT }}>Get Started Free</a>
+              <a href="tel:+61406909862" className="mt-6 inline-block w-full rounded-lg py-4 text-center text-lg font-bold text-white transition hover:opacity-90" style={{ background: ACCENT }}>Talk to Us</a>
             </div>
             {/* Premium */}
             <div className="taxflow-pricing-card rounded-2xl p-8 transition-all duration-200" style={{ border: `1px solid ${border}`, background: cardBg }}>

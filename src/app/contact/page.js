@@ -152,7 +152,6 @@ export default function ContactPage() {
     }
   };
 
-  const [embedTab, setEmbedTab] = useState("brokers"); // "brokers" | "asset"
 
   return (
     <div className="min-h-screen bg-[#F5F5EF] font-sans">
@@ -439,65 +438,6 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* 3. APPLICATION FORM EMBED */}
-      <section className="section-dot-grid-dark relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-medium uppercase tracking-wider text-[#00FCB8]">APPLY NOW</p>
-          <h2 className="mt-2 font-bold text-white text-4xl">Ready to apply?</h2>
-          <p className="mt-2 max-w-2xl text-[#39B2B2]">
-            Skip the back and forth — fill in our application form directly and we&apos;ll get the process started right away.
-          </p>
-          <div className="mt-8 flex gap-6 border-b border-white/20">
-            <button
-              type="button"
-              onClick={() => setEmbedTab("brokers")}
-              className={`pb-3 text-lg font-medium transition ${
-                embedTab === "brokers" ? "border-b-2 border-[#00FCB8] text-white" : "text-gray-400"
-              }`}
-            >
-              Brokers Application
-            </button>
-            <button
-              type="button"
-              onClick={() => setEmbedTab("asset")}
-              className={`pb-3 text-lg font-medium transition ${
-                embedTab === "asset" ? "border-b-2 border-[#00FCB8] text-white" : "text-gray-400"
-              }`}
-            >
-              Asset Solutions Application
-            </button>
-          </div>
-          <div className="mt-6 min-h-[500px] rounded-2xl border border-white/10 bg-[#0A1628] p-8">
-            {embedTab === "brokers" ? (
-              <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
-                <svg className="h-12 w-12 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                </svg>
-                <p className="mt-4 font-bold text-white text-xl">Application Form</p>
-                <p className="mt-2 max-w-sm text-sm text-gray-400">
-                  Embed your CRM application form here. Replace this placeholder with your iframe embed code.
-                </p>
-                {/* BROKERS APPLICATION FORM EMBED — Replace this entire block with your CRM iframe. Example:
-                    <iframe src="YOUR_CRM_FORM_URL_HERE" width="100%" height="800" frameBorder="0" /> */}
-              </div>
-            ) : (
-              <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
-                <svg className="h-12 w-12 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                </svg>
-                <p className="mt-4 font-bold text-white text-xl">Application Form</p>
-                <p className="mt-2 max-w-sm text-sm text-gray-400">
-                  Embed your CRM application form here. Replace this placeholder with your iframe embed code.
-                </p>
-                {/* ASSET SOLUTIONS APPLICATION FORM EMBED — Replace this entire block with your CRM iframe. Example:
-                    <iframe src="YOUR_CRM_FORM_URL_HERE" width="100%" height="800" frameBorder="0" /> */}
-              </div>
-            )}
-          </div>
-        </div>
-        <WaveDivider fill="#1C5472" />
       </section>
 
       <LayoutFooter />
