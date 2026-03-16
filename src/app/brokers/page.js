@@ -155,7 +155,7 @@ export default function BrokersPage() {
             <div className="flex flex-col items-center lg:items-start">
               <div className="relative h-72 w-full max-w-sm overflow-hidden rounded-2xl bg-[#0A1628] shadow-xl">
                 <img
-                  src="/images/hassan-broker.png"
+                  src="/images/hassan-broker-v2.png"
                   alt="Hassan Arif JP — Mortgage & Finance Broker"
                   className="h-full w-full object-cover"
                 />
