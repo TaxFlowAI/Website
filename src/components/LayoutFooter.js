@@ -34,7 +34,7 @@ export default function LayoutFooter() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-white">Services</h4>
             <ul className="mt-4 space-y-2">
               <li><a href="/#brokers" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Brokers</a></li>
-              <li><a href="/asset-solutions" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Asset Solutions</a></li>
+              <li><a href="/assetsolutions" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Asset Solutions</a></li>
               <li><a href="/contact" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Book a Consultation</a></li>
             </ul>
           </div>

@@ -287,7 +287,7 @@ export default function PrivacyConsentAssetSolutionsPage() {
         </Section>
 
         <div className="mt-12 flex flex-wrap gap-4">
-          <Link href="/asset-solutions" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
+          <Link href="/assetsolutions" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
             Back to Asset Solutions
           </Link>
           <Link href="/credit-guide-asset-solutions" className="inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10">

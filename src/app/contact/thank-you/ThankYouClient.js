@@ -107,7 +107,7 @@ function ThankYouContent() {
               <Link href="/" className="inline-flex rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition hover:bg-[#1C5472]/10">
                 Back to Home
               </Link>
-              <Link href={isBrokers ? "/brokers" : "/asset-solutions"} className="inline-flex rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition hover:opacity-90">
+              <Link href={isBrokers ? "/brokers" : "/assetsolutions"} className="inline-flex rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition hover:opacity-90">
                 {isBrokers ? "Home loans" : "Asset Solutions"}
               </Link>
             </div>

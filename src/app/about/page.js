@@ -188,7 +188,7 @@ export default function AboutPage() {
                   Fintelligence Award Winner FY25 — Vehicle & Equipment Finance
                 </p>
               </div>
-              <Link href="/asset-solutions" className="mt-4 inline-block font-bold text-[#39B2B2] transition-colors hover:text-[#39B2B2]/80">
+              <Link href="/assetsolutions" className="mt-4 inline-block font-bold text-[#39B2B2] transition-colors hover:text-[#39B2B2]/80">
                 Learn more →
               </Link>
             </article>

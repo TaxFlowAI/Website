@@ -47,7 +47,7 @@ export default function LayoutNav({ activeNav = "home" }) {
                     <span className="text-[#39B2B2]" aria-hidden>🏠</span>
                     Brokers — Home loans, car loans &amp; commercial finance
                   </Link>
-                  <Link href="/asset-solutions" className={dropdownLinkClass(activeNav === "asset-solutions")}>
+                  <Link href="/assetsolutions" className={dropdownLinkClass(activeNav === "asset-solutions")}>
                     <span className="text-[#39B2B2]" aria-hidden>🚗</span>
                     Asset Solutions — Car, equipment &amp; fleet finance
                   </Link>
@@ -72,7 +72,7 @@ export default function LayoutNav({ activeNav = "home" }) {
               <Link href="/" className={`py-2 font-medium ${activeNav === "home" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
               <span className="py-2 font-medium text-[#1C5472]">Our Services</span>
               <Link href="/brokers" className={`pl-6 py-1 text-sm ${activeNav === "brokers" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Brokers</Link>
-              <Link href="/asset-solutions" className={`pl-6 py-1 text-sm ${activeNav === "asset-solutions" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Asset Solutions</Link>
+              <Link href="/assetsolutions" className={`pl-6 py-1 text-sm ${activeNav === "asset-solutions" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Asset Solutions</Link>
               <Link href="/about" className={`py-2 font-medium ${activeNav === "about" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>About Us</Link>
               <Link href="/financial-calculators" className={`py-2 font-medium ${activeNav === "calculators" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Financial Calculators</Link>
               <Link href="/blog" className={`py-2 font-medium ${activeNav === "blog" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Blog</Link>

@@ -118,9 +118,9 @@ export default function TaxFlowPage() {
     <div className="min-h-screen bg-[#0A1628] font-sans text-white">
       <header className="sticky top-0 z-50 w-full">
         <BrandSwitcherBar />
-        {/* TaxFlow nav row + compliance line */}
+        {/* TaxFlow nav row + compliance line — match Frontline nav height (py-4) */}
         <div className="border-b border-white/[0.08] bg-[#0A1628]">
-          <div className={sectionContainer}>
+          <div className="mx-auto max-w-6xl px-4 py-4 md:px-6 lg:px-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <Link href="/taxflow" className="text-lg font-extrabold md:text-xl">
                 <span className="text-white">TaxFlow</span>
@@ -135,7 +135,7 @@ export default function TaxFlowPage() {
               </nav>
             </div>
           </div>
-          <p className="border-t border-white/[0.06] bg-[#060D1A] py-1.5 text-center text-[11px] text-white/50">
+          <p className="border-t border-white/[0.06] bg-[#060D1A] py-1 text-center text-[11px] text-white/50">
             Tax services supervised by E&amp;A Advisory Pty Ltd · Registered Tax Agent
           </p>
         </div>

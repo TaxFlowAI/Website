@@ -250,7 +250,7 @@ export default function Home() {
                 <p className="mt-3 leading-relaxed text-[#1C5472]">
                   Dedicated car and equipment-finance experts who fast-track approvals from personal vehicles to full commercial fleets.
                 </p>
-                <Link href="/asset-solutions" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
+                <Link href="/assetsolutions" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
                   Learn more
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </Link>
@@ -362,7 +362,7 @@ export default function Home() {
             <p className="mt-4 max-w-md text-sm text-white/80 md:mt-6">
               Recognised for excellence in car, equipment, and asset finance. We don&apos;t just broker deals — we get you behind the wheel and into the gear you need, fast.
             </p>
-            <a href="/asset-solutions" className="mt-6 inline-flex items-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
+            <a href="/assetsolutions" className="mt-6 inline-flex items-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
               Explore Asset Solutions
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>

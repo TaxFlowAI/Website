@@ -65,6 +65,7 @@ export const ROUTE_ENTITY_MAP = {
   "/free-eligibility-test": ENTITY.BROKERS,
 
   // ---- ASSET SOLUTIONS pages ----
+  "/assetsolutions": ENTITY.ASSET_SOLUTIONS,
   "/asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/credit-guide-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,

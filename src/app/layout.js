@@ -11,6 +11,9 @@ export const metadata = {
   title: "Frontline Financial | Finance Made Simple",
   description:
     "Australian financial services: mortgage and business lending (Brokers) and car and equipment finance (Asset Solutions).",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
