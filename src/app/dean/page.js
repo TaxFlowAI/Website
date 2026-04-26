@@ -43,7 +43,7 @@ const SERVICE_AREAS = [
 ];
 
 const EXPERIENCE = [
-  { role: "Partner", company: "Frontline Financial", period: "Jan 2026 — Present" },
+  { role: "Partner", company: "Frontline Financial: Asset Solutions", period: "Jan 2026 — Present" },
   { role: "Finance Director", company: "Quest", period: "Apr 2024 — Dec 2025" },
   { role: "Relationship Manager — Broker Distribution", company: "NAB", period: "Sep 2023 — Apr 2024" },
   { role: "Business Banker", company: "Commonwealth Bank", period: "Jul 2022 — Sep 2023" },
@@ -70,7 +70,7 @@ export default function DeanPage() {
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               <span aria-hidden>+</span>
-              Good to be back in touch
+              Frontline Financial: Asset Solutions
             </p>
             <h1 className="mt-6 text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
               I&apos;m back in deals.
@@ -79,7 +79,7 @@ export default function DeanPage() {
               Just doing them differently.
             </p>
             <p className="mt-8 max-w-xl text-lg text-white/90 md:text-xl">
-              After sitting out a non-compete period, I&apos;ve transitioned into a Partner role at Frontline Financial — working alongside a strong team to workshop scenarios, structure deals, and match clients with the right lender from the outset.
+              After sitting out a non-compete period, I&apos;ve transitioned into a Partner role at Frontline Financial: Asset Solutions — working alongside an award-winning team to workshop scenarios, structure deals, and match clients with the right lender from the outset.
             </p>
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap">
               <a href="tel:+61450355483" className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
@@ -101,38 +101,20 @@ export default function DeanPage() {
             </div>
           </div>
 
+          {/* Hero photo */}
           <div className="relative">
-            <div className="rounded-2xl border border-white/10 bg-[#0A1628]/80 p-6 shadow-2xl backdrop-blur-sm md:p-8">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#00FCB8] to-[#39B2B2] text-2xl font-bold text-[#0A1628]">
-                  DT
-                </div>
-                <div>
-                  <p className="text-xl font-bold text-white">Dean Tinellis</p>
-                  <p className="text-sm text-[#00FCB8]">Partner — Frontline Financial</p>
-                </div>
-              </div>
-              <div className="mt-6 space-y-3 text-sm text-white/90">
-                <p className="flex items-center gap-3">
-                  <svg className="h-4 w-4 shrink-0 text-[#39B2B2]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-1.86.93a11 11 0 005.52 5.52l.93-1.86a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" /></svg>
-                  <a href="tel:+61450355483" className="hover:text-[#00FCB8]">0450 355 483</a>
-                </p>
-                <p className="flex items-center gap-3">
-                  <svg className="h-4 w-4 shrink-0 text-[#39B2B2]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  <a href="mailto:dean@frontline.financial" className="hover:text-[#00FCB8]">dean@frontline.financial</a>
-                </p>
-                <p className="flex items-center gap-3">
-                  <svg className="h-4 w-4 shrink-0 text-[#39B2B2]" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  Sydney, NSW · Hybrid
-                </p>
-              </div>
-              <div className="mt-6 border-t border-white/10 pt-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Currently helping with</p>
-                <ul className="mt-3 space-y-2 text-sm text-white/85">
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00FCB8]" aria-hidden /> Asset finance — cars, trucks, plant & equipment</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00FCB8]" aria-hidden /> Business funding & working capital</li>
-                  <li className="flex items-start gap-2"><span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00FCB8]" aria-hidden /> Personal lending, including vehicle purchases</li>
-                </ul>
+            <div className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[#00FCB8]/20 blur-2xl" aria-hidden />
+            <div className="pointer-events-none absolute -left-6 -bottom-6 h-40 w-40 rounded-full bg-[#39B2B2]/30 blur-2xl" aria-hidden />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl ring-1 ring-[#00FCB8]/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/dean.jpg"
+                alt="Dean Tinellis — Partner at Frontline Financial: Asset Solutions"
+                className="aspect-[4/5] w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/60 to-transparent p-5 pt-16">
+                <p className="text-lg font-bold text-white">Dean Tinellis</p>
+                <p className="text-sm text-[#00FCB8]">Partner — Asset Solutions</p>
               </div>
             </div>
           </div>
@@ -150,7 +132,7 @@ export default function DeanPage() {
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-[#1C5472]">
             <p>
-              Over the past few months, I&apos;ve transitioned into a new role — now working in a Partner capacity with Frontline Financial.
+              Over the past few months, I&apos;ve transitioned into a new role — now working in a Partner capacity with Frontline Financial: Asset Solutions.
             </p>
             <p>
               After sitting out a non-compete period, I&apos;m back involved in deals, but in a slightly different way. I&apos;m no longer brokering directly. Instead, I work closely with a very strong team and step in to workshop scenarios, structure deals, and make sure clients are matched with the right lender and strategy from the outset.
@@ -176,7 +158,7 @@ export default function DeanPage() {
             Three areas. Broader panel. Faster outcomes.
           </h2>
           <p className="mt-4 max-w-2xl text-[#39B2B2]">
-            Whether the deal is straightforward or a bit outside the box, the wider lender access at Frontline means there&apos;s usually a way through.
+            Whether the deal is straightforward or a bit outside the box, the wider lender access at Frontline Financial: Asset Solutions means there&apos;s usually a way through.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {SERVICE_AREAS.map((area) => (
@@ -188,6 +170,25 @@ export default function DeanPage() {
                 <p className="mt-3 text-sm leading-relaxed text-[#39B2B2]">{area.desc}</p>
               </article>
             ))}
+          </div>
+
+          {/* Award strip */}
+          <div className="mt-10 rounded-2xl border border-[#00FCB8]/30 bg-[#0A1628] p-6 md:flex md:items-center md:justify-between md:gap-6">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#00FCB8]/15">
+                <svg className="h-6 w-6 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <polyline points="14 9 14 2 10 2 10 9" /><path d="M6 2h12" /><path d="M6 9H4a2 2 0 0 0-2 2v1a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6v-1a2 2 0 0 0-2-2h-2" /><line x1="12" y1="18" x2="12" y2="22" /><line x1="8" y1="22" x2="16" y2="22" />
+                </svg>
+              </span>
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">Award Winner FY25</p>
+                <p className="mt-1 text-white">Fintelligence Broker Awards — Vehicle &amp; Equipment Finance</p>
+              </div>
+            </div>
+            <Link href="/assetsolutions" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#00FCB8] hover:underline md:mt-0">
+              About Asset Solutions
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
         </div>
       </section>
@@ -261,8 +262,8 @@ export default function DeanPage() {
                       lastName: form.lastName.trim(),
                       email: form.email.trim(),
                       phone: form.phone.trim(),
-                      message: `Scenario for Dean: ${form.message.trim()}`,
-                      services: ["Dean Tinellis — Partner Enquiry"],
+                      message: `Scenario for Dean (Asset Solutions): ${form.message.trim()}`,
+                      services: ["Asset Solutions — Dean Tinellis Partner Enquiry"],
                       campaign: "dean-landing",
                     }),
                   });
@@ -337,7 +338,7 @@ export default function DeanPage() {
               </label>
               <div className="rounded-lg bg-white/95 p-4">
                 <FormConsent
-                  entity={ENTITY.BROKERS}
+                  entity={ENTITY.ASSET_SOLUTIONS}
                   value={consent}
                   onChange={setConsent}
                   showError={Boolean(error && error === CONSENT_ERROR)}
@@ -379,8 +380,8 @@ export default function DeanPage() {
             <a href="mailto:dean@frontline.financial" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-8 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
               Email Dean
             </a>
-            <Link href="/about" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-8 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-              About Frontline
+            <Link href="/assetsolutions" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-8 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
+              About Asset Solutions
             </Link>
           </div>
         </div>

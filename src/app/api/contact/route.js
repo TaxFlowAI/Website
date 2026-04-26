@@ -5,10 +5,12 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function getRecipient(teamMember) {
   const hassan = process.env.CONTACT_EMAIL_HASSAN || "hassan@frontline.financial";
   const sham = process.env.CONTACT_EMAIL_SHAM || "sham@frontline.financial";
+  const dean = process.env.CONTACT_EMAIL_DEAN || "dean@frontline.financial";
   const taxflow = process.env.CONTACT_EMAIL_TAXFLOW || "taxflowai@frontline.financial";
   const def = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
   if (teamMember === "hassan") return hassan;
   if (teamMember === "sham") return sham;
+  if (teamMember === "dean") return dean;
   if (teamMember === "taxflow") return taxflow;
   return def;
 }
@@ -31,6 +33,7 @@ export async function POST(request) {
     message,
     preferredContact = "email",
     consultationService,
+    campaign,
   } = body;
 
   if (!firstName || typeof firstName !== "string" || !firstName.trim()) {
@@ -53,7 +56,13 @@ export async function POST(request) {
   }
 
   const to = getRecipient(teamMember);
-  const cc = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
+  const opsEmail = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
+  const deanEmail = process.env.CONTACT_EMAIL_DEAN || "dean@frontline.financial";
+  // Dean campaign → ensure both ops and Dean receive a copy.
+  const ccList = campaign === "dean-landing"
+    ? [opsEmail, deanEmail].filter((addr) => addr && addr !== to)
+    : [opsEmail].filter((addr) => addr && addr !== to);
+  const cc = ccList.length ? ccList.join(", ") : undefined;
   const servicesLabel = Array.isArray(services) && services.length ? services.join(", ") : "General enquiry";
   const subject = `New Enquiry — ${firstName.trim()} ${lastName.trim()} re: ${servicesLabel}`;
   const timestamp = new Date().toISOString();
@@ -151,7 +160,7 @@ export async function POST(request) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to,
-      cc: cc !== to ? cc : undefined,
+      cc,
       subject,
       html,
       replyTo: email.trim(),
