@@ -108,7 +108,7 @@ export default function DeanPage() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl ring-1 ring-[#00FCB8]/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/dean.jpg"
+                src="/images/dean.png"
                 alt="Dean Tinellis — Partner at Frontline Financial: Asset Solutions"
                 className="aspect-[4/5] w-full object-cover"
               />
