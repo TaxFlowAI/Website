@@ -52,7 +52,7 @@ const EXPERIENCE = [
 ];
 
 export default function DeanPage() {
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "" });
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -90,8 +90,8 @@ export default function DeanPage() {
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 dean@frontline.financial
               </a>
-              <a href="#scenario" className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white/10 px-6 py-3 font-bold text-white backdrop-blur-sm transition hover:bg-white/15 sm:w-auto">
-                Send me a scenario
+              <a href="#connect" className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white/10 px-6 py-3 font-bold text-white backdrop-blur-sm transition hover:bg-white/15 sm:w-auto">
+                Let&apos;s catch up
               </a>
             </div>
             <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/80">
@@ -225,26 +225,33 @@ export default function DeanPage() {
 
       <WaveDivider fill="#1C5472" />
 
-      {/* SCENARIO FORM */}
-      <section id="scenario" className="bg-[#1C5472] px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">SECOND SET OF EYES</p>
-          <h2 className="mt-2 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
-            Got a deal you&apos;re working on? Send it through.
-          </h2>
-          <p className="mt-4 text-[#39B2B2]">
-            A quick scenario, an outside-the-box client, or just a second opinion — happy to take a look and point you in the right direction.
-          </p>
+      {/* CALL BACK FORM */}
+      <section id="connect" className="relative overflow-hidden bg-[#1C5472] px-4 py-20 md:px-6 md:py-28 lg:px-8">
+        <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.10] blur-[120px]" aria-hidden />
+        <div className="pointer-events-none absolute -bottom-24 left-0 h-96 w-96 rounded-full bg-[#39B2B2] opacity-[0.12] blur-[120px]" aria-hidden />
+
+        <div className="relative z-10 mx-auto max-w-2xl">
+          <div className="text-center">
+            <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+              Let&apos;s catch up
+            </p>
+            <h2 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
+              Leave your details — <span className="text-[#00FCB8]">I&apos;ll call you back.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-white/85 md:text-xl">
+              Quick chat, second opinion, or a deal you&apos;re kicking around — drop your number and I&apos;ll be in touch.
+            </p>
+          </div>
 
           {success ? (
-            <div className="mt-10 rounded-2xl border border-[#00FCB8]/40 bg-[#0A1628] px-6 py-10 text-center">
-              <svg className="mx-auto h-14 w-14 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <p className="mt-4 text-2xl font-bold text-white">Got it — thanks.</p>
-              <p className="mt-2 text-[#39B2B2]">Dean will review your scenario and be in touch shortly.</p>
+            <div className="mt-12 rounded-3xl border border-[#00FCB8]/40 bg-[#0A1628] px-6 py-12 text-center shadow-2xl">
+              <svg className="mx-auto h-16 w-16 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <p className="mt-5 text-2xl font-bold text-white md:text-3xl">Got it — thanks.</p>
+              <p className="mt-3 text-[#39B2B2]">Dean will give you a call back shortly.</p>
             </div>
           ) : (
             <form
-              className="mt-10 space-y-5 rounded-2xl bg-white/5 p-6 md:p-8 backdrop-blur-sm border border-white/10"
+              className="mt-12 space-y-5 rounded-3xl border border-[#00FCB8]/30 bg-white p-6 shadow-2xl ring-1 ring-[#00FCB8]/10 md:p-10"
               onSubmit={async (e) => {
                 e.preventDefault();
                 setError("");
@@ -262,8 +269,8 @@ export default function DeanPage() {
                       lastName: form.lastName.trim(),
                       email: form.email.trim(),
                       phone: form.phone.trim(),
-                      message: `Scenario for Dean (Asset Solutions): ${form.message.trim()}`,
-                      services: ["Asset Solutions — Dean Tinellis Partner Enquiry"],
+                      message: "Call back request from Dean's landing page.",
+                      services: ["Asset Solutions — Dean Tinellis Call Back Request"],
                       campaign: "dean-landing",
                     }),
                   });
@@ -279,64 +286,51 @@ export default function DeanPage() {
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block">
-                  <span className="text-sm font-medium text-white">First name</span>
+                  <span className="text-sm font-semibold text-[#1C5472]">First name</span>
                   <input
                     type="text"
                     required
                     value={form.firstName}
                     onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
-                    className="mt-1 w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2.5 text-white placeholder-white/50 focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
+                    className="mt-1.5 w-full rounded-lg border border-[#1C5472]/20 bg-[#F5F5EF] px-3.5 py-3 text-[#1C5472] placeholder-[#1C5472]/40 focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/40"
                     placeholder="First name"
                   />
                 </label>
                 <label className="block">
-                  <span className="text-sm font-medium text-white">Last name</span>
+                  <span className="text-sm font-semibold text-[#1C5472]">Last name</span>
                   <input
                     type="text"
                     required
                     value={form.lastName}
                     onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
-                    className="mt-1 w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2.5 text-white placeholder-white/50 focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
+                    className="mt-1.5 w-full rounded-lg border border-[#1C5472]/20 bg-[#F5F5EF] px-3.5 py-3 text-[#1C5472] placeholder-[#1C5472]/40 focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/40"
                     placeholder="Last name"
                   />
                 </label>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block">
-                  <span className="text-sm font-medium text-white">Email</span>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    className="mt-1 w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2.5 text-white placeholder-white/50 focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                    placeholder="you@example.com"
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-sm font-medium text-white">Phone</span>
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                    className="mt-1 w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2.5 text-white placeholder-white/50 focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                    placeholder="04XX XXX XXX"
-                  />
-                </label>
-              </div>
               <label className="block">
-                <span className="text-sm font-medium text-white">Tell me about the scenario</span>
-                <textarea
+                <span className="text-sm font-semibold text-[#1C5472]">Phone number</span>
+                <input
+                  type="tel"
                   required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                  className="mt-1 w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2.5 text-white placeholder-white/50 focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                  placeholder="What are you working on? Asset, business, or consumer — give me the rough outline."
+                  value={form.phone}
+                  onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                  className="mt-1.5 w-full rounded-lg border border-[#1C5472]/20 bg-[#F5F5EF] px-3.5 py-3 text-[#1C5472] placeholder-[#1C5472]/40 focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/40"
+                  placeholder="04XX XXX XXX"
                 />
               </label>
-              <div className="rounded-lg bg-white/95 p-4">
+              <label className="block">
+                <span className="text-sm font-semibold text-[#1C5472]">Email</span>
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                  className="mt-1.5 w-full rounded-lg border border-[#1C5472]/20 bg-[#F5F5EF] px-3.5 py-3 text-[#1C5472] placeholder-[#1C5472]/40 focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/40"
+                  placeholder="you@example.com"
+                />
+              </label>
+              <div className="rounded-lg border border-[#1C5472]/15 bg-[#F5F5EF] p-4">
                 <FormConsent
                   entity={ENTITY.ASSET_SOLUTIONS}
                   value={consent}
@@ -345,17 +339,17 @@ export default function DeanPage() {
                 />
               </div>
               {error && error !== CONSENT_ERROR && (
-                <p className="text-sm font-medium text-[#FFB4B4]">{error}</p>
+                <p className="text-sm font-medium text-[#B91C1C]">{error}</p>
               )}
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-[1.02] hover:opacity-90 disabled:opacity-70 sm:w-auto"
+                className="w-full rounded-lg bg-[#1C5472] px-6 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:bg-[#00FCB8] hover:text-[#1C5472] disabled:opacity-70"
               >
-                {submitting ? "Sending…" : "Send scenario to Dean"}
+                {submitting ? "Sending…" : "Request a Call Back"}
               </button>
-              <p className="text-xs text-white/60">
-                Or call directly: <a href="tel:+61450355483" className="font-bold text-[#00FCB8] hover:underline">0450 355 483</a>
+              <p className="text-center text-xs text-[#1C5472]/70">
+                Prefer to call now? <a href="tel:+61450355483" className="font-bold text-[#1C5472] underline hover:text-[#39B2B2]">0450 355 483</a>
               </p>
             </form>
           )}
