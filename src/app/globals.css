@@ -276,12 +276,29 @@ body {
   background: #0a0a14;
   border-bottom: 1px solid rgba(45, 212, 168, 0.15);
   padding: 16px 20px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .compliance-brand {
   color: #888;
   font-size: 0.85rem;
+}
+
+.compliance-back-link {
+  color: #2dd4a8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.compliance-back-link:hover {
+  opacity: 0.85;
+  text-decoration: underline;
 }
 
 .compliance-content {

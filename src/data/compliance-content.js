@@ -5,8 +5,8 @@
 // CONFIGURE BEFORE LAUNCH — search for "CFG:" to find all configurable values
 // CFG: EMAIL = taxflowai@frontline.financial
 // CFG: PHONE = 0422 959 486
-// CFG: URL_PRIVACY = https://taxflow.frontline.financial/privacy-policy
-// CFG: URL_COLLECTION = https://taxflow.frontline.financial/collection-notice
+// CFG: URL_PRIVACY = https://frontline.financial/taxflow/privacy-policy
+// CFG: URL_COLLECTION = https://frontline.financial/taxflow/collection-notice
 // CFG: ADDR_FH = Level 6, 150 George Street, Parramatta NSW 2150
 // CFG: ADDR_EA = Level 5, 4 Columbia Court, Norwest NSW 2153
 // CFG: EFFECTIVE_DATE = 1 March 2026
@@ -116,7 +116,7 @@ To exercise any of these rights, contact us at taxflowai@frontline.financial.`
 Phone: 0422 959 486
 Post: Level 6, 150 George Street, Parramatta NSW 2150
 
-Our full privacy policy is available at https://taxflow.frontline.financial/privacy-policy.`
+Our full privacy policy is available at https://frontline.financial/taxflow/privacy-policy.`
     }
   ]
 };
@@ -174,9 +174,9 @@ export const TERMS_OF_SERVICE = {
 export const COMPLIANCE_CONFIG = {
   EMAIL: "taxflowai@frontline.financial",
   PHONE: "0422 959 486",
-  PRIVACY_URL: "https://taxflow.frontline.financial/privacy-policy",
-  COLLECTION_NOTICE_URL: "https://taxflow.frontline.financial/collection-notice",
-  TERMS_URL: "https://taxflow.frontline.financial/terms",
+  PRIVACY_URL: "https://frontline.financial/taxflow/privacy-policy",
+  COLLECTION_NOTICE_URL: "https://frontline.financial/taxflow/collection-notice",
+  TERMS_URL: "https://frontline.financial/taxflow/terms",
   FH_NAME: "Frontline Holdings Group Pty Ltd",
   FH_ABN: "59 671 861 475",
   FH_ACN: "671 861 475",

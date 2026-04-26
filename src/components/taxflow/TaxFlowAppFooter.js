@@ -9,7 +9,7 @@ const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 /**
  * TaxFlowAI app footer — DO NOT CHANGE structure/legal links.
  * Non-negotiable: keep exactly as-is:
- * - E&A Advisory Pty Ltd — Powered by TaxFlowAI
+ * - E&A Advisory Pty Ltd
  * - Privacy Policy | Collection Notice | Terms of Service | Verify Tax Agent (TAN: 26100253)
  * - Tax Agent and Platform/ASIC entity details
  * - Copyright line (TaxFlowAI © 2025 · Tax services by E&A Advisory · Platform by Frontline Financial Group)
@@ -174,7 +174,7 @@ export default function TaxFlowAppFooter() {
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="footer-content-taxflow">
             <div className="footer-brand-taxflow">
-              E&A Advisory Pty Ltd — Powered by TaxFlowAI
+              E&A Advisory Pty Ltd
             </div>
             <div className="footer-links-taxflow">
               <Link href="/taxflow/privacy-policy">Privacy Policy</Link>

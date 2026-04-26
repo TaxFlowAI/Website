@@ -35,8 +35,14 @@ export default function CompliancePage({
     <div className="compliance-page">
       <div className="compliance-header">
         <div className="compliance-brand">
-          E&A Advisory Pty Ltd — Powered by TaxFlowAI
+          E&A Advisory Pty Ltd
         </div>
+        <Link
+          href="/taxflow"
+          className="compliance-back-link"
+        >
+          ← Back to website
+        </Link>
       </div>
 
       <div className="compliance-content">
