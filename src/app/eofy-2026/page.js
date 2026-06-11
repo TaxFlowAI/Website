@@ -60,8 +60,25 @@ const ASSET_TYPES = [
   "Machinery",
   "Trucks & trailers",
   "Technology & fit-outs",
-  "Commercial property",
   "Other business assets",
+];
+
+const ASSET_IMAGES = [
+  {
+    src: "/images/eofy-ute.jpeg",
+    alt: "Grey Toyota Hilux ute driving on a gravel road",
+    caption: "Vehicles & utes",
+  },
+  {
+    src: "/images/eofy-excavator.webp",
+    alt: "Komatsu PC360 excavator in a machinery yard",
+    caption: "Plant & machinery",
+  },
+  {
+    src: "/images/eofy-equipment.webp",
+    alt: "Row of commercial gym equipment stations",
+    caption: "Equipment & fit-outs",
+  },
 ];
 
 function pad(n) {
@@ -196,8 +213,22 @@ export default function Eofy2026Page() {
             Whatever your business needs
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-[#39B2B2]">
-            Whether you&apos;re looking to acquire equipment, property, or other assets, our team at Frontline Financial can help you structure a solution that makes sense for your business.
+            Whether you&apos;re looking to acquire equipment, vehicles, or other assets, our team at Frontline Financial can help you structure a solution that makes sense for your business.
           </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {ASSET_IMAGES.map((image) => (
+              <figure
+                key={image.caption}
+                className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/50 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#00FCB8]"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={image.src} alt={image.alt} className="h-52 w-full object-cover md:h-56" />
+                <figcaption className="bg-[#0A1628] px-4 py-3 text-sm font-bold text-[#00FCB8]">
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {ASSET_TYPES.map((type) => (
               <span
