@@ -69,6 +69,7 @@ export const ROUTE_ENTITY_MAP = {
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/calculator-disclaimer-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/dean": ENTITY.ASSET_SOLUTIONS,
+  "/eofy-2026": ENTITY.ASSET_SOLUTIONS,
 
   // ---- SHARED pages ----
   "/": ENTITY.SHARED,
