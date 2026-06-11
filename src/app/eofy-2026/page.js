@@ -164,6 +164,20 @@ export default function Eofy2026Page() {
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">5/5 Google Reviews</span>
           </div>
+          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+            {ASSET_IMAGES.map((image) => (
+              <figure
+                key={image.caption}
+                className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/50 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#00FCB8]"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={image.src} alt={image.alt} className="h-44 w-full object-cover md:h-48" />
+                <figcaption className="bg-[#0A1628] px-4 py-3 text-sm font-bold text-[#00FCB8]">
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -215,20 +229,6 @@ export default function Eofy2026Page() {
           <p className="mx-auto mt-4 max-w-3xl text-[#39B2B2]">
             Whether you&apos;re looking to acquire equipment, vehicles, or other assets, our team at Frontline Financial can help you structure a solution that makes sense for your business.
           </p>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {ASSET_IMAGES.map((image) => (
-              <figure
-                key={image.caption}
-                className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/50 shadow-xl transition-all duration-200 hover:-translate-y-1 hover:border-[#00FCB8]"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={image.src} alt={image.alt} className="h-52 w-full object-cover md:h-56" />
-                <figcaption className="bg-[#0A1628] px-4 py-3 text-sm font-bold text-[#00FCB8]">
-                  {image.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {ASSET_TYPES.map((type) => (
               <span
