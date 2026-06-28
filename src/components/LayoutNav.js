@@ -56,7 +56,6 @@ export default function LayoutNav({ activeNav = "home" }) {
             </div>
             <Link href="/about" className={linkClass(activeNav === "about")}>About Us</Link>
             <Link href="/financial-calculators" className={linkClass(activeNav === "calculators")}>Financial Calculators</Link>
-            <Link href="/blog" className={linkClass(activeNav === "blog")}>Blog</Link>
             <Link href="/contact" className={linkClass(activeNav === "contact")}>Contact</Link>
           </div>
           <Link href="/contact" className="shrink-0 rounded-lg bg-[#00FCB8] px-4 py-2.5 text-sm font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90">Book a Consultation</Link>
@@ -75,7 +74,6 @@ export default function LayoutNav({ activeNav = "home" }) {
               <Link href="/assetsolutions" className={`pl-6 py-1 text-sm ${activeNav === "asset-solutions" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Asset Solutions</Link>
               <Link href="/about" className={`py-2 font-medium ${activeNav === "about" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>About Us</Link>
               <Link href="/financial-calculators" className={`py-2 font-medium ${activeNav === "calculators" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Financial Calculators</Link>
-              <Link href="/blog" className={`py-2 font-medium ${activeNav === "blog" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Blog</Link>
               <Link href="/contact" className={`py-2 font-medium ${activeNav === "contact" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Contact</Link>
               <Link href="/contact" className="mt-2 rounded-lg bg-[#00FCB8] py-3 text-center font-bold text-[#1C5472] transition-all duration-200 hover:scale-105" onClick={() => setMobileMenuOpen(false)}>Book a Consultation</Link>
             </div>

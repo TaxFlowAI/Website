@@ -4,7 +4,8 @@
       "Bash(xargs grep:*)",
       "Bash(npx next:*)",
       "Bash(sort -k6,8)",
-      "Bash(sort -k6,8 -r)"
+      "Bash(sort -k6,8 -r)",
+      "Bash(curl -s http://localhost:3002/ -o /dev/null -w \"%{http_code}\")"
     ]
   }
 }

@@ -61,12 +61,7 @@ const TRUST_BADGES = [
   {
     icon: (
       <svg className="h-7 w-7 flex-shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <polyline points="14 9 14 2 10 2 10 9" />
-        <path d="M6 2h12" />
-        <path d="M6 9H4a2 2 0 0 0-2 2v1a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6v-1a2 2 0 0 0-2-2h-2" />
-        <path d="M12 11l1.2 2.4 2.6.4-1.9 1.9.4 2.6-2.3-1.2-2.3 1.2.4-2.6-1.9-1.9 2.6-.4L12 11z" fill="currentColor" stroke="none" />
-        <line x1="12" y1="18" x2="12" y2="22" />
-        <line x1="8" y1="22" x2="16" y2="22" />
+        <path d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" />
       </svg>
     ),
     line1: "Award Winner FY25",
@@ -102,9 +97,10 @@ const CONSULTATION_SERVICES = [
     description: "Car & equipment finance",
     icon: (
       <svg className="h-16 w-16 text-[#1C5472] sm:h-20 sm:w-20" fill="none" stroke="currentColor" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M5 17h14v-5H5v5zM5 10h14V8l-3-4H8L5 8v2z" />
-        <circle cx="7.5" cy="16.5" r="1.5" />
-        <circle cx="16.5" cy="16.5" r="1.5" />
+        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+        <circle cx="7" cy="17" r="2" />
+        <path d="M9 17h6" />
+        <circle cx="17" cy="17" r="2" />
       </svg>
     ),
   },
@@ -218,11 +214,15 @@ export default function Home() {
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             <article id="brokers" className="flex min-h-[380px] flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-              <div className="flex flex-1 flex-col items-center justify-center bg-gradient-to-b from-[#1C5472] to-[#244d66] px-6 py-10">
-                <svg className="h-20 w-20 text-white/90" fill="none" stroke="currentColor" strokeWidth={1.2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>
-                <span className="mt-3 text-lg font-bold text-white">Brokers</span>
+              <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/brokers-home-couple.png"
+                  alt="Couple holding the keys to their new home"
+                  className="h-full w-full object-cover"
+                  width={2000}
+                  height={900}
+                />
               </div>
               <div className="flex flex-col p-6 md:p-8">
                 <h3 className="text-xl font-bold text-[#1C5472] md:text-2xl">Frontline Financial Brokers</h3>
@@ -236,14 +236,15 @@ export default function Home() {
               </div>
             </article>
             <article id="asset-solutions" className="flex min-h-[380px] flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-              <div className="flex flex-1 flex-col items-center justify-center bg-gradient-to-b from-[#1C5472] to-[#244d66] px-6 py-10">
-                <svg className="h-20 w-20 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                  <line x1="12" y1="12" x2="12" y2="12" />
-                  <path d="M2 12h20" />
-                </svg>
-                <span className="mt-3 text-lg font-bold text-white">Asset Solutions</span>
+              <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/asset-solutions-showroom.jpg"
+                  alt="Row of new cars in a dealership showroom"
+                  className="h-full w-full object-cover"
+                  width={2000}
+                  height={900}
+                />
               </div>
               <div className="flex flex-col p-6 md:p-8">
                 <h3 className="text-xl font-bold text-[#1C5472] md:text-2xl">Frontline Financial Asset Solutions</h3>

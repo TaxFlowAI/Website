@@ -11,9 +11,10 @@ const FINANCE_CARDS = [
     tag: "Personal & Business",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M5 17h14v-5H5v5zM5 12V8l3-4h8l3 4v4" />
-        <circle cx="7.5" cy="16" r="1.5" />
-        <circle cx="16.5" cy="16" r="1.5" />
+        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+        <circle cx="7" cy="17" r="2" />
+        <path d="M9 17h6" />
+        <circle cx="17" cy="17" r="2" />
       </svg>
     ),
   },
@@ -23,11 +24,11 @@ const FINANCE_CARDS = [
     tag: "Business",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M3 15h4v3H3zM17 15h4v3h-4z" />
-        <path d="M5 15V9l2-4h10l2 4v6" />
-        <path d="M7 9h10" />
-        <circle cx="7" cy="18" r="1.5" />
-        <circle cx="17" cy="18" r="1.5" />
+        <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+        <path d="M15 18H9" />
+        <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+        <circle cx="17" cy="18" r="2" />
+        <circle cx="7" cy="18" r="2" />
       </svg>
     ),
   },
@@ -37,9 +38,12 @@ const FINANCE_CARDS = [
     tag: "Business",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        <path d="M12 5l2 2-2 2-2-2z" />
+        <path d="M10 18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a3 3 0 0 1-3-3 1 1 0 0 1 1-1z" />
+        <path d="M13 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1l-.81 3.242a1 1 0 0 1-.97.758H8" />
+        <path d="M14 4h3a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-3" />
+        <path d="M18 6h4" />
+        <path d="m5 10-2 8" />
+        <path d="m7 18 2-8" />
       </svg>
     ),
   },
@@ -49,10 +53,11 @@ const FINANCE_CARDS = [
     tag: "Personal",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
-        <rect x="2" y="12" width="20" height="8" rx="1" />
-        <path d="M6 16v-2M10 16v-2M14 16v-2M18 16v-2" />
+        <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+        <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+        <path d="m2 16 6 6" />
+        <circle cx="16" cy="9" r="2.9" />
+        <circle cx="6" cy="5" r="3" />
       </svg>
     ),
   },
@@ -73,9 +78,11 @@ const FINANCE_CARDS = [
     tag: "Business",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M5 14H3v4h2M9 14H7v4h2M13 14h-2v4h2M17 14h-2v4h2M21 14h-2v4h2" />
-        <path d="M3 14v-4l2-4h12l2 4v4" />
-        <path d="M5 10h2M9 10h2M13 10h2M17 10h2M21 10h-2" />
+        <path d="M13 6v5a1 1 0 0 0 1 1h6.102a1 1 0 0 1 .712.298l.898.91a1 1 0 0 1 .288.702V17a1 1 0 0 1-1 1h-3" />
+        <path d="M5 18H3a1 1 0 0 1-1-1V8a2 2 0 0 1 2-2h12c1.1 0 2.1.8 2.4 1.8l1.176 4.2" />
+        <path d="M9 18h5" />
+        <circle cx="16" cy="18" r="2" />
+        <circle cx="7" cy="18" r="2" />
       </svg>
     ),
   },
