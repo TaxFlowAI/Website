@@ -67,6 +67,17 @@ function monthsLabel(m) {
   return `${mo} month${mo !== 1 ? "s" : ""}`;
 }
 
+/** Running total of interest paid, per month (index 0 = $0 at the start). */
+function cumulativeInterest(rows) {
+  const out = [0];
+  let acc = 0;
+  for (const r of rows) {
+    acc += r.interest;
+    out.push(acc);
+  }
+  return out;
+}
+
 function downloadCSV(headers, rows, filename) {
   const escape = (v) => (typeof v === "string" && (v.includes(",") || v.includes('"') || v.includes("\n")) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
   const line = (arr) => arr.map(escape).join(",");
@@ -94,6 +105,7 @@ function buildMortgageSchedule({ P, annualRate, termMonths, repaymentType, ioPer
     months <= 0 ? 0 : r > 0 ? (r * principal * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1) : principal / months;
 
   let piPayment = isIO ? 0 : amort(P, n);
+  let revertPayment = isIO ? null : piPayment; // P&I payment after the IO period ends
   const balances = [P];
   const rows = [];
   let balance = P;
@@ -103,7 +115,10 @@ function buildMortgageSchedule({ P, annualRate, termMonths, repaymentType, ioPer
 
   for (let i = 1; i <= n; i++) {
     const inIO = isIO && i <= ioMonths;
-    if (isIO && i === ioMonths + 1 && piMonths > 0) piPayment = amort(balance, piMonths);
+    if (isIO && i === ioMonths + 1 && piMonths > 0) {
+      piPayment = amort(balance, piMonths);
+      revertPayment = piPayment;
+    }
 
     const interestBearing = Math.max(0, balance - off);
     const interest = interestBearing * r;
@@ -127,7 +142,7 @@ function buildMortgageSchedule({ P, annualRate, termMonths, repaymentType, ioPer
       break;
     }
   }
-  return { rows, balances, totalInterest, payoffMonth, scheduledPayment };
+  return { rows, balances, totalInterest, payoffMonth, scheduledPayment, revertPayment };
 }
 
 // ─── Shared light-theme field styles ────────────────────────────────────────
@@ -199,12 +214,13 @@ function ResultsPanel({ children }) {
   return <div className="space-y-4 lg:sticky lg:top-24">{children}</div>;
 }
 
-function HeadlineCard({ caption, amount, sub, stats }) {
+function HeadlineCard({ caption, amount, sub, note, stats }) {
   return (
     <div className="rounded-2xl bg-gradient-to-br from-[#00FCB8] to-[#39B2B2] p-7 text-[#0A1628] shadow-md">
       <p className="text-xs font-bold uppercase tracking-wider text-[#0A1628]/80">{caption}</p>
       <p className="mt-1.5 text-5xl font-extrabold leading-none tracking-tight">{amount}</p>
       {sub && <p className="mt-2 text-sm text-[#0A1628]/80">{sub}</p>}
+      {note && <div className="mt-3 rounded-lg bg-[#0A1628]/10 px-3 py-2 text-sm text-[#0A1628]">{note}</div>}
       {stats && (
         <div className="mt-6 grid grid-cols-2 gap-4 border-t border-[#0A1628]/20 pt-5">
           {stats.map((s, i) => (
@@ -457,6 +473,7 @@ export default function FinancialCalculatorsPage() {
       monthsSaved: Math.max(0, baseline.payoffMonth - scenario.payoffMonth),
       termMonths: n,
       repaymentDisplay: perPeriod(scenario.scheduledPayment, frequency),
+      revertDisplay: scenario.revertPayment != null ? perPeriod(scenario.revertPayment, frequency) : null,
       totalInterest: scenario.totalInterest,
       totalPaid: P + scenario.totalInterest,
     };
@@ -545,25 +562,29 @@ export default function FinancialCalculatorsPage() {
     let balC = P;
     let intCur = 0;
     const balancesCur = [P];
+    const cumIntCur = [0];
     for (let i = 0; i < nCur; i++) {
       const interest = balC * rCur;
       intCur += interest;
       balC = Math.max(0, balC - (pmtCur - interest));
       balancesCur.push(balC);
+      cumIntCur.push(intCur);
     }
     let balN = P;
     let intNew = 0;
     const balancesNew = [P];
+    const cumIntNew = [0];
     for (let i = 0; i < nNew; i++) {
       const interest = balN * rNew;
       intNew += interest;
       balN = Math.max(0, balN - (pmtNew - interest));
       balancesNew.push(balN);
+      cumIntNew.push(intNew);
     }
     const monthlySavings = pmtCur - pmtNew;
     const breakEven = monthlySavings > 0 ? Math.ceil(fees / monthlySavings) : null;
     const totalInterestSaved = intCur - intNew;
-    return { pmtCurrent: pmtCur, pmtNew, totalInterestCurrent: intCur, totalInterestNew: intNew, monthlySavings, breakEvenMonths: breakEven, totalInterestSaved, netSavings: totalInterestSaved - fees, fees, balancesCur, balancesNew, nCur, nNew };
+    return { pmtCurrent: pmtCur, pmtNew, totalInterestCurrent: intCur, totalInterestNew: intNew, monthlySavings, breakEvenMonths: breakEven, totalInterestSaved, netSavings: totalInterestSaved - fees, fees, balancesCur, balancesNew, cumIntCur, cumIntNew, nCur, nNew };
   }, [refBalance, refCurrentRate, refRemainingYears, refNewRate, refNewTermYears, refFees]);
 
   // ─── Personal loan state & result ───────────────────────────────────────
@@ -679,6 +700,9 @@ export default function FinancialCalculatorsPage() {
                       caption="Estimated repayment"
                       amount={fmt(mortgage.repaymentDisplay)}
                       sub={`per ${freqNoun(frequency)}${repaymentType === "io" ? " (interest only)" : ""}`}
+                      note={repaymentType === "io" && mortgage.revertDisplay != null ? (
+                        <>Then <strong className="font-extrabold">{fmt(mortgage.revertDisplay)}</strong> per {freqNoun(frequency)} (P&amp;I) after the {ioPeriodYears}-year interest-only period.</>
+                      ) : null}
                       stats={[
                         { label: "Total interest", value: fmt0(mortgage.totalInterest) },
                         { label: "Total to repay", value: fmt0(mortgage.totalPaid) },
@@ -729,6 +753,23 @@ export default function FinancialCalculatorsPage() {
                             { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Your plan" },
                           ]
                         : [{ values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]
+                    }
+                  />
+                </ChartCard>
+
+                <ChartCard
+                  title="Interest paid over time"
+                  legend={mortgage.hasLever ? <><SolidLegend color={PRINCIPAL_COLOR} label="Your plan" /><DashedLegend label="Standard repayments" /></> : null}
+                >
+                  <LoanBalanceChart
+                    xMaxMonths={mortgage.termMonths}
+                    series={
+                      mortgage.hasLever
+                        ? [
+                            { values: cumulativeInterest(mortgage.baseline.rows), color: INTEREST_COLOR, dashed: true, label: "Standard" },
+                            { values: cumulativeInterest(mortgage.scenario.rows), color: PRINCIPAL_COLOR, fill: true, label: "Your plan" },
+                          ]
+                        : [{ values: cumulativeInterest(mortgage.scenario.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]
                     }
                   />
                 </ChartCard>
@@ -787,6 +828,16 @@ export default function FinancialCalculatorsPage() {
                     series={[
                       { values: refResult.balancesCur, color: INTEREST_COLOR, dashed: true, label: "Current" },
                       { values: refResult.balancesNew, color: PRINCIPAL_COLOR, fill: true, label: "New" },
+                    ]}
+                  />
+                </ChartCard>
+
+                <ChartCard title="Interest paid over time" legend={<><SolidLegend color={PRINCIPAL_COLOR} label="New loan" /><DashedLegend label="Current loan" /></>}>
+                  <LoanBalanceChart
+                    xMaxMonths={Math.max(refResult.nCur, refResult.nNew)}
+                    series={[
+                      { values: refResult.cumIntCur, color: INTEREST_COLOR, dashed: true, label: "Current" },
+                      { values: refResult.cumIntNew, color: PRINCIPAL_COLOR, fill: true, label: "New" },
                     ]}
                   />
                 </ChartCard>
@@ -856,6 +907,10 @@ export default function FinancialCalculatorsPage() {
                   <LoanBalanceChart xMaxMonths={numPayments(carTerm)} series={[{ values: carResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]} />
                 </ChartCard>
 
+                <ChartCard title="Interest paid over time">
+                  <LoanBalanceChart xMaxMonths={numPayments(carTerm)} series={[{ values: cumulativeInterest(carResult.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]} />
+                </ChartCard>
+
                 <AmortTable rows={carResult.rows} expand={carExpandTable} setExpand={setCarExpandTable} showOffset={false} download={downloadCarCSV} />
                 <FAQBlock title="Car loan FAQs" items={CAR_FAQS} />
                 <AssetDisclaimer />
@@ -904,6 +959,10 @@ export default function FinancialCalculatorsPage() {
 
                 <ChartCard title="Loan balance over time">
                   <LoanBalanceChart xMaxMonths={numPayments(personalTermYears)} series={[{ values: personalResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]} />
+                </ChartCard>
+
+                <ChartCard title="Interest paid over time">
+                  <LoanBalanceChart xMaxMonths={numPayments(personalTermYears)} series={[{ values: cumulativeInterest(personalResult.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]} />
                 </ChartCard>
 
                 <AmortTable rows={personalResult.rows} expand={personalExpandTable} setExpand={setPersonalExpandTable} showOffset={false} download={downloadPersonalCSV} />
