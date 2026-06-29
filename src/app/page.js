@@ -135,8 +135,10 @@ export default function Home() {
             <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-[#1C5472] sm:text-6xl lg:text-7xl">
               Finance made simple.
             </h1>
-            <p className="mt-2 text-5xl font-bold text-[#00FCB8] sm:text-6xl lg:text-7xl">
-              For every single Australian.
+            <p className="mt-4 text-5xl font-bold sm:text-6xl lg:text-7xl">
+              <span className="hero-highlight-gradient inline-block rounded-3xl px-5 py-3 leading-[1.15] text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">
+                For every single Australian.
+              </span>
             </p>
             <p className="mx-auto mt-6 max-w-xl text-lg font-normal text-[#1C5472] lg:mx-0 md:text-xl">
               Yes, every one of them. 26 million people. That&apos;s the goal. We&apos;re starting with you.

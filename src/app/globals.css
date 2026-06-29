@@ -77,6 +77,18 @@ body {
   animation: heroGradientShift 8s ease-in-out infinite;
 }
 
+/* Hero highlight panel: slow shifting blue → teal gradient (stays dark for mint text contrast) */
+@keyframes heroHighlightShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-highlight-gradient {
+  background: linear-gradient(120deg, #13384d 0%, #1C5472 50%, #246a82 100%);
+  background-size: 200% 200%;
+  animation: heroHighlightShift 9s ease-in-out infinite;
+}
+
 .float-animate {
   animation: float 4s ease-in-out infinite;
 }

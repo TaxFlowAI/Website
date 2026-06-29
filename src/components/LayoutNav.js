@@ -39,6 +39,8 @@ const SERVICE_MENU = [
 export default function LayoutNav({ activeNav = "home" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [openServices, setOpenServices] = useState([]);
+  const [hoveredService, setHoveredService] = useState(null);
 
   const linkClass = (active) =>
     active
@@ -56,42 +58,60 @@ export default function LayoutNav({ activeNav = "home" }) {
           </Link>
           <div className="hidden flex-1 items-center justify-center gap-6 lg:flex">
             <Link href="/" className={linkClass(activeNav === "home")}>Home</Link>
-            <div className="relative" onMouseEnter={() => setServicesDropdownOpen(true)} onMouseLeave={() => setServicesDropdownOpen(false)}>
+            <div className="relative" onMouseEnter={() => setServicesDropdownOpen(true)} onMouseLeave={() => { setServicesDropdownOpen(false); setOpenServices([]); setHoveredService(null); }}>
               <button className="flex items-center gap-1 text-sm font-medium text-[#1C5472] transition-colors hover:text-[#39B2B2]">
                 Our Services
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </button>
               <div
-                className={`absolute left-1/2 top-full z-50 mt-0 min-w-[320px] -translate-x-1/2 overflow-visible rounded-lg border border-gray-100 bg-white py-2 shadow-xl transition-opacity duration-200 ${servicesDropdownOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                className={`absolute left-1/2 top-full z-50 mt-0 min-w-[380px] -translate-x-1/2 overflow-visible rounded-lg border border-gray-100 bg-white py-2 shadow-xl transition-opacity duration-200 ${servicesDropdownOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
               >
                 <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full" aria-hidden>
                   <div className="border-8 border-transparent border-b-white" />
                 </div>
                 <div className="px-4 py-2">
                   <p className="mb-3 border-b border-[#00FCB8] pb-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Frontline Financial</p>
-                  {SERVICE_MENU.map((svc) => (
-                    <Link
-                      key={svc.href}
-                      href={svc.href}
-                      className={`group/svc block rounded-md transition-colors delay-300 group-hover/svc:delay-0 ${activeNav === svc.activeKey ? "bg-[#00FCB8]/10" : "hover:bg-[#F5F5EF]"}`}
-                    >
-                      <div className={`flex items-center justify-between px-3 py-2 text-sm font-medium ${activeNav === svc.activeKey ? "text-[#00FCB8]" : "text-[#1C5472] group-hover/svc:text-[#39B2B2]"}`}>
-                        <span>{svc.label}</span>
-                        <svg className="h-4 w-4 shrink-0 text-[#39B2B2] transition-transform duration-300 delay-300 group-hover/svc:rotate-90 group-hover/svc:delay-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                      </div>
-                      {/* Rolls out the service list on hover — opens instantly, collapses after a 300ms grace so you can move between businesses */}
-                      <div className="grid grid-rows-[0fr] transition-all duration-300 ease-out delay-300 group-hover/svc:grid-rows-[1fr] group-hover/svc:delay-0">
-                        <ul className="overflow-hidden pb-2 pl-6 pr-3">
-                          {svc.services.map((name) => (
-                            <li key={name} className="flex items-center gap-2.5 py-1 text-sm text-[#1C5472]">
-                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#39B2B2]" aria-hidden />
-                              {name}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </Link>
-                  ))}
+                  {SERVICE_MENU.map((svc) => {
+                    const isOpen = openServices.includes(svc.activeKey);
+                    const isActive = activeNav === svc.activeKey;
+                    const isHovered = hoveredService === svc.activeKey;
+                    return (
+                      <Link
+                        key={svc.href}
+                        href={svc.href}
+                        onMouseEnter={() => {
+                          setHoveredService(svc.activeKey);
+                          setOpenServices((prev) => (prev.includes(svc.activeKey) ? prev : [...prev, svc.activeKey]));
+                        }}
+                        onMouseLeave={() => setHoveredService((cur) => (cur === svc.activeKey ? null : cur))}
+                        className={`block overflow-hidden rounded-md transition-colors ${isHovered ? "" : isActive ? "bg-[#00FCB8]/10" : isOpen ? "bg-[#F5F5EF]" : ""}`}
+                      >
+                        <div className={`flex items-center justify-between gap-2 px-3 py-2 text-sm font-medium transition-all duration-200 ${isHovered ? "bg-gradient-to-r from-[#1C5472] to-[#39B2B2] text-white" : isActive ? "text-[#00FCB8]" : "text-[#1C5472]"}`}>
+                          <span>{svc.label}</span>
+                          <span className="flex shrink-0 items-center gap-2">
+                            {isHovered && (
+                              <span className="flex items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 text-xs font-semibold text-white">
+                                Learn more
+                                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                              </span>
+                            )}
+                            <svg className={`h-4 w-4 transition-transform duration-300 ${isHovered ? "text-white" : "text-[#39B2B2]"} ${isOpen ? "rotate-90" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                          </span>
+                        </div>
+                        {/* Opens on hover and stays open; only leaving the whole dropdown (onMouseLeave above) collapses it */}
+                        <div className={`grid transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                          <ul className="overflow-hidden pb-2 pl-6 pr-3 pt-1">
+                            {svc.services.map((name) => (
+                              <li key={name} className="flex items-center gap-2.5 py-1 text-sm text-[#1C5472]">
+                                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#39B2B2]" aria-hidden />
+                                {name}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
