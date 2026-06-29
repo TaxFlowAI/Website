@@ -152,7 +152,9 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-8 lg:justify-start">
-              <p className="text-5xl font-bold text-[#00FCB8] sm:text-6xl">26M</p>
+              <p className="text-5xl font-bold sm:text-6xl">
+                <span className="hero-highlight-gradient inline-block rounded-2xl px-4 py-2 leading-none text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">26M</span>
+              </p>
               <span className="h-8 w-px bg-[#39B2B2]" aria-hidden />
               <p className="text-lg font-bold text-[#1C5472]">Australians to help</p>
               <span className="h-8 w-px bg-[#39B2B2]" aria-hidden />

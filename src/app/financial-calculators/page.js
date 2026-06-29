@@ -741,35 +741,23 @@ export default function FinancialCalculatorsPage() {
                 )}
 
                 <ChartCard
-                  title="Loan balance over time"
-                  legend={mortgage.hasLever ? <><SolidLegend color={PRINCIPAL_COLOR} label="Your plan" /><DashedLegend label="Standard repayments" /></> : null}
+                  title="Loan balance & interest paid"
+                  legend={<><SolidLegend color={PRINCIPAL_COLOR} label="Loan balance" /><SolidLegend color={INTEREST_COLOR} label="Interest paid" />{mortgage.hasLever && <DashedLegend label="Standard repayments" />}</>}
                 >
                   <LoanBalanceChart
                     xMaxMonths={mortgage.termMonths}
                     series={
                       mortgage.hasLever
                         ? [
-                            { values: mortgage.baseline.balances, color: INTEREST_COLOR, dashed: true, label: "Standard" },
-                            { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Your plan" },
+                            { values: mortgage.baseline.balances, color: PRINCIPAL_COLOR, dashed: true, label: "Balance — standard" },
+                            { values: cumulativeInterest(mortgage.baseline.rows), color: INTEREST_COLOR, dashed: true, label: "Interest — standard" },
+                            { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
+                            { values: cumulativeInterest(mortgage.scenario.rows), color: INTEREST_COLOR, label: "Interest paid" },
                           ]
-                        : [{ values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]
-                    }
-                  />
-                </ChartCard>
-
-                <ChartCard
-                  title="Interest paid over time"
-                  legend={mortgage.hasLever ? <><SolidLegend color={PRINCIPAL_COLOR} label="Your plan" /><DashedLegend label="Standard repayments" /></> : null}
-                >
-                  <LoanBalanceChart
-                    xMaxMonths={mortgage.termMonths}
-                    series={
-                      mortgage.hasLever
-                        ? [
-                            { values: cumulativeInterest(mortgage.baseline.rows), color: INTEREST_COLOR, dashed: true, label: "Standard" },
-                            { values: cumulativeInterest(mortgage.scenario.rows), color: PRINCIPAL_COLOR, fill: true, label: "Your plan" },
+                        : [
+                            { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
+                            { values: cumulativeInterest(mortgage.scenario.rows), color: INTEREST_COLOR, label: "Interest paid" },
                           ]
-                        : [{ values: cumulativeInterest(mortgage.scenario.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]
                     }
                   />
                 </ChartCard>
@@ -822,22 +810,14 @@ export default function FinancialCalculatorsPage() {
                   </ResultsPanel>
                 </div>
 
-                <ChartCard title="Balance over time" legend={<><SolidLegend color={PRINCIPAL_COLOR} label="New loan" /><DashedLegend label="Current loan" /></>}>
+                <ChartCard title="Loan balance & interest paid" legend={<><SolidLegend color={PRINCIPAL_COLOR} label="Loan balance" /><SolidLegend color={INTEREST_COLOR} label="Interest paid" /><DashedLegend label="Current loan" /></>}>
                   <LoanBalanceChart
                     xMaxMonths={Math.max(refResult.nCur, refResult.nNew)}
                     series={[
-                      { values: refResult.balancesCur, color: INTEREST_COLOR, dashed: true, label: "Current" },
-                      { values: refResult.balancesNew, color: PRINCIPAL_COLOR, fill: true, label: "New" },
-                    ]}
-                  />
-                </ChartCard>
-
-                <ChartCard title="Interest paid over time" legend={<><SolidLegend color={PRINCIPAL_COLOR} label="New loan" /><DashedLegend label="Current loan" /></>}>
-                  <LoanBalanceChart
-                    xMaxMonths={Math.max(refResult.nCur, refResult.nNew)}
-                    series={[
-                      { values: refResult.cumIntCur, color: INTEREST_COLOR, dashed: true, label: "Current" },
-                      { values: refResult.cumIntNew, color: PRINCIPAL_COLOR, fill: true, label: "New" },
+                      { values: refResult.balancesCur, color: PRINCIPAL_COLOR, dashed: true, label: "Balance — current" },
+                      { values: refResult.cumIntCur, color: INTEREST_COLOR, dashed: true, label: "Interest — current" },
+                      { values: refResult.balancesNew, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance — new" },
+                      { values: refResult.cumIntNew, color: INTEREST_COLOR, label: "Interest paid — new" },
                     ]}
                   />
                 </ChartCard>
@@ -903,12 +883,18 @@ export default function FinancialCalculatorsPage() {
                   </ResultsPanel>
                 </div>
 
-                <ChartCard title="Loan balance over time" note={carResult.balloon > 0 ? `The balance levels off at your balloon payment of ${fmt0(carResult.balloon)}, due as a lump sum at the end of the term.` : null}>
-                  <LoanBalanceChart xMaxMonths={numPayments(carTerm)} series={[{ values: carResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]} />
-                </ChartCard>
-
-                <ChartCard title="Interest paid over time">
-                  <LoanBalanceChart xMaxMonths={numPayments(carTerm)} series={[{ values: cumulativeInterest(carResult.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]} />
+                <ChartCard
+                  title="Loan balance & interest paid"
+                  legend={<><SolidLegend color={PRINCIPAL_COLOR} label="Loan balance" /><SolidLegend color={INTEREST_COLOR} label="Interest paid" /></>}
+                  note={carResult.balloon > 0 ? `The balance levels off at your balloon payment of ${fmt0(carResult.balloon)}, due as a lump sum at the end of the term.` : null}
+                >
+                  <LoanBalanceChart
+                    xMaxMonths={numPayments(carTerm)}
+                    series={[
+                      { values: carResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
+                      { values: cumulativeInterest(carResult.rows), color: INTEREST_COLOR, label: "Interest paid" },
+                    ]}
+                  />
                 </ChartCard>
 
                 <AmortTable rows={carResult.rows} expand={carExpandTable} setExpand={setCarExpandTable} showOffset={false} download={downloadCarCSV} />
@@ -957,12 +943,17 @@ export default function FinancialCalculatorsPage() {
                   </ResultsPanel>
                 </div>
 
-                <ChartCard title="Loan balance over time">
-                  <LoanBalanceChart xMaxMonths={numPayments(personalTermYears)} series={[{ values: personalResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance" }]} />
-                </ChartCard>
-
-                <ChartCard title="Interest paid over time">
-                  <LoanBalanceChart xMaxMonths={numPayments(personalTermYears)} series={[{ values: cumulativeInterest(personalResult.rows), color: PRINCIPAL_COLOR, fill: true, label: "Interest paid" }]} />
+                <ChartCard
+                  title="Loan balance & interest paid"
+                  legend={<><SolidLegend color={PRINCIPAL_COLOR} label="Loan balance" /><SolidLegend color={INTEREST_COLOR} label="Interest paid" /></>}
+                >
+                  <LoanBalanceChart
+                    xMaxMonths={numPayments(personalTermYears)}
+                    series={[
+                      { values: personalResult.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
+                      { values: cumulativeInterest(personalResult.rows), color: INTEREST_COLOR, label: "Interest paid" },
+                    ]}
+                  />
                 </ChartCard>
 
                 <AmortTable rows={personalResult.rows} expand={personalExpandTable} setExpand={setPersonalExpandTable} showOffset={false} download={downloadPersonalCSV} />
