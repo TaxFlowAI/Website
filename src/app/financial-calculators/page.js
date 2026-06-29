@@ -5,7 +5,6 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
-import SliderInput from "@/components/calculators/SliderInput";
 import NumericInput from "@/components/calculators/NumericInput";
 import SegmentedControl from "@/components/calculators/SegmentedControl";
 import DonutChart from "@/components/calculators/DonutChart";
@@ -132,16 +131,42 @@ function buildMortgageSchedule({ P, annualRate, termMonths, repaymentType, ioPer
 }
 
 // ─── Shared light-theme field styles ────────────────────────────────────────
-const labelCls = "block text-sm font-medium text-[#1C5472]";
-const helpCls = "mt-1 text-xs text-[#1C5472]/60";
+const labelCls = "block text-sm font-semibold text-[#1C5472]";
+const helpCls = "mt-1.5 text-xs text-[#1C5472]/60";
 
-/** Labelled numeric field with optional $ prefix / unit suffix and column span. */
-function NumberField({ label, help, value, onChange, min, max, currency, maxDecimals = 2, prefix, suffix, full }) {
+/** Compact unit toggle (e.g. % / $) shown beside a field label. */
+function UnitToggle({ value, onChange, options }) {
+  return (
+    <div className="inline-flex rounded-lg border border-[#1C5472]/15 bg-[#F5F5EF] p-0.5">
+      {options.map((o) => (
+        <button
+          key={o.value}
+          type="button"
+          onClick={() => onChange(o.value)}
+          aria-pressed={value === o.value}
+          className={`rounded-md px-3.5 py-1 text-sm font-bold transition ${value === o.value ? "bg-white text-[#1C5472] shadow-sm" : "text-[#1C5472]/55 hover:text-[#1C5472]"}`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Big, bulky labelled numeric field with optional $ prefix / unit suffix and column span. */
+function NumberField({ label, help, value, onChange, min, max, currency, maxDecimals = 2, prefix, suffix, full, labelRight }) {
   return (
     <div className={full ? "sm:col-span-2" : ""}>
-      <label className={labelCls}>{label}</label>
-      <div className="relative mt-1.5">
-        {prefix && <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm font-medium text-[#1C5472]/50">{prefix}</span>}
+      {labelRight ? (
+        <div className="flex items-center justify-between gap-3">
+          <label className={labelCls}>{label}</label>
+          {labelRight}
+        </div>
+      ) : (
+        <label className={labelCls}>{label}</label>
+      )}
+      <div className="relative mt-2">
+        {prefix && <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg font-semibold text-[#1C5472]/45">{prefix}</span>}
         <NumericInput
           value={value}
           onChange={onChange}
@@ -149,9 +174,9 @@ function NumberField({ label, help, value, onChange, min, max, currency, maxDeci
           max={max}
           currency={currency}
           maxDecimals={maxDecimals}
-          className={`w-full rounded-lg border border-[#1C5472]/20 bg-white py-2.5 font-medium text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8] ${prefix ? "pl-7" : "pl-3"} ${suffix ? "pr-10" : "pr-3"}`}
+          className={`w-full rounded-xl border-2 border-[#1C5472]/15 bg-white py-3.5 text-xl font-bold text-[#1C5472] transition focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/25 ${prefix ? "pl-9" : "pl-4"} ${suffix ? "pr-16" : "pr-4"}`}
         />
-        {suffix && <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium text-[#1C5472]/50">{suffix}</span>}
+        {suffix && <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm font-medium text-[#1C5472]/50">{suffix}</span>}
       </div>
       {help && <p className={helpCls}>{help}</p>}
     </div>
@@ -176,16 +201,16 @@ function ResultsPanel({ children }) {
 
 function HeadlineCard({ caption, amount, sub, stats }) {
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-[#00FCB8] to-[#39B2B2] p-6 text-[#0A1628] shadow-sm">
+    <div className="rounded-2xl bg-gradient-to-br from-[#00FCB8] to-[#39B2B2] p-7 text-[#0A1628] shadow-md">
       <p className="text-xs font-bold uppercase tracking-wider text-[#0A1628]/80">{caption}</p>
-      <p className="mt-1 text-4xl font-bold leading-none">{amount}</p>
-      {sub && <p className="mt-1.5 text-sm text-[#0A1628]/80">{sub}</p>}
+      <p className="mt-1.5 text-5xl font-extrabold leading-none tracking-tight">{amount}</p>
+      {sub && <p className="mt-2 text-sm text-[#0A1628]/80">{sub}</p>}
       {stats && (
-        <div className="mt-5 grid grid-cols-2 gap-4 border-t border-[#0A1628]/20 pt-4">
+        <div className="mt-6 grid grid-cols-2 gap-4 border-t border-[#0A1628]/20 pt-5">
           {stats.map((s, i) => (
             <div key={i}>
               <p className="text-xs text-[#0A1628]/80">{s.label}</p>
-              <p className="text-lg font-bold">{s.value}</p>
+              <p className="text-xl font-bold">{s.value}</p>
             </div>
           ))}
         </div>
@@ -198,18 +223,18 @@ function BreakdownCard({ segments, centerLabel, centerValue, legend }) {
   return (
     <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-sm">
       <p className="text-sm font-semibold text-[#1C5472]">Where your money goes</p>
-      <div className="mt-3 flex items-center gap-4">
-        <div className="h-[128px] w-[128px] shrink-0">
-          <DonutChart segments={segments} centerLabel={centerLabel} centerValue={centerValue} thickness={22} />
+      <div className="mt-4 flex items-center gap-5">
+        <div className="h-[150px] w-[150px] shrink-0">
+          <DonutChart segments={segments} centerLabel={centerLabel} centerValue={centerValue} thickness={24} />
         </div>
-        <ul className="min-w-0 flex-1 space-y-3">
+        <ul className="min-w-0 flex-1 space-y-4">
           {legend.map((r, i) => (
             <li key={i}>
               <span className="flex items-center gap-2 text-xs text-[#1C5472]/70">
                 <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: r.color }} aria-hidden />
                 {r.label}
               </span>
-              <span className="mt-0.5 block text-base font-bold text-[#1C5472]">{fmt0(r.value)}</span>
+              <span className="mt-0.5 block text-lg font-bold text-[#1C5472]">{fmt0(r.value)}</span>
             </li>
           ))}
         </ul>
@@ -419,7 +444,7 @@ export default function FinancialCalculatorsPage() {
   const mortgage = useMemo(() => {
     const P = Math.max(0, loanAmount);
     const n = numPayments(termYears);
-    if (P <= 0 || n <= 0) return null;
+    if (n <= 0) return null;
     const common = { P, annualRate: interestRate, termMonths: n, repaymentType, ioPeriodMonths: numPayments(ioPeriodYears) };
     const scenario = buildMortgageSchedule({ ...common, offset: offsetBalance, extraMonthly: extraRepayment });
     const baseline = buildMortgageSchedule({ ...common, offset: 0, extraMonthly: 0 });
@@ -452,18 +477,28 @@ export default function FinancialCalculatorsPage() {
   const [carRate, setCarRate] = useState(8);
   const [carTerm, setCarTerm] = useState(5);
   const [balloonPct, setBalloonPct] = useState(20);
+  const [balloonMode, setBalloonMode] = useState("percent"); // "percent" | "amount"
+  const [balloonAmount, setBalloonAmount] = useState(8000);
   const [carFrequency, setCarFrequency] = useState("monthly");
   const [carExpandTable, setCarExpandTable] = useState(false);
 
   const carLoanAmount = Math.max(0, vehiclePrice - deposit);
+
+  // Switching unit keeps the balloon equivalent (e.g. 20% of $40k ↔ $8,000).
+  const handleBalloonMode = (mode) => {
+    if (mode === balloonMode) return;
+    if (mode === "amount") setBalloonAmount(Math.round((carLoanAmount * balloonPct) / 100));
+    else setBalloonPct(carLoanAmount > 0 ? Math.min(50, Math.round((balloonAmount / carLoanAmount) * 100)) : 0);
+    setBalloonMode(mode);
+  };
   const carResult = useMemo(() => {
     const P = carLoanAmount;
-    const FV = P * (balloonPct / 100);
+    const FV = Math.min(P, Math.max(0, balloonMode === "amount" ? balloonAmount : (P * balloonPct) / 100));
     const r = carRate / 100 / 12;
     const n = numPayments(carTerm);
-    if (P <= 0 || n <= 0) return null;
-    const pvBalloon = FV / Math.pow(1 + r, n);
-    const pmt = r > 0 ? ((P - pvBalloon) * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : (P - FV) / n;
+    if (n <= 0) return null;
+    const pvBalloon = n > 0 ? FV / Math.pow(1 + r, n) : FV;
+    const pmt = n <= 0 ? 0 : r > 0 ? ((P - pvBalloon) * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : (P - FV) / n;
     let balance = P;
     let totalInterest = 0;
     const rows = [];
@@ -478,7 +513,7 @@ export default function FinancialCalculatorsPage() {
       balances.push(Math.max(0, balance));
     }
     return { pmt, repaymentDisplay: perPeriod(pmt, carFrequency), totalInterest, balloon: FV, rows, balances, financed: P };
-  }, [carLoanAmount, carRate, carTerm, balloonPct, carFrequency]);
+  }, [carLoanAmount, carRate, carTerm, balloonPct, balloonMode, balloonAmount, carFrequency]);
 
   const downloadCarCSV = useCallback(() => {
     if (!carResult) return;
@@ -504,7 +539,7 @@ export default function FinancialCalculatorsPage() {
     const rNew = refNewRate / 100 / 12;
     const nNew = numPayments(refNewTermYears);
     const fees = Math.max(0, refFees);
-    if (P <= 0 || nCur <= 0 || nNew <= 0) return null;
+    if (nCur <= 0 || nNew <= 0) return null;
     const pmtCur = rCur > 0 ? (rCur * P * Math.pow(1 + rCur, nCur)) / (Math.pow(1 + rCur, nCur) - 1) : P / nCur;
     const pmtNew = rNew > 0 ? (rNew * P * Math.pow(1 + rNew, nNew)) / (Math.pow(1 + rNew, nNew) - 1) : P / nNew;
     let balC = P;
@@ -542,7 +577,7 @@ export default function FinancialCalculatorsPage() {
     const P = Math.max(0, personalAmount);
     const r = personalRate / 100 / 12;
     const n = numPayments(personalTermYears);
-    if (P <= 0 || n <= 0) return null;
+    if (n <= 0) return null;
     const pmt = r > 0 ? (r * P * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : P / n;
     let balance = P;
     let totalInterest = 0;
@@ -625,17 +660,17 @@ export default function FinancialCalculatorsPage() {
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Mortgage calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Principal &amp; Interest or Interest Only, with optional offset and extra repayments.</p>
 
-                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
                   <div className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
-                    <SliderInput className="sm:col-span-2" label="Loan amount" value={loanAmount} onChange={setLoanAmount} min={50000} max={5000000} step={10000} currency />
-                    <SliderInput className="sm:col-span-2" label="Loan term (years)" value={termYears} onChange={setTermYears} min={1} max={30} />
+                    <NumberField label="Loan amount" value={loanAmount} onChange={(v) => setLoanAmount(v === "" ? 0 : Number(v))} min={50000} max={5000000} currency prefix="$" maxDecimals={0} />
+                    <NumberField label="Loan term" value={termYears} onChange={(v) => setTermYears(v === "" ? 1 : Number(v))} min={1} max={30} suffix="years" maxDecimals={0} />
                     <NumberField label="Interest rate" value={interestRate} onChange={(v) => setInterestRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
-                    <NumberField label="Offset balance" value={offsetBalance} onChange={(v) => setOffsetBalance(v === "" ? 0 : Number(v))} min={0} max={loanAmount} currency prefix="$" />
+                    <NumberField label="Offset balance" value={offsetBalance} onChange={(v) => setOffsetBalance(v === "" ? 0 : Number(v))} min={0} max={loanAmount} currency prefix="$" maxDecimals={0} />
                     <SegmentedField full label="Repayment type" value={repaymentType} onChange={setRepaymentType} options={[{ value: "pi", label: "Principal & Interest" }, { value: "io", label: "Interest Only" }]} />
                     {repaymentType === "io" && (
-                      <NumberField label="Interest-only period" value={ioPeriodYears} onChange={(v) => setIoPeriodYears(v === "" ? 1 : Number(v))} min={1} max={10} suffix="yrs" help="Then reverts to P&I." />
+                      <NumberField label="Interest-only period" value={ioPeriodYears} onChange={(v) => setIoPeriodYears(v === "" ? 1 : Number(v))} min={1} max={10} suffix="yrs" maxDecimals={0} help="Then reverts to P&I." />
                     )}
-                    <NumberField label="Extra repayment" value={extraRepayment} onChange={(v) => setExtraRepayment(v === "" ? 0 : Number(v))} min={0} currency prefix="$" suffix="/mo" help="Paid straight off your principal." />
+                    <NumberField full={repaymentType !== "io"} label="Extra repayment" value={extraRepayment} onChange={(v) => setExtraRepayment(v === "" ? 0 : Number(v))} min={0} currency prefix="$" suffix="/mo" maxDecimals={0} help="Paid straight off your principal." />
                     <SegmentedField full label="Repayment frequency" value={frequency} onChange={setFrequency} options={FREQ_OPTIONS} />
                   </div>
 
@@ -711,14 +746,14 @@ export default function FinancialCalculatorsPage() {
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Refinance calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">See how much a sharper rate could save you — and when you&apos;d break even on the switching costs.</p>
 
-                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
                   <div className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
-                    <SliderInput className="sm:col-span-2" label="Current balance" value={refBalance} onChange={setRefBalance} min={10000} max={3000000} step={10000} currency />
+                    <NumberField label="Current balance" value={refBalance} onChange={(v) => setRefBalance(v === "" ? 0 : Number(v))} min={10000} max={3000000} currency prefix="$" maxDecimals={0} />
+                    <NumberField label="Refinance costs" value={refFees} onChange={(v) => setRefFees(v === "" ? 0 : Number(v))} min={0} currency prefix="$" maxDecimals={0} help="Discharge, application, valuation & settlement fees." />
                     <NumberField label="Current rate" value={refCurrentRate} onChange={(v) => setRefCurrentRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
                     <NumberField label="New rate" value={refNewRate} onChange={(v) => setRefNewRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
-                    <SliderInput className="sm:col-span-2" label="Remaining term (years)" value={refRemainingYears} onChange={setRefRemainingYears} min={1} max={30} />
-                    <SliderInput className="sm:col-span-2" label="New term (years)" value={refNewTermYears} onChange={setRefNewTermYears} min={1} max={30} />
-                    <NumberField full label="Refinance costs" value={refFees} onChange={(v) => setRefFees(v === "" ? 0 : Number(v))} min={0} currency prefix="$" help="Typical: discharge, application, valuation and settlement fees." />
+                    <NumberField label="Remaining term" value={refRemainingYears} onChange={(v) => setRefRemainingYears(v === "" ? 1 : Number(v))} min={1} max={30} suffix="years" maxDecimals={0} />
+                    <NumberField label="New term" value={refNewTermYears} onChange={(v) => setRefNewTermYears(v === "" ? 1 : Number(v))} min={1} max={30} suffix="years" maxDecimals={0} />
                   </div>
 
                   <ResultsPanel>
@@ -768,17 +803,27 @@ export default function FinancialCalculatorsPage() {
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Car loan calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Work out your repayments, with an optional balloon (residual) payment.</p>
 
-                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
                   <div className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
-                    <SliderInput className="sm:col-span-2" label="Vehicle price" value={vehiclePrice} onChange={setVehiclePrice} min={1000} max={500000} step={1000} currency />
-                    <NumberField label="Deposit / trade-in" value={deposit} onChange={(v) => setDeposit(v === "" ? 0 : Number(v))} min={0} max={vehiclePrice} currency prefix="$" />
-                    <NumberField label="Interest rate" value={carRate} onChange={(v) => setCarRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
-                    <div className="flex items-center justify-between rounded-lg bg-[#39B2B2]/10 px-4 py-3 text-sm font-semibold text-[#1C5472] sm:col-span-2">
-                      <span>Amount financed</span>
-                      <span className="text-base">{fmt0(carLoanAmount)}</span>
+                    <NumberField label="Vehicle price" value={vehiclePrice} onChange={(v) => setVehiclePrice(v === "" ? 0 : Number(v))} min={1000} max={500000} currency prefix="$" maxDecimals={0} />
+                    <NumberField label="Deposit / trade-in" value={deposit} onChange={(v) => setDeposit(v === "" ? 0 : Number(v))} min={0} max={vehiclePrice} currency prefix="$" maxDecimals={0} />
+                    <div className="flex items-center justify-between rounded-xl bg-[#39B2B2]/10 px-4 py-3.5 font-semibold text-[#1C5472] sm:col-span-2">
+                      <span className="text-sm">Amount financed</span>
+                      <span className="text-xl font-bold">{fmt0(carLoanAmount)}</span>
                     </div>
-                    <SliderInput className="sm:col-span-2" label="Term (years)" value={carTerm} onChange={setCarTerm} min={1} max={7} />
-                    <SliderInput className="sm:col-span-2" label="Balloon / residual" value={balloonPct} onChange={setBalloonPct} min={0} max={50} format={(v) => `${v}%`} />
+                    <NumberField label="Interest rate" value={carRate} onChange={(v) => setCarRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
+                    <NumberField label="Term" value={carTerm} onChange={(v) => setCarTerm(v === "" ? 1 : Number(v))} min={1} max={7} suffix="years" maxDecimals={0} />
+                    <NumberField
+                      full
+                      label="Balloon / residual"
+                      labelRight={<UnitToggle value={balloonMode} onChange={handleBalloonMode} options={[{ value: "percent", label: "%" }, { value: "amount", label: "$" }]} />}
+                      {...(balloonMode === "percent"
+                        ? { value: balloonPct, onChange: (v) => setBalloonPct(v === "" ? 0 : Number(v)), min: 0, max: 50, suffix: "%", maxDecimals: 0 }
+                        : { value: balloonAmount, onChange: (v) => setBalloonAmount(v === "" ? 0 : Number(v)), min: 0, max: Math.round(carLoanAmount * 0.5) || 0, currency: true, prefix: "$", maxDecimals: 0 })}
+                      help={balloonMode === "percent"
+                        ? `≈ ${fmt0((carLoanAmount * balloonPct) / 100)} of the amount financed`
+                        : `≈ ${carLoanAmount > 0 ? Math.round((balloonAmount / carLoanAmount) * 100) : 0}% of the amount financed`}
+                    />
                     <SegmentedField full label="Repayment frequency" value={carFrequency} onChange={setCarFrequency} options={FREQ_OPTIONS} />
                   </div>
 
@@ -824,10 +869,10 @@ export default function FinancialCalculatorsPage() {
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Personal loan calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Estimate the repayments and total interest on a personal loan.</p>
 
-                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+                <div className="mt-6 grid gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
                   <div className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
-                    <SliderInput className="sm:col-span-2" label="Loan amount" value={personalAmount} onChange={setPersonalAmount} min={2000} max={100000} step={1000} currency />
-                    <SliderInput className="sm:col-span-2" label="Term (years)" value={personalTermYears} onChange={setPersonalTermYears} min={1} max={7} />
+                    <NumberField label="Loan amount" value={personalAmount} onChange={(v) => setPersonalAmount(v === "" ? 0 : Number(v))} min={2000} max={100000} currency prefix="$" maxDecimals={0} />
+                    <NumberField label="Term" value={personalTermYears} onChange={(v) => setPersonalTermYears(v === "" ? 1 : Number(v))} min={1} max={7} suffix="years" maxDecimals={0} />
                     <NumberField full label="Interest rate" value={personalRate} onChange={(v) => setPersonalRate(v === "" ? 0 : Number(v))} min={0.1} max={25} suffix="% p.a." />
                     <SegmentedField full label="Repayment frequency" value={personalFrequency} onChange={setPersonalFrequency} options={FREQ_OPTIONS} />
                   </div>

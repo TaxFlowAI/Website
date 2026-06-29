@@ -16,7 +16,7 @@ export default function SegmentedControl({ options = [], value, onChange, ariaLa
             role="radio"
             aria-checked={active}
             onClick={() => onChange(opt.value)}
-            className={`flex-1 rounded-lg px-3 py-2.5 text-sm font-semibold transition ${
+            className={`flex-1 rounded-lg px-3 py-3 text-sm font-semibold transition ${
               active ? "bg-white text-[#1C5472] shadow-sm ring-1 ring-[#1C5472]/5" : "text-[#1C5472]/55 hover:text-[#1C5472]"
             }`}
           >

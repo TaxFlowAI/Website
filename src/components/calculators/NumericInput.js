@@ -81,8 +81,10 @@ export function NumericInput({
       if (dot !== -1) raw = raw.slice(0, dot + 1) + raw.slice(dot + 1).replace(/\./g, "");
       // strip leading zeros but preserve a leading "0."
       raw = raw.replace(/^0+(?=\d)/, "");
-      // limit decimal places
-      if (maxDecimals < 10 && raw.includes(".")) {
+      // limit decimal places (whole-number fields reject the decimal point)
+      if (maxDecimals <= 0) {
+        raw = raw.replace(/\./g, "");
+      } else if (maxDecimals < 10 && raw.includes(".")) {
         const [a, b] = raw.split(".");
         if (b.length > maxDecimals) raw = `${a}.${b.slice(0, maxDecimals)}`;
       }
