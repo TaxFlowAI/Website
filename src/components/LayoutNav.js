@@ -5,6 +5,37 @@ import Link from "next/link";
 import FrontlineLogoFull from "@/components/FrontlineLogoFull";
 import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 
+const SERVICE_MENU = [
+  {
+    label: "Frontline Financial Brokers",
+    href: "/brokers",
+    activeKey: "brokers",
+    services: [
+      "Home Loans",
+      "First Home Buyers",
+      "Investment Property Loans",
+      "Refinancing",
+      "Commercial Loans",
+      "Construction Loans",
+      "Debt Consolidation",
+      "SMSF Loans",
+    ],
+  },
+  {
+    label: "Frontline Financial: Asset Solutions",
+    href: "/assetsolutions",
+    activeKey: "asset-solutions",
+    services: [
+      "Car Loans",
+      "Commercial Vehicle Finance",
+      "Equipment & Machinery",
+      "Personal Loans",
+      "Working Capital",
+      "Fleet Finance",
+    ],
+  },
+];
+
 export default function LayoutNav({ activeNav = "home" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -13,11 +44,6 @@ export default function LayoutNav({ activeNav = "home" }) {
     active
       ? "text-sm font-medium text-[#00FCB8] transition-colors"
       : "text-sm font-medium text-[#1C5472] transition-colors hover:text-[#39B2B2]";
-
-  const dropdownLinkClass = (active) =>
-    active
-      ? "flex items-center gap-2 rounded-md py-2 px-3 text-sm font-medium text-[#00FCB8] bg-[#00FCB8]/10 transition-colors"
-      : "flex items-center gap-2 rounded-md py-2 px-3 text-sm text-[#1C5472] transition-colors hover:bg-[#F5F5EF] hover:text-[#1C5472]";
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -43,14 +69,29 @@ export default function LayoutNav({ activeNav = "home" }) {
                 </div>
                 <div className="px-4 py-2">
                   <p className="mb-3 border-b border-[#00FCB8] pb-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Frontline Financial</p>
-                  <Link href="/brokers" className={dropdownLinkClass(activeNav === "brokers")}>
-                    <span className="text-[#39B2B2]" aria-hidden>🏠</span>
-                    Brokers — Home loans, car loans &amp; commercial finance
-                  </Link>
-                  <Link href="/assetsolutions" className={dropdownLinkClass(activeNav === "asset-solutions")}>
-                    <span className="text-[#39B2B2]" aria-hidden>🚗</span>
-                    Asset Solutions — Car, equipment &amp; fleet finance
-                  </Link>
+                  {SERVICE_MENU.map((svc) => (
+                    <Link
+                      key={svc.href}
+                      href={svc.href}
+                      className={`group/svc block rounded-md transition-colors delay-300 group-hover/svc:delay-0 ${activeNav === svc.activeKey ? "bg-[#00FCB8]/10" : "hover:bg-[#F5F5EF]"}`}
+                    >
+                      <div className={`flex items-center justify-between px-3 py-2 text-sm font-medium ${activeNav === svc.activeKey ? "text-[#00FCB8]" : "text-[#1C5472] group-hover/svc:text-[#39B2B2]"}`}>
+                        <span>{svc.label}</span>
+                        <svg className="h-4 w-4 shrink-0 text-[#39B2B2] transition-transform duration-300 delay-300 group-hover/svc:rotate-90 group-hover/svc:delay-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                      </div>
+                      {/* Rolls out the service list on hover — opens instantly, collapses after a 300ms grace so you can move between businesses */}
+                      <div className="grid grid-rows-[0fr] transition-all duration-300 ease-out delay-300 group-hover/svc:grid-rows-[1fr] group-hover/svc:delay-0">
+                        <ul className="overflow-hidden pb-2 pl-6 pr-3">
+                          {svc.services.map((name) => (
+                            <li key={name} className="flex items-center gap-2.5 py-1 text-sm text-[#1C5472]">
+                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#39B2B2]" aria-hidden />
+                              {name}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -71,7 +112,7 @@ export default function LayoutNav({ activeNav = "home" }) {
               <Link href="/" className={`py-2 font-medium ${activeNav === "home" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
               <span className="py-2 font-medium text-[#1C5472]">Our Services</span>
               <Link href="/brokers" className={`pl-6 py-1 text-sm ${activeNav === "brokers" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Brokers</Link>
-              <Link href="/assetsolutions" className={`pl-6 py-1 text-sm ${activeNav === "asset-solutions" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial Asset Solutions</Link>
+              <Link href="/assetsolutions" className={`pl-6 py-1 text-sm ${activeNav === "asset-solutions" ? "text-[#00FCB8] font-medium" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Frontline Financial: Asset Solutions</Link>
               <Link href="/about" className={`py-2 font-medium ${activeNav === "about" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>About Us</Link>
               <Link href="/financial-calculators" className={`py-2 font-medium ${activeNav === "calculators" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Financial Calculators</Link>
               <Link href="/contact" className={`py-2 font-medium ${activeNav === "contact" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Contact</Link>

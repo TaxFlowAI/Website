@@ -13,7 +13,7 @@ const LOAN_CARDS = [
   { title: "Commercial Loans", tag: "Business", desc: "Business premises, commercial property, and mixed-use lending. Structured for business owners and investors.", icon: "building" },
   { title: "Construction Loans", tag: "Build & Buy", desc: "Building your dream home? Progressive drawdown construction loans with competitive rates and flexible terms.", icon: "hammer" },
   { title: "Debt Consolidation", tag: "Simplify", desc: "Roll multiple debts into one manageable repayment. Reduce your interest burden and simplify your finances.", icon: "merge" },
-  { title: "SMSF Loans", tag: "Specialist", desc: "Purchase investment property through your self-managed super fund with specialist SMSF lending solutions.", icon: "shield" },
+  { title: "SMSF Loans", tag: "Specialist", desc: "Purchase investment property through your self-managed super fund with specialist SMSF lending solutions.", icon: "piggybank" },
 ];
 
 const PROCESS_STEPS = [
@@ -47,11 +47,11 @@ function LoanIcon({ type, className }) {
     case "building":
       return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>);
     case "hammer":
-      return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M11.42 15.17L4.83 8.58a2 2 0 010-2.83l2.83-2.83a2 2 0 012.83 0L15.17 11.42M19 13l-7 7-4-4" /></svg>);
+      return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9" /><path d="m18 15 4-4" /><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></svg>);
     case "merge":
       return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>);
-    case "shield":
-      return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.42-.182-2.806-.512-4.122L15 9z" /></svg>);
+    case "piggybank":
+      return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z" /><path d="M16 10h.01" /><path d="M2 8v1a2 2 0 0 0 2 2h1" /></svg>);
     default:
       return null;
   }
@@ -137,12 +137,6 @@ export default function BrokersPage() {
               </ul>
             </div>
           </div>
-          <p className="mt-8 text-center text-2xl font-bold text-[#1C5472]">
-            We&apos;ve done this 500+ times.
-          </p>
-          <p className="mt-2 text-center text-sm italic text-gray-500">
-            We&apos;ll do it 25 million more.
-          </p>
         </div>
       </section>
 

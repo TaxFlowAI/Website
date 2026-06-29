@@ -239,11 +239,11 @@ export default function Home() {
               <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/asset-solutions-showroom.jpg"
+                  src="/images/asset-solutions-showroom.png"
                   alt="Row of new cars in a dealership showroom"
                   className="h-full w-full object-cover"
-                  width={2000}
-                  height={900}
+                  width={2752}
+                  height={1536}
                 />
               </div>
               <div className="flex flex-col p-6 md:p-8">
@@ -363,10 +363,42 @@ export default function Home() {
             <p className="mt-4 max-w-md text-sm text-white/80 md:mt-6">
               Recognised for excellence in car, equipment, and asset finance. We don&apos;t just broker deals — we get you behind the wheel and into the gear you need, fast.
             </p>
-            <a href="/assetsolutions" className="mt-6 inline-flex items-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
-              Explore Asset Solutions
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
+
+            {/* Featured article — Fintelligence customer success story */}
+            <div className="mt-6 border-t border-white/15 pt-6 md:mt-8 md:pt-8">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold uppercase tracking-wide text-white/70 md:justify-start">
+                <span>As featured in</span>
+                <span className="inline-flex items-center rounded-md bg-white px-2.5 py-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/fintelligence-logo.png"
+                    alt="Fintelligence"
+                    className="h-5 w-auto"
+                    onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling?.classList.remove("hidden"); }}
+                  />
+                  <span className="hidden text-base font-bold normal-case tracking-normal text-[#1C5472]">fintelligence<span className="text-[#00FCB8]">.</span></span>
+                </span>
+              </div>
+              <p className="mt-3 max-w-md text-sm text-white/80">
+                Fintelligence also featured us in a customer success story on how Sham and the team became Best Newcomer within their first 12 months.
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+              <a
+                href="https://fintelligence.com.au/customer-success-story-frontline-financial-group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+              >
+                Read the full article
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a href="/assetsolutions" className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
+                Explore Asset Solutions
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>

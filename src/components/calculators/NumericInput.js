@@ -61,9 +61,12 @@ export function NumericInput({
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedBy,
 }) {
-  const [focused, setFocused] = useState(false);
-  const displayValue = focused
-    ? (value === "" ? "" : String(value))
+  // While editing, `buf` holds the raw typed string so partial decimals like
+  // "6." or "0." survive between keystrokes (the parent only stores a number).
+  const [buf, setBuf] = useState(null);
+  const editing = buf != null;
+  const displayValue = editing
+    ? buf
     : currency && value !== "" && value != null
       ? formatWithCommas(Number(value))
       : value === "" || value == null
@@ -73,34 +76,44 @@ export function NumericInput({
   const handleChange = useCallback(
     (e) => {
       let raw = e.target.value.replace(/[^0-9.]/g, "");
-      raw = raw.replace(/^0+(?=\d)/, "") || "";
-      if (raw === "") {
-        onChange("");
-        return;
-      }
+      // keep only the first decimal point
+      const dot = raw.indexOf(".");
+      if (dot !== -1) raw = raw.slice(0, dot + 1) + raw.slice(dot + 1).replace(/\./g, "");
+      // strip leading zeros but preserve a leading "0."
+      raw = raw.replace(/^0+(?=\d)/, "");
+      // limit decimal places
       if (maxDecimals < 10 && raw.includes(".")) {
         const [a, b] = raw.split(".");
         if (b.length > maxDecimals) raw = `${a}.${b.slice(0, maxDecimals)}`;
       }
+      setBuf(raw);
+      if (raw === "" || raw === ".") {
+        onChange("");
+        return;
+      }
       const num = parseFloat(raw);
-      if (!Number.isNaN(num)) {
-        if (min != null && num < min) onChange(min);
-        else if (max != null && num > max) onChange(max);
-        else onChange(raw === "" ? "" : num);
-      } else onChange(raw === "" ? "" : raw);
+      if (!Number.isNaN(num)) onChange(num); // clamp on blur, not mid-type
     },
-    [onChange, min, max, maxDecimals]
+    [onChange, maxDecimals]
   );
 
   const handleFocus = useCallback((e) => {
-    setFocused(true);
-    if (String(value) === "0" || value === 0) e.target.select();
+    setBuf(value === "" || value == null ? "" : String(value));
+    e.target.select();
   }, [value]);
 
   const handleBlur = useCallback(() => {
-    setFocused(false);
-    if (value === "" && min != null) onChange(min);
-  }, [value, min, onChange]);
+    const num = parseFloat(buf ?? "");
+    if (Number.isNaN(num)) {
+      onChange(min != null ? min : "");
+    } else {
+      let clamped = num;
+      if (min != null && clamped < min) clamped = min;
+      if (max != null && clamped > max) clamped = max;
+      onChange(clamped);
+    }
+    setBuf(null);
+  }, [buf, min, max, onChange]);
 
   return (
     <input

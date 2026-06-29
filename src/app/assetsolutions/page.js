@@ -205,7 +205,7 @@ export default function AssetSolutionsPage() {
             <div className="flex flex-col items-center lg:items-start">
               <div className="relative h-72 w-full max-w-sm overflow-hidden rounded-2xl bg-[#1C5472]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/sham.png" alt="Sham — Asset Finance Specialist" className="h-full w-full object-cover" />
+                <img src="/images/sham.png" alt="Sham, Asset Finance Specialist" className="h-full w-full object-cover object-top" />
               </div>
               <p className="mt-4 text-2xl font-bold text-[#1C5472]">Sham</p>
               <p className="text-[#39B2B2]">Asset Finance Specialist</p>
@@ -244,25 +244,77 @@ export default function AssetSolutionsPage() {
 
       <WaveDivider fill="#1C5472" />
 
-      {/* 5. AWARD STRIP */}
-      <section className="bg-[#1C5472] px-4 py-14 md:px-6 md:py-16 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center md:flex-row md:items-center md:gap-0">
+      {/* 5. AWARD + FEATURED ARTICLE — matches the home page block */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1C5472] via-[#164360] to-[#1C5472] px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_50%,rgba(0,252,184,0.12)_0%,transparent_50%)]" aria-hidden />
+        <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#00FCB8] opacity-[0.08] blur-[80px]" aria-hidden />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center md:flex-row md:items-center md:gap-0">
           <div className="flex w-full justify-center md:w-[40%]">
-            <div className="trophy-shimmer relative flex shrink-0 overflow-hidden rounded-2xl border-2 border-[#00FCB8]/50 shadow-xl md:rounded-3xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/fintelligence-award.png"
-                alt="Frontline Financial team at Fintelligence Broker Awards FY25 — Hassan Arif JP and Sham celebrating Vehicle and Equipment Finance win"
-                className="h-44 w-auto object-cover md:h-52"
-                width={280}
-                height={224}
-              />
+            <div className="trophy-shimmer relative flex shrink-0 flex-col items-center">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-[#00FCB8]/50 shadow-xl ring-2 ring-[#00FCB8]/20 md:rounded-3xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/fintelligence-award.png"
+                  alt="Frontline Financial team at Fintelligence Broker Awards FY25 — Hassan Arif JP and Sham celebrating Vehicle and Equipment Finance win"
+                  className="h-48 w-auto object-cover md:h-56 lg:h-64"
+                  width={320}
+                  height={256}
+                />
+              </div>
+              <span className="mt-3 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.2em] text-[#00FCB8]/90 md:text-xs">Asset Solutions</span>
             </div>
           </div>
-          <div className="my-6 h-px w-16 bg-[#00FCB8] md:my-0 md:h-20 md:w-px" aria-hidden />
-          <div className="w-full text-center md:w-[60%] md:pl-10 md:text-left lg:pl-14">
-            <p className="text-2xl font-bold text-[#00FCB8] md:text-3xl">Fintelligence Broker Awards FY25</p>
-            <p className="mt-1 text-xl font-bold text-white md:text-2xl">Winner — Vehicle & Equipment Finance</p>
+          <div className="my-8 h-px w-24 bg-gradient-to-r from-transparent via-[#00FCB8] to-transparent md:my-0 md:h-28 md:w-px md:bg-gradient-to-b from-transparent via-[#00FCB8] to-transparent" aria-hidden />
+          <div className="w-full text-center md:w-[60%] md:pl-12 md:text-left lg:pl-16">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Frontline Financial: Asset Solutions</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-5xl">
+              Award Winning.
+            </h2>
+            <p className="mt-2 text-xl font-bold text-[#00FCB8] md:text-2xl lg:text-3xl">
+              Fintelligence Broker Awards FY25
+            </p>
+            <p className="mt-3 text-base font-semibold text-white/95 md:text-lg">
+              Winner — Vehicle &amp; Equipment Finance
+            </p>
+            <p className="mt-4 max-w-md text-sm text-white/80 md:mt-6">
+              Recognised for excellence in car, equipment, and asset finance. We don&apos;t just broker deals — we get you behind the wheel and into the gear you need, fast.
+            </p>
+
+            {/* Featured article — Fintelligence customer success story */}
+            <div className="mt-6 border-t border-white/15 pt-6 md:mt-8 md:pt-8">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold uppercase tracking-wide text-white/70 md:justify-start">
+                <span>As featured in</span>
+                <span className="inline-flex items-center rounded-md bg-white px-2.5 py-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/fintelligence-logo.png"
+                    alt="Fintelligence"
+                    className="h-5 w-auto"
+                    onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling?.classList.remove("hidden"); }}
+                  />
+                  <span className="hidden text-base font-bold normal-case tracking-normal text-[#1C5472]">fintelligence<span className="text-[#00FCB8]">.</span></span>
+                </span>
+              </div>
+              <p className="mt-3 max-w-md text-sm text-white/80">
+                Fintelligence also featured us in a customer success story on how Sham and the team became Best Newcomer within their first 12 months.
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+              <a
+                href="https://fintelligence.com.au/customer-success-story-frontline-financial-group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+              >
+                Read the full article
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a href="#apply" className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
+                Apply Now
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
