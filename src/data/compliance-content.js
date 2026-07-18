@@ -8,7 +8,6 @@
 // CFG: URL_PRIVACY = https://frontline.financial/taxflow/privacy-policy
 // CFG: URL_COLLECTION = https://frontline.financial/taxflow/collection-notice
 // CFG: ADDR_FH = Level 6, 150 George Street, Parramatta NSW 2150
-// CFG: ADDR_EA = Level 5, 4 Columbia Court, Norwest NSW 2153
 // CFG: EFFECTIVE_DATE = 1 March 2026
 
 export const PRIVACY_POLICY = {
@@ -19,7 +18,7 @@ export const PRIVACY_POLICY = {
   sections: [
     {
       heading: "1. Scope",
-      content: `This policy describes how we collect, hold, use, disclose, and protect your personal information when you use TaxFlowAI. "We" means Frontline Holdings Group Pty Ltd (platform operator, trading as TaxFlowAI) and E&A Advisory Pty Ltd (your registered tax agent). We handle your information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and the Privacy (Tax File Number) Rule 2015.`
+      content: `This policy describes how we collect, hold, use, disclose, and protect your personal information when you use TaxFlowAI. "We" means Frontline Holdings Group Pty Ltd (platform operator, trading as TaxFlowAI). Tax agent services are provided by the registered tax agent you engage through the platform, identified in your Engagement Letter; that agent also handles your information in connection with those services. We handle your information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and the Privacy (Tax File Number) Rule 2015.`
     },
     {
       heading: "2. What We Collect",
@@ -31,7 +30,7 @@ export const PRIVACY_POLICY = {
     },
     {
       heading: "4. Purposes and Who We Share With",
-      content: `We use your information to provide tax and (where applicable) ASIC-related services, communicate with you, process payments, comply with law, and maintain security. We may disclose it to: E&A Advisory (your tax agent); the ATO and, for company clients, ASIC; our hosting and payment providers (data encrypted); overseas staff who assist with lodgement preparation under strict controls (no access to TFN or bank details); and regulators when required by law. We do not sell or trade your personal information.`
+      content: `We use your information to provide tax and (where applicable) ASIC-related services, communicate with you, process payments, comply with law, and maintain security. We may disclose it to: the registered tax agent you engage through the platform; the ATO and, for company clients, ASIC; our hosting and payment providers (data encrypted); overseas staff who assist with lodgement preparation under strict controls (no access to TFN or bank details); and regulators when required by law. We do not sell or trade your personal information.`
     },
     {
       heading: "5. Overseas Disclosure",
@@ -64,11 +63,9 @@ export const COLLECTION_NOTICE = {
   sections: [
     {
       heading: "1. Who Is Collecting Your Information",
-      content: `Your information is collected by two entities who work together to provide tax and corporate compliance services:
+      content: `Your information is collected by Frontline Holdings Group Pty\u00A0Ltd (ABN: 59 671 861 475, ACN: 671 861 475), which trades as TaxFlowAI and is a registered ASIC agent (Agent Number: 51843). Frontline Holdings operates the technology platform used to collect and manage your information. For company clients, Frontline Holdings also provides ASIC compliance services including annual reviews, company lodgements, and changes to company details under the Corporations Act 2001 (Cth).
 
-E\u00A0&\u00A0A Advisory Pty\u00A0Ltd (ABN: 84 649 414 862) is a registered tax agent (TAN: 26100253). E\u00A0&\u00A0A Advisory is responsible for providing you with tax agent services.
-
-Frontline Holdings Group Pty\u00A0Ltd (ABN: 59 671 861 475, ACN: 671 861 475) trades as TaxFlowAI and is also a registered ASIC agent (Agent Number: 51843). Frontline Holdings operates the technology platform used to collect and manage your information on behalf of E\u00A0&\u00A0A Advisory. For company clients, Frontline Holdings also provides ASIC compliance services including annual reviews, company lodgements, and changes to company details under the Corporations Act 2001 (Cth).`
+Tax agent services are not provided by Frontline Holdings. Once you register an account, you can engage a registered tax agent through the platform. The tax agent you engage is identified in your Engagement Letter and is responsible for providing you with tax agent services.`
     },
     {
       heading: "2. What Information We Collect From This Form",
@@ -88,7 +85,7 @@ We will not use your information for any other purpose without your consent.`
     },
     {
       heading: "5. Who We May Share Your Information With",
-      content: `Your enquiry details may be shared with: E\u00A0&\u00A0A Advisory Pty\u00A0Ltd (the registered tax agent who will respond to your enquiry); Frontline Holdings Group Pty\u00A0Ltd (the technology platform operator and ASIC agent that stores and manages your enquiry data); and Render (the cloud hosting provider — your data is encrypted at rest and in transit).
+      content: `Your enquiry details may be shared with: the registered tax agent you choose to engage through the platform (who will respond to your enquiry about tax agent services); Frontline Holdings Group Pty\u00A0Ltd (the technology platform operator and ASIC agent that stores and manages your enquiry data); and Render (the cloud hosting provider — your data is encrypted at rest and in transit).
 
 We will not sell, rent, or disclose your information to any other third party for marketing purposes.`
     },
@@ -129,11 +126,11 @@ export const TERMS_OF_SERVICE = {
   sections: [
     {
       heading: "1. Agreement and Scope",
-      content: `These terms govern your use of the TaxFlowAI platform (the "Platform"), operated by Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475), trading as TaxFlowAI. By accessing or using the Platform, you agree to these terms. If you do not agree, do not use the Platform. Tax agent services provided through the Platform are supplied by E&A Advisory Pty Ltd (TAN: 26100253) under a separate Engagement Letter; those services are governed by that letter and any related engagement terms, not solely by these Terms of Service.`
+      content: `These terms govern your use of the TaxFlowAI platform (the "Platform"), operated by Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475), trading as TaxFlowAI. By accessing or using the Platform, you agree to these terms. If you do not agree, do not use the Platform. Tax agent services provided through the Platform are supplied by the registered tax agent you engage through the Platform under a separate Engagement Letter; those services are governed by that letter and any related engagement terms, not solely by these Terms of Service.`
     },
     {
       heading: "2. The Service",
-      content: `TaxFlowAI is a web-based platform that connects you with your registered tax agent (E&A Advisory Pty Ltd) and supports the management of your tax affairs, including document storage, lodgement tracking, and communication with your accountant. The Platform may also support ASIC-related services for company clients. The Platform is a technology tool; it does not substitute for professional tax or legal advice. You are responsible for the accuracy of information you provide and for acting on any advice you receive from your tax agent.`
+      content: `TaxFlowAI is a web-based platform that connects you with registered tax agents and supports the management of your tax affairs, including document storage, lodgement tracking, and communication with your accountant. Once you register an account, you can engage a registered tax agent through the Platform. The Platform may also support ASIC-related services for company clients. The Platform is a technology tool; it does not substitute for professional tax or legal advice. You are responsible for the accuracy of information you provide and for acting on any advice you receive from your tax agent.`
     },
     {
       heading: "3. Your Obligations",
@@ -141,11 +138,11 @@ export const TERMS_OF_SERVICE = {
     },
     {
       heading: "4. Account and Access",
-      content: `Access to the Platform may require registration and acceptance of these terms and any applicable engagement documents. You are responsible for all activity under your account. We may suspend or terminate your access to the Platform for breach of these terms, for operational or legal reasons, or on reasonable notice. Where your access is linked to a client relationship with E&A Advisory, cessation of that relationship may also affect your Platform access.`
+      content: `Access to the Platform may require registration and acceptance of these terms and any applicable engagement documents. You are responsible for all activity under your account. We may suspend or terminate your access to the Platform for breach of these terms, for operational or legal reasons, or on reasonable notice. Where your access is linked to a client relationship with a registered tax agent engaged through the Platform, cessation of that relationship may also affect your Platform access.`
     },
     {
       heading: "5. Intellectual Property and Your Content",
-      content: `The Platform, including its software, design, branding, and content (other than content you submit), is owned by Frontline Holdings Group Pty Ltd or its licensors. You do not acquire any right to that material except a limited right to use the Platform as permitted under these terms. You retain ownership of content you upload. You grant us and our service providers a licence to use, store, and process that content as necessary to operate the Platform and provide services to you (including to E&A Advisory as your tax agent). You warrant that you have the right to provide such content and that it does not breach any law or third-party rights.`
+      content: `The Platform, including its software, design, branding, and content (other than content you submit), is owned by Frontline Holdings Group Pty Ltd or its licensors. You do not acquire any right to that material except a limited right to use the Platform as permitted under these terms. You retain ownership of content you upload. You grant us and our service providers a licence to use, store, and process that content as necessary to operate the Platform and provide services to you (including to the registered tax agent you engage through the Platform). You warrant that you have the right to provide such content and that it does not breach any law or third-party rights.`
     },
     {
       heading: "6. Privacy",
@@ -182,9 +179,5 @@ export const COMPLIANCE_CONFIG = {
   FH_ACN: "671 861 475",
   FH_ASIC: "51843",
   FH_ADDRESS: "Level 6, 150 George Street, Parramatta NSW 2150",
-  EA_NAME: "E&A Advisory Pty Ltd",
-  EA_ABN: "84 649 414 862",
-  EA_TAN: "26100253",
-  EA_ADDRESS: "Level 5, 4 Columbia Court, Norwest NSW 2153",
   EFFECTIVE_DATE: "1 March 2026",
 };

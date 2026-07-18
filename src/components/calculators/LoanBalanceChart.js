@@ -83,6 +83,10 @@ export default function LoanBalanceChart({ series = [], xMaxMonths, height = 260
 
   const tooltipLeft = hoverMonth == null ? 0 : Math.max(74, Math.min(width - 74, x(hoverMonth)));
 
+  // Draw dashed comparison lines first (underneath) so the solid primary lines stay dominant.
+  const indexed = series.map((s, i) => ({ ...s, _i: i }));
+  const drawOrder = [...indexed].sort((a, b) => (b.dashed ? 1 : 0) - (a.dashed ? 1 : 0));
+
   return (
     <div ref={wrapRef} className="relative w-full" style={{ height }}>
       <svg width={width} height={height} onMouseMove={handleMove} onMouseLeave={() => setHoverX(null)} role="img" aria-label="Loan amount over time">
@@ -117,10 +121,20 @@ export default function LoanBalanceChart({ series = [], xMaxMonths, height = 260
           </text>
         ))}
 
-        {/* Areas, then lines */}
-        {series.map((s, i) => (s.fill ? <path key={`f${i}`} d={areaFor(s.values)} fill={`url(#lbc-grad-${i})`} stroke="none" /> : null))}
-        {series.map((s, i) => (
-          <path key={`l${i}`} d={pathFor(s.values)} fill="none" stroke={s.color} strokeWidth="2.5" strokeDasharray={s.dashed ? "6 5" : "none"} strokeLinejoin="round" strokeLinecap="round" />
+        {/* Areas first, then lines (dashed comparison lines drawn underneath the solid primaries) */}
+        {drawOrder.map((s) => (s.fill ? <path key={`f${s._i}`} d={areaFor(s.values)} fill={`url(#lbc-grad-${s._i})`} stroke="none" /> : null))}
+        {drawOrder.map((s) => (
+          <path
+            key={`l${s._i}`}
+            d={pathFor(s.values)}
+            fill="none"
+            stroke={s.color}
+            strokeWidth={s.dashed ? 1.75 : 2.5}
+            strokeOpacity={s.dashed ? 0.5 : 1}
+            strokeDasharray={s.dashed ? "6 6" : "none"}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
         ))}
 
         {/* Hover crosshair + dots */}
@@ -128,7 +142,16 @@ export default function LoanBalanceChart({ series = [], xMaxMonths, height = 260
           <g pointerEvents="none">
             <line x1={x(hoverMonth)} y1={padT} x2={x(hoverMonth)} y2={height - padB} stroke="#1C5472" strokeOpacity="0.35" strokeWidth="1" />
             {series.map((s, i) => (
-              <circle key={`d${i}`} cx={x(hoverMonth)} cy={y(valueAt(s.values, hoverMonth))} r="4.5" fill="#fff" stroke={s.color} strokeWidth="2.5" />
+              <circle
+                key={`d${i}`}
+                cx={x(hoverMonth)}
+                cy={y(valueAt(s.values, hoverMonth))}
+                r={s.dashed ? 3.5 : 4.5}
+                fill="#fff"
+                stroke={s.color}
+                strokeWidth="2.5"
+                strokeOpacity={s.dashed ? 0.6 : 1}
+              />
             ))}
           </g>
         )}

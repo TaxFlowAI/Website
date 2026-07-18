@@ -43,7 +43,7 @@ This document summarises everything implemented on the Frontline Financial websi
 | `/calculator-disclaimer` | `src/app/calculator-disclaimer/page.js` + `layout.js` | General calculator disclaimer and methodology. |
 | `/calculator-disclaimer-broking` | `src/app/calculator-disclaimer-broking/page.js` + `layout.js` | Broking (home loan) calculator disclaimer; CRN 575968, ACL 389087. |
 | `/calculator-disclaimer-asset-solutions` | `src/app/calculator-disclaimer-asset-solutions/page.js` + `layout.js` | Asset Solutions calculator disclaimer; CRN 563350, ACL 511803. |
-| `/taxflow` | `src/app/taxflow/page.js` + `layout.js` | TaxFlowAI product: hero, features, how it works, dashboard demo, pricing, compliance (E&A Advisory Pty Ltd). Layout title: “TaxFlowAI — Your Tax Life, Organised”. |
+| `/taxflow` | `src/app/taxflow/page.js` + `layout.js` | TaxFlowAI product: hero, features, how it works, dashboard demo, pricing, compliance (Registered Tax Agents). Dedicated walkthrough page at `/taxflow/how-it-works`. Layout title: “TaxFlowAI — Your Tax Life, Organised”. |
 
 ### 2.2 API routes
 
@@ -183,7 +183,7 @@ See `src/app/api/README.md` for env vars and payload shapes.
 
 - **Product:** “Your tax life, organised.” — Smarter way to manage tax lodgements and stay connected with your accountant.
 - **Home page teaser:** “+ Introducing TaxFlowAI”, “The next step in tax technology”, feature pills (Track Lodgements, Manage Documents, Accountant Connected), CTA “Explore TaxFlowAI” → `/taxflow`.
-- **TaxFlow page:** Dedicated product site: hero (“Every Australian deserves a real accountant”), features, how it works, dashboard demo, pricing, compliance (E&A Advisory Pty Ltd — Registered Tax Agent). Tax services supervised by E&A Advisory; TaxFlowAI is the client portal.
+- **TaxFlow page:** Dedicated product site: hero (“Every Australian deserves a real accountant”), features, how it works, dashboard demo, pricing, compliance (Registered Tax Agents). Once a client registers an account they can engage a registered tax agent through the platform; TaxFlowAI is the client portal.
 
 ---
 
@@ -200,7 +200,7 @@ See `src/app/api/README.md` for env vars and payload shapes.
 
 - **Brokers:** Frontline Financial Pty Ltd, CRN 575968, ACL 389087.
 - **Asset Solutions:** Martyn Financial Pty Ltd t/a Frontline Financial: Asset Solutions, CRN 563350, ACL 511803.
-- **TaxFlowAI:** Tax services supervised by E&A Advisory Pty Ltd — Registered Tax Agent; TaxFlowAI is the platform.
+- **TaxFlowAI:** Tax services provided by the registered tax agent a client engages through the platform; TaxFlowAI is the platform (Frontline Holdings Group Pty Ltd).
 - Calculator disclaimers: estimates only; not loan offer or financial advice; links to full disclaimer and methodology pages.
 
 ---

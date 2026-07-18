@@ -7,12 +7,10 @@ const TAXFLOW_PHONE = "0406 909 862";
 const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 
 /**
- * TaxFlowAI app footer — DO NOT CHANGE structure/legal links.
- * Non-negotiable: keep exactly as-is:
- * - E&A Advisory Pty Ltd
- * - Privacy Policy | Collection Notice | Terms of Service | Verify Tax Agent (TAN: 26100253)
- * - Tax Agent and Platform/ASIC entity details
- * - Copyright line (TaxFlowAI © 2025 · Tax services by E&A Advisory · Platform by Frontline Financial Group)
+ * TaxFlowAI app footer.
+ * TaxFlowAI is the technology platform; tax services are provided by Registered
+ * Tax Agents. Keep the legal links (Privacy Policy | Collection Notice | Terms
+ * of Service | Verify Tax Agent) and the platform/ASIC entity details.
  * See docs/DESIGN-BRIEF-TAXFLOWAI-WEBSITE.md
  */
 export default function TaxFlowAppFooter() {
@@ -29,17 +27,8 @@ export default function TaxFlowAppFooter() {
               TaxFlowAI is the platform.
             </p>
             <p className="mt-1 text-sm text-gray-500">
-              Tax services by E&A Advisory Pty Ltd
+              Tax services by Registered Tax Agents
             </p>
-            <p className="mt-1 text-sm text-gray-500">Registered Tax Agent</p>
-            <a
-              href="https://eaadvisory.com.au/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-xs text-[#00FCB8] transition hover:underline"
-            >
-              eaadvisory.com.au
-            </a>
             <div className="mt-4 flex gap-4">
               <a
                 href="https://linkedin.com"
@@ -84,12 +73,12 @@ export default function TaxFlowAppFooter() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#how-it-works"
+                <Link
+                  href="/taxflow/how-it-works"
                   className="transition hover:text-[#00FCB8]"
                 >
                   How It Works
-                </a>
+                </Link>
               </li>
               <li>
                 <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
@@ -108,7 +97,7 @@ export default function TaxFlowAppFooter() {
               Services
             </h4>
             <p className="mt-2 text-xs italic text-gray-500">
-              Provided by E&A Advisory Pty Ltd
+              Provided by Registered Tax Agents
             </p>
             <ul className="mt-4 space-y-2 text-sm text-gray-500">
               <li>
@@ -174,7 +163,7 @@ export default function TaxFlowAppFooter() {
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="footer-content-taxflow">
             <div className="footer-brand-taxflow">
-              E&A Advisory Pty Ltd
+              TaxFlowAI
             </div>
             <div className="footer-links-taxflow">
               <Link href="/taxflow/privacy-policy">Privacy Policy</Link>
@@ -188,19 +177,18 @@ export default function TaxFlowAppFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Verify Tax Agent (TAN: 26100253)
+                Verify Tax Agent
               </a>
             </div>
             <div className="footer-entities-taxflow">
-              Tax Agent: E&A Advisory Pty Ltd (ABN: 84 649 414 862, TAN:
-              26100253)
+              Tax services provided by Registered Tax Agents
               <br />
               Platform & ASIC Agent: Frontline Holdings Group Pty Ltd (ABN: 59
               671 861 475, ASIC Agent: 51843)
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              TaxFlowAI © 2025 · Tax services by E&A Advisory Pty Ltd (Registered
-              Tax Agent) · Platform by Frontline Financial Group
+              TaxFlowAI © 2025 · Tax services by Registered Tax Agents · Platform
+              by Frontline Financial Group
             </p>
           </div>
         </div>

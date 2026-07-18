@@ -1,6 +1,6 @@
 # Deductly / TaxFlowAI — Client Portal Designer Brief
 
-**Prepared by:** E&A Advisory Pty Ltd
+**Prepared by:** Frontline Holdings Group Pty Ltd (TaxFlowAI)
 **Date:** March 2026
 **Purpose:** Web design showcase of all features available in the client (customer) portal
 

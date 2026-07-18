@@ -11,20 +11,20 @@ const ACCENT = "#00FCB8";
 const HOW_STEPS = [
   {
     num: 1,
-    title: "E&A Advisory sets you up",
-    desc: "Real accountants create your account, link your tax obligations, and configure your lodgement calendar.",
-    icon: "gear",
+    title: "Register your account",
+    desc: "Sign up free in minutes — no credit card needed. Your secure TaxFlowAI account is ready straight away.",
+    icon: "user",
   },
   {
     num: 2,
     title: "Complete your 10-minute profile",
     desc: "A 4-step wizard: entity details (TFN/ABN), address, bank details with BSB lookup, and review. Flo guides every step.",
-    icon: "user",
+    icon: "gear",
   },
   {
     num: 3,
-    title: "Your dashboard is live",
-    desc: "See all your accounts — Personal, Sole Trader, Company, Trust, Partnership — with live lodgement status.",
+    title: "Engage your tax agent",
+    desc: "Once registered, engage a registered tax agent through the platform — real accountants who handle your lodgements.",
     icon: "key",
   },
   {
@@ -210,7 +210,7 @@ export default function TaxFlowPage() {
             </div>
           </div>
           <p className="border-t py-1 text-center text-[11px]" style={{ borderColor: border, color: `${textPrimary}66` }}>
-            Tax services supervised by E&amp;A Advisory Pty Ltd · Registered Tax Agent
+            Tax services supervised by Registered Tax Agents
           </p>
         </div>
       </header>
@@ -248,7 +248,7 @@ export default function TaxFlowPage() {
                   See what you get
                 </a>
               </div>
-              <p className="mt-4 text-xs" style={{ color: `${textPrimary}66` }}>Free to get started · No credit card · E&amp;A Advisory Pty Ltd</p>
+              <p className="mt-4 text-xs" style={{ color: `${textPrimary}66` }}>Free to get started · No credit card</p>
             </div>
 
             {/* Dashboard mockup */}
@@ -293,7 +293,7 @@ export default function TaxFlowPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {[
               { label: "5/5 Google Reviews", accent: true },
-              { label: "Registered Tax Agent", accent: false },
+              { label: "Registered Tax Agents", accent: false },
               { label: "ATO-Aligned", accent: false },
             ].map(({ label, accent }) => (
               <span key={label} className="rounded-full px-4 py-2 text-sm font-medium" style={accent
@@ -304,7 +304,7 @@ export default function TaxFlowPage() {
             ))}
           </div>
           <p className="mt-4 text-center text-sm" style={{ color: textMuted }}>
-            TaxFlowAI is powered by <strong style={{ color: textPrimary }}>Frontline Financial</strong> · E&amp;A Advisory Pty Ltd · Secure &amp; Australian
+            TaxFlowAI is powered by <strong style={{ color: textPrimary }}>Frontline Financial</strong> · Secure &amp; Australian
           </p>
         </div>
       </section>
@@ -333,7 +333,7 @@ export default function TaxFlowPage() {
           <p className="text-xs font-bold uppercase tracking-widest" style={{ color: ACCENT }}>The process</p>
           <h2 className="mt-2 border-l-4 pl-4 text-3xl font-bold md:text-4xl" style={{ borderColor: ACCENT, color: textPrimary }}>Up and running in minutes</h2>
           <p className="mt-3 max-w-xl text-sm" style={{ color: textMuted }}>
-            Your accountant sets everything up. Complete a 10-minute onboarding wizard and you&apos;re live.
+            Register your account, complete a 10-minute onboarding wizard, then engage a registered tax agent — you&apos;re live in minutes.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {HOW_STEPS.map((step) => (
@@ -346,6 +346,11 @@ export default function TaxFlowPage() {
                 <p className="mt-1 text-sm" style={{ color: textMuted }}>{step.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/taxflow/how-it-works" className="text-sm font-medium transition hover:underline" style={{ color: ACCENT }}>
+              See the full walkthrough →
+            </Link>
           </div>
         </div>
       </section>
@@ -481,20 +486,14 @@ export default function TaxFlowPage() {
         </div>
       </section>
 
-      {/* E&A STRIP */}
+      {/* TAX AGENT STRIP */}
       <section className="py-8" style={{ borderTop: `1px solid ${border}`, background: bg1 }}>
         <div className={sectionContainer}>
-          <div className="flex flex-wrap items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <span className="text-3xl font-bold" style={{ color: ACCENT }}>EA</span>
-              <div>
-                <p className="font-bold" style={{ color: textPrimary }}>E&amp;A Advisory Pty Ltd</p>
-                <p className="text-sm" style={{ color: textMuted }}>Registered Tax Agent · Real accountants behind every lodgement</p>
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-center">
+            <div>
+              <p className="font-bold" style={{ color: textPrimary }}>Registered Tax Agents</p>
+              <p className="text-sm" style={{ color: textMuted }}>Real accountants behind every lodgement</p>
             </div>
-            <a href="https://eaadvisory.com.au/" target="_blank" rel="noopener noreferrer" className="shrink-0 text-sm font-medium transition hover:underline" style={{ color: ACCENT }}>
-              eaadvisory.com.au →
-            </a>
           </div>
         </div>
       </section>
@@ -515,7 +514,7 @@ export default function TaxFlowPage() {
             </a>
           </div>
           <p className="mt-6 text-center text-xs" style={{ color: `${textPrimary}66` }}>
-            Tax and accounting services provided by E&amp;A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the technology platform.
+            Tax and accounting services are provided by Registered Tax Agents. TaxFlowAI is the technology platform.
           </p>
           <p className="mt-8 text-sm" style={{ color: textMuted }}>
             Questions? <a href="tel:+61406909862" className="hover:underline" style={{ color: ACCENT }}>0406 909 862</a> or <a href="mailto:taxflowai@frontline.financial" className="hover:underline" style={{ color: ACCENT }}>taxflowai@frontline.financial</a>

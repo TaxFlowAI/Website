@@ -11,16 +11,16 @@
   - **Privacy Policy** (link)
   - **Collection Notice** (link)
   - **Terms of Service** (link)
-  - **Verify Tax Agent (TAN: 26100253)** (link)
-  - E&A Advisory Pty Ltd — Powered by TaxFlowAI
-  - Tax Agent and Platform/ASIC entity details
+  - **Verify Tax Agent** (link to the TPB register)
+  - Tax services by Registered Tax Agents — Platform by Frontline Financial Group
+  - Platform/ASIC entity details (Frontline Holdings Group Pty Ltd)
   - Copyright and service credits line
 
 ---
 
 ## 1. What is TaxFlowAI?
 
-TaxFlowAI is a **tax and compliance platform** that connects Australian individuals and businesses with their accountant (E&A Advisory Pty Ltd). It is **powered by / operated by Frontline Financial** (Frontline Holdings Group). The platform offers:
+TaxFlowAI is a **tax and compliance platform** that connects Australian individuals and businesses with registered tax agents — once a client registers an account, they can engage a tax agent through the platform. It is **powered by / operated by Frontline Financial** (Frontline Holdings Group). The platform offers:
 
 - **For clients:** Upload receipts (AI-scanned and categorised), store documents, track lodgements and deadlines, vehicle logbook for ATO compliance, secure vault, and a friendly AI assistant named **Flo**.
 - **For accountants:** CRM, accounts and lodgement pipelines, document vault, engagement letters, ASIC agent services, and workflow tools.
@@ -71,8 +71,8 @@ You may introduce additional tints (e.g. soft blue or purple in gradients) for t
 ## 3. Target Audiences
 
 - **Primary:** Australian individuals and small-business owners who want a simpler way to do tax with their accountant — upload receipts, see status, stay organised.
-- **Secondary:** Accountants and practices (e.g. E&A Advisory) who use or recommend TaxFlowAI for their clients; the site should support "recommend to your clients" or "work with us" if relevant.
-- **Trust:** ATO-compliant, secure, encrypted; registered tax agent (E&A Advisory); data in Australia where applicable. The site should feel trustworthy and compliant without sounding like a legal document.
+- **Secondary:** Accountants and practices who use or recommend TaxFlowAI for their clients; the site should support "recommend to your clients" or "work with us" if relevant.
+- **Trust:** ATO-compliant, secure, encrypted; registered tax agents engaged through the platform; data in Australia where applicable. The site should feel trustworthy and compliant without sounding like a legal document.
 
 ---
 
@@ -83,7 +83,7 @@ Design **one scrolling landing page**. Suggested sections (designer may combine 
 - **Hero:** Strong headline (e.g. "Your tax, under control" or "Always know what's happening with your taxes"). Sub-head that's benefit-led. Primary CTA: Sign up / Get started.
 - **Problem / solution (optional block):** Short pain points (lost receipts, unclear status, hard to reach accountant) and how TaxFlowAI fixes them (Flo, vault, status, one place to upload and communicate). Can be folded into hero or one short section.
 - **Features (for clients):** Receipts + AI scan, document vault, lodgement visibility, Flo, secure and ATO-aligned. Icons or short visuals; scannable copy. Keep compact so the page doesn't feel long.
-- **Trust:** Security, tax agent, "Powered by Frontline Financial," E&A Advisory. One short strip or footer block.
+- **Trust:** Security, registered tax agents, "Powered by Frontline Financial." One short strip or footer block.
 - **Footer:** Links (Privacy, Terms if applicable), contact, TaxFlowAI + Powered by Frontline Financial. **Do not change the existing footer:** keep Privacy Policy, Collection Notice, Terms of Service, Verify Tax Agent. Repeat CTA (Sign up / Get started) if it fits.
 
 Everything above lives on **one page**; no separate "Features" or "About" pages for now.
@@ -132,4 +132,4 @@ Use these to keep the website message aligned with what users see after they sig
 
 ## Summary
 
-Design **one marketing landing page for TaxFlowAI** that is dark-themed, teal-accented, and built around three ideas: **always know what's happening**, **stay organised**, and **reach your accountant**. All content lives on a **single scrolling page** (hero, optional problem/solution, features, trust, footer). The page should feel like a clear, confident, Australian tax-tech product and a natural lead-in to the existing TaxFlowAI app (taxflowai.frontline.financial), with "Powered by Frontline Financial" and E&A Advisory (tax agent) clearly acknowledged. **The footer must not be changed:** keep Privacy Policy, Collection Notice, Terms of Service, and Verify Tax Agent. Deliver visual direction, the one-page layout (desktop + mobile), and optional Figma/components and copy suggestions.
+Design **one marketing landing page for TaxFlowAI** that is dark-themed, teal-accented, and built around three ideas: **always know what's happening**, **stay organised**, and **reach your accountant**. All content lives on a **single scrolling page** (hero, optional problem/solution, features, trust, footer). The page should feel like a clear, confident, Australian tax-tech product and a natural lead-in to the existing TaxFlowAI app (taxflowai.frontline.financial), with "Powered by Frontline Financial" and registered tax agents clearly acknowledged. **The footer must not be changed:** keep Privacy Policy, Collection Notice, Terms of Service, and Verify Tax Agent. Deliver visual direction, the one-page layout (desktop + mobile), and optional Figma/components and copy suggestions.

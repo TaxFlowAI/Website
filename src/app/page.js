@@ -470,7 +470,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-8 text-sm text-white/70">
-            Tax services supervised by E&amp;A Advisory Pty Ltd — Registered Tax Agent
+            Tax services supervised by Registered Tax Agents
           </p>
         </div>
       </section>

@@ -749,10 +749,10 @@ export default function FinancialCalculatorsPage() {
                     series={
                       mortgage.hasLever
                         ? [
-                            { values: mortgage.baseline.balances, color: PRINCIPAL_COLOR, dashed: true, label: "Balance — standard" },
-                            { values: cumulativeInterest(mortgage.baseline.rows), color: INTEREST_COLOR, dashed: true, label: "Interest — standard" },
-                            { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
-                            { values: cumulativeInterest(mortgage.scenario.rows), color: INTEREST_COLOR, label: "Interest paid" },
+                            { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Balance (your plan)" },
+                            { values: cumulativeInterest(mortgage.scenario.rows), color: INTEREST_COLOR, label: "Interest (your plan)" },
+                            { values: mortgage.baseline.balances, color: PRINCIPAL_COLOR, dashed: true, label: "Balance (standard)" },
+                            { values: cumulativeInterest(mortgage.baseline.rows), color: INTEREST_COLOR, dashed: true, label: "Interest (standard)" },
                           ]
                         : [
                             { values: mortgage.scenario.balances, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance" },
@@ -814,10 +814,10 @@ export default function FinancialCalculatorsPage() {
                   <LoanBalanceChart
                     xMaxMonths={Math.max(refResult.nCur, refResult.nNew)}
                     series={[
-                      { values: refResult.balancesCur, color: PRINCIPAL_COLOR, dashed: true, label: "Balance — current" },
-                      { values: refResult.cumIntCur, color: INTEREST_COLOR, dashed: true, label: "Interest — current" },
-                      { values: refResult.balancesNew, color: PRINCIPAL_COLOR, fill: true, label: "Loan balance — new" },
-                      { values: refResult.cumIntNew, color: INTEREST_COLOR, label: "Interest paid — new" },
+                      { values: refResult.balancesNew, color: PRINCIPAL_COLOR, fill: true, label: "Balance (new)" },
+                      { values: refResult.cumIntNew, color: INTEREST_COLOR, label: "Interest (new)" },
+                      { values: refResult.balancesCur, color: PRINCIPAL_COLOR, dashed: true, label: "Balance (current)" },
+                      { values: refResult.cumIntCur, color: INTEREST_COLOR, dashed: true, label: "Interest (current)" },
                     ]}
                   />
                 </ChartCard>

@@ -141,7 +141,7 @@ export default function AboutPage() {
             We don&apos;t try to be everything to everyone. Each business is led by a specialist who lives and breathes their field — so you always get genuine expertise.
           </p>
           <p className="mt-4 text-sm text-[#39B2B2]">
-            Tax and accounting services delivered through TaxFlowAI are provided by E&amp;A Advisory Pty Ltd, Registered Tax Agent.
+            Tax and accounting services delivered through TaxFlowAI are provided by Registered Tax Agents.
           </p>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <article className="rounded-2xl border-t-4 border-[#00FCB8] bg-[#1a5f7a] p-8">
@@ -293,7 +293,7 @@ export default function AboutPage() {
               <p className="text-[#39B2B2]">Director — Frontline Financial</p>
               <p className="mt-1 text-sm text-gray-500">Accredited Member (FBAA) · Finance Broker</p>
               <p className="mt-4 text-sm leading-relaxed text-[#1C5472]">
-                Hassan is Director at Frontline Financial Brokers. He also works as a tax professional with EA Advisory Pty Ltd, where he is developing TaxFlowAI and provides CFO services to small and medium-sized entities with turnover not exceeding $10 million. Hassan has over 4 years of experience working in the accounting and finance industry. Hassan has completed over 500 tax returns and has settled over 20 million in home loans, car loans, and commercial loans throughout his career. Hassan&apos;s approach: take the time to understand what the client goals are, then find the best path to get them there.
+                Hassan is Director at Frontline Financial Brokers. He also works as a tax professional, developing TaxFlowAI and providing CFO services to small and medium-sized entities with turnover not exceeding $10 million. Hassan has over 4 years of experience working in the accounting and finance industry. Hassan has completed over 500 tax returns and has settled over 20 million in home loans, car loans, and commercial loans throughout his career. Hassan&apos;s approach: take the time to understand what the client goals are, then find the best path to get them there.
               </p>
               <p className="mt-4 text-sm italic text-gray-600">
                 <span className="text-[#00FCB8]">★★★★★</span> &quot;Hassan was proactive and professional throughout the process of home loan applications and settlement leading to a successful settlement. Highly recommend his services.&quot; — Brendan Piech

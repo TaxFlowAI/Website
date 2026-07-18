@@ -93,7 +93,7 @@ export default function TaxFlowContactPage() {
             </div>
           </div>
           <p className="border-t border-white/[0.06] bg-[#060D1A] py-1.5 text-center text-[11px] text-white/50">
-            Tax services supervised by E&A Advisory Pty Ltd · Registered Tax Agent
+            Tax services supervised by Registered Tax Agents
           </p>
         </div>
       </header>
@@ -221,7 +221,7 @@ export default function TaxFlowContactPage() {
           )}
 
           <p className="mt-10 text-sm text-white/50">
-            Tax and accounting services provided by E&A Advisory Pty Ltd (Registered Tax Agent). TaxFlowAI is the technology platform.
+            Tax and accounting services are provided by the registered tax agent you engage through the platform. TaxFlowAI is the technology platform.
           </p>
         </div>
       </main>

@@ -35,7 +35,7 @@ export default function CompliancePage({
     <div className="compliance-page">
       <div className="compliance-header">
         <div className="compliance-brand">
-          E&A Advisory Pty Ltd
+          TaxFlowAI
         </div>
         <Link
           href="/taxflow"
@@ -59,8 +59,8 @@ export default function CompliancePage({
               {COMPLIANCE_CONFIG.FH_ASIC}
             </div>
             <div>
-              <strong>Tax agent:</strong> {COMPLIANCE_CONFIG.EA_NAME} (ABN:{" "}
-              {COMPLIANCE_CONFIG.EA_ABN}) — TAN: {COMPLIANCE_CONFIG.EA_TAN}
+              <strong>Tax agent:</strong> the registered tax agent you engage
+              through TaxFlowAI, identified in your Engagement Letter
             </div>
           </div>
         )}
@@ -133,7 +133,7 @@ export default function CompliancePage({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Verify Tax Agent (TAN: {COMPLIANCE_CONFIG.EA_TAN})
+          Verify Tax Agent
         </a>
       </div>
     </div>
