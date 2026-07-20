@@ -2,7 +2,7 @@ import Link from "next/link";
 import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
-import { container, CtaBand, Breadcrumbs, FeesSection, FaqList } from "@/components/taxflow/TaxFlowShared";
+import { container, CtaBand, Breadcrumbs, FeesSection, FaqList, SwitchingModule } from "@/components/taxflow/TaxFlowShared";
 import { faqSubset } from "@/data/taxflow-faq";
 
 export const metadata = {
@@ -164,6 +164,9 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </section>
+
+      {/* switching reassurance — main path, not buried in FAQs */}
+      <SwitchingModule />
 
       <CtaBand />
       <TaxFlowAppFooter />

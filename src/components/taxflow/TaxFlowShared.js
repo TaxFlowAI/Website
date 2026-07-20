@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GOOGLE_REVIEWS, TAX_AGENTS, PROOF_STATS } from "@/data/taxflow-proof";
 
 export const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
 export const CALENDLY_URL = "https://calendly.com/taxflowai/discovery-call";
@@ -32,7 +33,14 @@ export function CtaBand() {
               Book a free 30-min call
             </a>
           </div>
-          <p className="tc-mono mt-5 text-[11.5px]" style={{ color: "#94A3B8" }}>
+          <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>
+            Not ready to sign up?{" "}
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="tc-link">
+              Talk to a real tax agent first
+            </a>{" "}
+            — free, no obligation.
+          </p>
+          <p className="tc-mono mt-4 text-[11.5px]" style={{ color: "#94A3B8" }}>
             FREE TO SIGN UP · NO CARD · NO SUBSCRIPTION · YOU APPROVE EVERY QUOTE
           </p>
         </div>
@@ -249,8 +257,13 @@ export function SecuritySection() {
   );
 }
 
-/* ---------- testimonials — structure only; quotes are owner input ---------- */
-export function TestimonialsSection() {
+/* ---------- Google reviews — REAL data only, gated on taxflow-proof.js ----------
+   Renders nothing until rating, count, profileUrl and at least one verbatim
+   review are supplied. Never ship placeholder or invented reviews. */
+export function GoogleReviewsSection() {
+  const { rating, count, profileUrl, reviews } = GOOGLE_REVIEWS;
+  const published = Boolean(rating && count && profileUrl && reviews.length > 0);
+  if (!published) return null;
   return (
     <section className="border-t" style={{ background: "#060D1A", borderColor: "rgba(255,255,255,0.08)" }}>
       <div className={`${container} py-16 md:py-20`}>
@@ -261,28 +274,131 @@ export function TestimonialsSection() {
               Rated on Google
             </h2>
           </div>
-          {/* TODO: replace with live rating + review count from the Google Business profile */}
           <p className="tc-mono text-[12px]" style={{ color: "#94A3B8" }}>
-            ★★★★★ RATING &amp; REVIEW COUNT TO COME
+            ★ {rating} ON GOOGLE · {count} REVIEWS
           </p>
         </div>
         <div className="tc-reveal mt-10 grid gap-4 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <figure key={i} className="tc-card p-5">
-              {/* TODO: real review quote + reviewer first name from Google reviews — do not fabricate */}
+          {reviews.slice(0, 5).map((r) => (
+            <figure key={r.name + r.quote.slice(0, 16)} className="tc-card p-5">
               <blockquote className="text-[14px] italic leading-relaxed" style={{ color: "#94A3B8" }}>
-                Review quote to come.
+                &ldquo;{r.quote}&rdquo;
               </blockquote>
               <figcaption className="tc-mono mt-4 text-[11px]" style={{ color: "#64748B" }}>
-                — FIRST NAME, GOOGLE REVIEW
+                — {r.name.toUpperCase()}
+                {r.situation ? ` · ${r.situation.toUpperCase()}` : ""} · GOOGLE REVIEW
               </figcaption>
             </figure>
           ))}
         </div>
-        {/* TODO: link to the Google Business profile */}
-        <a href="#" className="tc-link mt-8 inline-block text-[14px] font-semibold">
+        <a
+          href={profileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tc-link mt-8 inline-block text-[14px] font-semibold"
+        >
           Read all reviews on Google
         </a>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- "Meet your tax agents" — REAL people only, gated ----------
+   Renders nothing until real agents (with real photos) are supplied in
+   taxflow-proof.js. No stock photos, no AI-generated faces. */
+export function AgentsSection() {
+  if (TAX_AGENTS.length === 0) return null;
+  return (
+    <section className="border-t" style={{ background: "#0A1628", borderColor: "rgba(255,255,255,0.08)" }}>
+      <div className={`${container} py-16 md:py-20`}>
+        <div className="tc-reveal max-w-xl">
+          <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>The humans</p>
+          <h2 className="tc-display mt-4 text-3xl text-white md:text-4xl">
+            Meet your tax agents
+          </h2>
+          <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+            Real, TPB-registered tax agents prepare and lodge your return —
+            here&apos;s who you&apos;re working with.
+          </p>
+        </div>
+        <div className="tc-reveal mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {TAX_AGENTS.slice(0, 4).map((agent) => (
+            <div key={agent.firstName} className="tc-card p-5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={agent.photoSrc}
+                alt={`${agent.firstName} — ${agent.credential}`}
+                className="h-20 w-20 rounded-full border object-cover"
+                style={{ borderColor: "rgba(0,252,184,0.3)" }}
+                loading="lazy"
+              />
+              <p className="mt-4 text-[16px] font-bold text-white">{agent.firstName}</p>
+              <p className="tc-mono mt-1 text-[10.5px]" style={{ color: "#00FCB8" }}>
+                {agent.credential.toUpperCase()}
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed" style={{ color: "#94A3B8" }}>
+                {agent.specialty}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- proof-of-scale strip — true metrics only, gated ---------- */
+export function StatStrip() {
+  const stats = [...PROOF_STATS];
+  const { rating, count, profileUrl } = GOOGLE_REVIEWS;
+  if (rating && count && profileUrl) {
+    stats.push({ value: `★ ${rating}`, label: `on Google (${count} reviews)` });
+  }
+  if (stats.length === 0) return null;
+  return (
+    <section className="border-t" style={{ background: "#0A1628", borderColor: "rgba(255,255,255,0.08)" }}>
+      <div className={`${container} flex flex-wrap items-center gap-x-10 gap-y-3 py-5`}>
+        {stats.map((s) => (
+          <p key={s.label} className="text-[13.5px]" style={{ color: "#94A3B8" }}>
+            <span className="tc-mono font-semibold" style={{ color: "#00FCB8" }}>{s.value}</span>{" "}
+            {s.label}
+          </p>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- "switching is painless" reassurance module ---------- */
+export function SwitchingModule() {
+  return (
+    <section className="border-t" style={{ background: "#060D1A", borderColor: "rgba(255,255,255,0.08)" }}>
+      <div className={`${container} py-14 md:py-16`}>
+        <div className="tc-reveal max-w-3xl rounded-xl border p-6 md:p-8" style={{ borderColor: "rgba(0,252,184,0.25)", background: "rgba(0,252,184,0.04)" }}>
+          <h2 className="text-xl font-bold text-white md:text-2xl">
+            Already have an accountant?
+          </h2>
+          <p className="mt-3 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+            Switching is simpler than most people expect. Engage a Registered Tax
+            Agent through TaxFlowAI and they&apos;ll request your details from your
+            previous accountant and pick up your lodgement history with the ATO — no
+            awkward break-up conversation, no starting from scratch.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-6 py-3 text-[14.5px] font-bold">
+              Get started
+            </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tc-btn-ghost rounded-lg px-6 py-3 text-[14.5px] font-semibold"
+            >
+              Book a free call
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -9,7 +9,10 @@ import {
   FeesSection,
   IntegrationsSection,
   SecuritySection,
-  TestimonialsSection,
+  GoogleReviewsSection,
+  AgentsSection,
+  StatStrip,
+  SwitchingModule,
   TAXFLOW_SIGNIN_URL,
   CALENDLY_URL,
 } from "@/components/taxflow/TaxFlowShared";
@@ -106,6 +109,10 @@ export default function TaxFlowHomePage() {
               under control.
             </h1>
             <p className="mt-5 max-w-md text-lg" style={{ color: "#B7C4CF" }}>
+              AI sorts your receipts, Registered Tax Agents lodge your return, and
+              every ATO deadline is tracked for you — free to start.
+            </p>
+            <p className="mt-3 max-w-md text-[14px]" style={{ color: "#94A3B8" }}>
               Tax made simple. For every Australian.
             </p>
             <p className="mt-4 max-w-md text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
@@ -138,7 +145,17 @@ export default function TaxFlowHomePage() {
                 Book a free 30-min call
               </a>
             </div>
-            <p className="tc-mono mt-5 text-[11.5px]" style={{ color: "#94A3B8" }}>
+            <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>
+              Start uploading in minutes — Flo files receipts as they land.
+            </p>
+            <p className="mt-2 text-[13.5px]" style={{ color: "#94A3B8" }}>
+              Not ready to sign up?{" "}
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="tc-link">
+                Talk to a real tax agent first
+              </a>{" "}
+              — free, no obligation.
+            </p>
+            <p className="tc-mono mt-4 text-[11.5px]" style={{ color: "#94A3B8" }}>
               FREE TO SIGN UP · NO CARD · NO SUBSCRIPTION
             </p>
           </div>
@@ -180,6 +197,9 @@ export default function TaxFlowHomePage() {
           </span>
         </div>
       </section>
+
+      {/* ============ PROOF-OF-SCALE STRIP (unpublished until real stats supplied) ============ */}
+      <StatStrip />
 
       {/* ============ MANIFESTO ============ */}
       <section style={{ background: "#0A1628" }}>
@@ -320,6 +340,9 @@ export default function TaxFlowHomePage() {
         </div>
       </section>
 
+      {/* ============ SWITCHING IS PAINLESS ============ */}
+      <SwitchingModule />
+
       {/* ============ MEET FLO ============ */}
       <section className="tc-depth-teal border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
         <div className={`${container} grid gap-12 py-16 md:py-24 lg:grid-cols-12`}>
@@ -353,11 +376,14 @@ export default function TaxFlowHomePage() {
         </div>
       </section>
 
+      {/* ============ MEET YOUR TAX AGENTS (unpublished until real agents supplied) ============ */}
+      <AgentsSection />
+
       {/* ============ SECURITY ============ */}
       <SecuritySection />
 
-      {/* ============ TESTIMONIALS ============ */}
-      <TestimonialsSection />
+      {/* ============ GOOGLE REVIEWS (unpublished until real reviews supplied) ============ */}
+      <GoogleReviewsSection />
 
       {/* ============ CTA ============ */}
       <CtaBand />

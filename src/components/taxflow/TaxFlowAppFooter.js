@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SOCIAL_LINKS } from "@/data/taxflow-proof";
 
 const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
 const TAXFLOW_PHONE = "0406 909 862";
@@ -30,30 +31,38 @@ export default function TaxFlowAppFooter() {
             <p className="mt-1 text-sm text-gray-500">
               Tax services by Registered Tax Agents
             </p>
-            <div className="mt-4 flex gap-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 transition hover:text-[#00FCB8]"
-                aria-label="LinkedIn"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
-                </svg>
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 transition hover:text-[#00FCB8]"
-                aria-label="Instagram"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" />
-                </svg>
-              </a>
-            </div>
+            {/* Social icons render only when REAL profile URLs are set in
+                src/data/taxflow-proof.js — never link to generic homepages */}
+            {(SOCIAL_LINKS.linkedin || SOCIAL_LINKS.instagram) && (
+              <div className="mt-4 flex gap-4">
+                {SOCIAL_LINKS.linkedin && (
+                  <a
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 transition hover:text-[#00FCB8]"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                    </svg>
+                  </a>
+                )}
+                {SOCIAL_LINKS.instagram && (
+                  <a
+                    href={SOCIAL_LINKS.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 transition hover:text-[#00FCB8]"
+                    aria-label="Instagram"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">

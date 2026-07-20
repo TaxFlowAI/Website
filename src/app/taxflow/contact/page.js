@@ -78,10 +78,8 @@ export default function TaxFlowContactPage() {
                 Email:{" "}
                 <a href="mailto:taxflowai@frontline.financial" className="tc-link">taxflowai@frontline.financial</a>
               </li>
-              <li>
-                {/* TODO: confirm office hours */}
-                Hours: <span className="tc-mono text-[13px]" style={{ color: "#64748B" }}>TO BE CONFIRMED</span>
-              </li>
+              {/* TODO(owner): add an "Hours:" line here once office hours are confirmed —
+                  intentionally omitted rather than shipping a placeholder */}
             </ul>
             <div className="mt-8 space-y-8">
               {OFFICES.map((office) => (
