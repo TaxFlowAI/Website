@@ -1,0 +1,344 @@
+/* ================================================================
+   TaxFlowAI — "The Current" on the app's own design system
+   Colour + surfaces sampled from the live app CSS (taxflowai
+   .frontline.financial): --bg #0A1628, --surface #0f1729,
+   --accent #00FCB8, radius 8/12/16, glow rgba(0,252,184,.25).
+   The brand's wave motif matured into a single glowing current.
+   ================================================================ */
+
+.tc-page {
+  --tc-bg: #0A1628;
+  --tc-bg-deep: #060D1A;
+  --tc-surface: #0F1729;
+  --tc-surface-el: #151D32;
+  --tc-border: rgba(255, 255, 255, 0.08);
+  --tc-aqua: #00FCB8;
+  --tc-aqua-hover: #00E0A4;
+  --tc-glow: rgba(0, 252, 184, 0.25);
+  --tc-teal: #39B2B2;
+  --tc-blue: #1C5472;
+  --tc-text: #FFFFFF;
+  --tc-muted: #94A3B8;
+  --tc-warning: #F59E0B;
+  --tc-danger: #EF4444;
+  --tc-working: #0EA5E9;
+  background: var(--tc-bg);
+  color: var(--tc-text);
+}
+
+/* ---------- type ---------- */
+.tc-display {
+  font-family: var(--font-display-tf), "DM Sans", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.tc-mono {
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+.tc-eyebrow {
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- focus (keyboard) — app convention: aqua focus ring ---------- */
+.tc-page a:focus-visible,
+.tc-page button:focus-visible {
+  outline: 2px solid var(--tc-aqua);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- the current: teal → aqua, glowing on navy ---------- */
+.tc-grad-line-v {
+  background: linear-gradient(180deg, var(--tc-teal), var(--tc-aqua));
+}
+.tc-grad-line-h {
+  background: linear-gradient(90deg, var(--tc-teal), var(--tc-aqua));
+}
+.tc-glow-line {
+  box-shadow: 0 0 16px var(--tc-glow);
+}
+
+/* hero current: path draws itself once on load */
+.tc-hero-path {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: tc-draw 1.6s cubic-bezier(0.6, 0, 0.2, 1) 0.3s forwards;
+  filter: drop-shadow(0 0 6px rgba(0, 252, 184, 0.45));
+}
+@keyframes tc-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.tc-hero-dots { opacity: 0; animation: tc-fade 0.6s ease 1.6s forwards; }
+@keyframes tc-fade { to { opacity: 1; } }
+
+/* D-code rail chips pulse as the flow "arrives" */
+.tc-code-chip { animation: tc-chip-pulse 6s ease-in-out infinite; }
+.tc-code-chip:nth-child(2) { animation-delay: 2s; }
+.tc-code-chip:nth-child(3) { animation-delay: 4s; }
+@keyframes tc-chip-pulse {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.08); color: #94A3B8; box-shadow: none; }
+  8%, 20% { border-color: #00FCB8; color: #00FCB8; box-shadow: 0 0 12px rgba(0, 252, 184, 0.2); }
+  28% { border-color: rgba(255, 255, 255, 0.08); color: #94A3B8; box-shadow: none; }
+}
+
+/* ---------- scroll reveals ---------- */
+.tc-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.tc-reveal.tc-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* how-it-works spine draws when the section is visible */
+.tc-spine {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.1s cubic-bezier(0.6, 0, 0.2, 1) 0.15s;
+  box-shadow: 0 0 12px var(--tc-glow);
+}
+.tc-visible .tc-spine,
+.tc-spine.tc-visible {
+  transform: scaleY(1);
+}
+
+/* station nodes: luminous points on the current */
+.tc-node {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tc-teal), var(--tc-aqua));
+  box-shadow: 0 0 0 4px rgba(0, 252, 184, 0.12), 0 0 14px rgba(0, 252, 184, 0.35);
+}
+
+/* logbook progress: fill animates to its width when visible */
+.tc-progress-fill {
+  width: 0;
+  transition: width 1s cubic-bezier(0.6, 0, 0.2, 1) 0.3s;
+}
+.tc-visible .tc-progress-fill {
+  width: var(--tc-progress, 68%);
+}
+
+/* ---------- nav links: underline grows from left ---------- */
+.tc-nav-link { position: relative; }
+.tc-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1.5px;
+  background: var(--tc-aqua);
+  transition: width 0.22s ease;
+}
+.tc-nav-link:hover::after { width: 100%; }
+
+/* ---------- buttons — app convention: aqua fill, navy text ---------- */
+.tc-btn-primary {
+  background: var(--tc-aqua);
+  color: var(--tc-bg);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.tc-btn-primary:hover {
+  background: var(--tc-aqua-hover);
+  box-shadow: 0 0 24px var(--tc-glow);
+  transform: translateY(-1px);
+}
+.tc-btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--tc-text);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.tc-btn-ghost:hover {
+  border-color: var(--tc-aqua);
+  color: var(--tc-aqua);
+  background: rgba(0, 252, 184, 0.05);
+}
+
+/* text links */
+.tc-link {
+  color: var(--tc-aqua);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 252, 184, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.tc-link:hover { text-decoration-color: var(--tc-aqua); }
+
+/* ---------- product panel — the app's surface language ---------- */
+.tc-panel {
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+.tc-tab {
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.tc-row { transition: background 0.18s ease; }
+.tc-row:hover { background: rgba(255, 255, 255, 0.04); }
+
+/* surface card (features showcases, security band) */
+.tc-card {
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: 12px;
+}
+
+/* ---------- entity chips on the thread ---------- */
+.tc-chip {
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tc-chip:hover {
+  border-color: var(--tc-aqua);
+  box-shadow: 0 0 14px rgba(0, 252, 184, 0.12);
+}
+
+/* ---------- depth: brand mid-tone tints (never flat black + neon) ---------- */
+.tc-depth-blue {
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 0%, rgba(28, 84, 114, 0.35) 0%, transparent 60%),
+    var(--tc-bg);
+}
+.tc-depth-teal {
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 100%, rgba(57, 178, 178, 0.12) 0%, transparent 60%),
+    var(--tc-bg-deep);
+}
+
+/* ---------- left spine hairline (desktop, ties sections together) ---------- */
+@media (min-width: 1024px) {
+  .tc-section-spined { position: relative; }
+  .tc-section-spined::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: max(2rem, calc((100vw - 72rem) / 2 - 2.5rem));
+    width: 1.5px;
+    background: linear-gradient(180deg, rgba(57, 178, 178, 0.4), rgba(0, 252, 184, 0.15));
+    pointer-events: none;
+  }
+}
+
+/* ---------- footer accent (app aqua) ---------- */
+.app-footer-taxflow .footer-links-taxflow a { color: #00FCB8; }
+.app-footer-taxflow .footer-links-taxflow a:hover { color: #00E0A4; }
+
+/* ---------- breadcrumbs ---------- */
+.tc-crumbs {
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94A3B8;
+}
+.tc-crumbs a {
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.tc-crumbs a:hover { color: var(--tc-aqua); }
+.tc-crumbs [aria-current] { color: #E2E8F0; }
+
+/* ---------- FAQ accordions (native details for a11y) ---------- */
+.tc-faq {
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: 12px;
+}
+.tc-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.tc-faq summary::-webkit-details-marker { display: none; }
+.tc-faq summary::after {
+  content: "+";
+  font-family: var(--font-mono-tf), monospace;
+  color: var(--tc-aqua);
+  flex-shrink: 0;
+}
+.tc-faq[open] summary::after { content: "–"; }
+.tc-faq > div {
+  padding: 0 1.25rem 1.125rem;
+  color: #94A3B8;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.tc-faq summary:focus-visible {
+  outline: 2px solid var(--tc-aqua);
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+
+/* ---------- integration cards ---------- */
+.tc-int-card {
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tc-int-card:hover {
+  border-color: rgba(0, 252, 184, 0.4);
+  box-shadow: 0 0 18px rgba(0, 252, 184, 0.08);
+}
+
+/* ---------- embedded maps ---------- */
+.tc-map {
+  border: 1px solid var(--tc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  filter: grayscale(0.35) contrast(1.02);
+}
+.tc-map iframe { display: block; width: 100%; height: 260px; border: 0; }
+
+/* ---------- mobile nav drawer ---------- */
+.tc-drawer {
+  border-top: 1px solid var(--tc-border);
+  background: var(--tc-bg-deep);
+}
+.tc-drawer a {
+  display: block;
+  padding: 0.8rem 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #E2E8F0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tc-drawer a:hover { color: var(--tc-aqua); }
+
+/* ---------- reduced motion: freeze the current to a static line ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tc-hero-path {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .tc-hero-dots { display: none; }
+  .tc-code-chip { animation: none; }
+  .tc-reveal { opacity: 1; transform: none; transition: none; }
+  .tc-spine { transform: scaleY(1); transition: none; }
+  .tc-progress-fill { width: var(--tc-progress, 68%); transition: none; }
+  .tc-btn-primary:hover { transform: none; }
+}

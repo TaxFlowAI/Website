@@ -42,6 +42,8 @@ export default function BrandSwitcherBar() {
             TaxFlowAI
           </Link>
         </div>
+        {/* On /taxflow the phone lives in the TaxFlowAI nav — avoid duplicating it */}
+        {isTaxFlow ? null : (
         <a
           href={phoneLink}
           className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-white transition hover:text-white/90"
@@ -61,6 +63,7 @@ export default function BrandSwitcherBar() {
           </svg>
           {phone}
         </a>
+        )}
       </div>
     </div>
   );
