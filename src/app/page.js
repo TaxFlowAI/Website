@@ -470,7 +470,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-8 text-sm text-white/70">
-            Tax services supervised by Registered Tax Agents
+            TaxFlowAI is a technology platform that connects you with Registered Tax Agents, who provide all tax services
           </p>
         </div>
       </section>

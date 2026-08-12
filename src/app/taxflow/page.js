@@ -101,7 +101,7 @@ export default function TaxFlowHomePage() {
         <div className={`${container} grid items-center gap-12 py-16 md:py-24 lg:grid-cols-12 lg:gap-8`}>
           <div className="lg:col-span-6">
             <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>
-              Tax services supervised by Registered Tax Agents
+              The platform that connects you with Registered Tax Agents
             </p>
             <h1 className="tc-display mt-5 text-[2.9rem] text-white md:text-6xl lg:text-[4.2rem]">
               Your tax,
@@ -109,8 +109,9 @@ export default function TaxFlowHomePage() {
               under control.
             </h1>
             <p className="mt-5 max-w-md text-lg" style={{ color: "#B7C4CF" }}>
-              AI sorts your receipts, Registered Tax Agents lodge your return, and
-              every ATO deadline is tracked for you — free to start.
+              AI sorts your receipts, the Registered Tax Agent you engage through
+              the platform lodges your return, and every ATO deadline is tracked
+              for you — free to start.
             </p>
             <p className="mt-3 max-w-md text-[14px]" style={{ color: "#94A3B8" }}>
               Tax made simple. For every Australian.
@@ -170,7 +171,7 @@ export default function TaxFlowHomePage() {
       <section className="border-t" style={{ borderColor: "rgba(255,255,255,0.08)", background: "#060D1A" }}>
         <div className={`${container} flex flex-wrap items-center gap-x-8 gap-y-2 py-5`}>
           {[
-            ["Registered Tax Agents", null],
+            ["Connects you with Registered Tax Agents", null],
             ["ASIC agent 51843", null],
             ["ABN 59 671 861 475", null],
             ["Verify tax agent ↗", "https://tpb.gov.au/registrations_search"],

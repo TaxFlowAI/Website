@@ -44,7 +44,9 @@ export const metadata = {
   },
 };
 
-/* AccountingService / LocalBusiness + Organization schema for TaxFlowAI.
+/* LocalBusiness + Organization schema for TaxFlowAI. Deliberately NOT
+   AccountingService — TaxFlowAI is the technology platform; tax services are
+   provided by the Registered Tax Agent a client engages through it.
    Both offices; geo coordinates are approximate (TODO: confirm exact pins). */
 const ORG_SCHEMA = {
   "@context": "https://schema.org",
@@ -65,7 +67,7 @@ const ORG_SCHEMA = {
       },
     },
     {
-      "@type": "AccountingService",
+      "@type": "LocalBusiness",
       "@id": "https://frontline.financial/taxflow#parramatta",
       name: "TaxFlowAI — Parramatta",
       parentOrganization: { "@id": "https://frontline.financial/taxflow#org" },
@@ -83,7 +85,7 @@ const ORG_SCHEMA = {
       geo: { "@type": "GeoCoordinates", latitude: -33.815, longitude: 151.0011 },
     },
     {
-      "@type": "AccountingService",
+      "@type": "LocalBusiness",
       "@id": "https://frontline.financial/taxflow#sydney",
       name: "TaxFlowAI — Sydney",
       parentOrganization: { "@id": "https://frontline.financial/taxflow#org" },

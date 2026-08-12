@@ -26,10 +26,10 @@ export default function TaxFlowAppFooter() {
               <span className="text-[#00FCB8]">AI</span>
             </p>
             <p className="mt-2 text-sm text-gray-500">
-              TaxFlowAI is the platform.
+              TaxFlowAI is the technology platform — not a registered tax agent.
             </p>
             <p className="mt-1 text-sm text-gray-500">
-              Tax services by Registered Tax Agents
+              It connects you with Registered Tax Agents, who provide all tax services.
             </p>
             {/* Social icons render only when REAL profile URLs are set in
                 src/data/taxflow-proof.js — never link to generic homepages */}
@@ -172,14 +172,16 @@ export default function TaxFlowAppFooter() {
               </a>
             </div>
             <div className="footer-entities-taxflow">
-              Tax services provided by Registered Tax Agents
+              TaxFlowAI is a technology platform, not a registered tax agent. Tax
+              services are provided by the Registered Tax Agent you engage through
+              the platform.
               <br />
               Platform & ASIC Agent: Frontline Holdings Group Pty Ltd (ABN: 59
               671 861 475, ASIC Agent: 51843)
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              TaxFlowAI © {year} · Tax services by Registered Tax Agents · Platform
-              by Frontline Financial Group
+              TaxFlowAI © {year} · Connecting you with Registered Tax Agents ·
+              Platform by Frontline Financial Group
             </p>
           </div>
         </div>

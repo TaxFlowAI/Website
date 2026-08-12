@@ -54,7 +54,7 @@ export default function Image() {
             color: "#64748B",
           }}
         >
-          Snap receipts · Track ATO deadlines · Registered Tax Agents · Free to sign up
+          Snap receipts · Track ATO deadlines · Work with Registered Tax Agents · Free to sign up
         </div>
       </div>
     ),
