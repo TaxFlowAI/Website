@@ -89,7 +89,7 @@ export default function BrokersPage() {
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">No Cost to You</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
-            <span className="text-white">5/5 Google Reviews</span>
+            <span className="text-white">100+ 5-Star Reviews</span>
           </div>
           <p className="mt-6 text-sm italic text-[#39B2B2]">We work for you — not the banks.</p>
         </div>

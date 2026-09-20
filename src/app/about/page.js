@@ -56,7 +56,7 @@ export default function AboutPage() {
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">Level 49, 8 Parramatta Square</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
-            <span className="text-white">5/5 Google Reviews</span>
+            <span className="text-white">100+ 5-Star Reviews</span>
           </div>
         </div>
       </section>

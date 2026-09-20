@@ -55,7 +55,7 @@ const TRUST_BADGES = [
         <path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" />
       </svg>
     ),
-    line1: "5/5 Google Reviews",
+    line1: "100+ 5-Star Reviews",
     line2: "500+ Clients Helped",
   },
   {
@@ -109,6 +109,33 @@ const CONSULTATION_SERVICES = [
 export default function Home() {
   const router = useRouter();
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewCount, setReviewCount] = useState(0);
+
+  // Count-up to 100+ when the reviews section scrolls into view
+  useEffect(() => {
+    const el = document.getElementById("review-count");
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReviewCount(100);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        obs.disconnect();
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / 1400, 1);
+          setReviewCount(Math.round(100 * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   const [consultationStep, setConsultationStep] = useState("choose"); // "choose" | "form"
   const [selectedService, setSelectedService] = useState(null);
   const [consultationForm, setConsultationForm] = useState({ firstName: "", lastName: "", email: "", phone: "" });
@@ -267,26 +294,58 @@ export default function Home() {
 
       <WaveDivider fill="#39B2B2" />
 
-      {/* GOOGLE REVIEWS — rotating carousel: 3 cards on desktop, 1 on mobile + link to Google */}
-      <section className="bg-[#39B2B2] px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
-            Trusted by clients across Australia
-          </h2>
-          <a href={GOOGLE_REVIEW_LINK} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex flex-wrap items-center gap-3 text-white/90 transition hover:text-white">
-            <div className="flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5">
-              <span className="text-xl font-bold text-[#4285F4]">G</span>
-              <span className="text-sm font-medium">Google Reviews</span>
+      {/* GOOGLE REVIEWS — 100+ five-star reviews: count-up stat + rotating carousel */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#39B2B2] via-[#2E9E9E] to-[#39B2B2] px-4 py-16 md:px-6 md:py-24 lg:px-8">
+        {/* glow + giant star watermark */}
+        <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.14] blur-[110px]" aria-hidden />
+        <div className="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-[#1C5472] opacity-[0.25] blur-[110px]" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden>
+          <svg className="h-[130%] w-auto text-white opacity-[0.05]" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">
+                Rated five stars. Every. Single. Review.
+              </p>
+              <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-5xl">
+                Trusted by clients across Australia
+              </h2>
+              <p className="mt-4 max-w-lg text-base text-white/85 md:text-lg">
+                Over one hundred Australians have taken the time to leave us a review
+                on Google — and every single one gave us five stars.
+              </p>
             </div>
-            <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <svg key={i} className="h-5 w-5 text-[#FFD700]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
+            {/* the big number */}
+            <div id="review-count" className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm">
+              <div className="flex justify-center gap-1" aria-hidden>
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg key={i} className="h-7 w-7 text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.6)] md:h-8 md:w-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="mt-2 text-6xl font-extrabold tracking-tight text-white md:text-7xl">
+                {reviewCount}
+                <span className="text-[#00FCB8]">+</span>
+              </p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-white/85 md:text-sm">
+                Five-star Google reviews
+              </p>
+              <p className="mt-1 text-xs text-white/70">5.0 average · 100% five stars</p>
+              <a
+                href={GOOGLE_REVIEW_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-[#1C5472] transition-all duration-200 hover:scale-105"
+              >
+                <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
+                Read them all on Google
+              </a>
             </div>
-            <span className="text-sm">5/5 · Reviews — View all</span>
-          </a>
+          </div>
           <div className="relative mt-10 flex items-center gap-2 md:gap-4">
             <button type="button" onClick={() => setReviewIndex((i) => (i - 1 + GOOGLE_REVIEWS.length) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-full bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Previous reviews">
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
