@@ -68,7 +68,8 @@ function ClockIcon({ className }) {
   );
 }
 
-const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/150+George+Street+Parramatta+NSW+2150";
+const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/8+Parramatta+Square+Parramatta+NSW+2150";
+const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -191,7 +192,7 @@ export default function ContactPage() {
               className="flex flex-col items-center rounded-full border border-white/20 bg-[#0A1628] px-6 py-3 text-center"
             >
               <LocationIcon className="h-6 w-6 text-[#00FCB8]" />
-              <span className="mt-1 font-medium text-white">150 George St, Parramatta</span>
+              <span className="mt-1 font-medium text-white">Level 49, 8 Parramatta Square</span>
               <span className="text-xs text-[#39B2B2]">Mon–Fri 9am–5pm</span>
             </a>
           </div>
@@ -405,7 +406,7 @@ export default function ContactPage() {
                 Come in for a free, no-obligation consultation. No appointment needed — though booking ahead means we can prepare for your specific situation.
               </p>
               <ul className="mt-4 space-y-1 text-sm text-white">
-                <li>📍 150 George Street, Parramatta NSW 2150</li>
+                <li>📍 Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
                 <li>🕐 Monday – Friday: 9:00am – 5:00pm</li>
                 <li>📞 +61 422 959 486</li>
               </ul>
@@ -435,6 +436,75 @@ export default function ContactPage() {
               <p className="mt-2 text-sm italic text-[#1C5472]">
                 &ldquo;The team at Frontline Financial are extraordinary at what they do.&rdquo; — Oliver S.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WaveDivider fill="#0A1628" />
+
+      {/* OUR LOCATION — Level 49, 8 Parramatta Square (matches homepage section) */}
+      <section className="relative overflow-hidden bg-[#0A1628] px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="pointer-events-none absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[#39B2B2] opacity-[0.07] blur-[90px]" aria-hidden />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Our location</p>
+            <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
+              Visit us at Parramatta Square
+            </h2>
+            <p className="mt-5 text-lg font-semibold text-white">
+              Level 49, 8 Parramatta Square
+              <br />
+              Parramatta NSW 2150
+            </p>
+            <p className="mt-3 max-w-md text-sm text-white/70">
+              Level 49 of the 8 Parramatta Square tower, in the heart of the
+              precinct — drop in for a consultation, or find us on Google for
+              reviews, photos and opening hours.
+            </p>
+            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row">
+              <a
+                href={GOOGLE_REVIEW_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+              >
+                <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
+                Find us on Google
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=8%20Parramatta%20Square%2C%20Parramatta%20NSW%202150"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]"
+              >
+                Get directions
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
+            <div className="mt-8 overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+              <iframe
+                src="https://www.google.com/maps?q=8+Parramatta+Square,+Parramatta+NSW+2150&output=embed"
+                title="Map — Frontline Financial, Level 49, 8 Parramatta Square, Parramatta NSW 2150"
+                className="block h-56 w-full border-0 md:h-64"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <div className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/frontline-8-parramatta-square.webp"
+                alt="The 8 Parramatta Square tower — Frontline Financial's office is on Level 49"
+                className="block h-auto w-full max-w-md object-cover"
+                width={1066}
+                height={1421}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

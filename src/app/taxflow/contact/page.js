@@ -7,7 +7,7 @@ import { container, CtaBand, Breadcrumbs, CALENDLY_URL } from "@/components/taxf
 export const metadata = {
   title: "Contact",
   description:
-    "Book a free 30-minute call, or reach TaxFlowAI at 150 George Street Parramatta or Martin Place Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
+    "Book a free 30-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or Martin Place Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
   alternates: { canonical: "/taxflow/contact" },
   openGraph: {
     title: "Contact TaxFlowAI",
@@ -20,9 +20,9 @@ export const metadata = {
 const OFFICES = [
   {
     name: "Parramatta",
-    address: "150 George Street, Parramatta NSW 2150",
+    address: "Level 49, 8 Parramatta Square, Parramatta NSW 2150",
     mapSrc:
-      "https://www.google.com/maps?q=150+George+Street,+Parramatta+NSW+2150&output=embed",
+      "https://www.google.com/maps?q=8+Parramatta+Square,+Parramatta+NSW+2150&output=embed",
   },
   {
     name: "Sydney",

@@ -27,7 +27,7 @@ export default function CalculatorDisclaimerBrokingPage() {
             <p className="mt-1 text-sm">Authorised to engage in credit activities.</p>
             <p className="mt-4 text-sm">Contact: Hassan Arif — Director, Accredited Member (FBAA), Finance Broker</p>
             <p className="text-sm">Phone: <a href="tel:+61422959486" className="text-[#00FCB8] hover:underline">0422 959 486</a></p>
-            <p className="text-sm">Address: 150 George St, Parramatta NSW 2150</p>
+            <p className="text-sm">Address: Level 49, 8 Parramatta Square, Parramatta NSW 2150</p>
           </div>
 
           <div>

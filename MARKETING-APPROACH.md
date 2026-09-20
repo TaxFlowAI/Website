@@ -24,7 +24,7 @@ One team. One goal. Help every Australian — all 26 million. Not just Western S
 
 - **Primary:** Australians seeking home loans, refinancing, first home buyer support, investment property loans, car loans, equipment finance, or fleet finance.
 - **Secondary:** Small to mid-size businesses (commercial vehicles, equipment, working capital).
-- **Geography:** Nationwide; physical presence and community identity in **Western Sydney / Parramatta** (150 George St, Parramatta NSW 2150).
+- **Geography:** Nationwide; physical presence and community identity in **Western Sydney / Parramatta** (Level 49, 8 Parramatta Square, Parramatta NSW 2150).
 - **Psychographics:** People who want a better rate, less jargon, no pressure, and someone who works for them — not the banks. “We work for you — not the banks.”
 
 ---
@@ -91,7 +91,7 @@ Use these consistently across channels:
 - **No cost to you** — Broking service free to borrower  
 - **500+ helped** — “Long way to go” (momentum)  
 - **24hr approvals** — Asset Solutions speed  
-- **150 George St, Parramatta** — Physical presence; “Visit us in Parramatta”  
+- **Level 49, 8 Parramatta Square, Parramatta** — Physical presence; “Visit us in Parramatta”  
 - **Named experts:** Hassan (Huss) for Brokers, Sham for Asset Solutions — personal accountability  
 
 Sample review quote to reuse:  
@@ -135,7 +135,7 @@ All primary CTAs lead to: consultation booking, contact form, or phone (+61 422 
 
 - **Phone:** +61 422 959 486 (prominent in nav and footer).  
 - **Email:** operations@frontline.financial (general); routing by “who do you need help from?” — Hassan (Brokers), Sham (Asset Solutions), or “Not sure” (team).  
-- **Location:** 150 George Street, Parramatta NSW 2150; Mon–Fri 9am–5pm; “Get Directions” to Google Maps.  
+- **Location:** Level 49, 8 Parramatta Square, Parramatta NSW 2150; Mon–Fri 9am–5pm; “Get Directions” to Google Maps.  
 - **Form strategy:** First question = who to speak to (Hassan / Sham / Not sure); then name, email, phone, service interest, message, preferred contact method. Submit to `/api/contact`; thank-you page personalised by team (hassan / sham / team).  
 - **Messaging:** “We get back to you fast” — within one business day, usually same day.
 

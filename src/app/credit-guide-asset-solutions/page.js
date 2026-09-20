@@ -39,7 +39,7 @@ export default function CreditGuideAssetSolutionsPage() {
         <Section title="Key Information">
           <Card className="border-[#00FCB8]/30">
             <p className="text-[#9CA3AF] leading-relaxed">
-              This Credit Guide & Quote is provided by Martyn Financial Pty Ltd t/as Frontline Financial: Asset Solutions (ABN 13 681 219 198), Authorised Credit Representative #563350 of Fintelligence Pty Ltd (ABN 80 625 017 174), Australian Credit Licence #511803. Our address is 150 George Street Parramatta NSW 2150 Australia. Our contact details are phone – <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> and email via <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a>.
+              This Credit Guide & Quote is provided by Martyn Financial Pty Ltd t/as Frontline Financial: Asset Solutions (ABN 13 681 219 198), Authorised Credit Representative #563350 of Fintelligence Pty Ltd (ABN 80 625 017 174), Australian Credit Licence #511803. Our address is Level 49, 8 Parramatta Square, Parramatta NSW 2150 Australia. Our contact details are phone – <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> and email via <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a>.
             </p>
           </Card>
         </Section>

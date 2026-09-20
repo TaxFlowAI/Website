@@ -54,7 +54,7 @@ export default function AboutPage() {
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
             <span className="text-white">Est. in Western Sydney</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
-            <span className="text-white">150 George St, Parramatta</span>
+            <span className="text-white">Level 49, 8 Parramatta Square</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">5/5 Google Reviews</span>
           </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
               Book an appointment to visit us at our Parramatta office for a completely free, no-obligation consultation. Bring your goals, your questions, and your situation — we&apos;ll take the time to understand exactly what you need and walk you through all available options. No pressure. No cost. No obligation.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-4 py-2 text-sm text-white">📍 150 George Street, Parramatta 2150</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-4 py-2 text-sm text-white">📍 Level 49, 8 Parramatta Square, Parramatta 2150</span>
               <a href="tel:+61422959486" className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-4 py-2 text-sm text-white transition-colors hover:bg-[#00FCB8]/10">📞 +61 422 959 486</a>
             </div>
             <Link href="/contact" className="mt-6 inline-block rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105">

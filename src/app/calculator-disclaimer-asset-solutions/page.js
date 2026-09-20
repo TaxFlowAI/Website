@@ -27,7 +27,7 @@ export default function CalculatorDisclaimerAssetSolutionsPage() {
             <p className="mt-1 text-sm">Authorised to engage in credit activities.</p>
             <p className="mt-4 text-sm">Contact: Sham — Award-winning Finance Broker, FY25</p>
             <p className="text-sm">Phone: <a href="tel:+61450553877" className="text-[#00FCB8] hover:underline">0450 553 877</a></p>
-            <p className="text-sm">Address: 150 George St, Parramatta NSW 2150</p>
+            <p className="text-sm">Address: Level 49, 8 Parramatta Square, Parramatta NSW 2150</p>
           </div>
 
           <div>

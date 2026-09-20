@@ -43,7 +43,7 @@ export default function LayoutFooter() {
             <ul className="mt-4 space-y-3 text-sm text-white/80">
               <li><a href="tel:+61422959486" className="transition-colors hover:text-[#00FCB8]">+61 422 959 486</a></li>
               <li><a href="mailto:operations@frontline.financial" className="transition-colors hover:text-[#00FCB8]">operations@frontline.financial</a></li>
-              <li>150 George Street Parramatta 2150</li>
+              <li>Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
             </ul>
           </div>
         </div>

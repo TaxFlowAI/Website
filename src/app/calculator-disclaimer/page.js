@@ -94,7 +94,7 @@ export default function CalculatorDisclaimerPage() {
             <p className="mt-4 text-sm">For personalised advice based on your specific circumstances:</p>
             <ul className="mt-2 space-y-1 text-sm">
               <li>Phone: <a href="tel:+61422959486" className="font-medium text-[#00FCB8] hover:underline">+61 422 959 486</a></li>
-              <li>Address: 150 George St, Parramatta NSW 2150</li>
+              <li>Address: Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
               <li>Hassan Arif — Director, Accredited Member (FBAA), Finance Broker</li>
             </ul>
             <p className="mt-4 text-sm">

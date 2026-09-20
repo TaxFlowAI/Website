@@ -42,7 +42,7 @@ export const ENTITY_CONFIG = {
     contactName: "Sham",
     contactPhone: "0450 553 877",
     contactEmail: "sham@frontline.financial",
-    address: "150 George Street, Parramatta NSW 2150",
+    address: "Level 49, 8 Parramatta Square, Parramatta NSW 2150",
     creditGuidePath: "/credit-guide-asset-solutions",
     privacyConsentPath: "/privacy-consent-asset-solutions",
     calculatorDisclaimerPath: "/calculator-disclaimer-asset-solutions",

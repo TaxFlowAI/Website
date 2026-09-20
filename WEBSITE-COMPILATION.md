@@ -142,7 +142,7 @@ See `src/app/api/README.md` for env vars and payload shapes.
 - No cost to you — Broking free to borrower  
 - 500+ helped — “Long way to go”  
 - 24hr approvals — Asset Solutions  
-- 150 George St, Parramatta — Physical presence  
+- Level 49, 8 Parramatta Square, Parramatta — Physical presence  
 - Named experts: Hassan (Brokers), Sham (Asset Solutions)  
 
 ### 3.7 Tone and voice
@@ -166,7 +166,7 @@ See `src/app/api/README.md` for env vars and payload shapes.
 
 - **Phone:** +61 422 959 486 (primary; Brokers/Hassan). Asset Solutions eligibility CTAs also use 0450 553 877 (Sham).
 - **Email:** operations@frontline.financial (general); routing by “who do you need?” — Hassan (Brokers), Sham (Asset Solutions), or “Not sure” (team).
-- **Address:** 150 George Street, Parramatta NSW 2150; Mon–Fri 9am–5pm; Get Directions to Google Maps.
+- **Address:** Level 49, 8 Parramatta Square, Parramatta NSW 2150; Mon–Fri 9am–5pm; Get Directions to Google Maps.
 - **Form strategy:**  
   - **Home consultation:** User chooses Brokers or Asset Solutions → form (name, email, phone) → POST `/api/contact` with `consultationService: "brokers" | "asset-solutions"` → redirect to `/contact/thank-you?team=brokers|asset-solutions` with service-specific thank-you (home loan urgency vs asset solutions next steps).  
   - **Contact page:** User chooses Hassan / Sham / Not sure → full form (name, email, phone, message, preferred contact) → POST `/api/contact` → redirect to `/contact/thank-you?team=hassan|sham|team` with personalised message and optional personal cards.

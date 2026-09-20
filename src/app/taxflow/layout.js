@@ -76,13 +76,13 @@ const ORG_SCHEMA = {
       email: "taxflowai@frontline.financial",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "150 George Street",
+        streetAddress: "Level 49, 8 Parramatta Square",
         addressLocality: "Parramatta",
         addressRegion: "NSW",
         postalCode: "2150",
         addressCountry: "AU",
       },
-      geo: { "@type": "GeoCoordinates", latitude: -33.815, longitude: 151.0011 },
+      geo: { "@type": "GeoCoordinates", latitude: -33.8172, longitude: 151.0036 },
     },
     {
       "@type": "LocalBusiness",

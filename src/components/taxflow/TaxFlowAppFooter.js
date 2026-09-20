@@ -141,7 +141,7 @@ export default function TaxFlowAppFooter() {
                   taxflowai@frontline.financial
                 </a>
               </li>
-              <li>150 George Street, Parramatta NSW 2150</li>
+              <li>Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
               <li>Martin Place, Sydney NSW</li>
               <li>
                 <Link href="/" className="text-[#00FCB8] transition hover:underline">

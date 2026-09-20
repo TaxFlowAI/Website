@@ -190,7 +190,7 @@ export default function PrivacyConsentAssetSolutionsPage() {
             ))}
           </ul>
           <p className="mt-4 text-[#9CA3AF] leading-relaxed">
-            To access and/or seek correction of your personal or credit information we hold, or make a complaint about privacy, you can contact us on phone number <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> or by emailing us at <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a> or registered post to 150 George Street Parramatta NSW 2150 Australia.
+            To access and/or seek correction of your personal or credit information we hold, or make a complaint about privacy, you can contact us on phone number <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> or by emailing us at <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a> or registered post to Level 49, 8 Parramatta Square, Parramatta NSW 2150 Australia.
           </p>
         </Section>
 
@@ -215,7 +215,7 @@ export default function PrivacyConsentAssetSolutionsPage() {
                 This consent applies to all types of communication that is permitted by law to occur electronically. Therefore, paper (hard copy) documents may not be provided to you, unless we are obliged to by law. You must regularly check advised electronic communication mediums for communication from us. If your details change, you must promptly notify us.
               </p>
               <p>
-                If you wish to withdraw your consent to electronic communication, please notify us on phone number <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> or by emailing us at <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a> or registered post to 150 George Street Parramatta NSW 2150 Australia.
+                If you wish to withdraw your consent to electronic communication, please notify us on phone number <a href="tel:0450553877" className="text-white hover:text-[#00FCB8]">0450 553 877</a> or by emailing us at <a href="mailto:sham@frontline.financial" className="text-white hover:text-[#00FCB8]">sham@frontline.financial</a> or registered post to Level 49, 8 Parramatta Square, Parramatta NSW 2150 Australia.
               </p>
             </div>
           </Card>

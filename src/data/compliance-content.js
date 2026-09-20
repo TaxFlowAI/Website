@@ -7,7 +7,7 @@
 // CFG: PHONE = 0422 959 486
 // CFG: URL_PRIVACY = https://frontline.financial/taxflow/privacy-policy
 // CFG: URL_COLLECTION = https://frontline.financial/taxflow/collection-notice
-// CFG: ADDR_FH = Level 6, 150 George Street, Parramatta NSW 2150
+// CFG: ADDR_FH = Level 49, 8 Parramatta Square, Parramatta NSW 2150
 // CFG: EFFECTIVE_DATE = 1 March 2026
 
 export const PRIVACY_POLICY = {
@@ -50,7 +50,7 @@ export const PRIVACY_POLICY = {
     },
     {
       heading: "9. Changes and Contact",
-      content: `We may update this policy from time to time; we will update the effective date and, for material changes, notify you via the platform or email. Continued use of TaxFlowAI after changes means you accept the updated policy. For any privacy enquiries or requests, contact us: Email: taxflowai@frontline.financial; Phone: 0422 959 486; Post: Level 6, 150 George Street, Parramatta NSW 2150.`
+      content: `We may update this policy from time to time; we will update the effective date and, for material changes, notify you via the platform or email. Continued use of TaxFlowAI after changes means you accept the updated policy. For any privacy enquiries or requests, contact us: Email: taxflowai@frontline.financial; Phone: 0422 959 486; Post: Level 49, 8 Parramatta Square, Parramatta NSW 2150.`
     }
   ]
 };
@@ -111,7 +111,7 @@ To exercise any of these rights, contact us at taxflowai@frontline.financial.`
       heading: "10. Contact Us",
       content: `Email: taxflowai@frontline.financial
 Phone: 0422 959 486
-Post: Level 6, 150 George Street, Parramatta NSW 2150
+Post: Level 49, 8 Parramatta Square, Parramatta NSW 2150
 
 Our full privacy policy is available at https://frontline.financial/taxflow/privacy-policy.`
     }
@@ -178,6 +178,6 @@ export const COMPLIANCE_CONFIG = {
   FH_ABN: "59 671 861 475",
   FH_ACN: "671 861 475",
   FH_ASIC: "51843",
-  FH_ADDRESS: "Level 6, 150 George Street, Parramatta NSW 2150",
+  FH_ADDRESS: "Level 49, 8 Parramatta Square, Parramatta NSW 2150",
   EFFECTIVE_DATE: "1 March 2026",
 };

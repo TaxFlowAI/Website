@@ -42,7 +42,7 @@ export const TAXFLOW_FAQ = [
   {
     id: "offices",
     q: "Where are your offices?",
-    a: "150 George Street, Parramatta NSW 2150, and Martin Place, Sydney NSW. You can book a 1-hour in-person appointment at either office, or a 30-minute Teams or phone call, straight from the portal.",
+    a: "Level 49, 8 Parramatta Square, Parramatta NSW 2150, and Martin Place, Sydney NSW. You can book a 1-hour in-person appointment at either office, or a 30-minute Teams or phone call, straight from the portal.",
   },
   {
     id: "free-signup",
