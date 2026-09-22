@@ -95,6 +95,24 @@ const STEPS = [
   { num: 4, title: "Drive away approved", desc: "Once you choose, we handle all the paperwork and get you approved fast." },
 ];
 
+const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
+
+/* Real Google reviews — asset finance clients (Sham's side of the business) */
+const ASSET_REVIEWS = [
+  {
+    name: "Oliver Stewart",
+    text: "The team at Frontline Financial are extraordinary at what they do. I dealt with Sham personally when trying to finance my new car. He quickly gave me options over multiple lenders that ensured I got the best possible deal.",
+  },
+  {
+    name: "Mikhail Alwajih",
+    text: "Sham was phenomenal to say the least. He got my loan approved in less than 24 hours. Absolute legend!",
+  },
+  {
+    name: "Dan Goundar",
+    text: "I would like to thank Frontline Financial Group for assisting me in securing my business loan within just a few days. The staff were incredibly nice, friendly, and professional throughout.",
+  },
+];
+
 export default function AssetSolutionsPage() {
   return (
     <div className="min-h-screen bg-[#F5F5EF] font-sans">
@@ -110,7 +128,7 @@ export default function AssetSolutionsPage() {
             For every Australian.
           </p>
           <p className="mt-6 text-xl text-[#39B2B2]">
-            Fast approvals on car loans, equipment finance and fleet solutions for everyday Australians and growing businesses.
+            Your award-winning asset finance broker in Parramatta — fast approvals on car loans, equipment finance and fleet solutions for everyday Australians and growing businesses.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="#apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
@@ -314,6 +332,140 @@ export default function AssetSolutionsPage() {
                 Apply Now
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WaveDivider fill="#39B2B2" />
+
+      {/* GOOGLE REVIEWS — 100+ five-star, real quotes from asset finance clients */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#39B2B2] via-[#2E9E9E] to-[#39B2B2] px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.14] blur-[110px]" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">
+                Rated five stars. Every. Single. Review.
+              </p>
+              <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
+                Parramatta&apos;s five-star asset finance broker
+              </h2>
+              <p className="mt-4 max-w-lg text-base text-white/85 md:text-lg">
+                Over one hundred Australians have reviewed us on Google — and every
+                single one gave us five stars.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm">
+              <div className="flex justify-center gap-1" aria-hidden>
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg key={i} className="h-7 w-7 text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="mt-2 text-6xl font-extrabold tracking-tight text-white">
+                100<span className="text-[#00FCB8]">+</span>
+              </p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-white/85">
+                Five-star Google reviews
+              </p>
+              <a
+                href={GOOGLE_REVIEW_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-bold text-[#1C5472] transition-all duration-200 hover:scale-105"
+              >
+                <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
+                Read them all on Google
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {ASSET_REVIEWS.map((review) => (
+              <figure key={review.name} className="rounded-xl bg-white p-5 text-[#1C5472] shadow-md md:p-6">
+                <div className="flex gap-0.5 text-[#FFD700]" aria-label="5 out of 5 stars">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote className="mt-3 text-sm leading-relaxed">&ldquo;{review.text}&rdquo;</blockquote>
+                <figcaption className="mt-4 flex items-center gap-2 font-bold">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0A1628] text-xs text-white" aria-hidden>
+                    {review.name[0]}
+                  </span>
+                  {review.name}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR LOCATION — Level 49, 8 Parramatta Square */}
+      <section className="relative overflow-hidden bg-[#0A1628] px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="pointer-events-none absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[#39B2B2] opacity-[0.07] blur-[90px]" aria-hidden />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Our location</p>
+            <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
+              Your asset finance broker in Parramatta
+            </h2>
+            <p className="mt-5 text-lg font-semibold text-white">
+              Level 49, 8 Parramatta Square
+              <br />
+              Parramatta NSW 2150
+            </p>
+            <p className="mt-3 max-w-md text-sm text-white/70">
+              Level 49 of the 8 Parramatta Square tower, in the heart of the
+              precinct — drop in to talk car, equipment or fleet finance, or find
+              us on Google for reviews, photos and opening hours.
+            </p>
+            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row">
+              <a
+                href={GOOGLE_REVIEW_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+              >
+                <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
+                Find us on Google
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=8%20Parramatta%20Square%2C%20Parramatta%20NSW%202150"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]"
+              >
+                Get directions
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            </div>
+            <div className="mt-8 overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+              <iframe
+                src="https://www.google.com/maps?q=8+Parramatta+Square,+Parramatta+NSW+2150&output=embed"
+                title="Map — Frontline Financial: Asset Solutions, Level 49, 8 Parramatta Square, Parramatta NSW 2150"
+                className="block h-56 w-full border-0 md:h-64"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <div className="flex justify-center lg:justify-end">
+            <div className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/frontline-8-parramatta-square.webp"
+                alt="The 8 Parramatta Square tower — Frontline Financial: Asset Solutions is on Level 49"
+                className="block h-auto w-full max-w-md object-cover"
+                width={1066}
+                height={1421}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

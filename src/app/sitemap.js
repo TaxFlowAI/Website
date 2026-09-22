@@ -1,9 +1,14 @@
 const BASE = "https://frontline.financial";
 
-/* Sitemap for the TaxFlowAI section. Other brand routes are intentionally
-   not listed here; add them separately if/when the root site wants one. */
+/* Sitemap: core Frontline Financial marketing pages + the TaxFlowAI section. */
 export default function sitemap() {
   const routes = [
+    ["/", 1.0],
+    ["/assetsolutions", 0.9],
+    ["/brokers", 0.9],
+    ["/about", 0.7],
+    ["/contact", 0.8],
+    ["/financial-calculators", 0.6],
     ["/taxflow", 1.0],
     ["/taxflow/features", 0.9],
     ["/taxflow/how-it-works", 0.9],
