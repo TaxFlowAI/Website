@@ -150,12 +150,15 @@ export default function VehicleFinanceLanding() {
     }
   };
 
-  /* qualifier pill tap: record the answer, give tap feedback, auto-advance */
+  /* qualifier pill tap: record the answer, give tap feedback, auto-advance.
+     Advance is tied to the question's own step index so a double-tap can't
+     queue two advances and skip the next question. */
   const setAnswer = (key, val) => {
     onFirstInteraction();
     setAnswers((prev) => ({ ...prev, [key]: val }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
-    setTimeout(() => setStep((s) => (s < FINAL_STEP ? s + 1 : s)), 220);
+    const ownStep = TEXT_STEPS.length + QUALIFIERS.findIndex((q) => q.key === key);
+    setTimeout(() => setStep((s) => (s === ownStep ? s + 1 : s)), 220);
   };
 
   const validateStep = (i) => {
@@ -196,7 +199,19 @@ export default function VehicleFinanceLanding() {
     }
     setSubmitError(null);
     setShowConsentError(false);
-    if (!validate()) return;
+    if (!validate()) {
+      /* something upstream is missing — take the user straight to it */
+      let firstInvalid = null;
+      if (!fullName.trim()) firstInvalid = 0;
+      else if (!phone.trim()) firstInvalid = 1;
+      else if (!email.trim() || !EMAIL_REGEX.test(email)) firstInvalid = 2;
+      else {
+        const qi = QUALIFIERS.findIndex((q) => !answers[q.key]);
+        if (qi >= 0) firstInvalid = TEXT_STEPS.length + qi;
+      }
+      if (firstInvalid !== null) setStep(firstInvalid);
+      return;
+    }
     if (!consent) {
       setShowConsentError(true);
       setSubmitError(CONSENT_ERROR);
