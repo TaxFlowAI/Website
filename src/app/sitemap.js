@@ -5,6 +5,7 @@ export default function sitemap() {
   const routes = [
     ["/", 1.0],
     ["/assetsolutions", 0.9],
+    ["/vehicle-finance", 0.8],
     ["/brokers", 0.9],
     ["/about", 0.7],
     ["/contact", 0.8],
