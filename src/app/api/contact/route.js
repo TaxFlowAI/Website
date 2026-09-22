@@ -168,9 +168,14 @@ export async function POST(request) {
     const forward = await forwardToPlatform(request.url);
     return NextResponse.json({ success: true, ...forward });
   } catch (err) {
+    // Log the real SMTP error server-side; never expose it to the visitor.
     console.error("[Contact API] Send failed:", err?.message || err);
     return NextResponse.json(
-      { success: false, error: err?.message || "Failed to send email." },
+      {
+        success: false,
+        error:
+          "Something went wrong sending your message. Please try again, or call us on +61 422 959 486.",
+      },
       { status: 500 }
     );
   }
