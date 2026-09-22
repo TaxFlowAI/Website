@@ -43,6 +43,16 @@ const QUALIFIERS = [
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/* playful status lines while the lead is on its way */
+const SENDING_MESSAGES = [
+  "Warming up the ute…",
+  "Loading the toolbox…",
+  "Checking the mirrors…",
+  "Dodging the paperwork…",
+  "Beeping at the slow lenders…",
+  "Finding a park for your details…",
+];
+
 /* wizard: one question per screen. 0-2 contact, 3-6 qualifiers, 7 consent+send */
 const TEXT_STEPS = [
   { key: "fullName", type: "text", label: "What's your name?", placeholder: "Your name", autoComplete: "name" },
@@ -84,8 +94,22 @@ export default function VehicleFinanceLanding() {
   const [submitError, setSubmitError] = useState(null);
   const [showSticky, setShowSticky] = useState(false);
   const [step, setStep] = useState(0);
+  const [sendingMsg, setSendingMsg] = useState(0);
   const startedRef = useRef(false);
   const formRef = useRef(null);
+
+  /* rotate the funny sending lines while the lead is in transit */
+  useEffect(() => {
+    if (!submitting) {
+      setSendingMsg(0);
+      return;
+    }
+    const id = setInterval(
+      () => setSendingMsg((i) => (i + 1) % SENDING_MESSAGES.length),
+      1100
+    );
+    return () => clearInterval(id);
+  }, [submitting]);
 
   /* focus the input when arriving on a text step (after first interaction,
      so the keyboard doesn't pop on page load) */
@@ -411,13 +435,61 @@ export default function VehicleFinanceLanding() {
                         <button
                           type="submit"
                           disabled={submitting}
-                          className="group mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:opacity-70"
+                          className="group relative mt-5 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait"
                         >
-                          {submitting ? "Sending…" : "Get my free assessment"}
-                          {!submitting && (
-                            <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24" aria-hidden>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
+                          {submitting ? (
+                            <>
+                              <style>{`
+                                @keyframes vf-drive { 0%,100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-1.5px) rotate(-1deg); } 75% { transform: translateY(0.5px) rotate(1deg); } }
+                                @keyframes vf-wheel { to { transform: rotate(360deg); } }
+                                @keyframes vf-puff { 0% { opacity: 0.9; transform: translateX(0) scale(0.6); } 100% { opacity: 0; transform: translateX(-14px) scale(1.4); } }
+                                @keyframes vf-road { to { transform: translateX(-16px); } }
+                                @keyframes vf-msg { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+                                .vf-drive { animation: vf-drive 0.7s ease-in-out infinite; }
+                                .vf-wheel { animation: vf-wheel 0.5s linear infinite; transform-origin: center; transform-box: fill-box; }
+                                .vf-puff { animation: vf-puff 0.9s ease-out infinite; }
+                                .vf-puff2 { animation-delay: 0.45s; }
+                                .vf-road { animation: vf-road 0.4s linear infinite; }
+                                .vf-msg { animation: vf-msg 0.3s ease-out; }
+                                @media (prefers-reduced-motion: reduce) {
+                                  .vf-drive, .vf-wheel, .vf-puff, .vf-puff2, .vf-road, .vf-msg { animation: none; }
+                                }
+                              `}</style>
+                              <span className="flex items-center gap-3" role="status" aria-live="polite">
+                                <svg className="vf-drive h-7 w-14" viewBox="0 0 56 28" fill="none" aria-hidden>
+                                  {/* exhaust puffs */}
+                                  <circle className="vf-puff" cx="6" cy="19" r="2.4" fill="#0A1628" opacity="0.35" />
+                                  <circle className="vf-puff vf-puff2" cx="8" cy="16" r="1.7" fill="#0A1628" opacity="0.25" />
+                                  {/* ute body: cab + tray */}
+                                  <path d="M13 18v-6c0-1.1.9-2 2-2h9l4-6h9c1.6 0 2.9.7 3.8 1.9L45 12h5c1.7 0 3 1.3 3 3v3" stroke="#0A1628" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                                  <path d="M29 4l-3.4 6H37V4h-8z" fill="#0A1628" opacity="0.15" />
+                                  <path d="M24 12h22" stroke="#0A1628" strokeWidth="2" strokeLinecap="round" />
+                                  {/* wheels with spokes so the spin reads */}
+                                  <g className="vf-wheel">
+                                    <circle cx="21" cy="19" r="5" stroke="#0A1628" strokeWidth="2.4" fill="#00FCB8" />
+                                    <path d="M21 15.4v7.2M17.4 19h7.2" stroke="#0A1628" strokeWidth="1.6" strokeLinecap="round" />
+                                  </g>
+                                  <g className="vf-wheel">
+                                    <circle cx="44" cy="19" r="5" stroke="#0A1628" strokeWidth="2.4" fill="#00FCB8" />
+                                    <path d="M44 15.4v7.2M40.4 19h7.2" stroke="#0A1628" strokeWidth="1.6" strokeLinecap="round" />
+                                  </g>
+                                  {/* road rushing past */}
+                                  <g className="vf-road">
+                                    <path d="M6 26h6M18 26h6M30 26h6M42 26h6M54 26h6M66 26h6" stroke="#0A1628" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+                                  </g>
+                                </svg>
+                                <span key={sendingMsg} className="vf-msg text-base font-bold">
+                                  {SENDING_MESSAGES[sendingMsg]}
+                                </span>
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              Get my free assessment
+                              <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24" aria-hidden>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
+                            </>
                           )}
                         </button>
                         <p className="mt-3 text-center text-xs text-gray-500">
