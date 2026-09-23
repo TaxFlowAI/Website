@@ -25,7 +25,7 @@ const REVIEWS = [
 
 const FAQS = [
   ["Do you charge for the assessment?", "No. The assessment is free and there is no obligation. If we arrange finance, the lender pays us a commission, which we disclose in your credit guide."],
-  ["Will you run a credit check?", "Yes — as part of your free assessment we run a credit check and provide you with a free copy of your Equifax report. It lets us read your file the way a lender would, before any lender does."],
+  ["Will you run a credit check?", "Yes — as part of your free assessment we run a credit check and, where you are eligible, provide you with a free copy of your Equifax report. It lets us read your file the way a lender would, before any lender does. Conditions apply."],
   ["Will it affect my credit?", "Only if we submit an application — which we cannot do without your authority. The assessment and your free Equifax report do not lodge an application with any lender."],
   ["Can I finance a vehicle from a private seller or auction?", "Yes, with the right lender. The seller needs to prove they own it and a PPSR check needs to be clear. Get approved before you bid at auction."],
   ["I have a default. Is it worth applying?", "Often yes. It depends on what the default was, how old it is and whether it is paid. Send it to us before you apply anywhere else, because every application shows on your file."],
@@ -279,6 +279,7 @@ export default function VehicleFinanceLanding() {
               Free, no obligation assessment. We check your situation against 30+
               lenders and tell you where it fits — including a free copy of your
               Equifax credit report.
+              <a href="#free-report-terms" className="ml-0.5 text-white/60 hover:text-white" aria-label="Conditions apply to the free credit report — see terms">*</a>
             </p>
             <p className="mt-5 text-sm text-white/85">
               <span className="text-[#FFD700]" aria-hidden>★★★★★</span> 5.0 stars on
@@ -576,7 +577,7 @@ export default function VehicleFinanceLanding() {
       <WaveDivider fill="#39B2B2" />
 
       {/* ============ 3. GOOGLE REVIEWS — 100+ ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#39B2B2] via-[#2E9E9E] to-[#39B2B2] px-4 py-14 md:px-6 md:py-20 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#39B2B2] via-[#2E9E9E] to-[#39B2B2] px-4 pt-14 pb-24 md:px-6 md:pt-20 md:pb-32 lg:px-8">
         <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.14] blur-[110px]" aria-hidden />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden>
           <svg className="h-[130%] w-auto text-white opacity-[0.05]" fill="currentColor" viewBox="0 0 20 20">
@@ -639,6 +640,83 @@ export default function VehicleFinanceLanding() {
                 <figcaption className="mt-3 font-bold">{review.name} · Google review</figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+        {/* wave into the navy report section — sits on the gradient so there's no seam */}
+        <div className="absolute inset-x-0 -bottom-px" aria-hidden>
+          <WaveDivider fill="#0A1628" />
+        </div>
+      </section>
+
+      {/* ============ FREE EQUIFAX REPORT ============ */}
+      <section id="free-credit-report" className="relative -mt-px overflow-hidden bg-[#0A1628] px-4 py-16 md:px-6 md:py-24 lg:px-8">
+        <div className="pointer-events-none absolute -left-24 top-1/3 h-96 w-96 rounded-full bg-[#39B2B2] opacity-[0.18] blur-[120px]" aria-hidden />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.12] blur-[120px]" aria-hidden />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* the phone */}
+          <div className="relative flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/credit-score-phone.webp"
+              alt="A phone showing a credit score of 742 with links to the full credit report and enquiries"
+              width={1254}
+              height={1254}
+              loading="lazy"
+              className="relative w-full max-w-sm transition-transform duration-500 hover:-translate-y-2 md:max-w-lg"
+            />
+            <span className="absolute left-2 top-4 rotate-[-8deg] rounded-full bg-[#00FCB8] px-4 py-2 text-sm font-extrabold uppercase tracking-wider text-[#0A1628] shadow-lg shadow-[#00FCB8]/40 md:left-8">
+              Free*
+            </span>
+          </div>
+
+          {/* the pitch */}
+          <div className="text-center lg:text-left">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">
+              Included with your free assessment*
+            </p>
+            <h2 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
+              Know your score
+              <br />
+              <span className="bg-gradient-to-r from-[#00FCB8] to-[#39B2B2] bg-clip-text text-transparent">
+                before the lender does.
+              </span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-lg text-lg text-white/80 lg:mx-0">
+              We get you a free copy of your Equifax credit report and walk you
+              through it — so there are no surprises when your application goes in.
+            </p>
+            <ul className="mx-auto mt-7 grid max-w-lg gap-3 text-left sm:grid-cols-2 lg:mx-0">
+              {[
+                ["Your Equifax score", "See where you stand, in plain numbers"],
+                ["Your full report", "Every enquiry, account and default on file"],
+                ["Explained by Sham", "What lenders will see — and what it means"],
+                ["Fixable before you apply", "Spot errors or old defaults early"],
+              ].map(([title, sub]) => (
+                <li key={title} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                  <p className="flex items-center gap-2 font-bold text-white">
+                    <svg className="h-4 w-4 shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {title}
+                  </p>
+                  <p className="mt-1 text-sm text-white/65">{sub}</p>
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={scrollToForm}
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-[#00FCB8]/40 sm:w-auto"
+            >
+              Get my free report &amp; assessment
+            </button>
+
+            <p className="mt-4 text-xs text-white/50">
+              *Conditions apply.{" "}
+              <a href="#free-report-terms" className="underline underline-offset-2 hover:text-white">
+                See terms
+              </a>
+            </p>
           </div>
         </div>
       </section>
@@ -830,6 +908,34 @@ export default function VehicleFinanceLanding() {
             information only. It does not take your personal circumstances into
             account.
           </p>
+        </div>
+
+        {/* free Equifax report — terms & conditions */}
+        <div id="free-report-terms" className="mx-auto mt-6 max-w-4xl scroll-mt-24 border-t border-white/10 pt-5 text-left text-xs leading-relaxed text-white/60">
+          <p className="font-bold uppercase tracking-wider text-white/70">
+            *Free Equifax credit report — terms &amp; conditions
+          </p>
+          <ul className="mt-2 list-disc space-y-1.5 pl-4">
+            <li>
+              The free Equifax credit report is offered at our discretion as part of
+              an assessment for vehicle or equipment finance. We may decline to
+              provide the report if, after reviewing your enquiry, we determine you do
+              not meet the criteria for the finance you are seeking.
+            </li>
+            <li>
+              Obtaining your report requires your consent and identity verification.
+              Accessing it for this purpose does not lodge a finance application with
+              any lender.
+            </li>
+            <li>
+              One report per customer. The offer may be changed or withdrawn at any
+              time.
+            </li>
+            <li>
+              You are also entitled to request a free copy of your credit report
+              directly from Equifax and other credit reporting bodies.
+            </li>
+          </ul>
         </div>
       </section>
       <LayoutFooter />
