@@ -1,5 +1,6 @@
 import { Outfit, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./the-current.css";
+import { BookingProvider } from "@/components/taxflow/BookingModal";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -114,7 +115,7 @@ export default function TaxFlowLayout({ children }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
-      {children}
+      <BookingProvider>{children}</BookingProvider>
     </div>
   );
 }

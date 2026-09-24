@@ -12,14 +12,56 @@
    - Stats: only metrics that are true. Omit anything unverified.
    ============================================================================ */
 
-/* Google reviews — section stays unpublished until rating, count, profileUrl
-   AND at least one review are all filled in. */
+/* Google reviews — the Frontline Financial Group listing (the team that builds
+   and operates TaxFlowAI). Only reviews about tax work are included, copied
+   verbatim from the listing's "tax return" topic on 2026-09-24 (5.0, 114
+   reviews at that date). Update `count` when the listing grows. */
 export const GOOGLE_REVIEWS = {
-  rating: null, // e.g. 4.9
-  count: null, // e.g. 27
-  profileUrl: null, // real Google Business listing URL
+  business: "Frontline Financial Group",
+  rating: 5.0,
+  count: "114",
+  profileUrl:
+    "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,",
   reviews: [
-    // { name: "Sam", quote: "Verbatim quote from Google.", situation: "Sole trader, Parramatta" },
+    {
+      name: "Conor Spencer",
+      quote:
+        "I had a great experience working with Hassan for my tax return. He was professional, knowledgeable, and took the time to clearly explain everything, which made the whole process very straightforward and stress-free. Hassan was very responsive, and efficient. I’d highly recommend him to anyone looking for reliable and high-quality tax services.",
+    },
+    {
+      name: "Michael Behari",
+      quote:
+        "Hassan was very professional, and was able to get me a very good tax return for this financial year. And also provided me with a lot of good tax tips as well. If you’re looking for a personalised service, go to Hassan!",
+    },
+    {
+      name: "Nik Malik",
+      quote:
+        "Extremely organised and responsive. Frontline financial helped me lodge 4 years of outstanding business tax returns. Highly recommended",
+    },
+    {
+      name: "Angel Lee",
+      quote:
+        "I engaged Hassan for assistance with my Tax Return and finance to buy my first property. He was fantastic, informing me every step of the way. Working over time to ensure my finance was approved promptly to seal the deal. Cannot thank you enough! Much appreciated.",
+    },
+    {
+      name: "Kevin Khuu",
+      quote:
+        "Came across Frontline Financial for my tax accounting and finance needs, couldn’t have asked for anything better, great customer service and helpfulness. Managed to get a greater outcome then I had imagined for my tax returns and financial needs. Couldn’t recommend them enough!",
+    },
+    {
+      name: "E B",
+      quote:
+        "Hassan has been so helpful doing my tax returns and helping me with my finance. If you are looking for an efficient accountant he is one of the best. I would highly recommend.",
+    },
+    {
+      name: "Kain Divertie",
+      quote:
+        "Hussan has been the best by far to work with over the past year not only with my finance but also with my tax return aswell, with The best results possible definitely recommend !",
+    },
+    {
+      name: "Amy Toma",
+      quote: "Very responsive and professional service, made my tax return process super easy :)",
+    },
   ],
 };
 

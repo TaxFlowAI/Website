@@ -2,7 +2,8 @@ import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import ContactForm from "@/components/taxflow/ContactForm";
-import { container, CtaBand, Breadcrumbs, CALENDLY_URL } from "@/components/taxflow/TaxFlowShared";
+import CalendlyInline from "@/components/taxflow/CalendlyInline";
+import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowShared";
 
 export const metadata = {
   title: "Contact",
@@ -49,18 +50,11 @@ export default function TaxFlowContactPage() {
           The fastest way to see if TaxFlowAI fits: a free, no-obligation 30-minute
           call. Or send an enquiry and we&apos;ll come back to you.
         </p>
-        <div className="mt-7 flex flex-wrap items-center gap-4">
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold"
-          >
-            Book a free 30-min call
-          </a>
-          <span className="tc-mono text-[11.5px]" style={{ color: "#94A3B8" }}>
-            NO OBLIGATION · TEAMS OR PHONE
-          </span>
+        <p className="tc-mono mt-5 text-[11.5px]" style={{ color: "#94A3B8" }}>
+          FREE 30-MIN CALL · NO OBLIGATION · TEAMS OR PHONE
+        </p>
+        <div className="mt-8">
+          <CalendlyInline />
         </div>
       </section>
 

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { GOOGLE_REVIEWS, TAX_AGENTS, PROOF_STATS } from "@/data/taxflow-proof";
+import CalendlyButton from "@/components/taxflow/CalendlyButton";
+import { CALENDLY_URL } from "@/config/calendly";
 
 export const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
-export const CALENDLY_URL = "https://calendly.com/taxflowai/discovery-call";
+export { CALENDLY_URL };
 
 export const container = "mx-auto max-w-6xl px-5 md:px-8";
 
@@ -24,20 +26,13 @@ export function CtaBand() {
             <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
               Get started
             </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold"
-            >
+            <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
               Book a free 30-min call
-            </a>
+            </CalendlyButton>
           </div>
           <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>
             Not ready to sign up?{" "}
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="tc-link">
-              Talk to a real tax agent first
-            </a>{" "}
+            <CalendlyButton className="tc-link">Talk to a human first</CalendlyButton>{" "}
             — free, no obligation.
           </p>
           <p className="tc-mono mt-4 text-[11.5px]" style={{ color: "#94A3B8" }}>
@@ -389,14 +384,9 @@ export function SwitchingModule() {
             <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-6 py-3 text-[14.5px] font-bold">
               Get started
             </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tc-btn-ghost rounded-lg px-6 py-3 text-[14.5px] font-semibold"
-            >
+            <CalendlyButton className="tc-btn-ghost rounded-lg px-6 py-3 text-[14.5px] font-semibold">
               Book a free call
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       </div>

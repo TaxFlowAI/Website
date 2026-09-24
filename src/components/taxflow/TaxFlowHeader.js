@@ -7,8 +7,9 @@ import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
 
 const NAV_LINKS = [
-  { href: "/taxflow/features", label: "Features" },
-  { href: "/taxflow/how-it-works", label: "How it works" },
+  { href: "/taxflow/about", label: "About us" },
+  { href: "/taxflow#services", label: "Services" },
+  { href: "/taxflow/security", label: "Data security" },
   { href: "/taxflow/faq", label: "FAQ" },
   { href: "/taxflow/contact", label: "Contact" },
 ];
