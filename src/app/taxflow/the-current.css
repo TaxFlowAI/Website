@@ -825,3 +825,22 @@
 @media (prefers-reduced-motion: reduce) {
   .tc-bk-panel { animation: none; }
 }
+
+/* service card artwork: gentle lift on hover, soft fade into the card body */
+.tc-svc-img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tc-svc-card:hover .tc-svc-img { transform: scale(1.04); }
+.tc-svc-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28%;
+  background: linear-gradient(180deg, rgba(15, 23, 41, 0) 0%, rgba(15, 23, 41, 0.75) 100%);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tc-svc-card:hover .tc-svc-img { transform: none; }
+}
