@@ -1,5 +1,12 @@
 import Link from "next/link";
-import InfoPage, { InfoSection, SectionHeading } from "@/components/taxflow/InfoPage";
+import Image from "next/image";
+import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
+import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
+import RevealInit from "@/components/taxflow/RevealInit";
+import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
+import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
+import { RegionPanel, TwoFactorPanel, ReplicationPanel } from "@/components/taxflow/SecurityMockups";
+import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowShared";
 
 /* ============================================================================
    APPROVED COPY — TaxFlowAI "Data Security Page" brief, 27 September 2026.
@@ -27,42 +34,46 @@ export const metadata = {
   },
 };
 
+const NAVY = "#0A1628";
+const DEEP = "#060D1A";
+const BAND = "#0E2238";
+
 const TRUST = ["Australian-hosted", "Encrypted at rest", "2FA on every login", "ISO 27001-aligned"];
 
-const ICON = {
-  className: "h-6 w-6",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.6,
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-  viewBox: "0 0 24 24",
-  "aria-hidden": true,
-};
+function Art({ src, alt }) {
+  return (
+    <div className="tc-flo-stage relative mx-auto w-full max-w-[22rem]">
+      <div className="tc-flo-glow" aria-hidden />
+      <Image
+        src={src}
+        alt={alt}
+        width={1254}
+        height={1254}
+        sizes="(min-width: 1024px) 22rem, 80vw"
+        className="relative z-10 h-auto w-full"
+      />
+    </div>
+  );
+}
 
-const SECTIONS = [
+const STORY = [
   {
     id: "residency",
     label: "Australian data residency",
     title: "Hosted in Sydney, Australia.",
     body: "The TaxFlowAI platform and its database run in Amazon Web Services’ Sydney region (ap-southeast-2). Your records are stored and backed up on Australian soil, on infrastructure certified to ISO 27001, SOC 2 and IRAP-assessed standards.",
-    icon: (
-      <svg {...ICON}>
-        <path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.800-7 11-7 11z" />
-        <circle cx="12" cy="10" r="2.5" />
-      </svg>
-    ),
+    visual: <RegionPanel />,
   },
   {
     id: "encryption",
     label: "Encryption",
     title: "Encrypted in transit and at rest.",
     body: "Every connection uses TLS (HTTPS). Data at rest is encrypted on disk, backups are encrypted with managed keys, and integration credentials are additionally protected with AES-256 encryption inside the database itself.",
-    icon: (
-      <svg {...ICON}>
-        <circle cx="8" cy="15" r="4" />
-        <path d="M11 12l9-9M17 6l3 3M14 9l2 2" />
-      </svg>
+    visual: (
+      <Art
+        src="/images/taxflow/sec-encryption.webp"
+        alt="Flo guiding a document through a glowing tunnel between a laptop and a server, scrambled in transit"
+      />
     ),
   },
   {
@@ -70,23 +81,18 @@ const SECTIONS = [
     label: "Access & authentication",
     title: "Two-factor authentication on every sign-in.",
     body: "Every login — client or accountant — requires a password plus a one-time verification code. Client and staff portals are fully separated, access is role-based and least-privilege, and security events are audit-logged.",
-    icon: (
-      <svg {...ICON}>
-        <rect x="7" y="2.5" width="10" height="19" rx="2.5" />
-        <path d="M10 9h4M10 12.5h4M11 18h2" />
-      </svg>
-    ),
+    visual: <TwoFactorPanel />,
   },
   {
     id: "minimisation",
     label: "Data minimisation",
     title: "We don’t store what we don’t need.",
     body: "Tax File Numbers and bank account details are not stored in TaxFlowAI. Sensitive identifiers stay in dedicated, purpose-built systems — so a breach of any one system can never expose them all.",
-    icon: (
-      <svg {...ICON}>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M8 12h8" />
-      </svg>
+    visual: (
+      <Art
+        src="/images/taxflow/sec-minimisation-v2.webp"
+        alt="Flo beside a tidy filing drawer, waving away a redacted card toward a separate sealed capsule"
+      />
     ),
   },
   {
@@ -94,20 +100,19 @@ const SECTIONS = [
     label: "Resilience",
     title: "Backed up continuously.",
     body: "Our database replicates to encrypted Australian storage with roughly one second of maximum data loss, with versioned recovery points and a tested disaster recovery plan.",
-    icon: (
-      <svg {...ICON}>
-        <path d="M20 11a8 8 0 00-14.900-3M4 13a8 8 0 0014.900 3" />
-        <path d="M5 4v4h4M19 20v-4h-4" />
-      </svg>
-    ),
+    visual: <ReplicationPanel />,
   },
 ];
 
-const GOVERNANCE = {
-  label: "Governance",
-  title: "ISO 27001-aligned, independently audited.",
-  body: "We operate a documented Information Security Management System — risk register, incident response, retention and vendor management — aligned to ISO/IEC 27001, and our application code undergoes independent security audits. We comply with the Privacy Act 1988 (Cth), including the Notifiable Data Breaches scheme.",
-};
+/* headline numbers, each taken from the brief's quick facts */
+const STATS = [
+  { value: "~1s", label: "maximum data loss, with continuous replication" },
+  { value: "2", label: "factors on every login: password plus one-time code" },
+  { value: "AES-256", label: "encryption for stored integration credentials" },
+  { value: "TLS 1.2+", label: "on every connection, HTTPS everywhere" },
+];
+
+const ISMS = ["Risk register", "Incident response", "Retention", "Vendor management"];
 
 const FACTS = [
   ["Hosting", "Amazon Web Services, Sydney (ap-southeast-2)"],
@@ -125,113 +130,190 @@ const FACTS = [
 
 const BUILT_ON = ["Amazon Web Services", "Xero", "Stripe", "Microsoft"];
 
-function Tick() {
-  return (
-    <svg className="h-3 w-3 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path d="M1.5 6.5l3 3 6-7" stroke="#00FCB8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function TrustPanel() {
-  return (
-    <div className="tc-panel p-6 md:p-7">
-      <p className="tc-mono text-[11px] tracking-[0.18em]" style={{ color: "#94A3B8" }}>
-        AT A GLANCE
-      </p>
-      <ul className="mt-5 space-y-4">
-        {TRUST.map((t) => (
-          <li key={t} className="flex items-center gap-3 border-b pb-4 last:border-b-0 last:pb-0" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-            <span className="tc-sec-dot" aria-hidden />
-            <span className="text-[16px] font-bold text-white">{t}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6 text-[12.5px] leading-relaxed" style={{ color: "#64748B" }}>
-        Security is a managed practice, not a promise.
-      </p>
-    </div>
-  );
-}
-
 export default function SecurityPage() {
   return (
-    <InfoPage
-      crumbName="Data security"
-      crumbHref="/taxflow/security"
-      eyebrow="Data security"
-      headline="Your data, secured the Australian way."
-      intro="TaxFlowAI is built by a registered Australian tax agent with security practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to end, and independently audited."
-      panel={<TrustPanel />}
-    >
-      {/* five sections: residency, encryption, access, minimisation, resilience */}
-      <InfoSection id="how">
-        <SectionHeading
-          eyebrow="How we protect your data"
-          title="Five things that are always true"
-          lead="Plain English, no scare tactics. Here is what protects your records every day."
-        />
-        <div className="tc-reveal mt-10 grid gap-4 md:grid-cols-2">
-          {SECTIONS.map((s, i) => (
-            <section
-              key={s.id}
-              id={s.id}
-              className={`tc-int-card p-6 md:p-7 ${i === SECTIONS.length - 1 ? "md:col-span-2" : ""}`}
-              style={{ scrollMarginTop: "120px" }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="tc-sec-icon">{s.icon}</span>
-                <p className="tc-mono text-[11px] font-medium tracking-[0.18em]" style={{ color: "#00FCB8" }}>
-                  {String(i + 1).padStart(2, "0")} · {s.label.toUpperCase()}
-                </p>
-              </div>
-              <h2 className="mt-4 text-xl font-bold text-white md:text-[1.4rem]">{s.title}</h2>
-              <p className="mt-2.5 max-w-3xl text-[14.5px] leading-relaxed" style={{ color: "#94A3B8" }}>
-                {s.body}
-              </p>
-            </section>
-          ))}
-        </div>
-      </InfoSection>
+    <div className="tc-page min-h-screen">
+      <RevealInit />
+      <TaxFlowHeader />
 
-      {/* governance */}
-      <InfoSection id="governance" alt>
-        <div
-          className="tc-reveal rounded-2xl border p-7 md:p-10"
-          style={{ borderColor: "rgba(0,252,184,0.25)", background: "rgba(0,252,184,0.04)" }}
-        >
-          <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>{GOVERNANCE.label}</p>
-          <h2 className="tc-display mt-4 max-w-2xl text-3xl text-white md:text-4xl">{GOVERNANCE.title}</h2>
-          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed" style={{ color: "#B7C4CF" }}>
-            {GOVERNANCE.body}
-          </p>
-          <div className="mt-6">
-            <Link href="/taxflow/privacy-policy" className="tc-link text-[14.5px] font-semibold">
+      {/* ============ HERO ============ */}
+      <section className="tc-hero-flo relative overflow-hidden">
+        <Breadcrumbs items={[{ name: "Data security", href: "/taxflow/security" }]} />
+        <div className={`${container} grid items-center gap-10 pb-14 pt-8 md:pb-20 md:pt-12 lg:grid-cols-12 lg:gap-8`}>
+          <div className="order-2 lg:order-1 lg:col-span-6">
+            <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>Data security</p>
+            <h1 className="tc-display mt-5 text-[2.6rem] text-white md:text-6xl lg:text-[4.2rem]">
+              Your data, secured{" "}
+              <span className="tc-hero-accent">the Australian way.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
+              TaxFlowAI is built by a registered Australian tax agent with security
+              practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
+              end, and independently audited.
+            </p>
+            <a href="#residency" className="tc-link mt-8 inline-block text-[15px] font-semibold">
+              See how it works
+            </a>
+          </div>
+          <div className="order-1 lg:order-2 lg:col-span-6">
+            <div className="tc-flo-stage relative mx-auto w-full max-w-[30rem]">
+              <div className="tc-flo-glow" aria-hidden />
+              <Image
+                src="/images/taxflow/sec-australia.webp"
+                alt="Flo pointing to a glowing map of Australia with a pulsing node on Sydney"
+                width={1254}
+                height={1254}
+                priority
+                sizes="(min-width: 1024px) 30rem, 90vw"
+                className="float-animate relative z-10 h-auto w-full"
+              />
+            </div>
+            <p className="tc-mono mt-2 text-center text-[11px] tracking-[0.18em]" style={{ color: "#94A3B8" }}>
+              AWS SYDNEY · AP-SOUTHEAST-2
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TRUST STRIP ============ */}
+      <TaxFlowWaveLayers from={NAVY} to={DEEP} />
+      <section style={{ background: DEEP }}>
+        <ul className={`${container} tc-sec-strip pb-10 pt-2 md:pb-14`}>
+          {TRUST.map((t) => (
+            <li key={t}>
+              <span className="tc-sec-dot" aria-hidden />
+              {t}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <TaxFlowWave from={DEEP} to={NAVY} />
+
+      {/* ============ THE STORY: five stations on the current ============ */}
+      <section style={{ background: NAVY }}>
+        <div className={`${container} pb-10 pt-14 md:pb-16 md:pt-20`}>
+          <div className="tc-reveal max-w-2xl">
+            <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>How we protect your data</p>
+            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
+              Follow your data, start to finish
+            </h2>
+          </div>
+
+          <div className="tc-story tc-observe mt-6 md:mt-10">
+            <div className="tc-story-line tc-spine tc-grad-line-v" aria-hidden />
+            {STORY.map((s, i) => (
+              <article
+                key={s.id}
+                id={s.id}
+                className={`tc-story-row ${i % 2 ? "is-flipped" : ""}`}
+                style={{ scrollMarginTop: "120px" }}
+              >
+                <div className="tc-story-visual tc-reveal">{s.visual}</div>
+                <div className="tc-story-node" aria-hidden>
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="tc-story-text tc-reveal">
+                  <p className="tc-mono text-[11px] font-medium tracking-[0.18em]" style={{ color: "#00FCB8" }}>
+                    <span className="lg:hidden">{String(i + 1).padStart(2, "0")} · </span>
+                    {s.label.toUpperCase()}
+                  </p>
+                  <h3 className="tc-display mt-3 text-[1.9rem] text-white md:text-[2.3rem]">{s.title}</h3>
+                  <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+                    {s.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ STAT BAND ============ */}
+      <TaxFlowWave from={NAVY} to={BAND} />
+      <section style={{ background: `linear-gradient(180deg, ${BAND} 0%, #16334B 50%, ${BAND} 100%)` }}>
+        <div className={`${container} py-12 md:py-16`}>
+          <dl className="tc-reveal grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {STATS.map((s) => (
+              <div key={s.value}>
+                <dt className="sr-only">{s.label}</dt>
+                <dd>
+                  <span className="tc-display tc-hero-accent block text-5xl md:text-6xl">{s.value}</span>
+                  <span className="mt-3 block max-w-[15rem] text-[13.5px] leading-relaxed" style={{ color: "#B7C4CF" }}>
+                    {s.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+      <TaxFlowWave from={BAND} to={DEEP} />
+
+      {/* ============ GOVERNANCE ============ */}
+      <section id="governance" className="tc-depth-teal" style={{ scrollMarginTop: "110px" }}>
+        <div className={`${container} grid items-center gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8`}>
+          <div className="tc-reveal lg:col-span-5">
+            <Art
+              src="/images/taxflow/sec-governance-v2.webp"
+              alt="Flo in glasses checking a binder with a magnifying glass, holding a ticked checklist"
+            />
+          </div>
+          <div className="tc-reveal lg:col-span-7">
+            <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>Governance</p>
+            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
+              ISO 27001-aligned, independently audited.
+            </h2>
+            <p className="mt-5 max-w-2xl text-[15px] leading-relaxed" style={{ color: "#B7C4CF" }}>
+              We operate a documented Information Security Management System — risk
+              register, incident response, retention and vendor management — aligned to
+              ISO/IEC 27001, and our application code undergoes independent security
+              audits. We comply with the Privacy Act 1988 (Cth), including the
+              Notifiable Data Breaches scheme.
+            </p>
+            <ul className="mt-7 grid max-w-xl gap-3 sm:grid-cols-2">
+              {ISMS.map((item) => (
+                <li key={item} className="tc-int-card flex items-center gap-3 px-4 py-3 text-[14px] font-semibold text-white">
+                  <svg className="h-3 w-3 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden>
+                    <path d="M1.5 6.5l3 3 6-7" stroke="#00FCB8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link href="/taxflow/privacy-policy" className="tc-link mt-7 inline-block text-[14.5px] font-semibold">
               Read our Privacy Policy
             </Link>
           </div>
         </div>
-      </InfoSection>
+      </section>
 
-      {/* quick facts */}
-      <InfoSection id="facts">
-        <SectionHeading eyebrow="Quick facts" title="The details, for the detail-minded" />
-        <dl className="tc-reveal tc-sec-facts mt-10">
-          {FACTS.map(([k, v]) => (
-            <div key={k}>
-              <dt className="tc-mono">{k.toUpperCase()}</dt>
-              <dd>{v}</dd>
-            </div>
-          ))}
-        </dl>
+      {/* ============ SPEC SHEET ============ */}
+      <TaxFlowWave from={DEEP} to={NAVY} />
+      <section id="facts" style={{ background: NAVY, scrollMarginTop: "110px" }}>
+        <div className={`${container} py-12 md:py-16`}>
+          <details className="tc-sec-spec tc-reveal">
+            <summary>
+              <span>
+                <span className="tc-eyebrow block" style={{ color: "#39B2B2" }}>Quick facts</span>
+                <span className="tc-display mt-2 block text-2xl text-white md:text-3xl">
+                  The spec sheet, for the detail-minded
+                </span>
+              </span>
+            </summary>
+            <dl className="tc-sec-facts mt-6">
+              {FACTS.map(([k, v]) => (
+                <div key={k}>
+                  <dt className="tc-mono">{k.toUpperCase()}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </details>
 
-        <div className="tc-reveal mt-12">
-          <p className="tc-mono text-[11px] tracking-[0.18em]" style={{ color: "#94A3B8" }}>
-            BUILT ON
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="tc-reveal mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="tc-mono text-[11px] tracking-[0.18em]" style={{ color: "#94A3B8" }}>BUILT ON</p>
             {BUILT_ON.map((v) => (
-              <span key={v} className="tc-chip tc-mono px-4 py-2.5 text-[12px] font-medium tracking-[0.06em] text-white/85">
+              <span key={v} className="tc-mono text-[12.5px] font-medium tracking-[0.08em] text-white/70">
                 {v.toUpperCase()}
               </span>
             ))}
@@ -240,29 +322,49 @@ export default function SecurityPage() {
             Named as the platforms TaxFlowAI is built on. Their inclusion does not imply endorsement.
           </p>
         </div>
-      </InfoSection>
+      </section>
 
-      {/* contact + firm line */}
-      <InfoSection id="contact" alt>
-        <div className="tc-reveal max-w-3xl">
-          <h2 className="tc-display text-3xl text-white md:text-4xl">
-            Questions about our security practices?
-          </h2>
-          <p className="mt-4 text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
-            Contact{" "}
-            <a href="mailto:hassan@taxflowai.com.au" className="tc-link">
-              hassan@taxflowai.com.au
-            </a>
-            .
-          </p>
+      {/* ============ CLOSING ============ */}
+      <TaxFlowWaveLayers from={NAVY} to={DEEP} />
+      <section id="contact" style={{ background: DEEP }}>
+        <div className={`${container} grid items-center gap-8 pb-14 pt-4 md:pb-20 lg:grid-cols-12`}>
+          <div className="tc-reveal lg:col-span-4">
+            <div className="tc-flo-stage relative mx-auto w-56 sm:w-64 lg:w-72">
+              <div className="tc-flo-glow" aria-hidden />
+              <Image
+                src="/images/taxflow/sec-guardian-v2.webp"
+                alt="Flo holding a shield with a glowing tick, waving"
+                width={1254}
+                height={1254}
+                sizes="18rem"
+                className="float-animate relative z-10 h-auto w-full"
+              />
+            </div>
+          </div>
+          <div className="tc-reveal lg:col-span-8">
+            <h2 className="tc-display text-4xl text-white md:text-5xl">
+              Questions about our security practices?
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
+              Contact{" "}
+              <a href="mailto:hassan@taxflowai.com.au" className="tc-link">
+                hassan@taxflowai.com.au
+              </a>
+              .
+            </p>
+            <p
+              className="tc-mono mt-10 border-t pt-6 text-[11.5px] leading-relaxed"
+              style={{ borderColor: "rgba(255,255,255,0.08)", color: "#94A3B8" }}
+            >
+              TAX7 T04 PTY LTD trading as TaxFlowAI · ABN 73 680 225 512 · Registered Tax Agent 26313222
+            </p>
+          </div>
         </div>
-        <p
-          className="tc-reveal tc-mono mt-12 border-t pt-6 text-[11.5px] leading-relaxed"
-          style={{ borderColor: "rgba(255,255,255,0.08)", color: "#94A3B8" }}
-        >
-          TAX7 T04 PTY LTD trading as TaxFlowAI · ABN 73 680 225 512 · Registered Tax Agent 26313222
-        </p>
-      </InfoSection>
-    </InfoPage>
+      </section>
+
+      <TaxFlowWave from={DEEP} to={NAVY} />
+      <CtaBand />
+      <TaxFlowAppFooter />
+    </div>
   );
 }

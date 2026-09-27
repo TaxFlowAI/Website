@@ -47,27 +47,6 @@ const ABOUT_POINTS = [
    reword without sign-off. See src/app/taxflow/security/page.js. */
 const SECURITY_TRUST = ["Australian-hosted", "Encrypted at rest", "2FA on every login", "ISO 27001-aligned"];
 
-const SECURITY_CARDS = [
-  { title: "Your data lives in Australia.", body: "Hosted in Amazon Web Services’ Sydney region." },
-  { title: "Everything is encrypted.", body: "In transit and at rest." },
-  {
-    title: "Every login is double-checked.",
-    body: "Password plus a one-time verification code, for every user, every time.",
-  },
-  {
-    title: "We keep only what we need.",
-    body: "Tax File Numbers and bank account details are not stored in the platform.",
-  },
-  {
-    title: "Backed up continuously.",
-    body: "Our database replicates to encrypted Australian storage with roughly one second of maximum data loss.",
-  },
-  {
-    title: "Security is a managed practice, not a promise.",
-    body: "ISO 27001-aligned controls, independent code audits, continuous backups.",
-  },
-];
-
 export default function TaxFlowHomePage() {
   return (
     <div className="tc-page min-h-screen">
@@ -225,58 +204,138 @@ export default function TaxFlowHomePage() {
 
       {/* ============ DATA SECURITY ============ */}
       <TaxFlowWave from={NAVY} to={DEEP} />
-      <section id="security" className="tc-depth-teal">
-        <div className={`${container} grid gap-10 py-16 md:py-24 lg:grid-cols-12`}>
-          <div className="tc-reveal lg:col-span-4">
-            <div className="tc-flo-stage relative mx-auto mb-8 w-52 sm:w-60 lg:mx-0 lg:w-64">
-              <div className="tc-flo-glow" aria-hidden />
-              <Image
-                src="/images/taxflow/flo-security.webp"
-                alt="Flo flexing beside a chained and locked vault, under a protective shield"
-                width={1254}
-                height={1254}
-                sizes="(min-width: 1024px) 16rem, 15rem"
-                className="float-animate relative z-10 h-auto w-full"
-              />
+      <section id="security" className="tc-depth-teal" style={{ scrollMarginTop: "110px" }}>
+        <div className={`${container} py-16 md:py-24`}>
+          {/* intro: copy + guardian Flo */}
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+            <div className="tc-reveal order-2 lg:order-1 lg:col-span-7">
+              <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Data security</p>
+              <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl lg:text-[3.6rem]">
+                Your data, secured{" "}
+                <span className="tc-hero-accent">the Australian way.</span>
+              </h2>
+              <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
+                TaxFlowAI is built by a registered Australian tax agent with security
+                practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
+                end, and independently audited.
+              </p>
+              <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
+                How we protect your data
+              </Link>
             </div>
-            <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Data security</p>
-            <h2 className="tc-display mt-4 text-4xl text-white md:text-[2.75rem]">
-              Your data, secured the Australian way.
-            </h2>
-            <p className="mt-5 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              TaxFlowAI is built by a registered Australian tax agent with security
-              practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
-              end, and independently audited.
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {SECURITY_TRUST.map((t) => (
-                <li
-                  key={t}
-                  className="tc-chip tc-mono flex items-center gap-2 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.08em] text-white/85"
-                >
-                  <span className="tc-sec-dot" aria-hidden />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
-              How we protect your data
-            </Link>
+            <div className="tc-reveal order-1 lg:order-2 lg:col-span-5">
+              <div className="tc-flo-stage relative mx-auto w-60 sm:w-72 lg:ml-auto lg:mr-0 lg:w-[22rem]">
+                <div className="tc-flo-glow" aria-hidden />
+                <Image
+                  src="/images/taxflow/flo-security.webp"
+                  alt="Flo flexing beside a chained and locked vault, under a protective shield"
+                  width={1254}
+                  height={1254}
+                  sizes="(min-width: 1024px) 22rem, 18rem"
+                  className="float-animate relative z-10 h-auto w-full"
+                />
+              </div>
+            </div>
           </div>
-          <div className="tc-reveal grid gap-4 sm:grid-cols-2 lg:col-span-8">
-            {SECURITY_CARDS.map((c) => (
-              <div key={c.title} className="tc-int-card flex gap-4 p-5">
-                <svg className="mt-1 h-4 w-4 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden>
-                  <path d="M1.5 6.5l3 3 6-7" stroke="#00FCB8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <div>
-                  <h3 className="text-[15.5px] font-bold text-white">{c.title}</h3>
-                  <p className="mt-1.5 text-[13.5px] leading-relaxed" style={{ color: "#94A3B8" }}>
-                    {c.body}
+
+          {/* trust strip */}
+          <ul
+            className="tc-sec-strip tc-reveal mt-12 border-y py-6"
+            style={{ borderColor: "rgba(255,255,255,0.08)" }}
+          >
+            {SECURITY_TRUST.map((t) => (
+              <li key={t}>
+                <span className="tc-sec-dot" aria-hidden />
+                {t}
+              </li>
+            ))}
+          </ul>
+
+          {/* bento */}
+          <div className="tc-reveal mt-8 grid items-stretch gap-4 md:grid-cols-6">
+            {/* Australia — wide */}
+            <div className="tc-bento md:col-span-4">
+              <div className="flex flex-wrap items-center gap-5">
+                <span className="tc-sec-pin" aria-hidden>
+                  <span />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="tc-bento-title">Your data lives in Australia.</h3>
+                  <p className="tc-bento-body">Hosted in Amazon Web Services’ Sydney region.</p>
+                </div>
+                <p className="tc-mono text-[11px] tracking-[0.16em]" style={{ color: "#00FCB8" }}>
+                  SYDNEY · AP-SOUTHEAST-2
+                </p>
+              </div>
+            </div>
+
+            {/* encryption */}
+            <div className="tc-bento md:col-span-2">
+              <div className="tc-sec-flow mb-5 w-full" aria-hidden>
+                <span />
+              </div>
+              <h3 className="tc-bento-title">Everything is encrypted.</h3>
+              <p className="tc-bento-body">In transit and at rest.</p>
+            </div>
+
+            {/* 2FA */}
+            <div className="tc-bento md:col-span-2">
+              <div className="mb-5 grid max-w-[15rem] grid-cols-6 gap-1.5" aria-hidden>
+                {["4", "8", "2", "", "", ""].map((d, i) => (
+                  <span
+                    key={i}
+                    className={`tc-sec-code text-[0.95rem] ${d ? "is-filled" : ""} ${i === 3 ? "is-caret" : ""}`}
+                  >
+                    {d}
+                  </span>
+                ))}
+              </div>
+              <h3 className="tc-bento-title">Every login is double-checked.</h3>
+              <p className="tc-bento-body">
+                Password plus a one-time verification code, for every user, every time.
+              </p>
+            </div>
+
+            {/* minimisation */}
+            <div className="tc-bento md:col-span-2">
+              <div className="tc-bento-redact mb-5" aria-hidden>
+                <span className="tc-mono">TFN</span>
+                <i />
+                <b className="tc-mono">NOT STORED</b>
+              </div>
+              <h3 className="tc-bento-title">We keep only what we need.</h3>
+              <p className="tc-bento-body">
+                Tax File Numbers and bank account details are not stored in the platform.
+              </p>
+            </div>
+
+            {/* backups */}
+            <div className="tc-bento md:col-span-2">
+              <p className="tc-display tc-hero-accent mb-3 text-[2.6rem] leading-none">~1 second</p>
+              <h3 className="tc-bento-title">Backed up continuously.</h3>
+              <p className="tc-bento-body">
+                Our database replicates to encrypted Australian storage with roughly one
+                second of maximum data loss.
+              </p>
+            </div>
+
+            {/* managed practice — full width */}
+            <div className="tc-bento tc-bento-accent md:col-span-6">
+              <div className="flex flex-wrap items-center justify-between gap-5">
+                <div className="min-w-0 flex-1">
+                  <h3 className="tc-bento-title">Security is a managed practice, not a promise.</h3>
+                  <p className="tc-bento-body">
+                    ISO 27001-aligned controls, independent code audits, continuous backups.
                   </p>
                 </div>
+                <Link
+                  href="/taxflow/security"
+                  className="tc-btn-ghost shrink-0 rounded-lg px-6 py-3 text-[14.5px] font-semibold"
+                >
+                  See the full security page
+                </Link>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
