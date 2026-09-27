@@ -43,13 +43,29 @@ const ABOUT_POINTS = [
   "Message through the portal and a person reads it — no bots answering for us",
 ];
 
+/* Approved wording from the TaxFlowAI security brief (27 Sept 2026) — do not
+   reword without sign-off. See src/app/taxflow/security/page.js. */
+const SECURITY_TRUST = ["Australian-hosted", "Encrypted at rest", "2FA on every login", "ISO 27001-aligned"];
+
 const SECURITY_CARDS = [
-  { title: "Encrypted in transit and at rest", body: "Your data is protected on the move and in storage." },
-  { title: "Two-factor authentication", body: "Every sign-in, every time. A password alone never gets anyone in." },
-  { title: "TFN and bank details masked", body: "Sensitive fields are encrypted and revealed only after you re-enter your password." },
-  { title: "Role-based access", body: "People only see what their role requires — nothing more." },
-  { title: "Your own document folder", body: "Documents live in a private, access-controlled cloud folder that belongs to you." },
-  { title: "Payments through Stripe", body: "Invoices are paid securely online. Card details never touch our servers." },
+  { title: "Your data lives in Australia.", body: "Hosted in Amazon Web Services’ Sydney region." },
+  { title: "Everything is encrypted.", body: "In transit and at rest." },
+  {
+    title: "Every login is double-checked.",
+    body: "Password plus a one-time verification code, for every user, every time.",
+  },
+  {
+    title: "We keep only what we need.",
+    body: "Tax File Numbers and bank account details are not stored in the platform.",
+  },
+  {
+    title: "Backed up continuously.",
+    body: "Our database replicates to encrypted Australian storage with roughly one second of maximum data loss.",
+  },
+  {
+    title: "Security is a managed practice, not a promise.",
+    body: "ISO 27001-aligned controls, independent code audits, continuous backups.",
+  },
 ];
 
 export default function TaxFlowHomePage() {
@@ -212,15 +228,38 @@ export default function TaxFlowHomePage() {
       <section id="security" className="tc-depth-teal">
         <div className={`${container} grid gap-10 py-16 md:py-24 lg:grid-cols-12`}>
           <div className="tc-reveal lg:col-span-4">
+            <div className="tc-flo-stage relative mx-auto mb-8 w-52 sm:w-60 lg:mx-0 lg:w-64">
+              <div className="tc-flo-glow" aria-hidden />
+              <Image
+                src="/images/taxflow/flo-security.webp"
+                alt="Flo flexing beside a chained and locked vault, under a protective shield"
+                width={1254}
+                height={1254}
+                sizes="(min-width: 1024px) 16rem, 15rem"
+                className="float-animate relative z-10 h-auto w-full"
+              />
+            </div>
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Data security</p>
-            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
-              Your data, protected
+            <h2 className="tc-display mt-4 text-4xl text-white md:text-[2.75rem]">
+              Your data, secured the Australian way.
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              A tax portal holds the most sensitive information you have. TaxFlowAI is
-              built so you can focus on your tax — not on worrying about security.
+              TaxFlowAI is built by a registered Australian tax agent with security
+              practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
+              end, and independently audited.
             </p>
-            <Link href="/taxflow/security" className="tc-link mt-6 inline-block text-[15px] font-semibold">
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {SECURITY_TRUST.map((t) => (
+                <li
+                  key={t}
+                  className="tc-chip tc-mono flex items-center gap-2 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.08em] text-white/85"
+                >
+                  <span className="tc-sec-dot" aria-hidden />
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
               How we protect your data
             </Link>
           </div>

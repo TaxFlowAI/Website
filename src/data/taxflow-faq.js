@@ -22,7 +22,7 @@ export const TAXFLOW_FAQ = [
   {
     id: "security",
     q: "Is my data secure?",
-    a: "Yes. Your data is encrypted in transit and at rest, every sign-in requires two-factor authentication, and sensitive fields like your TFN and bank details are encrypted and masked — revealed only after you re-enter your password. Documents live in your own access-controlled cloud folder.",
+    a: "Yes. The TaxFlowAI platform and its database are hosted in Amazon Web Services’ Sydney region, your data is encrypted in transit and at rest, and every sign-in requires a password plus a one-time verification code. Tax File Numbers and bank account details are not stored in TaxFlowAI. Our security practices are aligned to ISO/IEC 27001 and our application code undergoes independent security audits.",
   },
   {
     id: "entities",

@@ -844,3 +844,54 @@
 @media (prefers-reduced-motion: reduce) {
   .tc-svc-card:hover .tc-svc-img { transform: none; }
 }
+
+/* ---------- data security (home section + /taxflow/security) ---------- */
+.tc-sec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--tc-aqua);
+  box-shadow: 0 0 0 3px rgba(0, 252, 184, 0.14), 0 0 10px rgba(0, 252, 184, 0.5);
+}
+.tc-sec-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--tc-aqua);
+  background: rgba(0, 252, 184, 0.08);
+  border: 1px solid rgba(0, 252, 184, 0.28);
+}
+.tc-sec-facts {
+  border: 1px solid var(--tc-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--tc-surface);
+}
+.tc-sec-facts > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--tc-border);
+}
+.tc-sec-facts > div:last-child { border-bottom: 0; }
+.tc-sec-facts dt {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #00FCB8;
+}
+.tc-sec-facts dd {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #E2E8F0;
+}
+@media (min-width: 768px) {
+  .tc-sec-facts > div {
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+}

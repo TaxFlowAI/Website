@@ -55,7 +55,7 @@ const SERVICES = [
 const STEPS = [
   {
     title: "Register free and complete your profile",
-    desc: "Ten minutes, guided by Flo. Your TFN and bank details are encrypted and masked from the first sign-in.",
+    desc: "Ten minutes, guided by Flo. Every sign-in is protected by two-factor authentication from day one.",
   },
   {
     title: "Engage a Registered Tax Agent",

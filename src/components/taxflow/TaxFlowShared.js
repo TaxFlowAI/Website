@@ -170,7 +170,7 @@ const INTEGRATIONS = [
   },
   {
     name: "Annature",
-    line: "Sign engagement letters electronically — legally binding, bank-grade e-signatures.",
+    line: "Sign engagement letters electronically through Annature — an Australian, ISO 27001-certified provider.",
   },
   {
     name: "Stripe",
@@ -217,7 +217,7 @@ export function IntegrationsSection() {
 const SECURITY_POINTS = [
   "Encryption in transit and at rest — your data is protected on the move and in storage.",
   "Two-factor authentication on every sign-in.",
-  "Sensitive fields — your TFN and bank details — are encrypted and masked, revealed only after you re-enter your password.",
+  "Tax File Numbers and bank account details are not stored in TaxFlowAI.",
   "Role-based access: people only see what their role requires.",
   "Your documents are stored in your own access-controlled cloud folder.",
 ];
