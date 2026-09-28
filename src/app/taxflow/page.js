@@ -130,7 +130,7 @@ export default function TaxFlowHomePage() {
               </CalendlyButton>
             </div>
             <p className="mt-4 text-[13px]" style={{ color: "#94A3B8" }}>
-              Free, no obligation. Parramatta and Martin Place, or Teams and phone Australia-wide.
+              Free, no obligation. Parramatta and Sydney CBD, or Teams and phone Australia-wide.
             </p>
           </div>
           <div className="tc-reveal lg:col-span-6">

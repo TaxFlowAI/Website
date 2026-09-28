@@ -142,7 +142,7 @@ export default function TaxFlowAppFooter() {
                 </a>
               </li>
               <li>Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
-              <li>Martin Place, Sydney NSW</li>
+              <li>213 Clarence Street, Sydney NSW 2000</li>
               <li>
                 <Link href="/" className="text-[#00FCB8] transition hover:underline">
                   Visit Frontline Financial →

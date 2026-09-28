@@ -137,7 +137,7 @@ function BookingModal({ onClose }) {
             </ul>
 
             <p className="tc-mono mt-auto hidden pt-8 text-[10.5px] lg:block" style={{ color: "#64748B" }}>
-              POWERED BY FRONTLINE FINANCIAL · PARRAMATTA &amp; MARTIN PLACE
+              POWERED BY FRONTLINE FINANCIAL · PARRAMATTA &amp; SYDNEY CBD
             </p>
           </aside>
 

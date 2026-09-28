@@ -95,12 +95,13 @@ const ORG_SCHEMA = {
       email: "taxflowai@frontline.financial",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Martin Place",
+        streetAddress: "213 Clarence Street",
+        postalCode: "2000",
         addressLocality: "Sydney",
         addressRegion: "NSW",
         addressCountry: "AU",
       },
-      geo: { "@type": "GeoCoordinates", latitude: -33.8678, longitude: 151.21 },
+      geo: { "@type": "GeoCoordinates", latitude: -33.8717, longitude: 151.2046 },
     },
   ],
 };

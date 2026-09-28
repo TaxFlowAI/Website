@@ -108,7 +108,7 @@ const FEATURES = [
     eyebrow: "Get help",
     title: "Book your accountant in two clicks",
     body: [
-      "Live accountant availability inside the portal — pick a 30-minute Teams or phone call, or a 1-hour in-person appointment at Parramatta or Martin Place.",
+      "Live accountant availability inside the portal — pick a 30-minute Teams or phone call, or a 1-hour in-person appointment at Parramatta or Clarence Street, Sydney.",
       "Your booking lands straight in the accountant's calendar. No phone tag, no email chains.",
     ],
     panel: <BookingPanel />,

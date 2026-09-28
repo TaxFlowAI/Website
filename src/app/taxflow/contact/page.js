@@ -8,12 +8,12 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
 export const metadata = {
   title: "Contact",
   description:
-    "Book a free 30-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or Martin Place Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
+    "Book a free 30-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or 213 Clarence Street Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
   alternates: { canonical: "/taxflow/contact" },
   openGraph: {
     title: "Contact TaxFlowAI",
     description:
-      "Book a free 30-minute call, or visit us in Parramatta or Martin Place, Sydney.",
+      "Book a free 30-minute call, or visit us in Parramatta or Clarence Street, Sydney.",
     url: "/taxflow/contact",
   },
 };
@@ -27,9 +27,9 @@ const OFFICES = [
   },
   {
     name: "Sydney",
-    address: "Martin Place, Sydney NSW 2000",
+    address: "213 Clarence Street, Sydney NSW 2000",
     mapSrc:
-      "https://www.google.com/maps?q=Martin+Place,+Sydney+NSW+2000&output=embed",
+      "https://www.google.com/maps?q=213+Clarence+Street,+Sydney+NSW+2000&output=embed",
   },
 ];
 

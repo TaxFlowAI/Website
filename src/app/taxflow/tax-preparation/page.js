@@ -59,7 +59,7 @@ const STEPS = [
   },
   {
     title: "Engage a Registered Tax Agent",
-    desc: "Pick a time that suits — 30 minutes on Teams or phone, or in person at Parramatta or Martin Place. You receive a quote for exactly what you need.",
+    desc: "Pick a time that suits — 30 minutes on Teams or phone, or in person at Parramatta or Clarence Street, Sydney. You receive a quote for exactly what you need.",
   },
   {
     title: "Upload and let Flo sort it",

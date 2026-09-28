@@ -365,7 +365,7 @@ export function BookingPanel() {
         <div className="flex items-center justify-between gap-3 rounded-lg border p-3" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
           <div>
             <p className="text-[13px] font-bold text-white">1 hour — in person</p>
-            <p className="tc-mono mt-0.5 text-[10.5px]" style={{ color: "#94A3B8" }}>PARRAMATTA · MARTIN PLACE</p>
+            <p className="tc-mono mt-0.5 text-[10.5px]" style={{ color: "#94A3B8" }}>PARRAMATTA · SYDNEY CBD</p>
           </div>
           <span className="tc-btn-primary shrink-0 rounded-lg px-3 py-1.5 text-[12px] font-bold">Book</span>
         </div>
