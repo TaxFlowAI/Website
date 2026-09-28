@@ -214,9 +214,10 @@ export default function TaxFlowHomePage() {
                 <span className="tc-hero-accent">the Australian way.</span>
               </h2>
               <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
-                TaxFlowAI is built by a registered Australian tax agent with security
-                practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
-                end, and independently audited.
+                TaxFlowAI&apos;s tax services are provided by a registered Australian
+                tax agent, on a platform with security practices aligned to ISO/IEC
+                27001. Australian-hosted, encrypted end to end, and independently
+                audited.
               </p>
               <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
                 How we protect your data

@@ -12,7 +12,10 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
    APPROVED COPY — TaxFlowAI "Data Security Page" brief, 27 September 2026.
    The claims on this page are the brief's wording, used as written. Any
    rewording of the security claims must go back to TaxFlowAI for sign-off
-   before publishing. Wording rules from the brief:
+   before publishing. One approved departure: the hero sentence was revised
+   with the owner's sign-off on 28 Sept 2026, because the platform is owned
+   and built by Frontline Holdings Group, not by the tax agent.
+   Wording rules from the brief:
    - say "ISO 27001-aligned", never "certified" (no certification badges)
    - say "Hosted in AWS Sydney" / "Australian-hosted", never "all data is
      stored in Australia" as an absolute
@@ -147,9 +150,9 @@ export default function SecurityPage() {
               <span className="tc-hero-accent">the Australian way.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
-              TaxFlowAI is built by a registered Australian tax agent with security
-              practices aligned to ISO/IEC 27001 — Australian-hosted, encrypted end to
-              end, and independently audited.
+              TaxFlowAI&apos;s tax services are provided by a registered Australian tax
+              agent, on a platform with security practices aligned to ISO/IEC 27001.
+              Australian-hosted, encrypted end to end, and independently audited.
             </p>
             <a href="#residency" className="tc-link mt-8 inline-block text-[15px] font-semibold">
               See how it works
