@@ -9,9 +9,10 @@ const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 
 /**
  * TaxFlowAI app footer.
- * TaxFlowAI is the technology platform; tax services are provided by Registered
- * Tax Agents. Keep the legal links (Privacy Policy | Collection Notice | Terms
- * of Service | Verify Tax Agent) and the platform/ASIC entity details.
+ * Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent
+ * 26313222. Platform owner and ASIC agent: Frontline Holdings Group Pty Ltd.
+ * Keep the legal links (Privacy Policy | Collection Notice | Terms of
+ * Service | Verify Tax Agent) and both entities' details.
  * See docs/DESIGN-BRIEF-TAXFLOWAI-WEBSITE.md
  */
 export default function TaxFlowAppFooter() {
@@ -26,10 +27,11 @@ export default function TaxFlowAppFooter() {
               <span className="text-[#00FCB8]">AI</span>
             </p>
             <p className="mt-2 text-sm text-gray-500">
-              TaxFlowAI is the technology platform — not a registered tax agent.
+              Tax services by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered
+              Tax Agent 26313222.
             </p>
             <p className="mt-1 text-sm text-gray-500">
-              It connects you with Registered Tax Agents, who provide all tax services.
+              Platform owned and developed by Frontline Holdings Group Pty Ltd.
             </p>
             {/* Social icons render only when REAL profile URLs are set in
                 src/data/taxflow-proof.js — never link to generic homepages */}
@@ -172,16 +174,15 @@ export default function TaxFlowAppFooter() {
               </a>
             </div>
             <div className="footer-entities-taxflow">
-              TaxFlowAI is a technology platform, not a registered tax agent. Tax
-              services are provided by the Registered Tax Agent you engage through
-              the platform.
+              Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI (ABN 73 680 225
+              512), Registered Tax Agent 26313222.
               <br />
-              Platform & ASIC Agent: Frontline Holdings Group Pty Ltd (ABN: 59
-              671 861 475, ASIC Agent: 51843)
+              Platform owner &amp; ASIC agent: Frontline Holdings Group Pty Ltd (ABN
+              59 671 861 475), ASIC Agent 51843.
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              TaxFlowAI © {year} · Connecting you with Registered Tax Agents ·
-              Platform by Frontline Financial Group
+              TaxFlowAI © {year} · Tax services by TAX7 T04 PTY LTD · Platform by
+              Frontline Holdings Group
             </p>
           </div>
         </div>

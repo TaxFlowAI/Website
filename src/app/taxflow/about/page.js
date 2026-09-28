@@ -12,7 +12,7 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
 export const metadata = {
   title: "About us",
   description:
-    "TaxFlowAI is Australia's AI-powered tax portal, built and operated by Frontline Financial Group. Meet the director, see how we work, and visit us in Sydney or Parramatta.",
+    "TaxFlowAI is Australia's AI-powered tax portal. Tax services by TAX7 T04 PTY LTD, Registered Tax Agent 26313222, on a platform owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta.",
   alternates: { canonical: "/taxflow/about" },
   openGraph: {
     title: "About TaxFlowAI",
@@ -29,14 +29,15 @@ const BAND = "#0E2238";
 /* Facts from the director's own profile and words. Do not add credentials. */
 const DIRECTOR = {
   name: "Hassan Arif",
-  title: "Founder & Director",
+  title: "Founder & Director, TaxFlowAI",
   quote:
     "I started TaxFlowAI and Frontline Financial because everyday Australians don’t get access to strong tax and finance services. There aren’t enough professionals to meet demand. I want TaxFlowAI to be the most efficient tax firm in the country.",
   bio: [
     "Hassan trained as an accountant, with a Bachelor of Business (Accounting) from Western Sydney University. He worked his way up through practice, from intern to bookkeeper to accountant, then spent two years as a finance and insurance manager.",
-    "He founded Frontline Financial in October 2023, and built TaxFlowAI to bring the same service to tax.",
+    "He founded Frontline Financial in October 2023, and built TaxFlowAI to bring the same service to tax. Alongside that he works as a Senior Accountant at TAX7 T04, the registered tax agent that provides TaxFlowAI’s tax services.",
   ],
   credentials: [
+    ["Roles", "Founder & Director, TaxFlowAI. Senior Accountant, TAX7 T04 PTY LTD"],
     ["Education", "Bachelor of Business (Accounting), Western Sydney University"],
     ["Accreditation", "Accredited Member, FBAA"],
     ["Appointment", "Justice of the Peace, NSW"],
@@ -88,8 +89,8 @@ const PARTS = [
   },
   {
     label: "The tax",
-    title: "Registered Tax Agents",
-    body: "Your return is prepared and lodged by a Registered Tax Agent you engage through the platform, a professional you can look up on the public register.",
+    title: "Registered Tax Agent",
+    body: "Your return is prepared and lodged by TAX7 T04, Registered Tax Agent 26313222, a firm you can look up on the public register.",
     image: "/images/taxflow/service-tax.webp",
     href: "/taxflow/tax-preparation",
     cta: "See tax services",
@@ -105,7 +106,7 @@ const PARTS = [
   {
     label: "The group",
     title: "Frontline Financial Group",
-    body: "TaxFlowAI is built and operated by Frontline Financial Group, the team behind Frontline Financial Brokers and Asset Solutions.",
+    body: "The TaxFlowAI platform is owned and developed by Frontline Holdings Group, the team behind Frontline Financial Brokers and Asset Solutions.",
     image: "/images/taxflow/service-frontline.webp",
     href: "/",
     cta: "Visit Frontline Financial",
@@ -519,13 +520,14 @@ export default function AboutPage() {
           <div className="tc-reveal max-w-3xl text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}>
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Who&apos;s who, legally</p>
             <p className="mt-4">
-              <strong className="text-white">TaxFlowAI</strong> is a technology platform, not a registered tax
-              agent. Tax services are provided by the Registered Tax Agent you engage through the platform,
-              identified in your engagement letter.
+              <strong className="text-white">Tax services:</strong> TAX7 T04 PTY LTD trading as TaxFlowAI
+              (ABN 73 680 225 512), Registered Tax Agent 26313222. This is the firm that prepares and lodges
+              your tax work.
             </p>
             <p className="mt-3">
-              <strong className="text-white">Platform &amp; ASIC agent:</strong> Frontline Holdings Group Pty Ltd
-              (ABN 59 671 861 475, ASIC Agent 51843).
+              <strong className="text-white">Platform owner &amp; ASIC agent:</strong> Frontline Holdings Group
+              Pty Ltd (ABN 59 671 861 475), ASIC Agent 51843. This is the company that owns and develops the
+              TaxFlowAI platform and provides the corporate secretarial services.
             </p>
             <p className="mt-3">
               Check any tax agent&apos;s registration on the{" "}

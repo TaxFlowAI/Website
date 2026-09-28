@@ -141,7 +141,7 @@ export default function AboutPage() {
             We don&apos;t try to be everything to everyone. Each business is led by a specialist who lives and breathes their field — so you always get genuine expertise.
           </p>
           <p className="mt-4 text-sm text-[#39B2B2]">
-            TaxFlowAI is a technology platform, not a tax agent — it connects you with Registered Tax Agents, who provide all tax and accounting services.
+            TaxFlowAI&apos;s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd.
           </p>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <article className="rounded-2xl border-t-4 border-[#00FCB8] bg-[#1a5f7a] p-8">

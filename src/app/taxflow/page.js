@@ -14,7 +14,7 @@ import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 export const metadata = {
   title: "TaxFlowAI — Smarter tax, effortless deductions",
   description:
-    "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, Registered Tax Agents lodge your return, and every deadline is tracked — free to sign up. Built by Frontline Financial Group.",
+    "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, Registered Tax Agents lodge your return, and every deadline is tracked — free to sign up. Tax services by TAX7 T04 PTY LTD, on a platform owned by Frontline Holdings Group.",
   alternates: { canonical: "/taxflow" },
   openGraph: {
     title: "TaxFlowAI — Smarter tax, effortless deductions",
@@ -31,9 +31,8 @@ const DEEP = "#060D1A";
 const REVIEWS = "#0E2238";
 
 const TRUST_LINE = [
-  ["Connects you with Registered Tax Agents", null],
-  ["ASIC agent 51843", null],
-  ["ABN 59 671 861 475", null],
+  ["TAX7 T04 Pty Ltd · Registered Tax Agent 26313222", null],
+  ["Platform by Frontline Holdings Group · ASIC agent 51843", null],
   ["Verify tax agent ↗", "https://tpb.gov.au/registrations_search"],
 ];
 
@@ -105,12 +104,12 @@ export default function TaxFlowHomePage() {
               Real humans behind it.
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
-              TaxFlowAI is built and run by the Frontline Financial Group team in
-              Parramatta.
+              The platform is owned and built by Frontline Holdings Group. The tax
+              is done by TAX7 T04, a registered tax agent.
             </p>
             <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              Flo does the sorting. Real, TPB-registered tax agents prepare and lodge
-              your work, and our ASIC agent team keeps your company paperwork in order.
+              Flo does the sorting. Registered tax agents prepare and lodge your
+              work, and our ASIC agent team keeps your company paperwork in order.
               The AI keeps you organised; the humans are accountable for the result.
             </p>
             <ul className="mt-7 space-y-3 text-[14.5px]">

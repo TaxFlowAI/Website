@@ -1,7 +1,8 @@
 // TaxFlowAI FAQ — single source of truth.
 // Used by /taxflow/faq (with FAQPage schema) and by per-page subsets.
 // Answers must stay consistent with the fees model: free sign-up, quote-first,
-// no obligation, no dollar amounts, no named firms or agent numbers.
+// no obligation, no dollar amounts. The registered tax agent may be named:
+// TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222.
 
 export const TAXFLOW_FAQ = [
   {
@@ -12,7 +13,7 @@ export const TAXFLOW_FAQ = [
   {
     id: "who-lodges",
     q: "Who prepares and lodges my return?",
-    a: "A Registered Tax Agent. TaxFlowAI is the technology platform — it organises your receipts, documents and deadlines, but your return is prepared and lodged by a real, registered professional you engage through the platform.",
+    a: "A Registered Tax Agent. Tax services are provided by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222. The platform organises your receipts, documents and deadlines, and your return is prepared and lodged by registered professionals. The platform itself is owned and developed by Frontline Holdings Group Pty Ltd.",
   },
   {
     id: "what-is-rta",

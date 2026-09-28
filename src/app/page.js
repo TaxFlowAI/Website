@@ -596,7 +596,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-8 text-sm text-white/70">
-            TaxFlowAI is a technology platform that connects you with Registered Tax Agents, who provide all tax services
+            TaxFlowAI&apos;s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd.
           </p>
         </div>
       </section>

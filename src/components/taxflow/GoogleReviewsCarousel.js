@@ -108,7 +108,7 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
               Trusted by Australians
             </h2>
             <p className="mt-5 max-w-lg text-[16px] leading-relaxed md:text-lg" style={{ color: "#B7C4CF" }}>
-              TaxFlowAI is built and run by the team at {business}. Over one hundred
+              The TaxFlowAI platform is owned and built by {business}. Over one hundred
               Australians have taken the time to review them on Google — and every
               single one gave five stars.
             </p>
