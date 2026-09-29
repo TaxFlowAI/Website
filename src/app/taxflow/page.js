@@ -9,6 +9,7 @@ import ServicesCarousel from "@/components/taxflow/ServicesCarousel";
 import GoogleReviewsCarousel from "@/components/taxflow/GoogleReviewsCarousel";
 import { Tick } from "@/components/taxflow/TaxFlowMockups";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
+import MedicalShowcase from "@/components/taxflow/MedicalShowcase";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 
 export const metadata = {
@@ -340,8 +341,11 @@ export default function TaxFlowHomePage() {
         </div>
       </section>
 
-      {/* ============ CTA ============ */}
+      {/* ============ FOR MEDICAL PROFESSIONALS (showcase) ============ */}
       <TaxFlowWave from={DEEP} to={NAVY} />
+      <MedicalShowcase />
+
+      {/* ============ CTA ============ */}
       <CtaBand />
 
       <TaxFlowAppFooter />
