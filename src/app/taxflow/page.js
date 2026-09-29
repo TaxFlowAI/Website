@@ -217,8 +217,7 @@ export default function TaxFlowHomePage() {
               <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
                 TaxFlowAI&apos;s tax services are provided by a registered Australian
                 tax agent, on a platform with security practices aligned to ISO/IEC
-                27001. Australian-hosted, encrypted end to end, and independently
-                audited.
+                27001. Australian-hosted and encrypted end to end.
               </p>
               <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
                 How we protect your data
@@ -326,7 +325,7 @@ export default function TaxFlowHomePage() {
                 <div className="min-w-0 flex-1">
                   <h3 className="tc-bento-title">Security is a managed practice, not a promise.</h3>
                   <p className="tc-bento-body">
-                    ISO 27001-aligned controls, independent code audits, continuous backups.
+                    ISO 27001-aligned controls and continuous backups.
                   </p>
                 </div>
                 <Link

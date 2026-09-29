@@ -15,6 +15,9 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
    before publishing. One approved departure: the hero sentence was revised
    with the owner's sign-off on 28 Sept 2026, because the platform is owned
    and built by Frontline Holdings Group, not by the tax agent.
+   Owner correction, 29 Sept 2026: TaxFlowAI is NOT independently audited.
+   Every audit claim from the brief has been removed. Do not reintroduce
+   "independently audited", "independent security audits" or similar.
    Wording rules from the brief:
    - say "ISO 27001-aligned", never "certified" (no certification badges)
    - say "Hosted in AWS Sydney" / "Australian-hosted", never "all data is
@@ -27,7 +30,7 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
 export const metadata = {
   title: "Data security",
   description:
-    "How TaxFlowAI protects client data: hosted in AWS Sydney, encrypted in transit and at rest, two-factor authentication on every sign-in, TFNs and bank details not stored in the platform, and ISO 27001-aligned, independently audited practices.",
+    "How TaxFlowAI protects client data: hosted in AWS Sydney, encrypted in transit and at rest, two-factor authentication on every sign-in, TFNs and bank details not stored in the platform, and ISO 27001-aligned practices.",
   alternates: { canonical: "/taxflow/security" },
   openGraph: {
     title: "Data security — TaxFlowAI",
@@ -126,7 +129,7 @@ const FACTS = [
   ["Sensitive identifiers", "TFNs and bank account details are not stored in the platform"],
   [
     "Governance",
-    "ISO 27001-aligned ISMS; independent application security audits; Privacy Act 1988 & Notifiable Data Breaches compliance",
+    "ISO 27001-aligned ISMS; Privacy Act 1988 & Notifiable Data Breaches compliance",
   ],
   ["E-signatures", "Annature — Australian, ISO 27001-certified provider"],
 ];
@@ -152,7 +155,7 @@ export default function SecurityPage() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
               TaxFlowAI&apos;s tax services are provided by a registered Australian tax
               agent, on a platform with security practices aligned to ISO/IEC 27001.
-              Australian-hosted, encrypted end to end, and independently audited.
+              Australian-hosted and encrypted end to end.
             </p>
             <a href="#residency" className="tc-link mt-8 inline-block text-[15px] font-semibold">
               See how it works
@@ -258,19 +261,18 @@ export default function SecurityPage() {
           <div className="tc-reveal lg:col-span-5">
             <Art
               src="/images/taxflow/sec-governance-v2.webp"
-              alt="Flo in glasses checking a binder with a magnifying glass, holding a ticked checklist"
+              alt="Flo in glasses reviewing a binder of policies, holding a ticked checklist"
             />
           </div>
           <div className="tc-reveal lg:col-span-7">
             <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>Governance</p>
             <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
-              ISO 27001-aligned, independently audited.
+              Aligned to ISO 27001.
             </h2>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed" style={{ color: "#B7C4CF" }}>
               We operate a documented Information Security Management System — risk
               register, incident response, retention and vendor management — aligned to
-              ISO/IEC 27001, and our application code undergoes independent security
-              audits. We comply with the Privacy Act 1988 (Cth), including the
+              ISO/IEC 27001. We comply with the Privacy Act 1988 (Cth), including the
               Notifiable Data Breaches scheme.
             </p>
             <ul className="mt-7 grid max-w-xl gap-3 sm:grid-cols-2">
