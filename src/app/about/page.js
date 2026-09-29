@@ -279,7 +279,7 @@ export default function AboutPage() {
             The people behind Frontline Financial.
           </h2>
           <div className="mt-12 grid gap-10 md:grid-cols-2">
-            <article className="rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
+            <article id="hassan" className="scroll-mt-28 rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
               <div className="aspect-square w-full max-w-[240px] overflow-hidden rounded-2xl bg-[#1C5472] mx-auto flex items-center justify-center">
                 <img
                   src="/images/DSC01459.png?v=3"

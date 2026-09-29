@@ -27,7 +27,7 @@ export function CtaBand() {
               Get started
             </a>
             <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
-              Book a free 30-min call
+              Book a free 15-min call
             </CalendlyButton>
           </div>
           <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>

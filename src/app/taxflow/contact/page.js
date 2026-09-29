@@ -8,12 +8,12 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
 export const metadata = {
   title: "Contact",
   description:
-    "Book a free 30-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or 213 Clarence Street Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
+    "Book a free 15-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or 213 Clarence Street Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
   alternates: { canonical: "/taxflow/contact" },
   openGraph: {
     title: "Contact TaxFlowAI",
     description:
-      "Book a free 30-minute call, or visit us in Parramatta or Clarence Street, Sydney.",
+      "Book a free 15-minute call, or visit us in Parramatta or Clarence Street, Sydney.",
     url: "/taxflow/contact",
   },
 };
@@ -47,11 +47,11 @@ export default function TaxFlowContactPage() {
           Talk to a human
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-          The fastest way to see if TaxFlowAI fits: a free, no-obligation 30-minute
+          The fastest way to see if TaxFlowAI fits: a free, no-obligation 15-minute
           call. Or send an enquiry and we&apos;ll come back to you.
         </p>
         <p className="tc-mono mt-5 text-[11.5px]" style={{ color: "#94A3B8" }}>
-          FREE 30-MIN CALL · NO OBLIGATION · TEAMS OR PHONE
+          FREE 15-MIN CALL · NO OBLIGATION · TEAMS OR PHONE
         </p>
         <div className="mt-8">
           <CalendlyInline />
