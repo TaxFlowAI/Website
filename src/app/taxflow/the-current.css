@@ -1444,3 +1444,19 @@
   line-height: 1.6;
   color: #E2E8F0;
 }
+
+/* status dot for an item that is not in the Australian region */
+.tc-sec-dot.is-alt {
+  background: #F59E0B;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16), 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+/* pointer from a marketing summary to the full policies */
+.tc-fineprint {
+  max-width: 46rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--tc-border);
+  font-size: 13px;
+  line-height: 1.65;
+  color: #94A3B8;
+}

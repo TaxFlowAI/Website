@@ -56,6 +56,11 @@ export default function TaxFlowContactPage() {
         <div className="mt-8">
           <CalendlyInline />
         </div>
+        <p className="mt-4 text-[12.5px] leading-relaxed" style={{ color: "#94A3B8" }}>
+          Bookings are taken through Calendly. See our{" "}
+          <a href="/taxflow/collection-notice" className="tc-link">Collection Notice</a> and{" "}
+          <a href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</a>.
+        </p>
       </section>
 
       {/* details + form */}

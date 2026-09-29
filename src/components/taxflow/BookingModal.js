@@ -136,7 +136,14 @@ function BookingModal({ onClose }) {
               ))}
             </ul>
 
-            <p className="tc-mono mt-auto hidden pt-8 text-[10.5px] lg:block" style={{ color: "#64748B" }}>
+            <p className="mt-6 hidden text-[12px] leading-relaxed lg:block" style={{ color: "#94A3B8" }}>
+              Bookings are taken through Calendly. See our{" "}
+              <a href="/taxflow/privacy-policy" target="_blank" rel="noopener noreferrer" className="tc-link">
+                Privacy Policy
+              </a>
+              .
+            </p>
+            <p className="tc-mono mt-auto hidden pt-6 text-[10.5px] lg:block" style={{ color: "#64748B" }}>
               POWERED BY FRONTLINE FINANCIAL · PARRAMATTA &amp; SYDNEY CBD
             </p>
           </aside>

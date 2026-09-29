@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const TAXFLOW_PHONE = "0406 909 862";
 const TAXFLOW_PHONE_LINK = "tel:+61406909862";
@@ -129,6 +130,11 @@ export default function ContactForm() {
       >
         {submitting ? "Sending…" : "Send enquiry"}
       </button>
+      <p className="text-[12.5px] leading-relaxed" style={{ color: "#94A3B8" }}>
+        We use these details to respond to your enquiry. See our{" "}
+        <Link href="/taxflow/collection-notice" className="tc-link">Collection Notice</Link> and{" "}
+        <Link href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</Link>.
+      </p>
     </form>
   );
 }

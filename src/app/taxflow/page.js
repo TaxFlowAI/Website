@@ -261,7 +261,10 @@ export default function TaxFlowHomePage() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="tc-bento-title">Hosted in Australia.</h3>
-                  <p className="tc-bento-body">Hosted in Amazon Web Services’ Sydney region.</p>
+                  <p className="tc-bento-body">
+                    The platform, its database and its backups run in Amazon Web Services’
+                    Sydney region.
+                  </p>
                 </div>
                 <p className="tc-mono text-[11px] tracking-[0.16em]" style={{ color: "#00FCB8" }}>
                   SYDNEY · AP-SOUTHEAST-2
@@ -337,6 +340,12 @@ export default function TaxFlowHomePage() {
               </div>
             </div>
           </div>
+          <p className="tc-reveal tc-fineprint mt-8">
+            A summary only. Full details of how we collect, store, share and protect
+            your information are in our{" "}
+            <Link href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</Link> and{" "}
+            <Link href="/taxflow/terms" className="tc-link">Terms of Service</Link>.
+          </p>
         </div>
       </section>
 

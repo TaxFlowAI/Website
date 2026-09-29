@@ -1,8 +1,8 @@
 /* Product-style panels for the security page story. Every label here is a
    fact from the approved security brief (27 Sept 2026) — do not add claims. */
 
-function Dot() {
-  return <span className="tc-sec-dot" aria-hidden />;
+function Dot({ alt = false }) {
+  return <span className={`tc-sec-dot ${alt ? "is-alt" : ""}`} aria-hidden />;
 }
 
 /* 01 — residency */
@@ -10,7 +10,7 @@ export function RegionPanel() {
   const rows = [
     ["Platform", "Sydney"],
     ["Database", "Sydney"],
-    ["Backups", "Australia"],
+    ["Backups", "Sydney"],
   ];
   return (
     <div className="tc-panel tc-sec-panel">
@@ -34,11 +34,11 @@ export function RegionPanel() {
         </div>
       </div>
       <ul className="mt-6">
-        {rows.map(([k, v]) => (
+        {rows.map(([k, v, alt]) => (
           <li key={k} className="tc-sec-row">
             <span>{k}</span>
             <span className="flex items-center gap-2 text-white">
-              <Dot />
+              <Dot alt={alt} />
               {v}
             </span>
           </li>

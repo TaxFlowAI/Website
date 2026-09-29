@@ -1,44 +1,103 @@
-// TaxFlowAI Privacy Policy — Website Version
-// This file contains the complete privacy policy content ready for implementation
-// as a React page component. No placeholders remain.
+// TaxFlowAI legal documents — website versions.
 //
-// CONFIGURE BEFORE LAUNCH — search for "CFG:" to find all configurable values
+// UPDATED 29 September 2026 on the owner's instruction, to match the
+// platform as it stands after the September 2026 changes. Every factual
+// statement below comes from the owner or from the app builder's written
+// answers of the same date. This revision has NOT yet been reviewed by a
+// lawyer and should be before it is relied on.
+//
+// What changed from the 1 March 2026 versions:
+// - Names both entities: Frontline Holdings Group Pty Ltd owns and operates
+//   the platform; TAX7 T04 PTY LTD is the registered tax agent.
+// - The platform no longer collects or stores TFNs or bank details.
+// - Hosting is AWS Sydney (was Render, United States).
+// - Lists the service providers and where each processes information.
+// - Documents are held in Dropbox (United States).
+// - Discloses that some staff are located overseas.
+//
+// Owner decisions, 29 September 2026. Do not add these back:
+// - No mention of a planned move to Microsoft 365 storage.
+// - No statement about overseas staff and Tax File Numbers. That is covered
+//   in the Engagement Letter, not in the public documents.
+//
 // CFG: EMAIL = taxflowai@frontline.financial
 // CFG: PHONE = 0422 959 486
 // CFG: URL_PRIVACY = https://frontline.financial/taxflow/privacy-policy
 // CFG: URL_COLLECTION = https://frontline.financial/taxflow/collection-notice
 // CFG: ADDR_FH = Level 49, 8 Parramatta Square, Parramatta NSW 2150
-// CFG: EFFECTIVE_DATE = 1 March 2026
+// CFG: EFFECTIVE_DATE = 29 September 2026
 
 export const PRIVACY_POLICY = {
   title: "Privacy Policy",
-  version: "1.1",
-  effectiveDate: "1 March 2026",
-  lastReviewed: "1 March 2026",
+  version: "1.2",
+  effectiveDate: "29 September 2026",
+  lastReviewed: "29 September 2026",
   sections: [
     {
       heading: "1. Scope",
-      content: `This policy describes how we collect, hold, use, disclose, and protect your personal information when you use TaxFlowAI. "We" means Frontline Holdings Group Pty Ltd (platform operator, trading as TaxFlowAI). Tax agent services are provided by the registered tax agent you engage through the platform, identified in your Engagement Letter; that agent also handles your information in connection with those services. We handle your information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and the Privacy (Tax File Number) Rule 2015.`
+      content: `This policy describes how we collect, hold, use, disclose, and protect your personal information when you use TaxFlowAI. "We" means Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475), which owns and operates the TaxFlowAI platform under the registered business name "TaxFlowAI by Frontline Financial" and is a registered ASIC agent (Agent Number: 51843). Tax agent services are provided by TAX7 T04 PTY LTD (ABN: 73 680 225 512), a registered tax agent (Tax Agent Number: 26313222) trading as TaxFlowAI; it also handles your information in connection with those services. We handle your information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and the Privacy (Tax File Number) Rule 2015.`
     },
     {
       heading: "2. What We Collect",
-      content: `We collect: identity and contact details (name, DOB, address, email, phone, occupation); tax identifiers (TFN, ABN, ACN where relevant); financial and payment details (e.g. bank details for refunds; card payments are processed by Stripe and we do not store your full card number); documents and receipts you upload; technical and account information (login credentials, IP address, audit logs); and, for company clients, company and director information needed for ASIC-related services. We only collect what is reasonably necessary to provide our services.`
+      content: `We collect: identity and contact details (name, DOB, address, email, phone, occupation); business identifiers (ABN, ACN where relevant); documents and receipts you upload; payment information (card payments are processed by Stripe and we do not store your card number); identity verification information, where we need to verify who you are; technical and account information (login credentials, IP address, audit logs); and, for company clients, company and director information needed for ASIC-related services. We only collect what is reasonably necessary to provide our services.
+
+The TaxFlowAI platform does not collect or store your Tax File Number (TFN) or bank account details as records. Where they are needed for tax agent services, your tax agent collects them from you directly and holds them in its own practice management systems. Documents you upload, such as tax returns and notices of assessment, may contain them.`
     },
     {
       heading: "3. How We Collect and Hold It",
-      content: `We collect information directly from you (registration, forms, uploads, messages), from your tax agent when they set up your account, from public registers (e.g. ABR, ASIC) where relevant, and automatically (e.g. IP address, browser type) for security and logging. We hold it in secure systems with encryption for sensitive data (including TFN and bank details), access controls, and audit logging. Data is stored with our hosting provider; it is encrypted and the provider does not have access to decrypted personal information.`
+      content: `We collect information directly from you (registration, forms, uploads, messages, bookings), from your tax agent when they set up your account, from public registers (e.g. ABR, ASIC) where relevant, and automatically (e.g. IP address, browser type) for security and logging.
+
+We hold it in secure systems. Information is encrypted in transit and at rest, every sign-in requires a password and a one-time verification code, access is role-based, and security events are logged. The platform, its database and its backups are hosted in Amazon Web Services' Sydney region. Documents you upload are held in Dropbox, which stores them in the United States.`
     },
     {
       heading: "4. Purposes and Who We Share With",
-      content: `We use your information to provide tax and (where applicable) ASIC-related services, communicate with you, process payments, comply with law, and maintain security. We may disclose it to: the registered tax agent you engage through the platform; the ATO and, for company clients, ASIC; our hosting and payment providers (data encrypted); overseas staff who assist with lodgement preparation under strict controls (no access to TFN or bank details); and regulators when required by law. We do not sell or trade your personal information.`
+      content: `We use your information to provide tax and (where applicable) ASIC-related services, communicate with you, process payments, verify your identity, comply with law, and maintain security.
+
+We may disclose it to: TAX7 T04 PTY LTD, as the registered tax agent; the ATO and, for company clients, ASIC; the service providers listed in section 5, who help us run the platform; staff located overseas who assist with lodgement preparation; and regulators when required by law. We do not sell or trade your personal information.
+
+Staff located overseas work under system-enforced access controls and cannot run exports of client data.`
     },
     {
-      heading: "5. Overseas Disclosure",
-      content: `Your information may be stored or accessed overseas (e.g. cloud hosting, and staff who assist with preparation). Where we disclose overseas, we take reasonable steps so the recipient handles your information consistently with the APPs. You can contact us to ask which countries apply.`
+      heading: "5. Overseas Disclosure and Service Providers",
+      content: `Some of our service providers and staff are located outside Australia, so your information may be stored or accessed overseas, mainly in the United States. Where we disclose information overseas, we take reasonable steps so the recipient handles it consistently with the APPs. You can contact us to ask which countries apply.
+
+Our service providers, what they do, and where they process information:
+
+Amazon Web Services: platform hosting, database and backups (Australia).
+
+Dropbox: storage of documents you upload (United States).
+
+Microsoft 365: email (Australia).
+
+Xero and Xero Practice Manager: accounting and tax data for lodgement (Australia and other countries).
+
+Anthropic, with OpenAI as a backup: AI processing of the receipt, document or message being handled (United States). Under their commercial terms, your content is not used to train their models.
+
+Stripe: card payments (multiple countries).
+
+Resend: email delivery (United States).
+
+Twilio: SMS, including sign-in codes (United States and other countries).
+
+Annature: electronic signatures (Australia).
+
+Didit: identity verification (multiple countries).
+
+Calendly: appointment bookings (United States).
+
+Google Maps: address lookup (multiple countries).
+
+Cloudflare: protection against automated abuse (multiple countries).
+
+Vercel: hosting of our public website (multiple countries).`
     },
     {
       heading: "6. Tax File Number",
-      content: `Your TFN is collected only where necessary for tax agent services. We protect it in line with the Privacy (Tax File Number) Rule 2015: it is encrypted at rest, shown in masked form in the platform, never sent by email or stored in cookies or logs, and access is restricted and audited. You are not obliged to provide it, but withholding it may affect the services we can provide (e.g. higher withholding). If you suspect TFN misuse, contact the ATO on 13 28 61.`
+      content: `The TaxFlowAI platform does not collect or store your TFN as a record. Where your TFN is needed for tax agent services, it is collected by your tax agent, TAX7 T04 PTY LTD, and held in its practice management systems in line with the Privacy (Tax File Number) Rule 2015. We do not send TFNs by email or store them in cookies or logs.
+
+Documents you upload may contain your TFN. They are held as described in section 3, and access to them is restricted to staff working on your file.
+
+You are not obliged to provide your TFN, but withholding it may affect the services that can be provided (e.g. higher withholding). If you suspect TFN misuse, contact the ATO on 13 28 61.`
     },
     {
       heading: "7. Access and Correction",
@@ -58,20 +117,20 @@ export const PRIVACY_POLICY = {
 export const COLLECTION_NOTICE = {
   title: "Collection Notice — Initial Enquiry Form",
   subtitle: "Australian Privacy Principle 5 — Notification of Collection",
-  version: "1.1",
-  effectiveDate: "1 March 2026",
+  version: "1.2",
+  effectiveDate: "29 September 2026",
   sections: [
     {
       heading: "1. Who Is Collecting Your Information",
-      content: `Your information is collected by Frontline Holdings Group Pty\u00A0Ltd (ABN: 59 671 861 475, ACN: 671 861 475), which trades as TaxFlowAI and is a registered ASIC agent (Agent Number: 51843). Frontline Holdings operates the technology platform used to collect and manage your information. For company clients, Frontline Holdings also provides ASIC compliance services including annual reviews, company lodgements, and changes to company details under the Corporations Act 2001 (Cth).
+      content: `Your information is collected by Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475, ACN: 671 861 475), which owns and operates the TaxFlowAI platform under the registered business name "TaxFlowAI by Frontline Financial" and is a registered ASIC agent (Agent Number: 51843). For company clients, Frontline Holdings also provides ASIC compliance services including annual reviews, company lodgements, and changes to company details under the Corporations Act 2001 (Cth).
 
-Tax agent services are not provided by Frontline Holdings. Once you register an account, you can engage a registered tax agent through the platform. The tax agent you engage is identified in your Engagement Letter and is responsible for providing you with tax agent services.`
+Tax agent services are not provided by Frontline Holdings. They are provided by TAX7 T04 PTY LTD (ABN: 73 680 225 512), a registered tax agent (Tax Agent Number: 26313222) trading as TaxFlowAI. If you engage it, the engagement is confirmed in your Engagement Letter, and it is responsible for providing you with tax agent services.`
     },
     {
       heading: "2. What Information We Collect From This Form",
-      content: `When you submit the initial enquiry form, we collect only the following: first name, last name, email address, and phone number.
+      content: `When you submit the initial enquiry form, we collect only the following: first name, last name, email address, phone number, and the message you write. If you book a call, the booking form collects your name, your contact details and the time you choose.
 
-We do not collect sensitive information (such as your Tax File Number, financial details, or health information) at this stage. That information is only collected if you choose to register as a client.`
+We do not collect sensitive information (such as your Tax File Number, financial details, or health information) through these forms. The TaxFlowAI platform does not collect or store Tax File Numbers or bank account details at any stage; where they are needed, your tax agent collects them from you directly once you are a client.`
     },
     {
       heading: "3. Why We Collect This Information",
@@ -85,13 +144,15 @@ We will not use your information for any other purpose without your consent.`
     },
     {
       heading: "5. Who We May Share Your Information With",
-      content: `Your enquiry details may be shared with: the registered tax agent you choose to engage through the platform (who will respond to your enquiry about tax agent services); Frontline Holdings Group Pty\u00A0Ltd (the technology platform operator and ASIC agent that stores and manages your enquiry data); and Render (the cloud hosting provider — your data is encrypted at rest and in transit).
+      content: `Your enquiry details may be shared with: TAX7 T04 PTY LTD, the registered tax agent (who may respond to your enquiry about tax agent services); Frontline Holdings Group Pty Ltd (the platform operator and ASIC agent that stores and manages your enquiry data); and the service providers that host our website and platform, deliver our email, and take our bookings. These include Amazon Web Services, Vercel, Resend and Calendly.
 
 We will not sell, rent, or disclose your information to any other third party for marketing purposes.`
     },
     {
       heading: "6. Overseas Disclosure",
-      content: `Your information may be stored on cloud servers located outside Australia (TaxFlowAI is hosted on Render, which may use servers in the United States). Your data is encrypted at rest and in transit and the hosting provider does not have access to your personal information in decrypted form.`
+      content: `The TaxFlowAI platform, its database and its backups are hosted in Amazon Web Services' Sydney region. Some of the service providers that handle enquiries are located overseas, mainly in the United States, including those that host this website, deliver email and take bookings. Where information is disclosed overseas, we take reasonable steps so the recipient handles it consistently with the Australian Privacy Principles.
+
+Our Privacy Policy lists our service providers and where each one processes information.`
     },
     {
       heading: "7. How Long We Keep Your Information",
@@ -121,16 +182,16 @@ Our full privacy policy is available at https://frontline.financial/taxflow/priv
 // TaxFlowAI Terms of Service — platform use only; tax agent services under Engagement Letter
 export const TERMS_OF_SERVICE = {
   title: "Terms of Service",
-  version: "1.0",
-  effectiveDate: "1 March 2026",
+  version: "1.1",
+  effectiveDate: "29 September 2026",
   sections: [
     {
       heading: "1. Agreement and Scope",
-      content: `These terms govern your use of the TaxFlowAI platform (the "Platform"), operated by Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475), trading as TaxFlowAI. By accessing or using the Platform, you agree to these terms. If you do not agree, do not use the Platform. Tax agent services provided through the Platform are supplied by the registered tax agent you engage through the Platform under a separate Engagement Letter; those services are governed by that letter and any related engagement terms, not solely by these Terms of Service.`
+      content: `These terms govern your use of the TaxFlowAI platform (the "Platform"), which is owned and operated by Frontline Holdings Group Pty Ltd (ABN: 59 671 861 475) under the registered business name "TaxFlowAI by Frontline Financial". By accessing or using the Platform, you agree to these terms. If you do not agree, do not use the Platform. Tax agent services provided through the Platform are supplied by TAX7 T04 PTY LTD (ABN: 73 680 225 512), a registered tax agent (Tax Agent Number: 26313222) trading as TaxFlowAI, under a separate Engagement Letter; those services are governed by that letter and any related engagement terms, not solely by these Terms of Service.`
     },
     {
       heading: "2. The Service",
-      content: `TaxFlowAI is a web-based platform that connects you with registered tax agents and supports the management of your tax affairs, including document storage, lodgement tracking, and communication with your accountant. Once you register an account, you can engage a registered tax agent through the Platform. The Platform may also support ASIC-related services for company clients. The Platform is a technology tool; it does not substitute for professional tax or legal advice. You are responsible for the accuracy of information you provide and for acting on any advice you receive from your tax agent.`
+      content: `TaxFlowAI is a web-based platform that supports the management of your tax affairs, including document storage, lodgement tracking, and communication with your accountant. Once you register an account, you can engage TAX7 T04 PTY LTD, the registered tax agent, through the Platform. The Platform may also support ASIC-related services for company clients, which are provided by Frontline Holdings Group Pty Ltd as a registered ASIC agent. The Platform is a technology tool; it does not substitute for professional tax or legal advice. You are responsible for the accuracy of information you provide and for acting on any advice you receive from your tax agent.`
     },
     {
       heading: "3. Your Obligations",
@@ -138,15 +199,15 @@ export const TERMS_OF_SERVICE = {
     },
     {
       heading: "4. Account and Access",
-      content: `Access to the Platform may require registration and acceptance of these terms and any applicable engagement documents. You are responsible for all activity under your account. We may suspend or terminate your access to the Platform for breach of these terms, for operational or legal reasons, or on reasonable notice. Where your access is linked to a client relationship with a registered tax agent engaged through the Platform, cessation of that relationship may also affect your Platform access.`
+      content: `Access to the Platform may require registration and acceptance of these terms and any applicable engagement documents. You are responsible for all activity under your account. We may suspend or terminate your access to the Platform for breach of these terms, for operational or legal reasons, or on reasonable notice. Where your access is linked to a client relationship with the registered tax agent, cessation of that relationship may also affect your Platform access.`
     },
     {
       heading: "5. Intellectual Property and Your Content",
-      content: `The Platform, including its software, design, branding, and content (other than content you submit), is owned by Frontline Holdings Group Pty Ltd or its licensors. You do not acquire any right to that material except a limited right to use the Platform as permitted under these terms. You retain ownership of content you upload. You grant us and our service providers a licence to use, store, and process that content as necessary to operate the Platform and provide services to you (including to the registered tax agent you engage through the Platform). You warrant that you have the right to provide such content and that it does not breach any law or third-party rights.`
+      content: `The Platform, including its software, design, branding, and content (other than content you submit), is owned by Frontline Holdings Group Pty Ltd or its licensors. You do not acquire any right to that material except a limited right to use the Platform as permitted under these terms. You retain ownership of content you upload. You grant us and our service providers a licence to use, store, and process that content as necessary to operate the Platform and provide services to you (including to the registered tax agent). You warrant that you have the right to provide such content and that it does not breach any law or third-party rights.`
     },
     {
       heading: "6. Privacy",
-      content: `Personal information we collect and hold is handled in accordance with our Privacy Policy. By using the Platform you agree to the collection and use of your information as described in that policy. Our Privacy Policy is available at /taxflow/privacy-policy.`
+      content: `Personal information we collect and hold is handled in accordance with our Privacy Policy, which also lists our service providers and explains where information is stored. By using the Platform you agree to the collection and use of your information as described in that policy. Our Privacy Policy is available at /taxflow/privacy-policy.`
     },
     {
       heading: "7. Disclaimers",
@@ -167,17 +228,22 @@ export const TERMS_OF_SERVICE = {
   ]
 };
 
-// Configurable constants — update these before launch
+// Configurable constants
 export const COMPLIANCE_CONFIG = {
   EMAIL: "taxflowai@frontline.financial",
   PHONE: "0422 959 486",
   PRIVACY_URL: "https://frontline.financial/taxflow/privacy-policy",
   COLLECTION_NOTICE_URL: "https://frontline.financial/taxflow/collection-notice",
   TERMS_URL: "https://frontline.financial/taxflow/terms",
+  // platform owner and operator, and registered ASIC agent
   FH_NAME: "Frontline Holdings Group Pty Ltd",
   FH_ABN: "59 671 861 475",
   FH_ACN: "671 861 475",
   FH_ASIC: "51843",
   FH_ADDRESS: "Level 49, 8 Parramatta Square, Parramatta NSW 2150",
-  EFFECTIVE_DATE: "1 March 2026",
+  // registered tax agent, trading as TaxFlowAI
+  TAX_NAME: "TAX7 T04 PTY LTD",
+  TAX_ABN: "73 680 225 512",
+  TAX_AGENT_NO: "26313222",
+  EFFECTIVE_DATE: "29 September 2026",
 };

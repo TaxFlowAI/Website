@@ -54,13 +54,14 @@ export default function CompliancePage({
         {showEntityBox && (
           <div className="compliance-entity-box">
             <div>
-              <strong>Platform operator:</strong> {COMPLIANCE_CONFIG.FH_NAME}{" "}
-              (ABN: {COMPLIANCE_CONFIG.FH_ABN}) — ASIC Agent No.{" "}
-              {COMPLIANCE_CONFIG.FH_ASIC}
+              <strong>Platform owner and operator:</strong>{" "}
+              {COMPLIANCE_CONFIG.FH_NAME} (ABN: {COMPLIANCE_CONFIG.FH_ABN}) — ASIC
+              Agent No. {COMPLIANCE_CONFIG.FH_ASIC}
             </div>
             <div>
-              <strong>Tax agent:</strong> the registered tax agent you engage
-              through TaxFlowAI, identified in your Engagement Letter
+              <strong>Tax agent:</strong> {COMPLIANCE_CONFIG.TAX_NAME} (ABN:{" "}
+              {COMPLIANCE_CONFIG.TAX_ABN}), trading as TaxFlowAI — Registered Tax
+              Agent No. {COMPLIANCE_CONFIG.TAX_AGENT_NO}
             </div>
           </div>
         )}

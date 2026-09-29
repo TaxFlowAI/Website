@@ -19,6 +19,13 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
    no access to TFN or bank details. This is disclosed in the access
    section. Hosting claims are fine; never imply data or work is
    Australia-only.
+   Owner decision, 29 Sept 2026: marketing pages state the positives only.
+   Overseas document storage (Dropbox, US) and offshore staff are disclosed
+   in the Privacy Policy, which this page links to, and are NOT mentioned
+   here. To stay true without those qualifiers, every hosting claim must be
+   scoped to "the platform, its database and its backups". Never write
+   "your data", "your records" or "everything" is stored in Australia.
+   TFNs and bank details are neither collected nor stored in the platform.
    Owner correction, 29 Sept 2026: TaxFlowAI is NOT independently audited.
    Every audit claim from the brief has been removed. Do not reintroduce
    "independently audited", "independent security audits" or similar.
@@ -71,7 +78,7 @@ const STORY = [
     id: "residency",
     label: "Australian data residency",
     title: "Hosted in Sydney, Australia.",
-    body: "The TaxFlowAI platform and its database run in Amazon Web Services’ Sydney region (ap-southeast-2). Your records are stored and backed up on Australian soil, on infrastructure certified to ISO 27001, SOC 2 and IRAP-assessed standards.",
+    body: "The TaxFlowAI platform, its database and its backups are hosted and stored in Amazon Web Services’ Sydney region (ap-southeast-2), on infrastructure certified to ISO 27001, SOC 2 and IRAP-assessed standards.",
     visual: <RegionPanel />,
   },
   {
@@ -91,7 +98,6 @@ const STORY = [
     label: "Access & authentication",
     title: "Two-factor authentication on every sign-in.",
     body: "Every login — client or accountant — requires a password plus a one-time verification code. Client and staff portals are fully separated, access is role-based and least-privilege, and security events are audit-logged.",
-    note: "Some of our team work offshore and assist with lodgement preparation. They work under strict access controls and do not have access to Tax File Numbers or bank account details.",
     visual: <TwoFactorPanel />,
   },
   {
@@ -126,7 +132,7 @@ const STATS = [
 const ISMS = ["Risk register", "Incident response", "Retention", "Vendor management"];
 
 const FACTS = [
-  ["Hosting", "Amazon Web Services, Sydney (ap-southeast-2)"],
+  ["Hosting", "Amazon Web Services, Sydney (ap-southeast-2): platform, database and backups"],
   ["Encryption in transit", "TLS 1.2+ (HTTPS everywhere)"],
   ["Encryption at rest", "Encrypted storage and backups; AES-256 for stored credentials"],
   ["Authentication", "Password + one-time code (2FA) on every login; role-based access"],
@@ -237,6 +243,14 @@ export default function SecurityPage() {
               </article>
             ))}
           </div>
+          <p className="tc-reveal tc-fineprint mt-10">
+            This page is a summary. How we collect, store, share and protect your
+            information, including where it is held and who can access it, is set out
+            in full in our{" "}
+            <Link href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</Link>,{" "}
+            <Link href="/taxflow/collection-notice" className="tc-link">Collection Notice</Link> and{" "}
+            <Link href="/taxflow/terms" className="tc-link">Terms of Service</Link>.
+          </p>
         </div>
       </section>
 
@@ -367,7 +381,7 @@ export default function SecurityPage() {
               className="tc-mono mt-10 border-t pt-6 text-[11.5px] leading-relaxed"
               style={{ borderColor: "rgba(255,255,255,0.08)", color: "#94A3B8" }}
             >
-              Frontline Holdings Group Pty Ltd · ABN 59 671 861 475 · ASIC Agent 51843
+              TaxFlowAI · Owned and operated by Frontline Holdings Group Pty Ltd · ABN 59 671 861 475 · ASIC Agent 51843
             </p>
           </div>
         </div>

@@ -32,10 +32,10 @@ const STEPS = [
   {
     label: "Step 2",
     title: "Complete your 10-minute profile",
-    desc: "A guided 4-step wizard collects what your tax agent will need: entity details (TFN/ABN), address, bank details with BSB lookup, and a final review. Flo guides every step.",
+    desc: "A short guided profile collects what your tax agent will need, such as your entity details and address. Flo guides every step.",
     points: [
-      "4-step onboarding wizard",
-      "TFN encrypted and masked — revealed only with password re-entry",
+      "Guided from start to finish",
+      "Tax File Numbers and bank details are not collected or stored in the platform",
       "Flo answers questions as you go",
     ],
   },
