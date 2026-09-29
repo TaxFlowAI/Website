@@ -361,7 +361,7 @@ export default function SecurityPage() {
               className="tc-mono mt-10 border-t pt-6 text-[11.5px] leading-relaxed"
               style={{ borderColor: "rgba(255,255,255,0.08)", color: "#94A3B8" }}
             >
-              TAX7 T04 PTY LTD trading as TaxFlowAI · ABN 73 680 225 512 · Registered Tax Agent 26313222
+              Frontline Holdings Group Pty Ltd · ABN 59 671 861 475 · ASIC Agent 51843
             </p>
           </div>
         </div>
