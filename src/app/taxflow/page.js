@@ -260,7 +260,7 @@ export default function TaxFlowHomePage() {
                   <span />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="tc-bento-title">Your data lives in Australia.</h3>
+                  <h3 className="tc-bento-title">Hosted in Australia.</h3>
                   <p className="tc-bento-body">Hosted in Amazon Web Services’ Sydney region.</p>
                 </div>
                 <p className="tc-mono text-[11px] tracking-[0.16em]" style={{ color: "#00FCB8" }}>

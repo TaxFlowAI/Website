@@ -1433,3 +1433,14 @@
 /* the race photo as a feature: taller frame than the old inset */
 #pace .tc-director-inset-img { aspect-ratio: 4 / 5; }
 #pace .tc-director-inset figcaption { flex-direction: row; align-items: baseline; gap: 0.75rem; font-size: 15px; font-weight: 600; }
+
+/* security page: plain-language disclosure under a story section */
+.tc-sec-note {
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--tc-aqua);
+  border-radius: 0 10px 10px 0;
+  background: rgba(0, 252, 184, 0.05);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #E2E8F0;
+}

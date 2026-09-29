@@ -15,6 +15,10 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
    before publishing. One approved departure: the hero sentence was revised
    with the owner's sign-off on 28 Sept 2026, because the platform is owned
    and built by Frontline Holdings Group, not by the tax agent.
+   Owner-confirmed, 29 Sept 2026: the firm employs offshore staff, who have
+   no access to TFN or bank details. This is disclosed in the access
+   section. Hosting claims are fine; never imply data or work is
+   Australia-only.
    Owner correction, 29 Sept 2026: TaxFlowAI is NOT independently audited.
    Every audit claim from the brief has been removed. Do not reintroduce
    "independently audited", "independent security audits" or similar.
@@ -87,6 +91,7 @@ const STORY = [
     label: "Access & authentication",
     title: "Two-factor authentication on every sign-in.",
     body: "Every login — client or accountant — requires a password plus a one-time verification code. Client and staff portals are fully separated, access is role-based and least-privilege, and security events are audit-logged.",
+    note: "Some of our team work offshore and assist with lodgement preparation. They work under strict access controls and do not have access to Tax File Numbers or bank account details.",
     visual: <TwoFactorPanel />,
   },
   {
@@ -227,6 +232,7 @@ export default function SecurityPage() {
                   <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
                     {s.body}
                   </p>
+                  {s.note && <p className="tc-sec-note mt-5 max-w-lg">{s.note}</p>}
                 </div>
               </article>
             ))}
