@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- TaxFlowAI favicon: dark base with teal bars -->
-  <rect width="32" height="32" rx="6" fill="#0A1628"/>
-  <rect x="6" y="8" width="20" height="4" rx="2" fill="#00FCB8"/>
-  <rect x="6" y="16" width="14" height="4" rx="2" fill="#00FCB8" opacity="0.85"/>
-  <rect x="6" y="24" width="8" height="3" rx="2" fill="#00FCB8" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect x="0.5" y="0.5" width="31" height="31" rx="9" fill="#2A5590"/>
+  <rect x="2.5" y="2.5" width="27" height="27" rx="7.5" fill="#0A1628"/>
+  <g fill="none" stroke="#2FF5D0" stroke-linecap="round" stroke-width="3">
+    <path d="M6.8 15.2 A3.6 3.6 0 0 1 14 15.2"/>
+    <path d="M18 15.2 A3.6 3.6 0 0 1 25.2 15.2"/>
+    <path d="M11.5 21 Q16 24.6 20.5 21"/>
+  </g>
 </svg>

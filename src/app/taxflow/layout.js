@@ -40,8 +40,16 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  /* Flo-face icon set. The ?v= suffix makes browsers drop the old cached icon. */
   icons: {
-    icon: "/favicon-taxflow.svg",
+    icon: [
+      { url: "/favicon-taxflow.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon-taxflow-32.png?v=2", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-taxflow-192.png?v=2", type: "image/png", sizes: "192x192" },
+      { url: "/favicon-taxflow-512.png?v=2", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon-taxflow.ico?v=2",
+    apple: { url: "/apple-touch-icon-taxflow.png?v=2", sizes: "180x180" },
   },
 };
 
@@ -58,7 +66,7 @@ const ORG_SCHEMA = {
       "@id": "https://frontline.financial/taxflow#org",
       name: "TaxFlowAI",
       url: "https://frontline.financial/taxflow",
-      logo: "https://frontline.financial/favicon-taxflow.svg",
+      logo: "https://frontline.financial/favicon-taxflow-512.png",
       email: "taxflowai@frontline.financial",
       telephone: "+61406909862",
       description:

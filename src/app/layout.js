@@ -12,7 +12,10 @@ export const metadata = {
   description:
     "Australian financial services: mortgage and business lending (Brokers) and car and equipment finance (Asset Solutions).",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
   },
 };
 
