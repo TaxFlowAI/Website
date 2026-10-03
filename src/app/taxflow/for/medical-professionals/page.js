@@ -13,7 +13,7 @@ import FloTalkCta from "@/components/taxflow/FloTalkCta";
 import {
   container,
   Breadcrumbs,
-  TAXFLOW_SIGNIN_URL,
+  TAXFLOW_REGISTER_URL,
 } from "@/components/taxflow/TaxFlowShared";
 
 /* DRAFT — landing page for medical professionals. Not yet linked from the
@@ -101,7 +101,7 @@ function MedicalHero() {
               year, and a Registered Tax Agent prepares and lodges your return.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
+              <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
                 Get started free
               </a>
               <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
-import { container, Breadcrumbs, TAXFLOW_SIGNIN_URL } from "@/components/taxflow/TaxFlowShared";
+import { container, Breadcrumbs, TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 
 /* Shared blocks for the three service landing pages (platform, tax preparation,
    corporate secretarial). Each page keeps its own story; these are the parts
@@ -34,7 +34,7 @@ export function ServiceHero({ crumb, eyebrow, title, accent, lead, image, imageA
             {lead}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
+            <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
               Get started free
             </a>
             <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">

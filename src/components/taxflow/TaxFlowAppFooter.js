@@ -4,7 +4,7 @@ import { SignInButton } from "@/components/taxflow/SignInModal";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/data/taxflow-proof";
 
-const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
+const TAXFLOW_REGISTER_URL = "https://taxflowai.frontline.financial/register";
 const TAXFLOW_PHONE = "0406 909 862";
 const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 
@@ -96,7 +96,7 @@ export default function TaxFlowAppFooter() {
                 <SignInButton className="transition hover:text-[#00FCB8]" />
               </li>
               <li>
-                <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
+                <a href={TAXFLOW_REGISTER_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
                   Get started
                 </a>
               </li>

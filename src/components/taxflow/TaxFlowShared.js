@@ -3,7 +3,7 @@ import { GOOGLE_REVIEWS, TAX_AGENTS, PROOF_STATS } from "@/data/taxflow-proof";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import { CALENDLY_URL } from "@/config/calendly";
 
-export const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
+export const TAXFLOW_REGISTER_URL = "https://taxflowai.frontline.financial/register";
 export { CALENDLY_URL };
 
 export const container = "mx-auto max-w-6xl px-5 md:px-8";
@@ -23,7 +23,7 @@ export function CtaBand() {
             Start today — free to get started.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
+            <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
               Get started
             </a>
             <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
@@ -381,7 +381,7 @@ export function SwitchingModule() {
             awkward break-up conversation, no starting from scratch.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary rounded-lg px-6 py-3 text-[14.5px] font-bold">
+            <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary rounded-lg px-6 py-3 text-[14.5px] font-bold">
               Get started
             </a>
             <CalendlyButton className="tc-btn-ghost rounded-lg px-6 py-3 text-[14.5px] font-semibold">

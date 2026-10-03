@@ -5,7 +5,7 @@ import Link from "next/link";
 import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 import { SignInButton } from "@/components/taxflow/SignInModal";
 
-const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
+const TAXFLOW_REGISTER_URL = "https://taxflowai.frontline.financial/register";
 
 const NAV_LINKS = [
   { href: "/taxflow/about", label: "About us" },
@@ -50,16 +50,17 @@ export default function TaxFlowHeader() {
             </a>
             <SignInButton className="text-[13.5px] font-medium text-white/90 transition hover:text-white" />
             <a
-              href={TAXFLOW_SIGNIN_URL}
+              href={TAXFLOW_REGISTER_URL}
               className="tc-btn-primary rounded-lg px-4 py-2 text-[13.5px] font-bold"
             >
               Get started
             </a>
           </nav>
           {/* mobile */}
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <SignInButton className="tc-btn-ghost whitespace-nowrap rounded-lg px-3 py-2 text-[13px] font-semibold" />
             <a
-              href={TAXFLOW_SIGNIN_URL}
+              href={TAXFLOW_REGISTER_URL}
               className="tc-btn-primary rounded-lg px-3.5 py-2 text-[13px] font-bold"
             >
               Get started

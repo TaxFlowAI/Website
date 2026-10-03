@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
-import { container, TAXFLOW_SIGNIN_URL } from "@/components/taxflow/TaxFlowShared";
+import { container, TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 
 /* Flo images live in /public/images/taxflow/. Each slot only renders once its
    file exists, so a missing image never shows as a broken picture. */
@@ -373,7 +373,7 @@ export default function MedicalBlocks() {
           "Flo organises. Your Registered Tax Agent reviews and signs off. Nothing is lodged on AI alone.",
         ]}
         action={
-          <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-primary inline-block rounded-lg px-7 py-3.5 text-[15px] font-bold">
+          <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary inline-block rounded-lg px-7 py-3.5 text-[15px] font-bold">
             Try Flo free
           </a>
         }

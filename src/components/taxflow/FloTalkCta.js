@@ -1,6 +1,6 @@
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import { floImage } from "@/components/taxflow/MedicalBlocks";
-import { container, TAXFLOW_SIGNIN_URL } from "@/components/taxflow/TaxFlowShared";
+import { container, TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 
 /* Closing band: Flo saying "Talk to a human", beside the booking CTA.
    Uses /images/taxflow/flo-talk-to-human.webp once it exists; until then the
@@ -50,7 +50,7 @@ export default function FloTalkCta({ note }) {
             <CalendlyButton className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
               Talk to a human
             </CalendlyButton>
-            <a href={TAXFLOW_SIGNIN_URL} className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
+            <a href={TAXFLOW_REGISTER_URL} className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
               Get started free
             </a>
           </div>

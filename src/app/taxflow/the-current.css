@@ -1736,15 +1736,27 @@
 }
 
 /* ---- sign-in pop-up: the app's embed card floats on the booking overlay ---- */
-.tc-si-overlay { align-items: flex-start; overflow-y: auto; }
+/* padding lives on the wrap: the booking overlay drops its own padding on phones */
+.tc-si-overlay { align-items: flex-start; overflow-y: auto; padding: 0; }
 .tc-si-wrap {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: calc(400px + 2rem);
   margin: auto;
-  padding-bottom: 0.5rem;
+  padding: 1rem;
   animation: tc-bk-pop 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 /* the embed keeps 70px above its card for Flo; sit the close button on the card */
-.tc-si-close { top: calc(70px + 0.9rem); }
+.tc-si-close { top: calc(70px + 1.9rem); right: 1.9rem; }
 @media (prefers-reduced-motion: reduce) { .tc-si-wrap { animation: none; } }
+/* failed sign-in message, added inside the embed card at runtime */
+.tfai-embed .tfai-card .tc-si-error {
+  margin: 0 0 12px;
+  padding: 13px 16px;
+  border-radius: 16px;
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: #FCA5A5;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
