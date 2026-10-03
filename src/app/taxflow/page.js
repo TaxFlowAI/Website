@@ -259,7 +259,7 @@ export default function TaxFlowHomePage() {
                 <span className="tc-sec-pin" aria-hidden>
                   <span />
                 </span>
-                <div className="min-w-0 flex-1">
+                <div className="min-w-[12rem] flex-1">
                   <h3 className="tc-bento-title">Hosted in Australia.</h3>
                   <p className="tc-bento-body">
                     The platform, its database and its backups run in Amazon Web Services’
@@ -325,7 +325,7 @@ export default function TaxFlowHomePage() {
             {/* managed practice — full width */}
             <div className="tc-bento tc-bento-accent md:col-span-6">
               <div className="flex flex-wrap items-center justify-between gap-5">
-                <div className="min-w-0 flex-1">
+                <div className="min-w-[15rem] flex-1">
                   <h3 className="tc-bento-title">Security is a managed practice, not a promise.</h3>
                   <p className="tc-bento-body">
                     ISO 27001-aligned controls and continuous backups.
