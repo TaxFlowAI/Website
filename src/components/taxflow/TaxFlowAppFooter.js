@@ -1,5 +1,6 @@
 "use client";
 
+import { SignInButton } from "@/components/taxflow/SignInModal";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/data/taxflow-proof";
 
@@ -92,9 +93,7 @@ export default function TaxFlowAppFooter() {
                 </Link>
               </li>
               <li>
-                <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
-                  Sign in
-                </a>
+                <SignInButton className="transition hover:text-[#00FCB8]" />
               </li>
               <li>
                 <a href={TAXFLOW_SIGNIN_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">

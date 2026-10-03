@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import BrandSwitcherBar from "@/components/BrandSwitcherBar";
+import { SignInButton } from "@/components/taxflow/SignInModal";
 
 const TAXFLOW_SIGNIN_URL = "https://taxflowai.frontline.financial/login";
 
@@ -47,12 +48,7 @@ export default function TaxFlowHeader() {
             >
               0406 909 862
             </a>
-            <a
-              href={TAXFLOW_SIGNIN_URL}
-              className="text-[13.5px] font-medium text-white/90 transition hover:text-white"
-            >
-              Sign in
-            </a>
+            <SignInButton className="text-[13.5px] font-medium text-white/90 transition hover:text-white" />
             <a
               href={TAXFLOW_SIGNIN_URL}
               className="tc-btn-primary rounded-lg px-4 py-2 text-[13.5px] font-bold"
@@ -93,7 +89,7 @@ export default function TaxFlowHeader() {
                 {l.label}
               </Link>
             ))}
-            <a href={TAXFLOW_SIGNIN_URL}>Sign in</a>
+            <SignInButton onOpen={() => setOpen(false)} />
             <a href="tel:+61406909862" className="tc-mono">0406 909 862</a>
           </nav>
         )}

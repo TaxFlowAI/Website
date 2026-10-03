@@ -8,8 +8,8 @@ import { SIGN_IN_EMBED_HTML } from "@/components/taxflow/signInEmbed";
    straight to the TaxFlowAI app (no iframe, no JavaScript). The app only accepts
    posts from frontline.financial and www.frontline.financial, so on localhost and
    preview deploys a sign-in bounces to the app's login page with an error.
-   Not linked from the header or footer, and kept out of search and the sitemap,
-   until the owner confirms the embed-login endpoint is deployed. */
+   The header and footer Sign in links open the same form as a pop-up
+   (SignInModal); this page is their fallback and a direct link for clients. */
 export const metadata = {
   title: "Sign in",
   description: "Sign in to your TaxFlowAI client or accountant portal.",
