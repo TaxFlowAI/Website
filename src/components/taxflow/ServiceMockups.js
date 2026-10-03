@@ -121,7 +121,7 @@ export function LodgedPanel() {
         </div>
         <div className="tc-lp-panel-row">
           <span>Filed to</span>
-          <span>Your company vault</span>
+          <span>Your company folder</span>
         </div>
         <div className="tc-lp-panel-row">
           <span>Registers</span>

@@ -11,10 +11,10 @@ const SERVICES = [
     imageAlt: "Flo scanning a pile of receipts and filing them into glowing D1, D2, D5 and D9 folders",
     eyebrow: "The software",
     title: "TaxFlowAI platform",
-    desc: "Your tax control centre. Flo sorts receipts into ATO categories, your documents live in a private vault, and every deadline for every entity is tracked in one dashboard.",
+    desc: "Your tax control centre. Flo sorts receipts into ATO categories, your documents sit in secure uploads folders, and every job for every entity is tracked in one dashboard.",
     points: [
       "AI receipt scanner with reasoning you can read",
-      "Document vault, vehicle logbook and WFH tracker",
+      "Client uploads, vehicle logbook and WFH tracker",
       "Live status on every lodgement",
     ],
     href: "/taxflow/features",
@@ -41,7 +41,7 @@ const SERVICES = [
     imageAlt: "Flo stamping a company document as lodged, with a registered ASIC agent plate showing number 51843",
     eyebrow: "Registered ASIC agent",
     title: "Corporate secretarial services",
-    desc: "Annual reviews, officeholder and share changes, registered office updates, name changes and deregistrations — lodged with ASIC and filed in your vault.",
+    desc: "Annual reviews, officeholder and share changes, registered office updates, name changes and deregistrations — lodged with ASIC and filed in your company folder.",
     points: [
       "ASIC deadlines tracked alongside your tax",
       "Documents prepared for electronic signature",

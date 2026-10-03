@@ -34,13 +34,13 @@ export default function EmployeesWfhPage() {
         },
         {
           title: "Records the ATO expects",
-          body: "Every receipt, log and claim lives in your private document vault, organised by category. If the ATO ever asks, the evidence is one click away — not in a shoebox.",
+          body: "Every receipt, log and claim lives in your secure uploads folder, organised by category. If the ATO ever asks, the evidence is one click away — not in a shoebox.",
         },
       ]}
       relatedFeatures={[
         ["Guided deduction pages →", "/taxflow/features#deductions"],
         ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Document vault →", "/taxflow/features#vault"],
+        ["Client uploads →", "/taxflow/features#uploads"],
       ]}
       faqIds={["fees", "flo-ai", "who-lodges", "free-signup"]}
     />

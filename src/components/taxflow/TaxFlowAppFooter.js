@@ -178,6 +178,10 @@ export default function TaxFlowAppFooter() {
               <br />
               Platform owner &amp; ASIC agent: Frontline Holdings Group Pty Ltd (ABN
               59 671 861 475), ASIC Agent 51843.
+              <br />
+              Credit services are provided by Frontline Financial Pty Ltd (CRN 575968,
+              ACL 389087) and Martyn Financial Pty Ltd t/a Frontline Financial: Asset
+              Solutions (CRN 563350, ACL 511803).
             </div>
             <p className="mt-4 text-xs text-gray-500">
               TaxFlowAI © {year} · Tax services by TAX7 T04 PTY LTD · Platform by

@@ -63,18 +63,18 @@ export function HeroCurrent() {
 const DASH_TABS = {
   Personal: [
     { name: "Income Tax FY2025", status: "Lodged", tone: "ok" },
-    { name: "BAS Q2 FY2026", status: "Due 28 Feb", tone: "due" },
+    { name: "BAS Q2 FY2026", status: "Est. Feb 2026", tone: "working" },
     { name: "Vehicle Logbook", status: "12 wks · 68%", tone: "progress" },
   ],
   Company: [
     { name: "Company Tax FY2025", status: "Lodged", tone: "ok" },
-    { name: "BAS Q2 FY2026", status: "Due 28 Feb", tone: "due" },
+    { name: "BAS Q2 FY2026", status: "Est. Feb 2026", tone: "working" },
     { name: "ASIC Annual Review", status: "On track", tone: "working" },
   ],
   Trust: [
     { name: "Trust Tax FY2025", status: "Lodged", tone: "ok" },
     { name: "Distribution Resolution", status: "On track", tone: "working" },
-    { name: "BAS Q2 FY2026", status: "Due 28 Feb", tone: "due" },
+    { name: "BAS Q2 FY2026", status: "Est. Feb 2026", tone: "working" },
   ],
 };
 
@@ -381,14 +381,14 @@ export function BookingPanel() {
 export function LodgementList() {
   const rows = [
     ["Income Tax FY2025", "Lodged", "ok"],
-    ["BAS Q2 FY2026", "Due 28 Feb", "due"],
-    ["BAS Q3 FY2026", "Opens 1 Apr", "working"],
+    ["BAS Q2 FY2026", "Est. Feb 2026", "working"],
+    ["BAS Q3 FY2026", "Est. May 2026", "working"],
   ];
   return (
     <div className="tc-card p-5">
       <div className="flex items-center justify-between border-b pb-3" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
         <span className="tc-mono text-[11px]" style={{ color: "#94A3B8" }}>LODGEMENTS</span>
-        <span className="tc-mono text-[11px]" style={{ color: "#F59E0B" }}>1 DUE SOON</span>
+        <span className="tc-mono text-[11px]" style={{ color: "#94A3B8" }}>ESTIMATED TIMING</span>
       </div>
       <div className="mt-2">
         {rows.map(([name, status, tone]) => (

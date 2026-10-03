@@ -9,14 +9,14 @@ export { CALENDLY_URL };
 export const container = "mx-auto max-w-6xl px-5 md:px-8";
 
 /* ---------- closing CTA band (every page) ---------- */
-export function CtaBand() {
+export function CtaBand({ title = "Your tax, under control." }) {
   return (
     <section className="tc-depth-blue border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
       <div className={`${container} py-16 md:py-24`}>
         <div className="max-w-2xl">
           <div className="tc-grad-line-h tc-glow-line h-[2px] w-16 rounded-full" aria-hidden />
           <h2 className="tc-display mt-7 text-4xl text-white md:text-5xl">
-            Your tax, under control.
+            {title}
           </h2>
           <p className="mt-5 max-w-lg text-lg" style={{ color: "#B7C4CF" }}>
             Always know what&apos;s happening. Stay organised. Reach your accountant.

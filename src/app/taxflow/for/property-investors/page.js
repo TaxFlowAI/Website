@@ -34,13 +34,13 @@ export default function PropertyInvestorsPage() {
         },
         {
           title: "Record keeping",
-          body: "Property records need to survive for years — including for CGT when you eventually sell. Everything lives in your private vault, organised by property, backed up and always yours.",
+          body: "Property records need to survive for years — including for CGT when you eventually sell. Everything lives in your secure uploads folder, organised by property, backed up and always yours.",
         },
       ]}
       relatedFeatures={[
-        ["Investment properties →", "/taxflow/features#properties"],
+        ["Job tracker →", "/taxflow/features#jobs"],
         ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Document vault →", "/taxflow/features#vault"],
+        ["Client uploads →", "/taxflow/features#uploads"],
       ]}
       faqIds={["fees", "entities", "security", "switch"]}
     />

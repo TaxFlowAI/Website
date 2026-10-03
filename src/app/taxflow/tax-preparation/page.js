@@ -104,7 +104,7 @@ const STATIONS = [
   {
     label: "Upload",
     title: "Hand over the paperwork. Flo sorts it.",
-    body: "Receipts, statements and documents go into your vault. Flo files them into ATO categories and flags anything that is missing.",
+    body: "Receipts, statements and documents go into your uploads folder. Flo files them into ATO categories and flags anything that is missing.",
     visual: <ScannerCard />,
   },
   {

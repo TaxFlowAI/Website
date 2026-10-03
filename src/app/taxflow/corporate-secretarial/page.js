@@ -63,7 +63,7 @@ const MATTERS = [
     code: "FORM 205A",
     span: "md:col-span-2",
     title: "Company name changes",
-    body: "Name availability checked, the special resolution prepared and lodged, and the new certificate filed in your vault.",
+    body: "Name availability checked, the special resolution prepared and lodged, and the new certificate filed in your company folder.",
   },
   {
     code: "FORM 6010",
@@ -106,8 +106,8 @@ const STATIONS = [
   },
   {
     label: "Lodge",
-    title: "Lodged with ASIC. Filed in your vault.",
-    body: "The lodgement is made through our ASIC agent connection, your registers are updated, and every document lands in your company's vault next to its tax records.",
+    title: "Lodged with ASIC. Filed in your folder.",
+    body: "The lodgement is made through our ASIC agent connection, your registers are updated, and every document lands in your company's uploads folder next to its tax records.",
     visual: <LodgedPanel />,
   },
 ];
@@ -122,7 +122,7 @@ const WHY = [
     body: "The team preparing your company's tax return already knows its structure. A change is reflected in both places, first time.",
   },
   {
-    title: "Everything in your vault",
+    title: "Everything in one place",
     body: "Certificates, resolutions, registers and ASIC receipts are filed in your company's private folder, searchable and always yours.",
   },
 ];

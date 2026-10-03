@@ -38,9 +38,9 @@ export default function SoleTradersPage() {
         },
       ]}
       relatedFeatures={[
-        ["Lodgement tracking →", "/taxflow/features#lodgements"],
+        ["Job tracker →", "/taxflow/features#jobs"],
         ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Vehicle logbook →", "/taxflow/features#logbook"],
+        ["Quotes and invoices →", "/taxflow/features#business"],
       ]}
       faqIds={["fees", "entities", "who-lodges", "switch"]}
     />

@@ -57,7 +57,7 @@ const PARTS = [
   {
     label: "The platform",
     title: "TaxFlowAI",
-    body: "The technology. Flo sorts receipts, your documents live in a private vault, and every deadline is tracked in one dashboard.",
+    body: "The technology. Flo sorts receipts, your documents sit in secure uploads folders, and every job is tracked in one place.",
     image: "/images/taxflow/service-platform.webp",
     href: "/taxflow/features",
     cta: "Explore the platform",
