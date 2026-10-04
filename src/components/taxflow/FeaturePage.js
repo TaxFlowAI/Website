@@ -15,7 +15,10 @@ import { FEATURE_IMAGES, ALL_FEATURES } from "@/components/taxflow/featurePages"
    Each page is self-contained: detail sections never link off to another
    feature page (the owner asked for no page-within-a-page).
    The supplied images are real app screens with Flo and the headline baked in:
-   always shown whole (never cropped or stretched), full width on phones. */
+   always shown whole (never cropped or stretched), full width on phones.
+   They are served exactly as supplied (unoptimized): they are already
+   final-size WebPs, and the image optimiser's re-compression blurred the small
+   text on the phone screens. */
 
 const IMG_SIZES = "(min-width:1024px) 40rem, 92vw";
 
@@ -28,6 +31,7 @@ export function FeatureImage({ image, priority = false, className = "" }) {
       height={1024}
       sizes={IMG_SIZES}
       priority={priority}
+      unoptimized
       className={`tc-fp-img ${className}`}
     />
   );

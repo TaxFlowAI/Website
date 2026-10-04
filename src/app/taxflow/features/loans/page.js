@@ -169,6 +169,7 @@ export default function LoansFeaturePage() {
               width={1536}
               height={1024}
               sizes={SIZES}
+              unoptimized
               priority
               className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
             />
@@ -209,6 +210,7 @@ export default function LoansFeaturePage() {
             width={1536}
             height={1024}
             sizes={SIZES}
+            unoptimized
             className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
           />
           <div>
@@ -234,6 +236,7 @@ export default function LoansFeaturePage() {
               width={1536}
               height={1024}
               sizes={SIZES}
+              unoptimized
               className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
             />
           </div>
