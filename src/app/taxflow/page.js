@@ -12,6 +12,7 @@ import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import MedicalShowcase from "@/components/taxflow/MedicalShowcase";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
+import { Phone } from "@/components/taxflow/AppScreens";
 
 export const metadata = {
   title: "TaxFlowAI — Smarter tax, effortless deductions",
@@ -63,7 +64,7 @@ export default function TaxFlowHomePage() {
       {/* ============ HERO — Flo ============ */}
       <section id="hero" className="tc-hero-flo relative overflow-hidden">
         <div className={`${container} grid items-center gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-6 lg:py-24`}>
-          <div className="order-2 lg:order-1 lg:col-span-7">
+          <div className="lg:col-span-7">
             <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>
               Meet Flo
             </p>
@@ -81,19 +82,26 @@ export default function TaxFlowHomePage() {
             </Link>
           </div>
 
-          <div className="order-1 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end">
-            <div className="tc-flo-stage relative w-64 sm:w-80 lg:w-[26rem]">
-              <div className="tc-flo-glow" aria-hidden />
-              <Image
-                src="/images/taxflow/flo-hello.webp"
-                alt="Flo, the TaxFlowAI assistant, waving and saying hello"
-                width={1254}
-                height={1254}
-                priority
-                sizes="(min-width: 1024px) 26rem, (min-width: 640px) 20rem, 16rem"
-                className="float-animate relative z-10 h-auto w-full"
-              />
-              <div className="tc-flo-shadow" aria-hidden />
+          {/* Flo waving at the real receipt scanner: what the product does,
+              in the first screen. The screenshot is the owner's, unedited. */}
+          <div className="flex justify-center lg:col-span-5 lg:justify-end">
+            <div className="tc-hero-demo">
+              <div className="tc-hero-demo-phone">
+                <Phone id="receipt-question" priority sizes="(min-width: 1024px) 232px, (min-width: 640px) 212px, 170px" />
+              </div>
+              <div className="tc-flo-stage tc-hero-demo-flo">
+                <div className="tc-flo-glow" aria-hidden />
+                <Image
+                  src="/images/taxflow/flo-hello.webp"
+                  alt="Flo, the TaxFlowAI assistant, waving and saying hello"
+                  width={1254}
+                  height={1254}
+                  priority
+                  sizes="(min-width: 1024px) 300px, (min-width: 640px) 260px, 200px"
+                  className="float-animate relative z-10 h-auto w-full"
+                />
+                <div className="tc-flo-shadow" aria-hidden />
+              </div>
             </div>
           </div>
         </div>
@@ -145,16 +153,16 @@ export default function TaxFlowHomePage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/taxflow/about" className="tc-btn-primary rounded-lg px-6 py-3 text-[15px] font-bold">
-                More about us
-              </Link>
-              <CalendlyButton className="tc-btn-ghost rounded-lg px-6 py-3 text-[15px] font-semibold">
+            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+              <CalendlyButton className="tc-btn-primary rounded-lg px-6 py-3 text-[15px] font-bold">
                 Talk to a human
               </CalendlyButton>
+              <Link href="/taxflow/about" className="tc-link text-[15px] font-semibold">
+                More about us
+              </Link>
             </div>
-            <p className="mt-4 text-[13px]" style={{ color: "#94A3B8" }}>
-              Free, no obligation. Parramatta and Sydney CBD, or Teams and phone Australia-wide.
+            <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>
+              A free 15-minute call by phone or Teams, with no obligation. TaxFlowAI is free to sign up.
             </p>
           </div>
           <div className="tc-reveal lg:col-span-6">
@@ -246,8 +254,8 @@ export default function TaxFlowHomePage() {
               </h2>
               <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
                 {SHOW_TAX_SERVICES
-                  ? "TaxFlowAI’s tax services are provided by a registered Australian tax agent, on a platform with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted end to end."
-                  : "TaxFlowAI is built with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted end to end."}
+                  ? "TaxFlowAI's tax services are provided by a registered Australian tax agent, on a platform with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted in transit and at rest."
+                  : "TaxFlowAI is built with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted in transit and at rest."}
               </p>
               <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
                 How we protect your data

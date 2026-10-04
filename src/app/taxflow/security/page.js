@@ -47,7 +47,7 @@ export const metadata = {
   openGraph: {
     title: "Data security — TaxFlowAI",
     description:
-      "Australian-hosted, encrypted end to end, two-factor authentication on every login, and ISO 27001-aligned practices.",
+      "Australian-hosted, encrypted in transit and at rest, two-factor authentication on every login, and ISO 27001-aligned practices.",
     url: "/taxflow/security",
   },
 };
@@ -167,7 +167,7 @@ export default function SecurityPage() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
               TaxFlowAI&apos;s tax services are provided by a registered Australian tax
               agent, on a platform with security practices aligned to ISO/IEC 27001.
-              Australian-hosted and encrypted end to end.
+              Australian-hosted and encrypted in transit and at rest.
             </p>
             <a href="#residency" className="tc-link mt-8 inline-block text-[15px] font-semibold">
               See how it works

@@ -598,7 +598,7 @@ export default function Home() {
           </div>
           <p className="mt-8 text-sm text-white/70">
             {SHOW_TAX_SERVICES
-              ? "TaxFlowAI’s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd."
+              ? "TaxFlowAI's tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd."
               : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd."}
           </p>
         </div>

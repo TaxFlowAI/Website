@@ -143,7 +143,7 @@ export default function AboutPage() {
           </p>
           <p className="mt-4 text-sm text-[#39B2B2]">
             {SHOW_TAX_SERVICES
-              ? "TaxFlowAI’s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd."
+              ? "TaxFlowAI's tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd."
               : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd."}
           </p>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">

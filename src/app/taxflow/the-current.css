@@ -2212,3 +2212,40 @@
   .tc-ps-flo.float-animate { animation: none; }
 }
 
+/* ================================================================
+   Home hero: Flo waving at the real receipt scanner
+   ================================================================ */
+.tc-hero-demo { position: relative; width: min(20rem, 100%); padding-bottom: 1.25rem; }
+.tc-hero-demo-phone { position: relative; z-index: 1; width: 53%; }
+.tc-hero-demo-phone .tc-dev { width: 100%; }
+.tc-hero-demo-flo { position: absolute; z-index: 2; right: -0.5rem; bottom: -0.25rem; width: 62.5%; }
+@media (min-width: 640px) {
+  .tc-hero-demo { width: 26rem; }
+  .tc-hero-demo-phone { width: 212px; }
+  .tc-hero-demo-flo { width: 260px; right: -1rem; }
+}
+@media (min-width: 1024px) {
+  .tc-hero-demo { width: 28rem; padding-bottom: 1.5rem; }
+  .tc-hero-demo-phone { width: 232px; }
+  .tc-hero-demo-flo { width: 300px; right: -2.5rem; bottom: -0.5rem; }
+}
+
+/* ================================================================
+   TaxFlowAI footer: brand navy, left-aligned, readable legal text.
+   Overrides the parent site's global footer styles (globals.css), which
+   set a near-black background, centred text and #555 legal text.
+   ================================================================ */
+.tc-page .app-footer-taxflow {
+  background: #060D1A;
+  padding: 4rem 0 2.5rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  color: #94A3B8;
+}
+.tc-page .app-footer-taxflow .footer-content-taxflow { max-width: none; margin: 0; }
+.tc-page .app-footer-taxflow .footer-brand-taxflow { color: #FFFFFF; font-weight: 700; font-size: 0.875rem; margin-bottom: 10px; }
+.tc-page .app-footer-taxflow .footer-links-taxflow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-bottom: 14px; }
+.tc-page .app-footer-taxflow .footer-links-taxflow a { margin: 0; }
+.tc-page .app-footer-taxflow .footer-separator-taxflow { color: rgba(255, 255, 255, 0.25); margin: 0 10px; }
+.tc-page .app-footer-taxflow .footer-entities-taxflow { color: #94A3B8; font-size: 12.5px; line-height: 1.7; max-width: 60rem; }
+

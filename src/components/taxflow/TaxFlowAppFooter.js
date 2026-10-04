@@ -22,8 +22,8 @@ const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 export default function TaxFlowAppFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="app-footer-taxflow border-t border-[#00FCB8]/15 bg-[#060D1A] px-4 py-16 md:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <footer className="app-footer-taxflow border-t border-[#00FCB8]/15 bg-[#060D1A]">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-bold text-lg">
@@ -31,12 +31,12 @@ export default function TaxFlowAppFooter() {
               <span className="text-[#00FCB8]">AI</span>
             </p>
             {SHOW_TAX_SERVICES && (
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-[#94A3B8]">
                 Tax services by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered
                 Tax Agent 26313222.
               </p>
             )}
-            <p className={`${SHOW_TAX_SERVICES ? "mt-1" : "mt-2"} text-sm text-gray-500`}>
+            <p className={`${SHOW_TAX_SERVICES ? "mt-1" : "mt-2"} text-sm text-[#94A3B8]`}>
               Platform owned and developed by Frontline Holdings Group Pty Ltd.
             </p>
             {/* Social icons render only when REAL profile URLs are set in
@@ -48,7 +48,7 @@ export default function TaxFlowAppFooter() {
                     href={SOCIAL_LINKS.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 transition hover:text-[#00FCB8]"
+                    className="text-[#94A3B8] transition hover:text-[#00FCB8]"
                     aria-label="LinkedIn"
                   >
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function TaxFlowAppFooter() {
                     href={SOCIAL_LINKS.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 transition hover:text-[#00FCB8]"
+                    className="text-[#94A3B8] transition hover:text-[#00FCB8]"
                     aria-label="Instagram"
                   >
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -73,10 +73,10 @@ export default function TaxFlowAppFooter() {
             )}
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               Product
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-500">
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
                 <Link href="/taxflow/features" className="transition hover:text-[#00FCB8]">
                   Features
@@ -101,17 +101,17 @@ export default function TaxFlowAppFooter() {
                 <SignInButton className="transition hover:text-[#00FCB8]" />
               </li>
               <li>
-                <a href={TAXFLOW_REGISTER_URL} className="transition hover:text-[#00FCB8]" target="_blank" rel="noopener noreferrer">
+                <a href={TAXFLOW_REGISTER_URL} className="transition hover:text-[#00FCB8]">
                   Get started
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               Who it&apos;s for
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-500">
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
                 <Link href="/taxflow/for/sole-traders" className="transition hover:text-[#00FCB8]">
                   Sole traders
@@ -127,13 +127,20 @@ export default function TaxFlowAppFooter() {
                   Property investors
                 </Link>
               </li>
+              {SHOW_TAX_SERVICES && (
+                <li>
+                  <Link href="/taxflow/for/medical-professionals" className="transition hover:text-[#00FCB8]">
+                    Medical professionals
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               Contact
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-gray-500">
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-[#94A3B8]">
               <li>
                 <a href={TAXFLOW_PHONE_LINK} className="transition hover:text-[#00FCB8]">
                   {TAXFLOW_PHONE}
@@ -196,7 +203,7 @@ export default function TaxFlowAppFooter() {
               ACL 389087) and Martyn Financial Pty Ltd t/a Frontline Financial: Asset
               Solutions (CRN 563350, ACL 511803).
             </div>
-            <p className="mt-4 text-xs text-gray-500">
+            <p className="mt-4 text-xs text-[#94A3B8]">
               TaxFlowAI © {year} ·{" "}
               {SHOW_TAX_SERVICES ? "Tax services by TAX7 T04 PTY LTD · " : ""}Platform by
               Frontline Holdings Group

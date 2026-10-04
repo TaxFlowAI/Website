@@ -66,16 +66,16 @@ export default function MedicalShowcase() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href={PAGE} className="tc-btn-primary inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold">
+          <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+            <CalendlyButton className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
+              Talk to a human
+            </CalendlyButton>
+            <Link href={PAGE} className="tc-link inline-flex items-center gap-2 text-[15px] font-semibold">
               Explore tax for medical professionals
               <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.4} viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
-              Talk to a human
-            </CalendlyButton>
           </div>
         </div>
 

@@ -83,8 +83,11 @@ const TRACK = [
   ...SERVICES.map((s) => ({ ...s, key: `post-${s.id}`, clone: true })),
 ];
 
+/* scroll position that puts card i on the content edge (the track pads its
+   sides so cards can bleed to the screen edge on phones) */
 function cardLeft(track, i) {
-  return track.children[i].offsetLeft - track.offsetLeft;
+  const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+  return track.children[i].offsetLeft - track.offsetLeft - pad;
 }
 
 function nearestIndex(track) {
@@ -219,7 +222,7 @@ export default function ServicesCarousel() {
     <div className="tc-reveal">
       <div
         ref={trackRef}
-        className="tc-scroll-hide -mx-5 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-2 md:-mx-8 md:px-8"
+        className="tc-scroll-hide -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-6 overflow-x-auto px-5 pb-2 md:-mx-8 md:scroll-px-8 md:px-8 lg:-mx-2 lg:scroll-px-2 lg:px-2"
         aria-label="Our services"
       >
         {TRACK.map((s) => (
@@ -228,16 +231,20 @@ export default function ServicesCarousel() {
       </div>
 
       <div className="mt-6 flex items-center justify-between">
-        <div className="flex gap-2">
+        <div className="-ml-2 flex">
           {SERVICES.map((s, i) => (
             <button
               key={s.id}
               type="button"
               onClick={() => glideTo(N + i)}
-              className={`h-2 rounded-full transition-all ${i === active ? "w-8 bg-[#00FCB8]" : "w-2 bg-white/30"}`}
+              className="group flex h-9 items-center px-2"
               aria-label={`Go to ${s.title}`}
               aria-current={i === active ? "true" : undefined}
-            />
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${i === active ? "w-8 bg-[#00FCB8]" : "w-2 bg-white/30 group-hover:bg-white/60"}`}
+              />
+            </button>
           ))}
         </div>
         <div className="flex gap-2">

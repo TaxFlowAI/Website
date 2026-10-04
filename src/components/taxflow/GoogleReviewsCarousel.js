@@ -29,19 +29,19 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [shown, setShown] = useState(0);
+  const [shown, setShown] = useState(target);
   const countRef = useRef(null);
 
-  /* count-up once the stat card scrolls into view */
+  /* count-up once the stat card scrolls into view. The server renders the
+     real number (search engines, no-JS visitors); it resets to 0 only while
+     the card is still off screen, so nobody sees it drop. */
   useEffect(() => {
     if (!published || !countRef.current) return undefined;
     let raf = 0;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return undefined;
+    let armed = false;
     const run = () => {
-      if (reduce) {
-        setShown(target);
-        return;
-      }
       const t0 = performance.now();
       const dur = 1400;
       const tick = (now) => {
@@ -54,7 +54,14 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
     };
     const obs = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
+        const visible = entries.some((e) => e.isIntersecting);
+        if (!armed) {
+          armed = true;
+          if (visible) obs.disconnect();
+          else setShown(0);
+          return;
+        }
+        if (visible) {
           run();
           obs.disconnect();
         }
@@ -71,6 +78,7 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
   /* auto-advance, paused on hover / focus */
   useEffect(() => {
     if (!published || paused || total < 2) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     const id = setInterval(() => setIndex((i) => (i + 1) % total), 6000);
     return () => clearInterval(id);
   }, [published, paused, total]);
@@ -84,7 +92,7 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
   return (
     <section
       id="reviews"
-      className="relative overflow-hidden px-5 py-16 md:px-8 md:py-24"
+      className="relative overflow-hidden py-16 md:py-24"
       style={{ background: `linear-gradient(180deg, ${edge} 0%, #16334B 50%, ${edge} 100%)` }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -98,7 +106,7 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
         <Star className="h-[130%] w-auto text-white opacity-[0.035]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
           <div className="tc-reveal">
             <p className="tc-eyebrow" style={{ color: "#00FCB8" }}>
@@ -108,8 +116,8 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
               Trusted by Australians
             </h2>
             <p className="mt-5 max-w-lg text-[16px] leading-relaxed md:text-lg" style={{ color: "#B7C4CF" }}>
-              The TaxFlowAI platform is owned and built by {business}. Over one hundred
-              Australians have taken the time to review them on Google — and every
+              These are Google reviews of {business}, the team behind TaxFlowAI.
+              Over one hundred Australians have taken the time to review us, and every
               single one gave five stars.
             </p>
           </div>
@@ -186,7 +194,7 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
                       </span>
                       <span>
                         <span className="block text-sm font-bold text-white">{r.name}</span>
-                        <span className="tc-mono block text-[10px] uppercase tracking-[0.12em]" style={{ color: "#94A3B8" }}>
+                        <span className="tc-mono block text-[11px] uppercase tracking-[0.12em]" style={{ color: "#94A3B8" }}>
                           Google review
                         </span>
                       </span>
@@ -208,16 +216,20 @@ export default function GoogleReviewsCarousel({ edge = "#0E2238" }) {
             </svg>
           </button>
         </div>
-        <div className="mt-6 flex justify-center gap-2">
+        <div className="mt-4 flex justify-center">
           {reviews.map((r, i) => (
             <button
               key={r.name}
               type="button"
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all ${i === index ? "w-8 bg-[#00FCB8]" : "w-2 bg-white/40"}`}
+              className="group flex h-9 items-center px-2"
               aria-label={`Go to review ${i + 1}`}
               aria-current={i === index ? "true" : undefined}
-            />
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${i === index ? "w-8 bg-[#00FCB8]" : "w-2 bg-white/40 group-hover:bg-white/70"}`}
+              />
+            </button>
           ))}
         </div>
       </div>

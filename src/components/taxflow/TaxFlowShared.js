@@ -27,15 +27,13 @@ export function CtaBand({ title = "Your tax, under control." }) {
               Get started
             </a>
             <CalendlyButton className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
-              Book a free 15-min call
+              Talk to a human
             </CalendlyButton>
           </div>
-          <p className="mt-4 text-[13.5px]" style={{ color: "#94A3B8" }}>
-            Not ready to sign up?{" "}
-            <CalendlyButton className="tc-link">Talk to a human first</CalendlyButton>{" "}
-            — free, no obligation.
+          <p className="mt-5 text-[13.5px]" style={{ color: "#94A3B8" }}>
+            The call is free, 15 minutes, by phone or Teams, with no obligation.
           </p>
-          <p className="tc-mono mt-4 text-[11.5px]" style={{ color: "#94A3B8" }}>
+          <p className="tc-mono mt-3 text-[12px]" style={{ color: "#94A3B8" }}>
             FREE TO SIGN UP · NO CARD · NO SUBSCRIPTION · YOU APPROVE EVERY QUOTE
           </p>
         </div>
