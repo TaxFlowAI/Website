@@ -9,17 +9,14 @@ import {
   ReceiptChatMock,
   UploadWizardMock,
   DeductionsMock,
-  AccountsHomeMock,
   UploadsFoldersMock,
-  JobTrackerMock,
-  InvoiceListMock,
-  SendSheetMock,
-  InvoiceChatMock,
   FloHelpMock,
   RequestMeetingMock,
   CompanyRegoMock,
-  LoanEnquiryMock,
 } from "@/components/taxflow/PlatformMockups";
+import CreditDisclosures from "@/components/taxflow/CreditDisclosures";
+import { FeatureImage } from "@/components/taxflow/FeaturePage";
+import { FEATURE_IMAGES, COMPANY_REGISTRATION_PRICE, featureByAnchor } from "@/components/taxflow/featurePages";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 import { ServiceHero, StatBand, Check, NAVY, DEEP } from "@/components/taxflow/ServiceLanding";
 
@@ -30,7 +27,8 @@ import { ServiceHero, StatBand, Check, NAVY, DEEP } from "@/components/taxflow/S
    - booking is "request a time", confirmed by the accountant; no live calendar
    - no card fee stated, and never "free" next to card payments
    - both credit disclosures, word for word, wherever loans are mentioned
-   - no internal systems named beyond "Australian-hosted" */
+   - no internal systems named beyond "Australian-hosted"
+   - no fees or prices, except the company registration price */
 export const metadata = {
   title: { absolute: "Features | TaxFlowAI — tax, receipts, quotes & invoices in one app" },
   description:
@@ -44,31 +42,11 @@ export const metadata = {
   },
 };
 
-/* Fixed price for a new company registration, including GST and the ASIC fee. */
-const COMPANY_REGISTRATION_PRICE = "$1,525";
+const I = FEATURE_IMAGES;
 
-const CREDIT_BROKING =
-  "Frontline Financial Pty Ltd is an authorised credit representative (CRN: 575968) of Australian Credit Licence No. 389087, authorised to engage in credit activities.";
-const CREDIT_ASSET =
-  "Martyn Financial Pty Ltd t/a Frontline Financial: Asset Solutions is an authorised credit representative (CRN: 563350) of Australian Credit Licence No. 511803, authorised to engage in credit activities.";
-
-function CreditDisclosures({ className = "" }) {
-  return (
-    <div className={className}>
-      <p className="tc-lp-legal">
-        {CREDIT_BROKING} Home loans, refinance, investment, construction, SMSF, commercial and debt
-        consolidation. <Link href="/credit-guide" className="tc-link">Credit guide</Link> ·{" "}
-        <Link href="/privacy-consent" className="tc-link">Privacy consent</Link>
-      </p>
-      <p className="tc-lp-legal">
-        {CREDIT_ASSET} Car, commercial vehicle, equipment, personal, working capital and fleet.{" "}
-        <Link href="/credit-guide-asset-solutions" className="tc-link">Credit guide</Link> ·{" "}
-        <Link href="/privacy-consent-asset-solutions" className="tc-link">Privacy consent</Link>
-      </p>
-    </div>
-  );
-}
-
+/* Each feature keeps its section id and links to its own landing page
+   (/taxflow/features/<slug>). Where a real app image has been supplied it
+   replaces the phone mock-up; the rest keep their mock-up until images arrive. */
 const CHAPTERS = [
   {
     id: "capture",
@@ -118,7 +96,7 @@ const CHAPTERS = [
         title: "Your accounts on one home screen",
         body: "See your personal, sole trader, company, trust and partnership accounts together. Each one has its own page.",
         points: ["Overview, Deductions, Documents and Book on every account", "Switch accounts without switching apps"],
-        panel: <AccountsHomeMock />,
+        image: I.home,
       },
       {
         id: "uploads",
@@ -135,7 +113,7 @@ const CHAPTERS = [
           "Estimated timing, shown as a month",
           "Check your exact dates on myGov, or ATO Online Services for a business",
         ],
-        panel: <JobTrackerMock />,
+        image: I.jobTracker,
       },
     ],
   },
@@ -156,24 +134,22 @@ const CHAPTERS = [
           "GST set automatically",
           "Your logo and brand colours, picked from your logo",
         ],
-        panel: <InvoiceListMock />,
+        image: I.invoice,
       },
       {
         id: "send",
         title: "Sent from your own business address",
         body: "Every business gets its own address, like smith-plumbing@invoicemail.com.au. Emails go out automatically and replies come straight to you.",
         points: ["Email it for me, in one tap", "Or text the invoice link from your own phone"],
-        panel: <SendSheetMock />,
+        image: I.send,
       },
       {
         id: "flo-invoice",
         title: "Raise an invoice by chatting to Flo",
         body: "Tell Flo who to invoice and for what. Flo finds the customer, builds the invoice and shows you a summary.",
         points: ["Finds customers on the Australian Business Register", "Nothing is sent until you tap Confirm"],
-        panel: <InvoiceChatMock />,
+        image: I.floDraft,
       },
-    ],
-    pair: [
       {
         id: "get-paid",
         title: "Get paid faster",
@@ -181,14 +157,16 @@ const CHAPTERS = [
         points: [
           "Card payments go straight into your own Stripe account",
           "Mark bank transfers paid in one tap",
-          "Statuses at a glance: Sent, Viewed, Paid, Overdue, Expired, Accepted",
+          "Statuses at a glance: Draft, Sent, Viewed, Paid, Overdue",
         ],
+        image: I.markPaid,
       },
       {
         id: "customers",
         title: "Customers",
         body: "Add a customer once and reuse them on every quote and invoice.",
         points: ["Add from your phone contacts", "Or look them up by ABN", "Address search built in"],
+        image: I.customers,
       },
     ],
   },
@@ -238,7 +216,7 @@ const CHAPTERS = [
           "Home, refinance, car, business, personal and more",
           "Enquiry only. It won't affect your credit score",
         ],
-        panel: <LoanEnquiryMock />,
+        image: I.loanStart,
         legal: true,
       },
     ],
@@ -253,10 +231,11 @@ const STATS = [
 ];
 
 function Feature({ f }) {
+  const more = featureByAnchor(f.id);
   return (
     <article
       id={f.id}
-      className={`tc-lp-feature tc-reveal ${f.panel ? "" : "is-text"}`}
+      className={`tc-lp-feature tc-reveal ${f.image ? "is-image" : ""}`}
       style={{ scrollMarginTop: "120px" }}
     >
       <div>
@@ -273,8 +252,13 @@ function Feature({ f }) {
           ))}
         </ul>
         {f.legal && <CreditDisclosures className="mt-5" />}
+        {more && (
+          <Link href={`/taxflow/features/${more.slug}`} className="tc-link mt-5 inline-block text-[14.5px] font-semibold">
+            Learn more →<span className="sr-only"> about {f.title}</span>
+          </Link>
+        )}
       </div>
-      {f.panel && <div className="min-w-0">{f.panel}</div>}
+      <div className="min-w-0">{f.image ? <FeatureImage image={f.image} /> : f.panel}</div>
     </article>
   );
 }
@@ -339,13 +323,6 @@ export default function FeaturesPage() {
                   {c.features.map((f) => (
                     <Feature key={f.id} f={f} />
                   ))}
-                  {c.pair && (
-                    <div className="tc-lp-pair">
-                      {c.pair.map((f) => (
-                        <Feature key={f.id} f={f} />
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             </section>

@@ -1905,3 +1905,28 @@
 @media (min-width: 768px) { .tc-lp-pair { grid-template-columns: 1fr 1fr; } }
 .tc-lp-legal { font-size: 12px; line-height: 1.65; color: #94A3B8; }
 .tc-lp-legal + .tc-lp-legal { margin-top: 0.6rem; }
+
+/* ---- feature landing pages (/taxflow/features/<slug>) ---- */
+/* real app images: always whole, never cropped or stretched */
+.tc-fp-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 252, 184, 0.22);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 252, 184, 0.08);
+}
+/* main features page: image sits under the copy at full card width */
+@media (min-width: 768px) {
+  .tc-lp-feature.is-image { grid-template-columns: 1fr; }
+}
+.tc-fp-row { display: grid; gap: 1.5rem; margin-top: 2.5rem; align-items: center; }
+@media (min-width: 1024px) {
+  .tc-fp-row { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3.5rem; margin-top: 4rem; }
+  .tc-fp-row.is-flipped .tc-fp-row-media { order: 2; }
+}
+@media (min-width: 900px) {
+  .tc-lp-beats.is-many { grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .tc-lp-beats.is-many .tc-lp-beat::after { display: none; }
+  .tc-lp-beats.is-many .tc-lp-beat { padding: 1.1rem; }
+}
