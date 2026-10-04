@@ -9,11 +9,13 @@ import DirectorSection, { DIRECTOR } from "@/components/taxflow/DirectorSection"
 import OfficesSection from "@/components/taxflow/OfficesSection";
 import { Tick } from "@/components/taxflow/TaxFlowMockups";
 import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowShared";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "About us",
-  description:
-    "TaxFlowAI is Australia's AI-powered tax portal. Tax services by TAX7 T04 PTY LTD, Registered Tax Agent 26313222, on a platform owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta.",
+  description: SHOW_TAX_SERVICES
+    ? "TaxFlowAI is Australia's AI-powered tax portal. Tax services by TAX7 T04 PTY LTD, Registered Tax Agent 26313222, on a platform owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta."
+    : "TaxFlowAI is Australia's AI-powered tax portal, owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta.",
   alternates: { canonical: "/taxflow/about" },
   openGraph: {
     title: "About TaxFlowAI",
@@ -86,7 +88,8 @@ const PARTS = [
     href: "/",
     cta: "Visit Frontline Financial",
   },
-];
+  /* "The tax" hides while tax services are switched off (src/data/taxflow-flags.js) */
+].filter((p) => SHOW_TAX_SERVICES || p.href !== "/taxflow/tax-preparation");
 
 const VALUES = [
   {
@@ -95,7 +98,9 @@ const VALUES = [
   },
   {
     title: "You approve the price first",
-    body: "Signing up is free. A Registered Tax Agent quotes the work, and nothing proceeds until you accept.",
+    body: SHOW_TAX_SERVICES
+      ? "Signing up is free. A Registered Tax Agent quotes the work, and nothing proceeds until you accept."
+      : "Signing up is free. Any professional work is quoted first, and nothing proceeds until you accept.",
   },
   {
     title: "Always know what’s happening",
@@ -167,8 +172,8 @@ export default function AboutPage() {
             </h2>
             <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
               Tax is an endurance event with hard deadlines. We treat it like one:
-              steady preparation, no shortcuts, and a strong finish. The goal is
-              simple. Be the most efficient tax firm in the country.
+              steady preparation, no shortcuts, and a strong finish.
+              {SHOW_TAX_SERVICES && " The goal is simple. Be the most efficient tax firm in the country."}
             </p>
             <ul className="mt-7 space-y-3 text-[15px]">
               {PACE.map((item) => (
@@ -242,13 +247,16 @@ export default function AboutPage() {
         <div className={`${container} py-14 md:py-20`}>
           <div className="tc-reveal max-w-2xl">
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>What we are</p>
-            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">Four parts, one portal</h2>
+            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
+              {PARTS.length === 4 ? "Four" : "Three"} parts, one portal
+            </h2>
             <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              Software to keep you organised, registered professionals for your tax and
-              your company, and an established group behind them.
+              {SHOW_TAX_SERVICES
+                ? "Software to keep you organised, registered professionals for your tax and your company, and an established group behind them."
+                : "Software to keep you organised, a registered ASIC agent for your company, and an established group behind them."}
             </p>
           </div>
-          <div className="tc-reveal tc-eq is-four mt-10">
+          <div className={`tc-reveal tc-eq ${PARTS.length === 4 ? "is-four" : ""} mt-10`}>
             {PARTS.map((p, i) => (
               <div key={p.title} className="contents">
                 <Link href={p.href} className="tc-svc-card tc-eq-card flex flex-col overflow-hidden">
@@ -311,22 +319,30 @@ export default function AboutPage() {
         <div className={`${container} pb-14 pt-4 md:pb-20`}>
           <div className="tc-reveal max-w-3xl text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}>
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Who&apos;s who, legally</p>
-            <p className="mt-4">
-              <strong className="text-white">Tax services:</strong> TAX7 T04 PTY LTD trading as TaxFlowAI
-              (ABN 73 680 225 512), Registered Tax Agent 26313222. This is the firm that prepares and lodges
-              your tax work.
-            </p>
-            <p className="mt-3">
+            {SHOW_TAX_SERVICES && (
+              <p className="mt-4">
+                <strong className="text-white">Tax services:</strong> TAX7 T04 PTY LTD trading as TaxFlowAI
+                (ABN 73 680 225 512), Registered Tax Agent 26313222. This is the firm that prepares and lodges
+                your tax work.
+              </p>
+            )}
+            <p className={SHOW_TAX_SERVICES ? "mt-3" : "mt-4"}>
               <strong className="text-white">Platform owner &amp; ASIC agent:</strong> Frontline Holdings Group
               Pty Ltd (ABN 59 671 861 475), ASIC Agent 51843. This is the company that owns and develops the
               TaxFlowAI platform and provides the corporate secretarial services.
             </p>
             <p className="mt-3">
-              Check any tax agent&apos;s registration on the{" "}
-              <a href="https://tpb.gov.au/registrations_search" target="_blank" rel="noopener noreferrer" className="tc-link">
-                Tax Practitioners Board register
-              </a>
-              . See also our{" "}
+              {SHOW_TAX_SERVICES ? (
+                <>
+                  Check any tax agent&apos;s registration on the{" "}
+                  <a href="https://tpb.gov.au/registrations_search" target="_blank" rel="noopener noreferrer" className="tc-link">
+                    Tax Practitioners Board register
+                  </a>
+                  . See also our{" "}
+                </>
+              ) : (
+                "See our "
+              )}
               <Link href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</Link>,{" "}
               <Link href="/taxflow/collection-notice" className="tc-link">Collection Notice</Link> and{" "}
               <Link href="/taxflow/terms" className="tc-link">Terms of Service</Link>.

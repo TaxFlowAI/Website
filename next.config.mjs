@@ -9,6 +9,10 @@ const nextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  /* App screenshots use quality 90 so small UI text stays sharp. */
+  images: {
+    qualities: [75, 90],
+  },
   async redirects() {
     return [
       { source: "/asset-solutions", destination: "/assetsolutions", permanent: true },

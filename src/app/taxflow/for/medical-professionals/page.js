@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
@@ -15,6 +16,7 @@ import {
   Breadcrumbs,
   TAXFLOW_REGISTER_URL,
 } from "@/components/taxflow/TaxFlowShared";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 /* DRAFT — landing page for medical professionals. Not yet linked from the
    nav, footer or sitemap, and set to noindex until the copy is approved.
@@ -126,6 +128,9 @@ function MedicalHero() {
 }
 
 export default function MedicalProfessionalsPage() {
+  /* hidden while tax services are switched off (src/data/taxflow-flags.js) */
+  if (!SHOW_TAX_SERVICES) redirect("/taxflow");
+
   return (
     <div className="tc-page min-h-screen">
       <RevealInit />

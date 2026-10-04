@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import FrontlineLogoFull from "@/components/FrontlineLogoFull";
 import CreditDisclosures from "@/components/taxflow/CreditDisclosures";
+import { PhoneStage } from "@/components/taxflow/AppScreens";
 import { TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 import { FEATURE_IMAGES, featureBySlug } from "@/components/taxflow/featurePages";
 
@@ -85,7 +85,6 @@ const SCHEMA = [
 ];
 
 const wrap = "mx-auto max-w-6xl px-5 md:px-8";
-const SIZES = "(min-width:1024px) 40rem, 92vw";
 
 /* Frontline's three-layer wave: aqua, teal, then the colour of the section below. */
 function WaveLayers({ from, to }) {
@@ -146,7 +145,7 @@ export default function LoansFeaturePage() {
           </ol>
         </nav>
 
-        <div className="mt-8 grid items-center gap-10 lg:grid-cols-12">
+        <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="py-2">
               <FrontlineLogoFull className="h-11 w-auto min-w-[120px]" />
@@ -163,15 +162,12 @@ export default function LoansFeaturePage() {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <Image
-              src={I.loanStart.src}
-              alt={I.loanStart.alt}
-              width={1536}
-              height={1024}
-              sizes={SIZES}
-              unoptimized
+            <PhoneStage
+              variant="hero"
+              tone="light"
+              shots={["personal-account", "loan-choose"]}
+              flo={{ pose: "keys", say: "Start here." }}
               priority
-              className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
             />
           </div>
         </div>
@@ -203,18 +199,10 @@ export default function LoansFeaturePage() {
 
       {/* ============ DETAIL ============ */}
       <section className={`${wrap} py-12 md:py-16`}>
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Image
-            src={I.loanChoose.src}
-            alt={I.loanChoose.alt}
-            width={1536}
-            height={1024}
-            sizes={SIZES}
-            unoptimized
-            className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
-          />
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          <PhoneStage tone="light" shots={["loan-details"]} />
           <div>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Pick the finance you need.</h2>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">A minute, not a mountain of forms.</h2>
             <ul className="mt-6 space-y-3">
               {POINTS.map((p) => (
                 <li key={p} className="flex gap-3 text-[15.5px] leading-relaxed text-[#1C5472]/90">
@@ -228,17 +216,9 @@ export default function LoansFeaturePage() {
           </div>
         </div>
 
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div className="lg:order-2">
-            <Image
-              src={I.loanBroker.src}
-              alt={I.loanBroker.alt}
-              width={1536}
-              height={1024}
-              sizes={SIZES}
-              unoptimized
-              className="h-auto w-full rounded-2xl shadow-[0_30px_60px_-30px_rgba(28,84,114,0.45)]"
-            />
+            <PhoneStage tone="light" shots={["loan-sent"]} />
           </div>
           <div className="lg:order-1">
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Then a real broker takes it from there.</h2>

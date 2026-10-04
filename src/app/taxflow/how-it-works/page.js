@@ -4,16 +4,19 @@ import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import { container, CtaBand, Breadcrumbs, FeesSection, FaqList, SwitchingModule } from "@/components/taxflow/TaxFlowShared";
 import { faqSubset } from "@/data/taxflow-faq";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "How it works",
-  description:
-    "Register free, complete a 10-minute profile, engage a Registered Tax Agent, and stay on top of every ATO deadline. You approve the price before any work starts.",
+  description: SHOW_TAX_SERVICES
+    ? "Register free, complete a 10-minute profile, engage a Registered Tax Agent, and stay on top of every ATO deadline. You approve the price before any work starts."
+    : "Register free, complete a 10-minute profile, and keep your receipts, deductions and ATO deadlines in one place.",
   alternates: { canonical: "/taxflow/how-it-works" },
   openGraph: {
     title: "How TaxFlowAI works",
-    description:
-      "Register free, complete a 10-minute profile, engage a Registered Tax Agent — you approve the price before any work starts.",
+    description: SHOW_TAX_SERVICES
+      ? "Register free, complete a 10-minute profile, engage a Registered Tax Agent — you approve the price before any work starts."
+      : "Register free, complete a 10-minute profile, and keep your receipts, deductions and deadlines in one place.",
     url: "/taxflow/how-it-works",
   },
 };
@@ -32,25 +35,32 @@ const STEPS = [
   {
     label: "Step 2",
     title: "Complete your 10-minute profile",
-    desc: "A short guided profile collects what your tax agent will need, such as your entity details and address. Flo guides every step.",
+    desc: SHOW_TAX_SERVICES
+      ? "A short guided profile collects what your tax agent will need, such as your entity details and address. Flo guides every step."
+      : "A short guided profile collects the basics, such as your entity details and address. Flo guides every step.",
     points: [
       "Guided from start to finish",
       "Tax File Numbers and bank details are not collected or stored in the platform",
       "Flo answers questions as you go",
     ],
   },
+  /* step 3 hides while tax services are switched off (src/data/taxflow-flags.js) */
+  ...(SHOW_TAX_SERVICES
+    ? [
+        {
+          label: "Step 3",
+          title: "Engage your tax agent",
+          desc: "Engage a Registered Tax Agent through the platform. They review your needs, send you a quote for exactly the service you require, and nothing proceeds until you accept it. The engagement letter is signed electronically.",
+          points: [
+            "A quote first — you approve the price before any work starts",
+            "Engagement letter signed electronically, legally binding",
+            "Every agent is registered — verifiable on the TPB register",
+          ],
+        },
+      ]
+    : []),
   {
-    label: "Step 3",
-    title: "Engage your tax agent",
-    desc: "Engage a Registered Tax Agent through the platform. They review your needs, send you a quote for exactly the service you require, and nothing proceeds until you accept it. The engagement letter is signed electronically.",
-    points: [
-      "A quote first — you approve the price before any work starts",
-      "Engagement letter signed electronically, legally binding",
-      "Every agent is registered — verifiable on the TPB register",
-    ],
-  },
-  {
-    label: "Step 4",
+    label: SHOW_TAX_SERVICES ? "Step 4" : "Step 3",
     title: "Upload, track, stay on top",
     desc: "Your dashboard goes live with every account in one view. Snap receipts for Flo to sort, track every lodgement and deadline, and book time with your accountant when you need it.",
     points: [
@@ -63,8 +73,12 @@ const STEPS = [
 
 const AFTER_SIGNUP = [
   ["Straight away", "Your account and private document folder are live. Start uploading receipts immediately — Flo files them as they land."],
-  ["Within the first week", "Complete your profile when it suits you, browse the deduction pages, and — if you want professional help — request a quote from a Registered Tax Agent."],
-  ["At tax time", "Everything is already organised. Your agent works from your sorted receipts and records, and you track lodgement progress live."],
+  SHOW_TAX_SERVICES
+    ? ["Within the first week", "Complete your profile when it suits you, browse the deduction pages, and — if you want professional help — request a quote from a Registered Tax Agent."]
+    : ["Within the first week", "Complete your profile when it suits you and browse the deduction pages."],
+  SHOW_TAX_SERVICES
+    ? ["At tax time", "Everything is already organised. Your agent works from your sorted receipts and records, and you track lodgement progress live."]
+    : ["At tax time", "Everything is already organised: receipts sorted, deductions logged and documents filed by account."],
 ];
 
 export default function HowItWorksPage() {
@@ -83,8 +97,9 @@ export default function HowItWorksPage() {
           <span style={{ color: "#00FCB8" }}>In control</span> all year.
         </h1>
         <p className="mt-5 max-w-xl text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-          Four steps from sign-up to sorted — and you approve the price before any
-          work starts.
+          {SHOW_TAX_SERVICES
+            ? "Four steps from sign-up to sorted — and you approve the price before any work starts."
+            : "Three steps from sign-up to sorted."}
         </p>
       </section>
 
@@ -123,8 +138,9 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* fees — expanded */}
-      <FeesSection expanded />
+      {/* fees — expanded; the quotes are for tax agent work, so this hides
+          with the tax services */}
+      {SHOW_TAX_SERVICES && <FeesSection expanded />}
 
       {/* what happens after you sign up */}
       <section className="border-t" style={{ background: "#060D1A", borderColor: "rgba(255,255,255,0.08)" }}>
@@ -166,7 +182,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* switching reassurance — main path, not buried in FAQs */}
-      <SwitchingModule />
+      {SHOW_TAX_SERVICES && <SwitchingModule />}
 
       <CtaBand />
       <TaxFlowAppFooter />

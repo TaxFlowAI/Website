@@ -2,22 +2,29 @@ import Image from "next/image";
 import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
 import { container } from "@/components/taxflow/TaxFlowShared";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const DEEP = "#060D1A";
 
 /* Facts from the director's own profile and words. Do not add credentials.
-   Shared by /taxflow/about and the persona landing pages. */
+   Shared by /taxflow/about and the persona landing pages. While tax services
+   are switched off (src/data/taxflow-flags.js) the TAX7 T04 role and the
+   "tax firm" sentence of the quote are left out; nothing is reworded. */
 export const DIRECTOR = {
   name: "Hassan Arif",
   title: "Founder & Director, TaxFlowAI",
   quote:
-    "I started TaxFlowAI and Frontline Financial because everyday Australians don’t get access to strong tax and finance services. There aren’t enough professionals to meet demand. I want TaxFlowAI to be the most efficient tax firm in the country.",
+    "I started TaxFlowAI and Frontline Financial because everyday Australians don’t get access to strong tax and finance services. There aren’t enough professionals to meet demand." +
+    (SHOW_TAX_SERVICES ? " I want TaxFlowAI to be the most efficient tax firm in the country." : ""),
   bio: [
     "Hassan trained as an accountant, with a Bachelor of Business (Accounting) from Western Sydney University. He worked his way up through practice, from intern to bookkeeper to accountant, then spent two years as a finance and insurance manager.",
-    "He founded Frontline Financial in October 2023, and built TaxFlowAI to bring the same service to tax. Alongside that he works as a Senior Accountant at TAX7 T04, the registered tax agent that provides TaxFlowAI’s tax services.",
+    "He founded Frontline Financial in October 2023, and built TaxFlowAI to bring the same service to tax." +
+      (SHOW_TAX_SERVICES
+        ? " Alongside that he works as a Senior Accountant at TAX7 T04, the registered tax agent that provides TaxFlowAI’s tax services."
+        : ""),
   ],
   credentials: [
-    ["Roles", "Founder & Director, TaxFlowAI. Senior Accountant, TAX7 T04 PTY LTD"],
+    ["Roles", SHOW_TAX_SERVICES ? "Founder & Director, TaxFlowAI. Senior Accountant, TAX7 T04 PTY LTD" : "Founder & Director, TaxFlowAI"],
     ["Education", "Bachelor of Business (Accounting), Western Sydney University"],
     ["Accreditation", "Accredited Member, FBAA"],
     ["Appointment", "Justice of the Peace, NSW"],

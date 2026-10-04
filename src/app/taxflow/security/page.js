@@ -5,7 +5,8 @@ import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
-import { RegionPanel, TwoFactorPanel, ReplicationPanel } from "@/components/taxflow/SecurityMockups";
+import { RegionPanel, ReplicationPanel } from "@/components/taxflow/SecurityMockups";
+import { PhoneStage } from "@/components/taxflow/AppScreens";
 import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowShared";
 
 /* ============================================================================
@@ -98,7 +99,7 @@ const STORY = [
     label: "Access & authentication",
     title: "Two-factor authentication on every sign-in.",
     body: "Every login — client or accountant — requires a password plus a one-time verification code. Client and staff portals are fully separated, access is role-based and least-privilege, and security events are audit-logged.",
-    visual: <TwoFactorPanel />,
+    visual: <PhoneStage variant="compact" shots={["two-factor"]} />,
   },
   {
     id: "minimisation",

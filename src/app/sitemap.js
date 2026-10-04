@@ -1,3 +1,5 @@
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
+
 const BASE = "https://frontline.financial";
 
 /* Sitemap: core Frontline Financial marketing pages + the TaxFlowAI section. */
@@ -12,7 +14,7 @@ export default function sitemap() {
     ["/financial-calculators", 0.6],
     ["/taxflow", 1.0],
     ["/taxflow/about", 0.8],
-    ["/taxflow/tax-preparation", 0.9],
+    ...(SHOW_TAX_SERVICES ? [["/taxflow/tax-preparation", 0.9]] : []),
     ["/taxflow/corporate-secretarial", 0.9],
     ["/taxflow/security", 0.7],
     ["/taxflow/features", 0.9],

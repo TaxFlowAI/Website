@@ -3,16 +3,19 @@ import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import { container, CtaBand, Breadcrumbs, FaqList } from "@/components/taxflow/TaxFlowShared";
 import { TAXFLOW_FAQ } from "@/data/taxflow-faq";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "FAQ",
-  description:
-    "How fees work, who lodges your return, how Flo's AI is checked by a human, data security, supported entities, switching accountants, and what free to sign up really means.",
+  description: SHOW_TAX_SERVICES
+    ? "How fees work, who lodges your return, how Flo's AI is checked by a human, data security, supported entities, switching accountants, and what free to sign up really means."
+    : "How fees work, how Flo's AI works, data security, supported entities, and what free to sign up really means.",
   alternates: { canonical: "/taxflow/faq" },
   openGraph: {
     title: "TaxFlowAI — frequently asked questions",
-    description:
-      "Fees, Registered Tax Agents, security, supported entities and more — in plain English.",
+    description: SHOW_TAX_SERVICES
+      ? "Fees, Registered Tax Agents, security, supported entities and more — in plain English."
+      : "Fees, Flo, security, supported entities and more — in plain English.",
     url: "/taxflow/faq",
   },
 };
@@ -44,8 +47,9 @@ export default function FaqPage() {
           Questions, answered in plain English
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-          The short version: free to sign up, a Registered Tax Agent lodges your
-          return, and you approve every quote before any work starts.
+          {SHOW_TAX_SERVICES
+            ? "The short version: free to sign up, a Registered Tax Agent lodges your return, and you approve every quote before any work starts."
+            : "The short version: free to sign up, no subscription, and you approve every quote before any work starts."}
         </p>
         <div className="mt-10 max-w-3xl">
           <FaqList items={TAXFLOW_FAQ} />

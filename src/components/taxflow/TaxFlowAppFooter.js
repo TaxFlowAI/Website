@@ -3,6 +3,7 @@
 import { SignInButton } from "@/components/taxflow/SignInModal";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/data/taxflow-proof";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const TAXFLOW_REGISTER_URL = "https://taxflowai.frontline.financial/register";
 const TAXFLOW_PHONE = "0406 909 862";
@@ -13,7 +14,9 @@ const TAXFLOW_PHONE_LINK = "tel:+61406909862";
  * Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent
  * 26313222. Platform owner and ASIC agent: Frontline Holdings Group Pty Ltd.
  * Keep the legal links (Privacy Policy | Collection Notice | Terms of
- * Service | Verify Tax Agent) and both entities' details.
+ * Service | Verify Tax Agent) and both entities' details. The tax agent's
+ * details and the Verify Tax Agent link hide while tax services are switched
+ * off (src/data/taxflow-flags.js).
  * See docs/DESIGN-BRIEF-TAXFLOWAI-WEBSITE.md
  */
 export default function TaxFlowAppFooter() {
@@ -27,11 +30,13 @@ export default function TaxFlowAppFooter() {
               <span className="text-white">TaxFlow</span>
               <span className="text-[#00FCB8]">AI</span>
             </p>
-            <p className="mt-2 text-sm text-gray-500">
-              Tax services by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered
-              Tax Agent 26313222.
-            </p>
-            <p className="mt-1 text-sm text-gray-500">
+            {SHOW_TAX_SERVICES && (
+              <p className="mt-2 text-sm text-gray-500">
+                Tax services by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered
+                Tax Agent 26313222.
+              </p>
+            )}
+            <p className={`${SHOW_TAX_SERVICES ? "mt-1" : "mt-2"} text-sm text-gray-500`}>
               Platform owned and developed by Frontline Holdings Group Pty Ltd.
             </p>
             {/* Social icons render only when REAL profile URLs are set in
@@ -163,19 +168,27 @@ export default function TaxFlowAppFooter() {
               <Link href="/taxflow/collection-notice">Collection Notice</Link>
               <span className="footer-separator-taxflow">|</span>
               <Link href="/taxflow/terms">Terms of Service</Link>
-              <span className="footer-separator-taxflow">|</span>
-              <a
-                href="https://tpb.gov.au/registrations_search"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Verify Tax Agent
-              </a>
+              {SHOW_TAX_SERVICES && (
+                <>
+                  <span className="footer-separator-taxflow">|</span>
+                  <a
+                    href="https://tpb.gov.au/registrations_search"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Verify Tax Agent
+                  </a>
+                </>
+              )}
             </div>
             <div className="footer-entities-taxflow">
-              Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI (ABN 73 680 225
-              512), Registered Tax Agent 26313222.
-              <br />
+              {SHOW_TAX_SERVICES && (
+                <>
+                  Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI (ABN 73 680 225
+                  512), Registered Tax Agent 26313222.
+                  <br />
+                </>
+              )}
               Platform owner &amp; ASIC agent: Frontline Holdings Group Pty Ltd (ABN
               59 671 861 475), ASIC Agent 51843.
               <br />
@@ -184,7 +197,8 @@ export default function TaxFlowAppFooter() {
               Solutions (CRN 563350, ACL 511803).
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              TaxFlowAI © {year} · Tax services by TAX7 T04 PTY LTD · Platform by
+              TaxFlowAI © {year} ·{" "}
+              {SHOW_TAX_SERVICES ? "Tax services by TAX7 T04 PTY LTD · " : ""}Platform by
               Frontline Holdings Group
             </p>
           </div>

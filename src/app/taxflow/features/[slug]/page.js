@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
       title: page.title,
       description: page.description,
       url,
-      ...(page.hero ? { images: [{ url: page.hero.src, width: 1536, height: 1024, alt: page.hero.alt }] } : {}),
+      ...(page.og ? { images: [{ url: page.og.src, width: 1536, height: 1024, alt: page.og.alt }] } : {}),
     },
   };
 }

@@ -11,16 +11,19 @@ import { Tick } from "@/components/taxflow/TaxFlowMockups";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import MedicalShowcase from "@/components/taxflow/MedicalShowcase";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "TaxFlowAI — Smarter tax, effortless deductions",
-  description:
-    "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, Registered Tax Agents lodge your return, and every deadline is tracked — free to sign up. Tax services by TAX7 T04 PTY LTD, on a platform owned by Frontline Holdings Group.",
+  description: SHOW_TAX_SERVICES
+    ? "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, Registered Tax Agents lodge your return, and every deadline is tracked — free to sign up. Tax services by TAX7 T04 PTY LTD, on a platform owned by Frontline Holdings Group."
+    : "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, every entity sits on one home screen, and every deadline is tracked — free to sign up. Owned and developed by Frontline Holdings Group.",
   alternates: { canonical: "/taxflow" },
   openGraph: {
     title: "TaxFlowAI — Smarter tax, effortless deductions",
-    description:
-      "Flo sorts your receipts, Registered Tax Agents lodge your return, every deadline tracked — free to sign up.",
+    description: SHOW_TAX_SERVICES
+      ? "Flo sorts your receipts, Registered Tax Agents lodge your return, every deadline tracked — free to sign up."
+      : "Flo sorts your receipts, every entity in one app, every deadline tracked — free to sign up.",
     url: "/taxflow",
   },
 };
@@ -31,14 +34,18 @@ const NAVY = "#0A1628";
 const DEEP = "#060D1A";
 const REVIEWS = "#0E2238";
 
-const TRUST_LINE = [
-  ["TAX7 T04 Pty Ltd · Registered Tax Agent 26313222", null],
-  ["Platform by Frontline Holdings Group · ASIC agent 51843", null],
-  ["Verify tax agent ↗", "https://tpb.gov.au/registrations_search"],
-];
+const TRUST_LINE = SHOW_TAX_SERVICES
+  ? [
+      ["TAX7 T04 Pty Ltd · Registered Tax Agent 26313222", null],
+      ["Platform by Frontline Holdings Group · ASIC agent 51843", null],
+      ["Verify tax agent ↗", "https://tpb.gov.au/registrations_search"],
+    ]
+  : [["Platform by Frontline Holdings Group · ASIC agent 51843", null]];
 
 const ABOUT_POINTS = [
-  "Registered Tax Agents prepare and lodge every return — verify them on the TPB register",
+  ...(SHOW_TAX_SERVICES
+    ? ["Registered Tax Agents prepare and lodge every return — verify them on the TPB register"]
+    : []),
   "A registered ASIC agent handles your company paperwork",
   "Message through the portal and a person reads it — no bots answering for us",
 ];
@@ -66,7 +73,8 @@ export default function TaxFlowHomePage() {
               <span className="tc-hero-accent">Effortless Deductions</span>
             </h1>
             <p className="mt-7 max-w-md text-xl leading-relaxed" style={{ color: "#B7C4CF" }}>
-              Australia&apos;s AI-powered tax portal, with real tax agents behind it.
+              Australia&apos;s AI-powered tax portal, with real{" "}
+              {SHOW_TAX_SERVICES ? "tax agents" : "people"} behind it.
             </p>
             <Link href="/taxflow/how-it-works" className="tc-link mt-8 inline-block text-[15px] font-semibold">
               See how it works
@@ -104,15 +112,31 @@ export default function TaxFlowHomePage() {
             <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
               Real humans behind it.
             </h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
-              The platform is owned and built by Frontline Holdings Group. The tax
-              is done by TAX7 T04, a registered tax agent.
-            </p>
-            <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              Flo does the sorting. Registered tax agents prepare and lodge your
-              work, and our ASIC agent team keeps your company paperwork in order.
-              The AI keeps you organised; the humans are accountable for the result.
-            </p>
+            {SHOW_TAX_SERVICES ? (
+              <>
+                <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
+                  The platform is owned and built by Frontline Holdings Group. The tax
+                  is done by TAX7 T04, a registered tax agent.
+                </p>
+                <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+                  Flo does the sorting. Registered tax agents prepare and lodge your
+                  work, and our ASIC agent team keeps your company paperwork in order.
+                  The AI keeps you organised; the humans are accountable for the result.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
+                  The platform is owned and built by Frontline Holdings Group, the team
+                  behind Frontline Financial.
+                </p>
+                <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+                  Flo does the sorting, and our ASIC agent team keeps your company
+                  paperwork in order. The AI keeps you organised; the humans are
+                  accountable for the result.
+                </p>
+              </>
+            )}
             <ul className="mt-7 space-y-3 text-[14.5px]">
               {ABOUT_POINTS.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-white/85">
@@ -178,10 +202,15 @@ export default function TaxFlowHomePage() {
         </div>
       </section>
 
-      {/* ============ GOOGLE REVIEWS ============ */}
-      <TaxFlowWave from={NAVY} to={REVIEWS} />
-      <GoogleReviewsCarousel edge={REVIEWS} />
-      <TaxFlowWave from={REVIEWS} to={NAVY} />
+      {/* ============ GOOGLE REVIEWS ============
+          every review is about tax returns, so they hide with the tax services */}
+      {SHOW_TAX_SERVICES && (
+        <>
+          <TaxFlowWave from={NAVY} to={REVIEWS} />
+          <GoogleReviewsCarousel edge={REVIEWS} />
+          <TaxFlowWave from={REVIEWS} to={NAVY} />
+        </>
+      )}
 
       {/* ============ SERVICES (carousel) ============ */}
       <section id="services" style={{ background: NAVY, scrollMarginTop: "110px" }}>
@@ -189,11 +218,12 @@ export default function TaxFlowHomePage() {
           <div className="tc-reveal max-w-2xl">
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Services</p>
             <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
-              Everything tax, in one place
+              {SHOW_TAX_SERVICES ? "Everything tax, in one place" : "Everything in one place"}
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-              Software to stay organised, Registered Tax Agents to lodge, an ASIC agent
-              for your company — and the Frontline Financial group behind it all.
+              {SHOW_TAX_SERVICES
+                ? "Software to stay organised, Registered Tax Agents to lodge, an ASIC agent for your company — and the Frontline Financial group behind it all."
+                : "Software to stay organised, an ASIC agent for your company — and the Frontline Financial group behind it all."}
             </p>
           </div>
           <div className="mt-12">
@@ -215,9 +245,9 @@ export default function TaxFlowHomePage() {
                 <span className="tc-hero-accent">the Australian way.</span>
               </h2>
               <p className="mt-5 max-w-xl text-[16px] leading-relaxed" style={{ color: "#B7C4CF" }}>
-                TaxFlowAI&apos;s tax services are provided by a registered Australian
-                tax agent, on a platform with security practices aligned to ISO/IEC
-                27001. Australian-hosted and encrypted end to end.
+                {SHOW_TAX_SERVICES
+                  ? "TaxFlowAI’s tax services are provided by a registered Australian tax agent, on a platform with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted end to end."
+                  : "TaxFlowAI is built with security practices aligned to ISO/IEC 27001. Australian-hosted and encrypted end to end."}
               </p>
               <Link href="/taxflow/security" className="tc-link mt-7 inline-block text-[15px] font-semibold">
                 How we protect your data
@@ -351,7 +381,7 @@ export default function TaxFlowHomePage() {
 
       {/* ============ FOR MEDICAL PROFESSIONALS (showcase) ============ */}
       <TaxFlowWave from={DEEP} to={NAVY} />
-      <MedicalShowcase />
+      {SHOW_TAX_SERVICES && <MedicalShowcase />}
 
       {/* ============ CTA ============ */}
       <CtaBand />

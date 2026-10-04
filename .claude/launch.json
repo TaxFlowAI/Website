@@ -6,6 +6,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3002
+    },
+    {
+      "name": "frontline-prod-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "start"],
+      "port": 3003,
+      "autoPort": true
     }
   ]
 }

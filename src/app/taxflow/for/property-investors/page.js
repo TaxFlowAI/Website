@@ -1,5 +1,6 @@
 import PersonaPage from "@/components/taxflow/PersonaPage";
 import { PropertyPanel } from "@/components/taxflow/TaxFlowMockups";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "For property investors",
@@ -26,7 +27,9 @@ export default function PropertyInvestorsPage() {
       sections={[
         {
           title: "Rental schedules",
-          body: "Each property is tracked from the dashboard — date first rented, purchase date, income and notes — so your Registered Tax Agent starts from an organised schedule, not a pile of statements.",
+          body: `Each property is tracked from the dashboard — date first rented, purchase date, income and notes — so ${
+            SHOW_TAX_SERVICES ? "your Registered Tax Agent starts" : "tax time starts"
+          } from an organised schedule, not a pile of statements.`,
         },
         {
           title: "Deductible expenses",

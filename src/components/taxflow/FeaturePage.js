@@ -1,41 +1,21 @@
 import Link from "next/link";
-import Image from "next/image";
 import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
+import { PhoneStage } from "@/components/taxflow/AppScreens";
 import { container, CtaBand, Breadcrumbs, TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 import { LandingHeading, Check, NAVY, DEEP, BAND } from "@/components/taxflow/ServiceLanding";
-import { FEATURE_IMAGES, ALL_FEATURES } from "@/components/taxflow/featurePages";
+import { ALL_FEATURES } from "@/components/taxflow/featurePages";
 
 /* One landing page per feature (/taxflow/features/<slug>). Template order:
    breadcrumb, hero, [Stripe band], how it works, detail sections, FAQ with
    FAQPage JSON-LD, a strip of the other features, final CTA band.
    Each page is self-contained: detail sections never link off to another
    feature page (the owner asked for no page-within-a-page).
-   The supplied images are real app screens with Flo and the headline baked in:
-   always shown whole (never cropped or stretched), full width on phones.
-   They are served exactly as supplied (unoptimized): they are already
-   final-size WebPs, and the image optimiser's re-compression blurred the small
-   text on the phone screens. */
-
-const IMG_SIZES = "(min-width:1024px) 40rem, 92vw";
-
-export function FeatureImage({ image, priority = false, className = "" }) {
-  return (
-    <Image
-      src={image.src}
-      alt={image.alt}
-      width={1536}
-      height={1024}
-      sizes={IMG_SIZES}
-      priority={priority}
-      unoptimized
-      className={`tc-fp-img ${className}`}
-    />
-  );
-}
+   Pictures are the owner's real app screenshots in phone frames (AppScreens.js),
+   never edited. */
 
 /* ---------- Stripe highlight band (invoicing page) ---------- */
 const STRIPE_POINTS = [
@@ -54,7 +34,7 @@ export function StripeBand() {
         id="stripe"
         style={{ background: `linear-gradient(180deg, ${BAND} 0%, #16334B 55%, ${BAND} 100%)`, scrollMarginTop: "110px" }}
       >
-        <div className={`${container} grid items-center gap-10 py-14 md:py-20 lg:grid-cols-2`}>
+        <div className={`${container} grid grid-cols-1 items-center gap-10 py-14 md:py-20 lg:grid-cols-2`}>
           <div className="tc-reveal">
             {/* Stripe's official badge, used unmodified (white version for dark backgrounds). */}
             <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="inline-block">
@@ -84,7 +64,7 @@ export function StripeBand() {
             </ul>
           </div>
           <div className="tc-reveal">
-            <FeatureImage image={FEATURE_IMAGES.markPaid} />
+            <PhoneStage shots={["invoice-pay-now-bottom", "invoice-paid-payments"]} />
           </div>
         </div>
       </section>
@@ -106,8 +86,8 @@ function faqSchema(faq) {
 }
 
 export default function FeaturePage({ page }) {
-  const mediaRows = page.sections.filter((s) => s.image || s.visual);
-  const textCards = page.sections.filter((s) => !s.image && !s.visual);
+  const screenRows = page.sections.filter((s) => s.screens);
+  const textCards = page.sections.filter((s) => !s.screens);
   const others = ALL_FEATURES.filter((f) => f.slug !== page.slug);
 
   return (
@@ -123,7 +103,7 @@ export default function FeaturePage({ page }) {
             { name: page.name, href: `/taxflow/features/${page.slug}` },
           ]}
         />
-        <div className={`${container} grid items-center gap-10 pb-14 pt-8 md:pb-20 md:pt-12 lg:grid-cols-12 lg:gap-10`}>
+        <div className={`${container} grid grid-cols-1 items-center gap-10 pb-14 pt-8 md:pb-20 md:pt-12 lg:grid-cols-12 lg:gap-10`}>
           <div className="lg:col-span-5">
             <h1 className="tc-display text-[2.4rem] text-white md:text-5xl lg:text-[3.3rem]">{page.h1}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
@@ -139,7 +119,7 @@ export default function FeaturePage({ page }) {
             </div>
           </div>
           <div className="lg:col-span-7">
-            {page.hero ? <FeatureImage image={page.hero} priority /> : page.mock}
+            <PhoneStage variant="hero" shots={page.screens} flo={page.flo} priority />
           </div>
         </div>
       </section>
@@ -176,32 +156,22 @@ export default function FeaturePage({ page }) {
         <div className={`${container} py-12 md:py-20`}>
           <LandingHeading eyebrow="In detail" title="What you get." />
 
-          {mediaRows.map((s, i) =>
-            s.image2 ? (
-              /* two screens: words on top, images side by side */
-              <article key={s.title} id={s.id} className="tc-fp-pair tc-reveal" style={{ scrollMarginTop: "120px" }}>
+          {screenRows.map((s, i) => (
+            <article
+              key={s.title}
+              id={s.id}
+              className={`tc-fp-row tc-reveal ${i % 2 ? "is-flipped" : ""}`}
+              style={{ scrollMarginTop: "120px" }}
+            >
+              <div className="tc-fp-row-media">
+                <PhoneStage shots={s.screens} />
+              </div>
+              <div className="tc-fp-row-text">
                 <h3 className="tc-display text-[1.7rem] text-white md:text-[2rem]">{s.title}</h3>
-                <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
-                <div className="tc-fp-pair-media">
-                  <FeatureImage image={s.image} />
-                  <FeatureImage image={s.image2} />
-                </div>
-              </article>
-            ) : (
-              <article
-                key={s.title}
-                id={s.id}
-                className={`tc-fp-row tc-reveal ${i % 2 ? "is-flipped" : ""}`}
-                style={{ scrollMarginTop: "120px" }}
-              >
-                <div className="tc-fp-row-media">{s.image ? <FeatureImage image={s.image} /> : s.visual}</div>
-                <div className="tc-fp-row-text">
-                  <h3 className="tc-display text-[1.7rem] text-white md:text-[2rem]">{s.title}</h3>
-                  <p className="mt-4 max-w-lg text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
-                </div>
-              </article>
-            )
-          )}
+                <p className="mt-4 max-w-lg text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
+              </div>
+            </article>
+          ))}
 
           {textCards.length > 0 && (
             <div className={`tc-reveal mt-10 grid gap-4 ${textCards.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>

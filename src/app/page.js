@@ -8,6 +8,7 @@ import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const GOOGLE_REVIEWS = [
   {
@@ -596,7 +597,9 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-8 text-sm text-white/70">
-            TaxFlowAI&apos;s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd.
+            {SHOW_TAX_SERVICES
+              ? "TaxFlowAI’s tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd."
+              : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd."}
           </p>
         </div>
       </section>

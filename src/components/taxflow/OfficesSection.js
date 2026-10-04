@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import { container } from "@/components/taxflow/TaxFlowShared";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 /* "Visit us": both offices with their branded photos. Shared by
    /taxflow/about and the persona landing pages. */
@@ -11,7 +12,12 @@ export const OFFICES = [
     id: "sydney",
     city: "Sydney CBD",
     address: ["213 Clarence Street", "Sydney NSW 2000"],
-    note: "Look for the TAX7 sign above the bus shelter, a short walk from Town Hall and Wynyard.",
+    note: SHOW_TAX_SERVICES
+      ? "Look for the TAX7 sign above the bus shelter, a short walk from Town Hall and Wynyard."
+      : "At street level behind the bus shelter, a short walk from Town Hall and Wynyard.",
+    /* the photo shows the TAX7 Accountants sign, so it hides while tax services
+       are switched off (src/data/taxflow-flags.js) */
+    showPhoto: SHOW_TAX_SERVICES,
     image: "/images/taxflow/office-clarence-branded.png",
     alt: "213 Clarence Street, Sydney, with the TAX7 Accountants sign above the bus shelter and Flo pointing to the entrance",
     w: 1586,
@@ -24,6 +30,7 @@ export const OFFICES = [
     city: "Parramatta",
     address: ["Level 49, 8 Parramatta Square", "Parramatta NSW 2150"],
     note: "The tall one. Take the lift to Level 49, a few minutes from Parramatta station.",
+    showPhoto: true,
     image: "/images/taxflow/office-parramatta-branded.png",
     alt: "The 8 Parramatta Square tower at dusk with a glowing line marking Level 49 and Flo pointing up to it",
     w: 1086,
@@ -110,8 +117,8 @@ export default function OfficesSection({ background = "#0A1628" }) {
         </div>
         {/* Sydney — wide */}
         <div className="tc-reveal lg:col-span-7">
-          <OfficeShot office={sydney} />
-          <div className="mt-6">
+          {sydney.showPhoto && <OfficeShot office={sydney} />}
+          <div className={sydney.showPhoto ? "mt-6" : ""}>
             <OfficeDetails office={sydney} />
           </div>
           <div

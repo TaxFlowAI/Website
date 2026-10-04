@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const SERVICES = [
   {
@@ -45,7 +46,7 @@ const SERVICES = [
     points: [
       "ASIC deadlines tracked alongside your tax",
       "Documents prepared for electronic signature",
-      "One team for the company and the tax",
+      SHOW_TAX_SERVICES ? "One team for the company and the tax" : "New companies registered through the app",
     ],
     href: "/taxflow/corporate-secretarial",
     cta: "See ASIC services",
@@ -65,7 +66,9 @@ const SERVICES = [
     href: "/",
     cta: "Visit Frontline Financial",
   },
-];
+  /* the Tax preparation card hides while tax services are switched off
+     (src/data/taxflow-flags.js) */
+].filter((s) => SHOW_TAX_SERVICES || s.id !== "tax");
 
 
 const N = SERVICES.length;

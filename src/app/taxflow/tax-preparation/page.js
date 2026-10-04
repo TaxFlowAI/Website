@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
@@ -18,6 +19,7 @@ import {
   BAND,
 } from "@/components/taxflow/ServiceLanding";
 import { faqSubset } from "@/data/taxflow-faq";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "Tax preparation services",
@@ -128,6 +130,9 @@ const PERSONAS = [
 ];
 
 export default function TaxPreparationPage() {
+  /* hidden while tax services are switched off (src/data/taxflow-flags.js) */
+  if (!SHOW_TAX_SERVICES) redirect("/taxflow");
+
   return (
     <div className="tc-page min-h-screen">
       <RevealInit />

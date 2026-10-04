@@ -3,8 +3,12 @@
 // Answers must stay consistent with the fees model: free sign-up, quote-first,
 // no obligation, no dollar amounts. The registered tax agent may be named:
 // TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222.
+// While tax services are switched off (src/data/taxflow-flags.js) the tax-agent
+// questions are hidden and two questions use the wording below.
 
-export const TAXFLOW_FAQ = [
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
+
+const ALL_FAQ = [
   {
     id: "fees",
     q: "How do fees work?",
@@ -56,6 +60,22 @@ export const TAXFLOW_FAQ = [
     a: "No. There's no subscription and no lock-in contract. Your documents and data are always yours to take with you — they live in your own cloud folder, so leaving is as simple as walking away with what's already yours.",
   },
 ];
+
+const TAX_SERVICE_IDS = ["who-lodges", "what-is-rta", "switch"];
+
+const NO_TAX_SERVICE_COPY = {
+  fees: {
+    a: "Signing up is free — no card, no subscription, no upfront cost. If you ask us for a professional service, such as ASIC paperwork for your company, you get a quote for exactly that service first. Nothing proceeds until you accept it.",
+  },
+  "flo-ai": {
+    q: "How does Flo's AI work?",
+    a: "Flo classifies your receipts into ATO deduction categories and shows you the reasoning behind every decision, so nothing is a black box. You stay in control: you choose the account each receipt is saved to.",
+  },
+};
+
+export const TAXFLOW_FAQ = SHOW_TAX_SERVICES
+  ? ALL_FAQ
+  : ALL_FAQ.filter((f) => !TAX_SERVICE_IDS.includes(f.id)).map((f) => ({ ...f, ...NO_TAX_SERVICE_COPY[f.id] }));
 
 export function faqSubset(ids) {
   return TAXFLOW_FAQ.filter((f) => ids.includes(f.id));

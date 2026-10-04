@@ -8,6 +8,7 @@ import FeatureTiles from "@/components/taxflow/FeatureTiles";
 import CreditDisclosures from "@/components/taxflow/CreditDisclosures";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 import { ServiceHero, NAVY, DEEP } from "@/components/taxflow/ServiceLanding";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 /* Features index. Short by design (owner, 4 Oct 2026): a heading tile per
    feature, each linking to that feature's one landing page, where the detail
@@ -17,13 +18,15 @@ import { ServiceHero, NAVY, DEEP } from "@/components/taxflow/ServiceLanding";
    - the loans tile mentions loans, so both credit disclosures stay on the page */
 export const metadata = {
   title: { absolute: "Features | TaxFlowAI — tax, receipts, quotes & invoices in one app" },
-  description:
-    "Flo files your receipts, your accountant does the tax, and your quotes, invoices and loan enquiries live in one Australian-hosted app.",
+  description: SHOW_TAX_SERVICES
+    ? "Flo files your receipts, your accountant does the tax, and your quotes, invoices and loan enquiries live in one Australian-hosted app."
+    : "Flo files your receipts, and your quotes, invoices and loan enquiries live in the same Australian-hosted app.",
   alternates: { canonical: "/taxflow/features" },
   openGraph: {
     title: "TaxFlowAI features",
-    description:
-      "Flo files your receipts, your accountant handles the tax, and your quotes, invoices and loans sit in the same app.",
+    description: SHOW_TAX_SERVICES
+      ? "Flo files your receipts, your accountant handles the tax, and your quotes, invoices and loans sit in the same app."
+      : "Flo files your receipts, and your quotes, invoices and loans sit in the same app.",
     url: "/taxflow/features",
   },
 };
@@ -32,7 +35,7 @@ const TRUST = [
   ["/taxflow/tax-preparation", "REGISTERED TAX AGENT 26313222", "Returns are prepared and lodged by TAX7 T04 PTY LTD trading as TaxFlowAI."],
   ["/taxflow/corporate-secretarial", "ASIC AGENT 51843", "ASIC lodgements are made by Frontline Holdings Group Pty Ltd."],
   ["/taxflow/security", "ISO 27001-ALIGNED", "Australian-hosted, encrypted, and two-factor sign-in on every account."],
-];
+].filter(([href]) => SHOW_TAX_SERVICES || href !== "/taxflow/tax-preparation");
 
 export default function FeaturesPage() {
   return (
@@ -45,7 +48,11 @@ export default function FeaturesPage() {
         eyebrow="The app"
         title="Your tax and your business,"
         accent="under control."
-        lead="Flo files your receipts, your accountant handles the tax, and your quotes, invoices and loans sit in the same app."
+        lead={
+          SHOW_TAX_SERVICES
+            ? "Flo files your receipts, your accountant handles the tax, and your quotes, invoices and loans sit in the same app."
+            : "Flo files your receipts, and your quotes, invoices and loans sit in the same app."
+        }
         image="/images/taxflow/features-hero.webp"
         imageAlt="Flo holding a phone that connects to three cards: a ticked receipt, a paid invoice, and a house and car"
       />

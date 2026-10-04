@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 /* Branded 1200x630 share image for all /taxflow routes.
    Dark navy, TaxFlowAI wordmark, tagline, the current as a gradient line. */
@@ -54,7 +55,9 @@ export default function Image() {
             color: "#64748B",
           }}
         >
-          Snap receipts · Track ATO deadlines · Work with Registered Tax Agents · Free to sign up
+          {SHOW_TAX_SERVICES
+            ? "Snap receipts · Track ATO deadlines · Work with Registered Tax Agents · Free to sign up"
+            : "Snap receipts · Track ATO deadlines · Every entity in one app · Free to sign up"}
         </div>
       </div>
     ),

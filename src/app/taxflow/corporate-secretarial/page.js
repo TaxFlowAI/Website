@@ -15,6 +15,7 @@ import {
   NAVY,
   DEEP,
 } from "@/components/taxflow/ServiceLanding";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
   title: "Corporate secretarial services",
@@ -87,7 +88,12 @@ const MATTERS = [
 
 const STATS = [
   { value: "28 days", label: "is the window ASIC gives you to notify most company changes. We track it for you." },
-  { value: "1 portal", label: "for the company and the tax, with one team that already knows your structure." },
+  {
+    value: "1 portal",
+    label: SHOW_TAX_SERVICES
+      ? "for the company and the tax, with one team that already knows your structure."
+      : "for your company’s paperwork, deadlines and documents.",
+  },
   { value: "0 printing", label: "Resolutions, consents and forms are signed electronically." },
 ];
 
@@ -117,10 +123,15 @@ const WHY = [
     title: "Deadlines you never miss",
     body: "ASIC charges late fees when changes are notified late. Every ASIC date sits in the same tracker as your tax deadlines.",
   },
-  {
-    title: "The company and the tax, together",
-    body: "The team preparing your company's tax return already knows its structure. A change is reflected in both places, first time.",
-  },
+  SHOW_TAX_SERVICES
+    ? {
+        title: "The company and the tax, together",
+        body: "The team preparing your company's tax return already knows its structure. A change is reflected in both places, first time.",
+      }
+    : {
+        title: "Register it and run it in one app",
+        body: "New companies are registered through the same app, and every change after that is lodged and filed in one place.",
+      },
   {
     title: "Everything in one place",
     body: "Certificates, resolutions, registers and ASIC receipts are filed in your company's private folder, searchable and always yours.",
@@ -170,7 +181,11 @@ export default function CorporateSecretarialPage() {
           <LandingHeading
             eyebrow="What we handle"
             title="From annual review to deregistration."
-            lead="Each matter is quoted before any work starts, exactly like our tax services."
+            lead={
+              SHOW_TAX_SERVICES
+                ? "Each matter is quoted before any work starts, exactly like our tax services."
+                : "Each matter is quoted before any work starts."
+            }
           />
           <div className="tc-reveal mt-10 grid items-stretch gap-4 md:grid-cols-6">
             {MATTERS.map((m) => (
@@ -198,7 +213,10 @@ export default function CorporateSecretarialPage() {
       <TaxFlowWave from={DEEP} to={NAVY} />
       <section id="why" style={{ background: NAVY, scrollMarginTop: "110px" }}>
         <div className={`${container} py-14 md:py-20`}>
-          <LandingHeading eyebrow="Why an ASIC agent" title="One team for the company and the tax." />
+          <LandingHeading
+            eyebrow="Why an ASIC agent"
+            title={SHOW_TAX_SERVICES ? "One team for the company and the tax." : "One place for your company."}
+          />
           <div className="tc-reveal mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {WHY.map((w, i) => (
               <div key={w.title} className="tc-value">
@@ -210,8 +228,10 @@ export default function CorporateSecretarialPage() {
           </div>
           <p className="tc-fineprint tc-reveal mt-12">
             Corporate secretarial and ASIC agent services are provided by Frontline Holdings Group Pty Ltd
-            (ABN 59 671 861 475, ASIC Agent 51843). Tax agent services are provided separately by TAX7 T04
-            Pty Ltd, Registered Tax Agent 26313222. See our{" "}
+            (ABN 59 671 861 475, ASIC Agent 51843).
+            {SHOW_TAX_SERVICES &&
+              " Tax agent services are provided separately by TAX7 T04 Pty Ltd, Registered Tax Agent 26313222."}{" "}
+            See our{" "}
             <Link href="/taxflow/terms" className="tc-link">Terms of Service</Link>.
           </p>
         </div>
