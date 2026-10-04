@@ -110,7 +110,7 @@ function Buttons({ onDark = false }) {
         Get started
       </a>
       <Link
-        href="/taxflow/features#loan"
+        href="/taxflow/features#loans"
         className={`rounded-lg border-2 px-7 py-3 text-[15px] font-bold transition ${
           onDark
             ? "border-white/70 text-white hover:border-[#00FCB8] hover:text-[#00FCB8]"

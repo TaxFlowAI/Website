@@ -38,9 +38,9 @@ export default function EmployeesWfhPage() {
         },
       ]}
       relatedFeatures={[
-        ["Guided deduction pages →", "/taxflow/features#deductions"],
-        ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Client uploads →", "/taxflow/features#uploads"],
+        ["Guided deduction pages →", "/taxflow/features/deductions"],
+        ["AI receipt scanner →", "/taxflow/features/receipt-scanner"],
+        ["Client uploads →", "/taxflow/features/client-uploads"],
       ]}
       faqIds={["fees", "flo-ai", "who-lodges", "free-signup"]}
     />

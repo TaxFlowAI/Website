@@ -12,6 +12,13 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/asset-solutions", destination: "/assetsolutions", permanent: true },
+      /* feature pages merged into their parent page (4 Oct 2026) */
+      { source: "/taxflow/features/upload-documents", destination: "/taxflow/features/client-uploads", permanent: true },
+      { source: "/taxflow/features/invoice-email", destination: "/taxflow/features/invoicing#address", permanent: true },
+      { source: "/taxflow/features/flo-invoicing", destination: "/taxflow/features/invoicing#flo", permanent: true },
+      { source: "/taxflow/features/get-paid", destination: "/taxflow/features/invoicing#stripe", permanent: true },
+      { source: "/taxflow/features/customers", destination: "/taxflow/features/invoicing#customers", permanent: true },
+      { source: "/taxflow/features/meetings", destination: "/taxflow/features/flo#meetings", permanent: true },
     ];
   },
 };

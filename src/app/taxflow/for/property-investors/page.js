@@ -38,9 +38,9 @@ export default function PropertyInvestorsPage() {
         },
       ]}
       relatedFeatures={[
-        ["Job tracker →", "/taxflow/features#jobs"],
-        ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Client uploads →", "/taxflow/features#uploads"],
+        ["Job tracker →", "/taxflow/features/job-tracker"],
+        ["AI receipt scanner →", "/taxflow/features/receipt-scanner"],
+        ["Client uploads →", "/taxflow/features/client-uploads"],
       ]}
       faqIds={["fees", "entities", "security", "switch"]}
     />

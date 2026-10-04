@@ -7,11 +7,13 @@ import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
 import { container, CtaBand, Breadcrumbs, TAXFLOW_REGISTER_URL } from "@/components/taxflow/TaxFlowShared";
 import { LandingHeading, Check, NAVY, DEEP, BAND } from "@/components/taxflow/ServiceLanding";
-import { FEATURE_IMAGES, featureBySlug } from "@/components/taxflow/featurePages";
+import { FEATURE_IMAGES, ALL_FEATURES } from "@/components/taxflow/featurePages";
 
 /* One landing page per feature (/taxflow/features/<slug>). Template order:
    breadcrumb, hero, [Stripe band], how it works, detail sections, FAQ with
-   FAQPage JSON-LD, related features, final CTA band.
+   FAQPage JSON-LD, a strip of the other features, final CTA band.
+   Each page is self-contained: detail sections never link off to another
+   feature page (the owner asked for no page-within-a-page).
    The supplied images are real app screens with Flo and the headline baked in:
    always shown whole (never cropped or stretched), full width on phones. */
 
@@ -31,7 +33,7 @@ export function FeatureImage({ image, priority = false, className = "" }) {
   );
 }
 
-/* ---------- Stripe highlight band (invoicing and get-paid pages) ---------- */
+/* ---------- Stripe highlight band (invoicing page) ---------- */
 const STRIPE_POINTS = [
   "Card payments through Stripe Checkout",
   "Paid straight to your own Stripe account",
@@ -40,7 +42,7 @@ const STRIPE_POINTS = [
   "Bank transfer? Mark it paid in two taps",
 ];
 
-export function StripeBand({ showImage = true }) {
+export function StripeBand() {
   return (
     <>
       <TaxFlowWave from={DEEP} to={BAND} />
@@ -48,7 +50,7 @@ export function StripeBand({ showImage = true }) {
         id="stripe"
         style={{ background: `linear-gradient(180deg, ${BAND} 0%, #16334B 55%, ${BAND} 100%)`, scrollMarginTop: "110px" }}
       >
-        <div className={`${container} grid items-center gap-10 py-14 md:py-20 ${showImage ? "lg:grid-cols-2" : ""}`}>
+        <div className={`${container} grid items-center gap-10 py-14 md:py-20 lg:grid-cols-2`}>
           <div className="tc-reveal">
             {/* Stripe's official badge, used unmodified (white version for dark backgrounds). */}
             <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="inline-block">
@@ -68,7 +70,7 @@ export function StripeBand({ showImage = true }) {
               <strong className="text-white">your own Stripe account</strong>, never through us, and the invoice
               is marked <strong className="text-white">paid automatically</strong>.
             </p>
-            <ul className={`tc-lp-feature-points mt-6 ${showImage ? "" : "md:grid-cols-2"}`}>
+            <ul className="tc-lp-feature-points mt-6">
               {STRIPE_POINTS.map((p) => (
                 <li key={p}>
                   <Check />
@@ -77,11 +79,9 @@ export function StripeBand({ showImage = true }) {
               ))}
             </ul>
           </div>
-          {showImage && (
-            <div className="tc-reveal">
-              <FeatureImage image={FEATURE_IMAGES.markPaid} />
-            </div>
-          )}
+          <div className="tc-reveal">
+            <FeatureImage image={FEATURE_IMAGES.markPaid} />
+          </div>
         </div>
       </section>
       <TaxFlowWave from={BAND} to={NAVY} />
@@ -102,9 +102,9 @@ function faqSchema(faq) {
 }
 
 export default function FeaturePage({ page }) {
-  const imageRows = page.sections.filter((s) => s.image);
-  const textCards = page.sections.filter((s) => !s.image);
-  const related = page.related.map(featureBySlug).filter(Boolean);
+  const mediaRows = page.sections.filter((s) => s.image || s.visual);
+  const textCards = page.sections.filter((s) => !s.image && !s.visual);
+  const others = ALL_FEATURES.filter((f) => f.slug !== page.slug);
 
   return (
     <div className="tc-page min-h-screen">
@@ -129,7 +129,7 @@ export default function FeaturePage({ page }) {
               <a href={TAXFLOW_REGISTER_URL} className="tc-btn-primary rounded-lg px-7 py-3.5 text-[15px] font-bold">
                 Get started
               </a>
-              <Link href={`/taxflow/features#${page.anchor}`} className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
+              <Link href={`/taxflow/features#${page.slug}`} className="tc-btn-ghost rounded-lg px-7 py-3.5 text-[15px] font-semibold">
                 See all features
               </Link>
             </div>
@@ -144,7 +144,7 @@ export default function FeaturePage({ page }) {
       {page.stripe ? (
         <>
           <TaxFlowWaveLayers from={NAVY} to={DEEP} />
-          <StripeBand showImage={page.stripe.image} />
+          <StripeBand />
         </>
       ) : (
         <TaxFlowWaveLayers from={NAVY} to={NAVY} />
@@ -172,23 +172,32 @@ export default function FeaturePage({ page }) {
         <div className={`${container} py-12 md:py-20`}>
           <LandingHeading eyebrow="In detail" title="What you get." />
 
-          {imageRows.map((s, i) => (
-            <article key={s.title} className={`tc-fp-row tc-reveal ${i % 2 ? "is-flipped" : ""}`}>
-              <div className="tc-fp-row-media">
-                <FeatureImage image={s.image} />
-                {s.image2 && <FeatureImage image={s.image2} className="mt-4" />}
-              </div>
-              <div className="tc-fp-row-text">
+          {mediaRows.map((s, i) =>
+            s.image2 ? (
+              /* two screens: words on top, images side by side */
+              <article key={s.title} id={s.id} className="tc-fp-pair tc-reveal" style={{ scrollMarginTop: "120px" }}>
                 <h3 className="tc-display text-[1.7rem] text-white md:text-[2rem]">{s.title}</h3>
-                <p className="mt-4 max-w-lg text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
-                {s.more && (
-                  <Link href={`/taxflow/features/${s.more}`} className="tc-link mt-5 inline-block text-[14.5px] font-semibold">
-                    Learn more →
-                  </Link>
-                )}
-              </div>
-            </article>
-          ))}
+                <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
+                <div className="tc-fp-pair-media">
+                  <FeatureImage image={s.image} />
+                  <FeatureImage image={s.image2} />
+                </div>
+              </article>
+            ) : (
+              <article
+                key={s.title}
+                id={s.id}
+                className={`tc-fp-row tc-reveal ${i % 2 ? "is-flipped" : ""}`}
+                style={{ scrollMarginTop: "120px" }}
+              >
+                <div className="tc-fp-row-media">{s.image ? <FeatureImage image={s.image} /> : s.visual}</div>
+                <div className="tc-fp-row-text">
+                  <h3 className="tc-display text-[1.7rem] text-white md:text-[2rem]">{s.title}</h3>
+                  <p className="mt-4 max-w-lg text-[15.5px] leading-relaxed" style={{ color: "#94A3B8" }}>{s.body}</p>
+                </div>
+              </article>
+            )
+          )}
 
           {textCards.length > 0 && (
             <div className={`tc-reveal mt-10 grid gap-4 ${textCards.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
@@ -247,21 +256,17 @@ export default function FeaturePage({ page }) {
         </div>
       </section>
 
-      {/* ============ RELATED ============ */}
-      <section id="related" className="border-t" style={{ background: NAVY, borderColor: "rgba(255,255,255,0.08)" }}>
-        <div className={`${container} py-12 md:py-16`}>
-          <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Related features</p>
-          <div className="tc-reveal mt-6 grid gap-4 md:grid-cols-3">
-            {related.map((r) => (
-              <Link key={r.slug} href={`/taxflow/features/${r.slug}`} className="tc-bento block">
-                <h3 className="tc-bento-title">{r.name}</h3>
-                <p className="tc-bento-body">{r.card}</p>
-                <span className="tc-mono mt-4 inline-block text-[11px] tracking-[0.14em]" style={{ color: "#00FCB8" }}>
-                  LEARN MORE →
-                </span>
-              </Link>
+      {/* ============ OTHER FEATURES ============ */}
+      <section id="more-features" className="border-t" style={{ background: NAVY, borderColor: "rgba(255,255,255,0.08)" }}>
+        <div className={`${container} py-10 md:py-12`}>
+          <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>More in the app</p>
+          <ul className="tc-fp-more mt-5">
+            {others.map((f) => (
+              <li key={f.slug}>
+                <Link href={`/taxflow/features/${f.slug}`}>{f.name}</Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

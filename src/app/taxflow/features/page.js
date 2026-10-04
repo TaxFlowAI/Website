@@ -1,34 +1,20 @@
 import Link from "next/link";
-import Image from "next/image";
 import TaxFlowHeader from "@/components/taxflow/TaxFlowHeader";
 import TaxFlowAppFooter from "@/components/taxflow/TaxFlowAppFooter";
 import RevealInit from "@/components/taxflow/RevealInit";
 import TaxFlowWave from "@/components/taxflow/TaxFlowWave";
 import TaxFlowWaveLayers from "@/components/taxflow/TaxFlowWaveLayers";
-import {
-  ReceiptChatMock,
-  UploadWizardMock,
-  DeductionsMock,
-  UploadsFoldersMock,
-  FloHelpMock,
-  RequestMeetingMock,
-  CompanyRegoMock,
-} from "@/components/taxflow/PlatformMockups";
+import FeatureTiles from "@/components/taxflow/FeatureTiles";
 import CreditDisclosures from "@/components/taxflow/CreditDisclosures";
-import { FeatureImage } from "@/components/taxflow/FeaturePage";
-import { FEATURE_IMAGES, COMPANY_REGISTRATION_PRICE, featureByAnchor } from "@/components/taxflow/featurePages";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
-import { ServiceHero, StatBand, Check, NAVY, DEEP } from "@/components/taxflow/ServiceLanding";
+import { ServiceHero, NAVY, DEEP } from "@/components/taxflow/ServiceLanding";
 
-/* Features page, rewritten to the Oct 2026 portal brief. Rules that must hold:
-   - no Document Vault, no "password-protected" folders, no investment properties
-   - no exact tax due dates, countdowns or "overdue" for tax deadlines: estimated
-     month plus a myGov / ATO Online Services link only
-   - booking is "request a time", confirmed by the accountant; no live calendar
-   - no card fee stated, and never "free" next to card payments
-   - both credit disclosures, word for word, wherever loans are mentioned
-   - no internal systems named beyond "Australian-hosted"
-   - no fees or prices, except the company registration price */
+/* Features index. Short by design (owner, 4 Oct 2026): a heading tile per
+   feature, each linking to that feature's one landing page, where the detail
+   lives. Rules that still hold here:
+   - no exact tax due dates, countdowns or "overdue" for tax deadlines
+   - no fees or prices except the company registration price
+   - the loans tile mentions loans, so both credit disclosures stay on the page */
 export const metadata = {
   title: { absolute: "Features | TaxFlowAI — tax, receipts, quotes & invoices in one app" },
   description:
@@ -42,226 +28,11 @@ export const metadata = {
   },
 };
 
-const I = FEATURE_IMAGES;
-
-/* Each feature keeps its section id and links to its own landing page
-   (/taxflow/features/<slug>). Where a real app image has been supplied it
-   replaces the phone mock-up; the rest keep their mock-up until images arrive. */
-const CHAPTERS = [
-  {
-    id: "capture",
-    title: "Capture",
-    line: "Snap it. Flo files it.",
-    lead: "No more shoeboxes or camera rolls. Take a photo and it lands in the right place.",
-    features: [
-      {
-        id: "scanner",
-        title: "Flo receipt scanner",
-        body: "Snap or upload a receipt and Flo reads it. Flo asks only what it can't work out, then files it in the right account or job folder.",
-        points: [
-          "Camera, photo library or files. Any file type",
-          "A PDF of the conversation is filed with it",
-          "Big, simple buttons. No tech skills needed",
-        ],
-        panel: <ReceiptChatMock />,
-      },
-      {
-        id: "upload",
-        title: "Upload a document",
-        body: "Three taps and it's done. Take a photo, pick from your library or choose a file, then pick the account.",
-        points: ["Take a photo, photo library or choose a file", "Pick the account it belongs to"],
-        panel: <UploadWizardMock />,
-      },
-      {
-        id: "deductions",
-        title: "Guided deduction pages, D1 to D9",
-        body: "One guided page per deduction type, in plain English, with its own upload so receipts land in the right place first time.",
-        points: [
-          "D1 car logbook with your business-use percentage",
-          "Travel, uniforms, self-education, working from home",
-          "Flags the traps. Home to work is private, even on night shift",
-        ],
-        panel: <DeductionsMock />,
-      },
-    ],
-  },
-  {
-    id: "organise",
-    title: "Organise",
-    line: "Everything in its place.",
-    lead: "One login for every account you run, and a clear view of where each job is up to.",
-    features: [
-      {
-        id: "accounts",
-        title: "Your accounts on one home screen",
-        body: "See your personal, sole trader, company, trust and partnership accounts together. Each one has its own page.",
-        points: ["Overview, Deductions, Documents and Book on every account", "Switch accounts without switching apps"],
-        image: I.home,
-      },
-      {
-        id: "uploads",
-        title: "Client Uploads",
-        body: "Every account has its own secure uploads folder, and every job gets its own folder too. Nothing ends up in the wrong place.",
-        points: ["A folder for each account", "A folder for each job, like a tax return or BAS"],
-        panel: <UploadsFoldersMock />,
-      },
-      {
-        id: "jobs",
-        title: "Job tracker",
-        body: "Always know where a job is up to. Each one shows a simple five-step tracker and what we need from you next.",
-        points: [
-          "Estimated timing, shown as a month",
-          "Check your exact dates on myGov, or ATO Online Services for a business",
-        ],
-        image: I.jobTracker,
-      },
-    ],
-  },
-  {
-    id: "business",
-    title: "Run your business",
-    line: "Quotes and invoices, done from your phone.",
-    lead: "Get quotes out and get paid without leaving the app. Switched on per business by your accountant.",
-    image: "/images/taxflow/features-business.webp",
-    imageAlt: "Flo in a tool belt beside a ute, tapping Pay now on an invoice as it flies off as a paper plane",
-    features: [
-      {
-        id: "invoices",
-        title: "Quotes and invoices",
-        body: "Create a quote or invoice in seconds and see the real document as you build it.",
-        points: [
-          "Save your products and services",
-          "GST set automatically",
-          "Your logo and brand colours, picked from your logo",
-        ],
-        image: I.invoice,
-      },
-      {
-        id: "send",
-        title: "Sent from your own business address",
-        body: "Every business gets its own address, like smith-plumbing@invoicemail.com.au. Emails go out automatically and replies come straight to you.",
-        points: ["Email it for me, in one tap", "Or text the invoice link from your own phone"],
-        image: I.send,
-      },
-      {
-        id: "flo-invoice",
-        title: "Raise an invoice by chatting to Flo",
-        body: "Tell Flo who to invoice and for what. Flo finds the customer, builds the invoice and shows you a summary.",
-        points: ["Finds customers on the Australian Business Register", "Nothing is sent until you tap Confirm"],
-        image: I.floDraft,
-      },
-      {
-        id: "get-paid",
-        title: "Get paid faster",
-        body: "Customers accept quotes and pay invoices online with a Pay now button.",
-        points: [
-          "Card payments go straight into your own Stripe account",
-          "Mark bank transfers paid in one tap",
-          "Statuses at a glance: Draft, Sent, Viewed, Paid, Overdue",
-        ],
-        image: I.markPaid,
-      },
-      {
-        id: "customers",
-        title: "Customers",
-        body: "Add a customer once and reuse them on every quote and invoice.",
-        points: ["Add from your phone contacts", "Or look them up by ABN", "Address search built in"],
-        image: I.customers,
-      },
-    ],
-  },
-  {
-    id: "help",
-    title: "Get help",
-    line: "A human when you need one.",
-    lead: "Flo answers the everyday questions. Your accountant is there for everything else.",
-    features: [
-      {
-        id: "flo",
-        title: "Flo, your AI assistant",
-        body: "Flo is on every page and knows your accounts and the page you're on. Flo organises. Your registered tax agent reviews and signs off.",
-        points: ["Explains deductions in plain English", "Links to the right ATO page", "General information, not tax advice"],
-        panel: <FloHelpMock />,
-      },
-      {
-        id: "booking",
-        title: "Request a meeting",
-        body: "Pick how you'd like to meet and request a time. Your accountant confirms it.",
-        points: ["Teams or phone", "In person at Parramatta or Clarence Street, Sydney"],
-        panel: <RequestMeetingMock />,
-      },
-    ],
-  },
-  {
-    id: "more",
-    title: "More services",
-    line: "A company, or a loan, from the same app.",
-    lead: "The other jobs that come with running a business or a household, started from your portal.",
-    features: [
-      {
-        id: "company",
-        title: "Register a new company",
-        body: `Apply online from your portal and track it through to ASIC registration. Fixed price ${COMPANY_REGISTRATION_PRICE}, including GST and the ASIC fee.`,
-        points: [
-          "Company name, directors, shareholders and registered office",
-          "Lodged by Frontline Holdings Group, ASIC Agent 51843",
-        ],
-        panel: <CompanyRegoMock />,
-      },
-      {
-        id: "loan",
-        title: "Apply for a loan",
-        body: "Choose what you're after, tell us roughly how much and when, and a Frontline Financial broker will reach out to discuss your loan.",
-        points: [
-          "Home, refinance, car, business, personal and more",
-          "Enquiry only. It won't affect your credit score",
-        ],
-        image: I.loanStart,
-        legal: true,
-      },
-    ],
-  },
+const TRUST = [
+  ["/taxflow/tax-preparation", "REGISTERED TAX AGENT 26313222", "Returns are prepared and lodged by TAX7 T04 PTY LTD trading as TaxFlowAI."],
+  ["/taxflow/corporate-secretarial", "ASIC AGENT 51843", "ASIC lodgements are made by Frontline Holdings Group Pty Ltd."],
+  ["/taxflow/security", "ISO 27001-ALIGNED", "Australian-hosted, encrypted, and two-factor sign-in on every account."],
 ];
-
-const STATS = [
-  { value: "9", label: "guided deduction pages, D1 to D9" },
-  { value: "5", label: "entity types on one home screen" },
-  { value: "1 tap", label: "to send an invoice or mark it paid" },
-  { value: "AU", label: "Australian-hosted platform" },
-];
-
-function Feature({ f }) {
-  const more = featureByAnchor(f.id);
-  return (
-    <article
-      id={f.id}
-      className={`tc-lp-feature tc-reveal ${f.image ? "is-image" : ""}`}
-      style={{ scrollMarginTop: "120px" }}
-    >
-      <div>
-        <h3 className="tc-display text-[1.5rem] text-white">{f.title}</h3>
-        <p className="mt-3 text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-          {f.body}
-        </p>
-        <ul className="tc-lp-feature-points">
-          {f.points.map((p) => (
-            <li key={p}>
-              <Check />
-              {p}
-            </li>
-          ))}
-        </ul>
-        {f.legal && <CreditDisclosures className="mt-5" />}
-        {more && (
-          <Link href={`/taxflow/features/${more.slug}`} className="tc-link mt-5 inline-block text-[14.5px] font-semibold">
-            Learn more →<span className="sr-only"> about {f.title}</span>
-          </Link>
-        )}
-      </div>
-      <div className="min-w-0">{f.image ? <FeatureImage image={f.image} /> : f.panel}</div>
-    </article>
-  );
-}
 
 export default function FeaturesPage() {
   return (
@@ -279,90 +50,30 @@ export default function FeaturesPage() {
         imageAlt="Flo holding a phone that connects to three cards: a ticked receipt, a paid invoice, and a house and car"
       />
 
-      {/* chapter rail */}
       <TaxFlowWaveLayers from={NAVY} to={DEEP} />
-      <section style={{ background: DEEP }}>
-        <div className={`${container} pb-12 pt-2 md:pb-16`}>
-          <ol className="tc-lp-rail is-five">
-            {CHAPTERS.map((c, i) => (
-              <li key={c.id}>
-                <a href={`#${c.id}`}>
-                  <span className="tc-mono tc-lp-rail-num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="tc-lp-rail-title">{c.title}</span>
-                  <span className="tc-lp-rail-sub">{c.line}</span>
-                </a>
+      <section id="all" style={{ background: DEEP, scrollMarginTop: "110px" }}>
+        <div className={`${container} pb-14 pt-4 md:pb-20`}>
+          <div className="tc-reveal flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+            <div>
+              <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Features</p>
+              <h2 className="tc-display mt-3 text-4xl text-white md:text-5xl">Everything in one app.</h2>
+            </div>
+            <p className="text-[14.5px]" style={{ color: "#94A3B8" }}>Tap a feature to see how it works.</p>
+          </div>
+
+          <FeatureTiles className="tc-reveal mt-8 md:mt-10" />
+
+          <ul className="tc-ft-trust tc-reveal mt-10">
+            {TRUST.map(([href, label, body]) => (
+              <li key={href}>
+                <Link href={href}>
+                  <b className="tc-mono">{label}</b>
+                  <span>{body}</span>
+                </Link>
               </li>
             ))}
-          </ol>
-        </div>
-      </section>
+          </ul>
 
-      {/* chapters */}
-      {CHAPTERS.map((c, i) => {
-        const bg = i % 2 ? DEEP : NAVY;
-        const prev = i === 0 ? DEEP : i % 2 ? NAVY : DEEP;
-        return (
-          <div key={c.id}>
-            <TaxFlowWave from={prev} to={bg} />
-            <section id={c.id} style={{ background: bg, scrollMarginTop: "110px" }}>
-              <div className={`${container} tc-lp-chapter py-12 md:py-20`}>
-                <div className="tc-lp-chapter-head tc-reveal">
-                  <p className="tc-lp-chapter-num" aria-hidden>{String(i + 1).padStart(2, "0")}</p>
-                  <p className="tc-eyebrow mt-5" style={{ color: "#00FCB8" }}>{c.title}</p>
-                  <h2 className="tc-display mt-3 text-4xl text-white md:text-[2.6rem]">{c.line}</h2>
-                  <p className="mt-4 max-w-sm text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-                    {c.lead}
-                  </p>
-                  {c.image && (
-                    <div className="tc-lp-frame-inner mt-6 border" style={{ borderColor: "rgba(0,252,184,0.25)" }}>
-                      <Image src={c.image} alt={c.imageAlt} width={1672} height={941} sizes="(min-width: 1024px) 24rem, 92vw" />
-                    </div>
-                  )}
-                </div>
-                <div>
-                  {c.features.map((f) => (
-                    <Feature key={f.id} f={f} />
-                  ))}
-                </div>
-              </div>
-            </section>
-          </div>
-        );
-      })}
-
-      <StatBand stats={STATS} from={NAVY} to={DEEP} />
-
-      {/* trust and compliance */}
-      <section id="trust" style={{ background: DEEP, scrollMarginTop: "110px" }}>
-        <div className={`${container} py-12 md:py-16`}>
-          <div className="tc-reveal max-w-2xl">
-            <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Trust and compliance</p>
-            <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">Who stands behind it.</h2>
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <Link href="/taxflow/tax-preparation" className="tc-bento tc-reveal block">
-              <span className="tc-lp-code tc-mono">REGISTERED TAX AGENT 26313222</span>
-              <h3 className="tc-bento-title mt-4">The tax is done by people.</h3>
-              <p className="tc-bento-body">
-                Returns are prepared and lodged by TAX7 T04 PTY LTD trading as TaxFlowAI.
-              </p>
-            </Link>
-            <Link href="/taxflow/corporate-secretarial" className="tc-bento tc-reveal block">
-              <span className="tc-lp-code tc-mono">ASIC AGENT 51843</span>
-              <h3 className="tc-bento-title mt-4">Company paperwork too.</h3>
-              <p className="tc-bento-body">
-                ASIC lodgements are made by Frontline Holdings Group Pty Ltd.
-              </p>
-            </Link>
-            <Link href="/taxflow/security" className="tc-bento tc-bento-accent tc-reveal block">
-              <span className="tc-lp-code tc-mono">ISO 27001-ALIGNED</span>
-              <h3 className="tc-bento-title mt-4">Secured the Australian way.</h3>
-              <p className="tc-bento-body">
-                Australian-hosted platform, encryption and two-factor sign-in. Nothing is sent on your
-                behalf without your confirmation.
-              </p>
-            </Link>
-          </div>
           <div className="tc-reveal mt-8 max-w-4xl border-t pt-5" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
             <p className="tc-mono mb-2 text-[10.5px] tracking-[0.16em]" style={{ color: "#94A3B8" }}>CREDIT SERVICES</p>
             <CreditDisclosures />

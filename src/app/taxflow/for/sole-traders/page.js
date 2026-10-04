@@ -38,9 +38,9 @@ export default function SoleTradersPage() {
         },
       ]}
       relatedFeatures={[
-        ["Job tracker →", "/taxflow/features#jobs"],
-        ["AI receipt scanner →", "/taxflow/features#scanner"],
-        ["Quotes and invoices →", "/taxflow/features#business"],
+        ["Job tracker →", "/taxflow/features/job-tracker"],
+        ["AI receipt scanner →", "/taxflow/features/receipt-scanner"],
+        ["Quotes and invoices →", "/taxflow/features/invoicing"],
       ]}
       faqIds={["fees", "entities", "who-lodges", "switch"]}
     />
