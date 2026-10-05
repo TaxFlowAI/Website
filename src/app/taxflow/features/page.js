@@ -17,7 +17,7 @@ import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
    - no fees or prices except the company registration price
    - the loans tile mentions loans, so both credit disclosures stay on the page */
 export const metadata = {
-  title: { absolute: "Features | TaxFlowAI — tax, receipts, quotes & invoices in one app" },
+  title: { absolute: "TaxFlowAI Features | Tax, Receipt & Invoice App" },
   description: SHOW_TAX_SERVICES
     ? "Flo files your receipts, your accountant does the tax, and your quotes, invoices and loan enquiries live in one Australian-hosted app."
     : "Flo files your receipts, and your quotes, invoices and loan enquiries live in the same Australian-hosted app.",

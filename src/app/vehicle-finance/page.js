@@ -5,9 +5,9 @@ import VehicleFinanceLanding from "./VehicleFinanceLanding";
 
 export const metadata = {
   metadataBase: new URL("https://frontline.financial"),
-  title: "Commercial Vehicle Finance | Free Assessment | Frontline Financial",
+  title: "Ute & Truck Finance for ABN Holders | Frontline Financial",
   description:
-    "Ute, van or truck finance for your business. Second hand, private sale, new ABN or a default on file. Free no obligation assessment against 30+ lenders.",
+    "Ute, van and truck finance for ABN holders, including new ABNs, private sales and bad credit. Free, no-obligation assessment against 30+ lenders.",
   alternates: { canonical: "/vehicle-finance" },
   openGraph: {
     title: "Commercial vehicle finance, sorted.",

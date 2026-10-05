@@ -2,9 +2,10 @@ import CompliancePage from "@/components/taxflow/CompliancePage";
 import { TERMS_OF_SERVICE } from "@/data/compliance-content";
 
 export const metadata = {
-  title: "Terms of Service — TaxFlowAI",
+  title: "Terms of Service",
   description:
-    "Terms governing your use of the TaxFlowAI platform and services.",
+    "The terms that apply when you use the TaxFlowAI platform and services.",
+  alternates: { canonical: "/taxflow/terms" },
 };
 
 export default function TermsOfServicePage() {

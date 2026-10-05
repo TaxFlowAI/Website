@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Calculator Disclaimer & Methodology | Frontline Financial",
-  description: "Important information about our financial calculators. Estimates only — not a loan offer or financial advice. Frontline Financial Group ABN 39 693 731 396.",
+  title: "Calculator Disclaimer | Frontline Financial",
+  description: "How our calculators work and their limits. Results are estimates only, not a loan offer or financial advice. Frontline Financial Group ABN 39 693 731 396.",
+  alternates: { canonical: "/calculator-disclaimer" },
 };
 
 export default function CalculatorDisclaimerLayout({ children }) {

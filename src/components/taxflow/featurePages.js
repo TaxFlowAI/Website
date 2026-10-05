@@ -60,7 +60,7 @@ export const FEATURE_PAGES = [
     line: "Send it from your phone. Your customer taps Pay now.",
     icon: "invoice",
     name: "Quotes and invoices",
-    title: "Quotes and invoices with Stripe payments | TaxFlowAI",
+    title: "Quote & Invoice App with Card Payments | TaxFlowAI",
     description:
       "Send professional quotes and tax invoices from your phone. Customers pay by card with Stripe and the invoice marks itself paid.",
     h1: "Invoice from your phone. Get paid by card.",
@@ -146,9 +146,9 @@ export const FEATURE_PAGES = [
     line: "Receipts read and saved to the right account.",
     icon: "receipt",
     name: "Receipt scanner",
-    title: "Receipt scanner: snap it, Flo files it | TaxFlowAI",
+    title: "Receipt Scanner App for Tax in Australia | TaxFlowAI",
     description:
-      "Take a photo of a receipt and Flo reads it, asks only what it can’t work out and saves it to the right account, with a PDF record.",
+      "Snap a receipt and Flo reads it, files it under the right account and ATO category, and keeps a PDF record ready for tax time.",
     h1: "Snap a receipt. Flo files it.",
     intro:
       "No more shoeboxes or camera rolls. Take a photo and Flo reads the receipt, asks only what it can’t work out, and saves it where your accountant will find it.",
@@ -182,7 +182,7 @@ export const FEATURE_PAGES = [
     line: "Car, travel, clothing, study, work costs and donations.",
     icon: "deductions",
     name: "Deductions",
-    title: "Guided work-related deductions | TaxFlowAI",
+    title: "Work-Related Deductions & Car Logbook App | TaxFlowAI",
     description:
       "Six guided pages for the ATO deduction labels D1 to D5 and D9, with a car logbook, a working-from-home log and receipts filed against each.",
     h1: "Every deduction, guided.",
@@ -238,7 +238,7 @@ export const FEATURE_PAGES = [
     line: "Personal, company and trust on one home screen.",
     icon: "accounts",
     name: "Accounts",
-    title: "All your entities in one app | TaxFlowAI",
+    title: "Personal, Company & Trust Tax in One App | TaxFlowAI",
     description:
       "Personal, company and trust accounts side by side. Each one has its own jobs, documents and invoices, on one home screen.",
     h1: "Every entity, organised.",
@@ -273,7 +273,7 @@ export const FEATURE_PAGES = [
     line: "Five steps, from started to lodged.",
     icon: "tracker",
     name: "Job tracker",
-    title: "Track your tax return, step by step | TaxFlowAI",
+    title: "Track Your Tax Return Progress | TaxFlowAI",
     description:
       "Follow your tax return through five steps, see exactly what we need from you, and get a month estimate for each job.",
     h1: "Always know where it’s up to.",
@@ -316,7 +316,7 @@ export const FEATURE_PAGES = [
     line: "Send your accountant anything in two taps.",
     icon: "folder",
     name: "Uploads",
-    title: "Client Uploads: one tidy folder per account | TaxFlowAI",
+    title: "Upload Tax Documents from Your Phone | TaxFlowAI",
     description:
       "Send documents from your phone in two taps. Everything is filed into your account’s secure folder, organised by job.",
     h1: "One tidy folder for every account.",
@@ -360,7 +360,7 @@ export const FEATURE_PAGES = [
     line: "Answers on every page, and a callback when you need one.",
     icon: "chat",
     name: "Flo and your accountant",
-    title: "Meet Flo, your AI tax assistant | TaxFlowAI",
+    title: "Flo, Your AI Tax Assistant | TaxFlowAI",
     description:
       "Ask Flo about the app or what to upload, and request a callback or meeting with your accountant from any account or job.",
     h1: "Questions? Ask Flo. Need a human? Ask us.",
@@ -397,8 +397,8 @@ export const FEATURE_PAGES = [
     line: `${COMPANY_REGISTRATION_PRICE} including GST and the ASIC fee.`,
     icon: "company",
     name: "Register a company",
-    title: "Register a new company online | TaxFlowAI",
-    description: `Apply for a new company in the app for ${COMPANY_REGISTRATION_PRICE} including GST and the ASIC fee. Lodged by a registered ASIC agent.`,
+    title: "Register a Company in Australia Online | TaxFlowAI",
+    description: `Register a new company online for ${COMPANY_REGISTRATION_PRICE} including GST and the ASIC fee. Lodged by a registered ASIC agent, then run it from the same app.`,
     h1: "A new company, from the same app.",
     intro: `Apply in the app and we lodge it with ASIC. Fixed price ${COMPANY_REGISTRATION_PRICE}, including GST and the ASIC fee.`,
     screens: ["company-form", "company-status"],

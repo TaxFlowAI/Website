@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Financial Calculators | Frontline Financial",
-  description: "Mortgage, car loan, refinance and savings calculators. Estimates for illustrative purposes only. Frontline Financial Group — finance arranged through authorised lenders.",
+  title: "Car Loan Calculator with Balloon | Frontline Financial",
+  description: "Car loan calculator with balloon payments, plus mortgage, refinance, personal loan and savings calculators. See your repayments in seconds.",
+  alternates: { canonical: "/financial-calculators" },
 };
 
 export default function FinancialCalculatorsLayout({ children }) {

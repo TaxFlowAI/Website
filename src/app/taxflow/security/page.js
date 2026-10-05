@@ -40,9 +40,9 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
    ============================================================================ */
 
 export const metadata = {
-  title: "Data security",
+  title: "Data Security",
   description:
-    "How TaxFlowAI protects client data: hosted in AWS Sydney, encrypted in transit and at rest, two-factor authentication on every sign-in, TFNs and bank details not stored in the platform, and ISO 27001-aligned practices.",
+    "An Australian-hosted platform, encrypted in transit and at rest, two-factor sign-in on every login, and TFNs and bank details not stored as records.",
   alternates: { canonical: "/taxflow/security" },
   openGraph: {
     title: "Data security — TaxFlowAI",

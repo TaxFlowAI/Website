@@ -12,9 +12,9 @@ import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowSha
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "About us",
+  title: { absolute: "About TaxFlowAI | AI Tax Portal, Sydney & Parramatta" },
   description: SHOW_TAX_SERVICES
-    ? "TaxFlowAI is Australia's AI-powered tax portal. Tax services by TAX7 T04 PTY LTD, Registered Tax Agent 26313222, on a platform owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta."
+    ? "The AI-powered tax portal, with tax services by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. Meet the director and visit us in Sydney or Parramatta."
     : "TaxFlowAI is Australia's AI-powered tax portal, owned and developed by Frontline Holdings Group. Meet the director and visit us in Sydney or Parramatta.",
   alternates: { canonical: "/taxflow/about" },
   openGraph: {

@@ -2,9 +2,10 @@ import CompliancePage from "@/components/taxflow/CompliancePage";
 import { PRIVACY_POLICY } from "@/data/compliance-content";
 
 export const metadata = {
-  title: "Privacy Policy — TaxFlowAI",
+  title: "Privacy Policy",
   description:
-    "TaxFlowAI privacy policy. How we collect, hold, use, disclose, and protect your personal information.",
+    "How TaxFlowAI collects, holds, uses, discloses and protects your personal information.",
+  alternates: { canonical: "/taxflow/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {

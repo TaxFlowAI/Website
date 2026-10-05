@@ -18,9 +18,9 @@ import {
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "Corporate secretarial services",
+  title: "Company Secretarial Services Australia",
   description:
-    "ASIC annual reviews, director and share changes, registered office updates, name changes and deregistrations. Prepared, signed electronically and lodged by a registered ASIC agent through TaxFlowAI.",
+    "ASIC annual reviews, change of director, registered office changes and company deregistration, signed online and lodged by a registered ASIC agent.",
   alternates: { canonical: "/taxflow/corporate-secretarial" },
   openGraph: {
     title: "Corporate secretarial services — TaxFlowAI",

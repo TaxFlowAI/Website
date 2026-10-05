@@ -2220,16 +2220,16 @@
 .tc-hero-demo { position: relative; width: min(20rem, 100%); padding-bottom: 1.25rem; }
 .tc-hero-demo-phone { position: relative; z-index: 1; width: 53%; }
 .tc-hero-demo-phone .tc-dev { width: 100%; }
-.tc-hero-demo-flo { position: absolute; z-index: 2; right: -0.5rem; bottom: -0.25rem; width: 62.5%; }
+.tc-hero-demo-flo { position: absolute; z-index: 2; right: -0.5rem; bottom: -0.25rem; width: 52%; }
 @media (min-width: 640px) {
   .tc-hero-demo { width: 26rem; }
   .tc-hero-demo-phone { width: 212px; }
-  .tc-hero-demo-flo { width: 260px; right: -1rem; }
+  .tc-hero-demo-flo { width: 210px; right: -1rem; }
 }
 @media (min-width: 1024px) {
   .tc-hero-demo { width: 28rem; padding-bottom: 1.5rem; }
   .tc-hero-demo-phone { width: 232px; }
-  .tc-hero-demo-flo { width: 300px; right: -2.5rem; bottom: -0.5rem; }
+  .tc-hero-demo-flo { width: 236px; right: -1rem; bottom: -0.5rem; }
 }
 
 /* ================================================================
@@ -2261,7 +2261,7 @@
 .tc-hero-demo-phone .tc-dev {
   animation: tc-hd-arrive 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.tc-hero-demo-phone .tc-dev-screen img {
+.tc-hero-demo-phone .tc-reel {
   animation: tc-hd-reveal 1.25s cubic-bezier(0.45, 0.05, 0.25, 1) 0.3s both;
 }
 .tc-hero-demo-phone .tc-dev-screen::after {
@@ -2358,7 +2358,7 @@
   .tc-hero-demo-phone .tc-dev,
   .tc-hero-demo-flo { animation: tc-hd-fade 0.4s ease-out both; }
   .tc-hero-demo-flo { animation-delay: 0.2s; }
-  .tc-hero-demo-phone .tc-dev-screen img { animation: none; }
+  .tc-hero-demo-phone .tc-reel { animation: none; }
   .tc-hero-demo-phone .tc-dev-screen::after { animation: none; opacity: 0; }
   .tc-wave-crest,
   .tc-visible .tc-wave-crest { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
@@ -2714,4 +2714,134 @@
   .tc-mm-row-go,
   .tc-msvc-caret { transition: none; }
   .tc-mm { transform: none; }
+}
+
+
+/* ---------- home hero: the showreel ----------
+   The phone swipes through real screens; Flo dances between them (the dance
+   is a Web Animation in HeroShowreel.js) and changes pose mid-move. */
+.tc-reel-wrap { position: relative; width: min(20rem, 100%); }
+.tc-reel-wrap .tc-hero-demo { width: 100%; }
+@media (min-width: 640px) { .tc-reel-wrap { width: 26rem; } }
+@media (min-width: 1024px) { .tc-reel-wrap { width: 28rem; } }
+.tc-reel { display: block; height: 100%; }
+.tc-reel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.tc-reel-track.is-snap { transition: none; }
+.tc-reel-slide { flex: 0 0 100%; display: block; }
+
+.tc-hero-dancer {
+  position: relative;
+  transform-origin: 50% 90%;
+}
+.tc-hero-pose {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.16s ease-out;
+  filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.45));
+}
+.tc-hero-pose:not(:first-child) { position: absolute; inset: 0; }
+.tc-hero-pose.is-on { opacity: 1; }
+
+/* the bubble sits above Flo, right-aligned with him, clear of the screen */
+.tc-hero-bubble-wrap {
+  position: absolute;
+  z-index: 11;
+  right: 0;
+  bottom: 95%;
+  animation: tc-hd-bubble 0.45s cubic-bezier(0.16, 1, 0.3, 1) 1.75s both;
+}
+.tc-hero-bubble {
+  position: relative;
+  width: max-content;
+  max-width: 150px;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 14px;
+  font-family: var(--font-display-tf), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #0A1628;
+  background: #FFFFFF;
+  box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.7);
+  transform-origin: 70% 100%;
+  transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1), transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tc-hero-bubble::after {
+  content: "";
+  position: absolute;
+  right: 34%;
+  bottom: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #FFFFFF;
+  transform: rotate(45deg);
+}
+.tc-hero-bubble.is-hidden {
+  opacity: 0;
+  transform: translateY(6px) scale(0.88);
+  transition-duration: 0.14s;
+}
+@keyframes tc-hd-bubble {
+  from { opacity: 0; transform: translateY(8px) scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+@media (min-width: 640px) {
+  .tc-hero-bubble { max-width: 190px; padding: 9px 14px; font-size: 15px; }
+}
+
+/* controls: pause, then one dot per screen */
+.tc-reel-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 12px;
+}
+.tc-reel-play {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
+  border-radius: 999px;
+  color: #B7C4CF;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tc-reel-play:hover { color: var(--tc-aqua); border-color: var(--tc-aqua); }
+.tc-reel-dot {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 28px;
+}
+.tc-reel-dot span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+.tc-reel-dot:hover span { background: rgba(255, 255, 255, 0.55); }
+.tc-reel-dot[aria-current="true"] span { width: 18px; background: var(--tc-aqua); }
+.tc-reel-play:focus-visible,
+.tc-reel-dot:focus-visible {
+  outline: 2px solid var(--tc-aqua);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-reel-track { transition: none; }
+  .tc-hero-bubble-wrap { animation: tc-hd-fade 0.4s ease-out 0.4s both; }
+  .tc-hero-bubble, .tc-hero-bubble.is-hidden { transform: none; }
 }

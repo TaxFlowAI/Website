@@ -6,9 +6,9 @@ import CalendlyInline from "@/components/taxflow/CalendlyInline";
 import { container, CtaBand, Breadcrumbs } from "@/components/taxflow/TaxFlowShared";
 
 export const metadata = {
-  title: "Contact",
+  title: { absolute: "Contact TaxFlowAI | Parramatta & Sydney CBD Offices" },
   description:
-    "Book a free 15-minute call, or reach TaxFlowAI at Level 49, 8 Parramatta Square Parramatta or 213 Clarence Street Sydney. Phone 0406 909 862, email taxflowai@frontline.financial.",
+    "Book a free 15-minute call or visit us at 8 Parramatta Square or 213 Clarence Street, Sydney. Call 0406 909 862 or email taxflowai@frontline.financial.",
   alternates: { canonical: "/taxflow/contact" },
   openGraph: {
     title: "Contact TaxFlowAI",

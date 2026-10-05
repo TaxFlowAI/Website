@@ -1,6 +1,7 @@
 export const metadata = {
   title: "Credit Guide & Quote | Frontline Financial: Asset Solutions",
-  description: "Credit Guide & Quote for Frontline Financial: Asset Solutions — car loans, personal loans, asset finance. Authorised Credit Representative 563350 of Fintelligence Pty Ltd.",
+  description: "Our services, fees, commissions and complaints process for car, personal and asset finance. Authorised Credit Representative 563350.",
+  alternates: { canonical: "/credit-guide-asset-solutions" },
 };
 
 export default function CreditGuideAssetSolutionsLayout({ children }) {

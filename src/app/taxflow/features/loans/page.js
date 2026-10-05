@@ -13,7 +13,7 @@ import { FEATURE_IMAGES, featureBySlug } from "@/components/taxflow/featurePages
    Compliance: never "approved", "guaranteed", rates or comparison claims.
    Both credit-representative disclosures must stay visible near the CTA. */
 
-const TITLE = "Apply for a home, car or business loan | Frontline Financial";
+const TITLE = "Home, Car & Business Loan Enquiries | Frontline Financial";
 const DESCRIPTION =
   "Start a loan enquiry from your TaxFlowAI portal. Choose what you’re after and a Frontline Financial broker will reach out. Enquiry only.";
 const URL = "/taxflow/features/loans";

@@ -7,10 +7,15 @@ const dmSans = DM_Sans({
   weight: ["400", "700"],
 });
 
+/* The home page is a client component, so its title and description live
+   here as the site-wide default. Every other page sets its own. No canonical
+   here: a canonical on the root layout would be inherited by every page that
+   forgets to set one. */
 export const metadata = {
-  title: "Frontline Financial | Finance Made Simple",
+  metadataBase: new URL("https://frontline.financial"),
+  title: "Finance Broker Parramatta | Frontline Financial",
   description:
-    "Australian financial services: mortgage and business lending (Brokers) and car and equipment finance (Asset Solutions).",
+    "Home loans, car loans and equipment finance from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

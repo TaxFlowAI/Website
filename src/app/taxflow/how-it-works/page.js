@@ -7,9 +7,9 @@ import { faqSubset } from "@/data/taxflow-faq";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "How it works",
+  title: "How Online Tax Returns Work",
   description: SHOW_TAX_SERVICES
-    ? "Register free, complete a 10-minute profile, engage a Registered Tax Agent, and stay on top of every ATO deadline. You approve the price before any work starts."
+    ? "Sign up free, finish a 10-minute profile and engage a registered tax agent. You approve the price before any work starts, and every deadline is tracked."
     : "Register free, complete a 10-minute profile, and keep your receipts, deductions and ATO deadlines in one place.",
   alternates: { canonical: "/taxflow/how-it-works" },
   openGraph: {

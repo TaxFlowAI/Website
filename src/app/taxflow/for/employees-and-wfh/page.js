@@ -2,9 +2,9 @@ import PersonaPage from "@/components/taxflow/PersonaPage";
 import { WfhTracker } from "@/components/taxflow/TaxFlowMockups";
 
 export const metadata = {
-  title: "For employees & working from home",
+  title: "Work From Home Deductions: Fixed Rate Tracker",
   description:
-    "A WFH hour tracker at the ATO fixed rate, guided D5 claims, and the records the ATO actually expects — TaxFlowAI for Australian employees.",
+    "Log your work from home hours at the ATO fixed rate as you go, with guided D5 claims and the records the ATO expects. For Australian employees.",
   alternates: { canonical: "/taxflow/for/employees-and-wfh" },
   openGraph: {
     title: "TaxFlowAI for employees & WFH",

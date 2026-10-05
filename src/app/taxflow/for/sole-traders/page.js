@@ -1,10 +1,12 @@
 import PersonaPage from "@/components/taxflow/PersonaPage";
 import { LodgementList } from "@/components/taxflow/TaxFlowMockups";
+import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "For sole traders",
-  description:
-    "BAS and quarterly deadlines tracked, business vs personal expenses sorted by AI, and an ATO-compliant vehicle logbook — TaxFlowAI for Australian sole traders.",
+  title: SHOW_TAX_SERVICES ? "Sole Trader Tax Returns & BAS" : "Tax App for Sole Traders",
+  description: SHOW_TAX_SERVICES
+    ? "Sole trader tax returns and BAS lodged by a registered tax agent, with business expenses sorted by Flo and an ATO-compliant car logbook. Free to sign up."
+    : "BAS and income tax deadlines tracked, business and personal expenses sorted by Flo, and an ATO-compliant car logbook for Australian sole traders.",
   alternates: { canonical: "/taxflow/for/sole-traders" },
   openGraph: {
     title: "TaxFlowAI for sole traders",

@@ -2,9 +2,10 @@ import CompliancePage from "@/components/taxflow/CompliancePage";
 import { COLLECTION_NOTICE } from "@/data/compliance-content";
 
 export const metadata = {
-  title: "Collection Notice — TaxFlowAI",
+  title: "Collection Notice",
   description:
-    "Australian Privacy Principle 5 — Notification of collection for the TaxFlowAI initial enquiry form.",
+    "What we collect through the TaxFlowAI enquiry form and why, under Australian Privacy Principle 5.",
+  alternates: { canonical: "/taxflow/collection-notice" },
 };
 
 export default function CollectionNoticePage() {

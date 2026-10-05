@@ -12,13 +12,17 @@ import CalendlyButton from "@/components/taxflow/CalendlyButton";
 import MedicalShowcase from "@/components/taxflow/MedicalShowcase";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
-import { Phone } from "@/components/taxflow/AppScreens";
+import HeroShowreel from "@/components/taxflow/HeroShowreel";
 
 export const metadata = {
-  title: "TaxFlowAI — Smarter tax, effortless deductions",
+  title: {
+    absolute: SHOW_TAX_SERVICES
+      ? "AI Tax Return App with a Registered Tax Agent | TaxFlowAI"
+      : "AI Tax App for Receipts, Deductions & Deadlines | TaxFlowAI",
+  },
   description: SHOW_TAX_SERVICES
-    ? "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, Registered Tax Agents lodge your return, and every deadline is tracked — free to sign up. Tax services by TAX7 T04 PTY LTD, on a platform owned by Frontline Holdings Group."
-    : "Australia's AI-powered tax portal. Flo sorts your receipts into ATO deduction categories, every entity sits on one home screen, and every deadline is tracked — free to sign up. Owned and developed by Frontline Holdings Group.",
+    ? "Snap receipts and Flo sorts them into ATO deduction categories. A registered tax agent lodges your return and every deadline is tracked. Free to sign up."
+    : "Snap receipts and Flo sorts them into ATO deduction categories. Every entity on one home screen and every deadline tracked. Free to sign up.",
   alternates: { canonical: "/taxflow" },
   openGraph: {
     title: "TaxFlowAI — Smarter tax, effortless deductions",
@@ -82,27 +86,10 @@ export default function TaxFlowHomePage() {
             </Link>
           </div>
 
-          {/* Flo waving at the real receipt scanner: what the product does,
-              in the first screen. The screenshot is the owner's, unedited. */}
+          {/* The phone swipes through real app screens while Flo dances
+              between them. Screens and Flo renders are the owner's, unedited. */}
           <div className="flex justify-center lg:col-span-5 lg:justify-end">
-            <div className="tc-hero-demo">
-              <div className="tc-hero-demo-phone">
-                <Phone id="receipt-question" priority sizes="(min-width: 1024px) 232px, (min-width: 640px) 212px, 170px" />
-              </div>
-              <div className="tc-flo-stage tc-hero-demo-flo">
-                <div className="tc-flo-glow" aria-hidden />
-                <Image
-                  src="/images/taxflow/flo-hello.webp"
-                  alt="Flo, the TaxFlowAI assistant, waving and saying hello"
-                  width={1254}
-                  height={1254}
-                  priority
-                  sizes="(min-width: 1024px) 300px, (min-width: 640px) 260px, 200px"
-                  className="float-animate relative z-10 h-auto w-full"
-                />
-                <div className="tc-flo-shadow" aria-hidden />
-              </div>
-            </div>
+            <HeroShowreel />
           </div>
         </div>
       </section>

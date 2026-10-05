@@ -22,9 +22,9 @@ import { faqSubset } from "@/data/taxflow-faq";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "Tax preparation services",
+  title: "Tax Agent Parramatta & Sydney CBD",
   description:
-    "Individual, sole trader, company, trust and partnership tax returns, activity statements and CGT, prepared and lodged by TAX7 T04, Registered Tax Agent 26313222. Quote first, no subscription.",
+    "Tax returns for individuals, sole traders, companies and trusts, plus BAS and CGT, lodged by Registered Tax Agent 26313222. Quote first, no subscription.",
   alternates: { canonical: "/taxflow/tax-preparation" },
   openGraph: {
     title: "Tax preparation services — TaxFlowAI",

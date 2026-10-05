@@ -1,6 +1,7 @@
 export const metadata = {
-  title: "Calculator Disclaimer — Car & Personal Loans | Frontline Financial: Asset Solutions",
+  title: "Car Loan Calculator Disclaimer | Frontline Financial",
   description: "Important information about our car and personal loan calculators. Martyn Financial Pty Ltd CRN 563350, ACL 511803.",
+  alternates: { canonical: "/calculator-disclaimer-asset-solutions" },
 };
 
 export default function Layout({ children }) {

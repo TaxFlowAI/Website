@@ -3,9 +3,10 @@ import { PropertyPanel } from "@/components/taxflow/TaxFlowMockups";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "For property investors",
-  description:
-    "Rental schedules organised through the year, deductible expenses captured as they happen, and record keeping that holds up — TaxFlowAI for Australian property investors.",
+  title: SHOW_TAX_SERVICES ? "Rental Property Tax Returns" : "Rental Property Tax Records",
+  description: SHOW_TAX_SERVICES
+    ? "Rental property tax returns lodged by a registered tax agent. Snap rates notices, interest statements and repair receipts all year, ready for tax time."
+    : "Rates notices, interest statements and repair receipts snapped and filed through the year, so your rental schedule is ready at tax time.",
   alternates: { canonical: "/taxflow/for/property-investors" },
   openGraph: {
     title: "TaxFlowAI for property investors",

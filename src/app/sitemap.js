@@ -33,6 +33,7 @@ export default function sitemap() {
     ["/taxflow/for/sole-traders", 0.7],
     ["/taxflow/for/employees-and-wfh", 0.7],
     ["/taxflow/for/property-investors", 0.7],
+    ...(SHOW_TAX_SERVICES ? [["/taxflow/for/medical-professionals", 0.7]] : []),
     ["/taxflow/privacy-policy", 0.3],
     ["/taxflow/collection-notice", 0.3],
     ["/taxflow/terms", 0.3],

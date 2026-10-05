@@ -18,17 +18,15 @@ import {
 } from "@/components/taxflow/TaxFlowShared";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
-/* DRAFT — landing page for medical professionals. Not yet linked from the
-   nav, footer or sitemap, and set to noindex until the copy is approved.
-   TODO(owner): remove `robots` below and add the page to the footer "Who it's
-   for" column, the tax-preparation persona list and sitemap.js at launch. */
+/* Landing page for medical professionals. Linked from the home-page showcase
+   and the footer, listed in sitemap.js, and open to search engines since
+   5 Oct 2026 (owner). Redirects to /taxflow while SHOW_TAX_SERVICES is off. */
 
 export const metadata = {
-  title: "Tax for medical professionals",
+  title: "Tax Returns for Doctors & Nurses",
   description:
-    "Tax returns for doctors, nurses, dentists and allied health professionals. Registration, indemnity, CPD and multiple hospital income sorted year-round, prepared and lodged by a Registered Tax Agent.",
+    "Tax returns for doctors, nurses, dentists and allied health, lodged by a registered tax agent. Registration, indemnity, CPD and multi-hospital income sorted.",
   alternates: { canonical: "/taxflow/for/medical-professionals" },
-  robots: { index: false, follow: false },
   openGraph: {
     title: "Tax for medical professionals — TaxFlowAI",
     description:

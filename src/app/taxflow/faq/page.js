@@ -6,9 +6,9 @@ import { TAXFLOW_FAQ } from "@/data/taxflow-faq";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 export const metadata = {
-  title: "FAQ",
+  title: "FAQ: Fees, Lodgement & Security",
   description: SHOW_TAX_SERVICES
-    ? "How fees work, who lodges your return, how Flo's AI is checked by a human, data security, supported entities, switching accountants, and what free to sign up really means."
+    ? "How fees work, who lodges your return, how Flo's AI is checked by a person, how your data is protected, and what free to sign up really means."
     : "How fees work, how Flo's AI works, data security, supported entities, and what free to sign up really means.",
   alternates: { canonical: "/taxflow/faq" },
   openGraph: {

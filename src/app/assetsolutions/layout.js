@@ -1,15 +1,15 @@
 /* SEO layout for /assetsolutions — the page itself is a client component,
-   so metadata and structured data live here. Target query: asset finance
-   broker Parramatta (car, equipment, fleet finance). */
+   so metadata and structured data live here. Target queries: car finance
+   Parramatta, car loan Parramatta, equipment finance Sydney. */
 
 export const metadata = {
   metadataBase: new URL("https://frontline.financial"),
-  title: "Asset Finance Broker Parramatta | Car & Equipment Finance — Frontline Financial",
+  title: "Car & Equipment Finance Parramatta | Frontline Financial",
   description:
-    "Award-winning asset finance broker in Parramatta. Car loans, equipment and fleet finance from 30+ lenders, 24hr approvals, 100+ five-star Google reviews. Level 49, 8 Parramatta Square.",
+    "Award-winning car and equipment finance broker in Parramatta. Cars, utes, trucks, machinery and fleets from 30+ lenders. 100+ five-star Google reviews.",
   alternates: { canonical: "/assetsolutions" },
   openGraph: {
-    title: "Asset Finance Broker Parramatta — Frontline Financial: Asset Solutions",
+    title: "Car & Equipment Finance Parramatta — Frontline Financial: Asset Solutions",
     description:
       "Car loans, equipment and fleet finance from 30+ lenders. 24hr approvals, 100+ five-star Google reviews. Visit us at Level 49, 8 Parramatta Square.",
     url: "/assetsolutions",

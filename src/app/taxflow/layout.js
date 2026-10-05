@@ -24,17 +24,18 @@ const jetbrainsMono = JetBrains_Mono({
 
 /* Metadata for the /taxflow section only — overrides the root (lending)
    metadata for every route in this segment. Child pages override title,
-   description and canonical per page. */
+   description and canonical per page. No canonical here: every page sets its
+   own, and one set here would be inherited by any page that forgets, telling
+   Google that page is a copy of /taxflow. */
 export const metadata = {
   metadataBase: new URL("https://frontline.financial"),
   title: {
-    default: "TaxFlowAI — Australia's AI-powered tax portal",
-    template: "%s — TaxFlowAI",
+    default: "TaxFlowAI | Australia's AI-Powered Tax Portal",
+    template: "%s | TaxFlowAI",
   },
   description: SHOW_TAX_SERVICES
     ? "Australia's AI-powered tax portal. Snap receipts, track every ATO deadline, and work with Registered Tax Agents — free to sign up."
     : "Australia's AI-powered tax portal. Snap receipts, track every ATO deadline, and keep every entity in one app — free to sign up.",
-  alternates: { canonical: "/taxflow" },
   openGraph: {
     siteName: "TaxFlowAI",
     type: "website",
