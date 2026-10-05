@@ -38,10 +38,10 @@ const REVIEWS = "#0E2238";
 const TRUST_LINE = SHOW_TAX_SERVICES
   ? [
       ["TAX7 T04 Pty Ltd · Registered Tax Agent 26313222", null],
-      ["Platform by Frontline Holdings Group · ASIC agent 51843", null],
+      ["Platform by Frontline Holdings Group trading as TaxFlowAI by Frontline Financial · ASIC agent 51843", null],
       ["Verify tax agent ↗", "https://tpb.gov.au/registrations_search"],
     ]
-  : [["Platform by Frontline Holdings Group · ASIC agent 51843", null]];
+  : [["Platform by Frontline Holdings Group trading as TaxFlowAI by Frontline Financial · ASIC agent 51843", null]];
 
 const ABOUT_POINTS = [
   ...(SHOW_TAX_SERVICES
@@ -120,31 +120,11 @@ export default function TaxFlowHomePage() {
             <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
               Real humans behind it.
             </h2>
-            {SHOW_TAX_SERVICES ? (
-              <>
-                <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
-                  The platform is owned and built by Frontline Holdings Group. The tax
-                  is done by TAX7 T04, a registered tax agent.
-                </p>
-                <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-                  Flo does the sorting. Registered tax agents prepare and lodge your
-                  work, and our ASIC agent team keeps your company paperwork in order.
-                  The AI keeps you organised; the humans are accountable for the result.
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="mt-5 max-w-lg text-lg leading-relaxed" style={{ color: "#B7C4CF" }}>
-                  The platform is owned and built by Frontline Holdings Group, the team
-                  behind Frontline Financial.
-                </p>
-                <p className="mt-4 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
-                  Flo does the sorting, and our ASIC agent team keeps your company
-                  paperwork in order. The AI keeps you organised; the humans are
-                  accountable for the result.
-                </p>
-              </>
-            )}
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed" style={{ color: "#94A3B8" }}>
+              {SHOW_TAX_SERVICES
+                ? "Flo does the sorting. Registered tax agents prepare and lodge your work, and our ASIC agent team keeps your company paperwork in order. The AI keeps you organised; the humans are accountable for the result."
+                : "Flo does the sorting, and our ASIC agent team keeps your company paperwork in order. The AI keeps you organised; the humans are accountable for the result."}
+            </p>
             <ul className="mt-7 space-y-3 text-[14.5px]">
               {ABOUT_POINTS.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-white/85">
@@ -221,7 +201,7 @@ export default function TaxFlowHomePage() {
       )}
 
       {/* ============ SERVICES (carousel) ============ */}
-      <section id="services" style={{ background: NAVY, scrollMarginTop: "110px" }}>
+      <section id="services" tabIndex={-1} style={{ background: NAVY, scrollMarginTop: "110px" }}>
         <div className={`${container} py-16 md:py-24`}>
           <div className="tc-reveal max-w-2xl">
             <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Services</p>

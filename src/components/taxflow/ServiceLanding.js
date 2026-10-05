@@ -70,7 +70,7 @@ export function ServiceHero({ crumb, eyebrow, title, accent, lead, image, imageA
 }
 
 /* ---------- credential plate: who is registered, and the number ---------- */
-export function CredentialPlate({ label, number, name, href, linkText }) {
+export function CredentialPlate({ label, number, name, sub, href, linkText }) {
   return (
     <div className="tc-lp-plate">
       <span>
@@ -79,6 +79,11 @@ export function CredentialPlate({ label, number, name, href, linkText }) {
       </span>
       <span>
         <span className="tc-lp-plate-name block">{name}</span>
+        {sub && (
+          <span className="block text-[12.5px]" style={{ color: "#94A3B8" }}>
+            {sub}
+          </span>
+        )}
         {href && (
           <a href={href} target="_blank" rel="noopener noreferrer" className="tc-link text-[12.5px]">
             {linkText}

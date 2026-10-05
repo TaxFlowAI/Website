@@ -328,7 +328,7 @@ export default function AboutPage() {
             )}
             <p className={SHOW_TAX_SERVICES ? "mt-3" : "mt-4"}>
               <strong className="text-white">Platform owner &amp; ASIC agent:</strong> Frontline Holdings Group
-              Pty Ltd (ABN 59 671 861 475), ASIC Agent 51843. This is the company that owns and develops the
+              Pty Ltd trading as TaxFlowAI by Frontline Financial (ABN 59 671 861 475), ASIC Agent 51843. This is the company that owns and develops the
               TaxFlowAI platform and provides the corporate secretarial services.
             </p>
             <p className="mt-3">

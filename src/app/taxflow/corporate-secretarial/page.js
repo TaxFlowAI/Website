@@ -32,12 +32,14 @@ export const metadata = {
 
 const STRIP = ["Annual reviews", "Director changes", "Share changes", "Deregistrations"];
 
-/* span is the tile width on the six-column bento */
+/* span is the tile width on the six-column bento; id is the anchor the
+   header Services menu links to (servicesNav.js) */
 const MATTERS = [
   {
     code: "ANNUAL REVIEW",
     span: "md:col-span-3",
     accent: true,
+    id: "annual-review",
     title: "Annual company reviews",
     body: "Your ASIC annual statement checked, the solvency resolution prepared and minuted, and the review fee tracked so nothing is paid late.",
   },
@@ -45,42 +47,49 @@ const MATTERS = [
     code: "FORM 484",
     span: "md:col-span-3",
     accent: true,
+    id: "officeholders",
     title: "Officeholder changes",
     body: "Appointing or resigning directors and secretaries. Consents, minutes and the ASIC notification lodged inside the 28-day window.",
   },
   {
     code: "FORM 484",
     span: "md:col-span-2",
+    id: "shares",
     title: "Share transactions",
     body: "Allotments, transfers and cancellations. Member registers updated, share certificates issued and ASIC notified.",
   },
   {
     code: "FORM 484",
     span: "md:col-span-2",
+    id: "addresses",
     title: "Address changes",
     body: "Registered office, principal place of business and officeholder address updates lodged with ASIC.",
   },
   {
     code: "FORM 205A",
     span: "md:col-span-2",
+    id: "name-change",
     title: "Company name changes",
     body: "Name availability checked, the special resolution prepared and lodged, and the new certificate filed in your company folder.",
   },
   {
     code: "FORM 6010",
     span: "md:col-span-2",
+    id: "deregistration",
     title: "Deregistration and wind-up",
     body: "Voluntary deregistration or a members' voluntary winding-up. Declarations, resolutions and lodgements handled end to end.",
   },
   {
     code: "RECORDS",
     span: "md:col-span-2",
+    id: "records",
     title: "Constitutions, minutes and registers",
     body: "Company constitution, director and member resolutions, and statutory registers kept current and stored securely.",
   },
   {
     code: "NOTICES",
     span: "md:col-span-2",
+    id: "notices",
     title: "ASIC correspondence",
     body: "ASIC notices routed to one place and deadlines tracked alongside your tax lodgements.",
   },
@@ -157,6 +166,7 @@ export default function CorporateSecretarialPage() {
             label="REGISTERED ASIC AGENT"
             number="51843"
             name="Frontline Holdings Group Pty Ltd"
+            sub="Trading as TaxFlowAI by Frontline Financial"
           />
         }
       />
@@ -189,7 +199,13 @@ export default function CorporateSecretarialPage() {
           />
           <div className="tc-reveal mt-10 grid items-stretch gap-4 md:grid-cols-6">
             {MATTERS.map((m) => (
-              <div key={m.title} className={`tc-bento ${m.span} ${m.accent ? "tc-bento-accent" : ""}`}>
+              <div
+                key={m.title}
+                id={m.id}
+                tabIndex={-1}
+                className={`tc-bento ${m.span} ${m.accent ? "tc-bento-accent" : ""}`}
+                style={{ scrollMarginTop: "130px" }}
+              >
                 <span className="tc-lp-code tc-mono">{m.code}</span>
                 <h3 className="tc-bento-title mt-4">{m.title}</h3>
                 <p className="tc-bento-body">{m.body}</p>
@@ -228,7 +244,7 @@ export default function CorporateSecretarialPage() {
           </div>
           <p className="tc-fineprint tc-reveal mt-12">
             Corporate secretarial and ASIC agent services are provided by Frontline Holdings Group Pty Ltd
-            (ABN 59 671 861 475, ASIC Agent 51843).
+            trading as TaxFlowAI by Frontline Financial (ABN 59 671 861 475, ASIC Agent 51843).
             {SHOW_TAX_SERVICES &&
               " Tax agent services are provided separately by TAX7 T04 Pty Ltd, Registered Tax Agent 26313222."}{" "}
             See our{" "}

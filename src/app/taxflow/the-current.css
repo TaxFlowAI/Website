@@ -317,6 +317,8 @@
 .tc-drawer {
   border-top: 1px solid var(--tc-border);
   background: var(--tc-bg-deep);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
 }
 .tc-drawer a {
   display: block;
@@ -2366,3 +2368,350 @@
   .tc-btn-ghost:active { transform: none; }
 }
 @keyframes tc-hd-fade { from { opacity: 0; } }
+
+/* ---------- header: Services menu (ServicesMenu.js) ----------
+   Desktop: a panel under the header. Services run down the left; the active
+   service's own links show on the right. Every pane shares one grid cell
+   (inactive ones are visibility: hidden), so the panel keeps one height while
+   you move between services. */
+.tc-mm-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  /* taller hit area, reaching the header's top and bottom edges */
+  margin-block: -1.5rem;
+  padding-block: 1.5rem;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #C7D2DC;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.tc-mm-trigger[aria-expanded="true"] { color: #FFFFFF; }
+.tc-mm-trigger:hover .tc-nav-link::after,
+.tc-mm-trigger[aria-expanded="true"] .tc-nav-link::after { width: 100%; }
+/* the ring goes on the label, not the tall hit area (beats .tc-page button:focus-visible) */
+.tc-page .tc-mm-trigger:focus-visible { outline: none; }
+.tc-page .tc-mm-trigger:focus-visible .tc-nav-link {
+  outline: 2px solid var(--tc-aqua);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.tc-mm-caret { width: 0.8rem; height: 0.8rem; transition: transform 0.2s ease, color 0.2s ease; }
+.tc-mm-trigger[aria-expanded="true"] .tc-mm-caret { transform: rotate(180deg); color: var(--tc-aqua); }
+
+.tc-mm {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 2rem;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  width: min(52rem, calc(100% - 4rem));
+  max-height: calc(100dvh - 8.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, transparent, rgba(0, 252, 184, 0.55), transparent) top / 100% 1px no-repeat,
+    linear-gradient(90deg, var(--tc-bg-deep) 0 18rem, #1B283B 18rem calc(18rem + 1px), #0C1A2E calc(18rem + 1px));
+  box-shadow: 0 34px 80px -24px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.16s ease-in, transform 0.16s ease-in, visibility 0s linear 0.16s;
+}
+.tc-mm.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+}
+/* Hover bridge across the gap between the header and the panel. It hangs off
+   the (unpositioned) wrapper, so it sits against the same header container as
+   the panel and is not clipped by the panel's own scrolling. */
+.tc-mm-wrap:has(> .tc-mm.is-open)::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 0.75rem);
+  right: 2rem;
+  width: min(52rem, calc(100% - 4rem));
+  height: 1.35rem;
+}
+.tc-page .tc-mm a:focus-visible { outline-offset: 2px; }
+.tc-page .tc-mm-row:focus-visible { border-radius: 12px; }
+.tc-page .tc-mm-item:focus-visible { border-radius: 10px; }
+
+/* left: one row per service */
+.tc-mm-row {
+  grid-column: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.15rem 0.6rem;
+  padding: 0.7rem 2rem 0.7rem 0.75rem;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+.tc-mm-row.is-first { margin-top: 0.7rem; }
+.tc-mm-row:hover { background: rgba(255, 255, 255, 0.03); }
+.tc-mm-row.is-active { background: rgba(0, 252, 184, 0.07); }
+.tc-mm-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  color: var(--tc-teal);
+  background: rgba(57, 178, 178, 0.08);
+  border: 1px solid rgba(57, 178, 178, 0.2);
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.tc-mm-icon svg { width: 1.15rem; height: 1.15rem; }
+.tc-mm-row.is-active .tc-mm-icon {
+  color: var(--tc-aqua);
+  background: rgba(0, 252, 184, 0.1);
+  border-color: rgba(0, 252, 184, 0.35);
+}
+.tc-mm-row-eyebrow {
+  display: block;
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tc-muted);
+}
+.tc-mm-row-title {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #E2E8F0;
+}
+.tc-mm-row.is-active .tc-mm-row-title { color: #FFFFFF; }
+.tc-mm-row-go {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  margin-top: -0.45rem;
+  color: var(--tc-aqua);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.tc-mm-row-go svg { display: block; width: 0.9rem; height: 0.9rem; }
+.tc-mm-row.is-active .tc-mm-row-go { opacity: 1; transform: none; }
+
+.tc-mm-all,
+.tc-mm-overview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tc-mm-all {
+  grid-column: 1;
+  align-self: end;
+  justify-self: start;
+  margin: 0.25rem 0.85rem 0.65rem;
+  padding: 0.5rem;
+  color: var(--tc-teal);
+}
+.tc-mm-all:hover { color: var(--tc-aqua); }
+.tc-mm-all svg,
+.tc-mm-overview svg { width: 0.85rem; height: 0.85rem; transition: transform 0.15s ease; }
+.tc-mm-all:hover svg,
+.tc-mm-overview:hover svg { transform: translateX(3px); }
+
+/* right: the active service's own links */
+.tc-mm-pane {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.35rem 1.5rem 1.15rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tc-mm-pane.is-active { visibility: inherit; opacity: 1; }
+.tc-mm-kicker {
+  font-family: var(--font-mono-tf), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tc-aqua);
+}
+.tc-mm-lead {
+  margin-top: 0.4rem;
+  max-width: 34rem;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #94A3B8;
+}
+.tc-mm-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.1rem 0.5rem;
+  margin: 0.85rem -0.65rem 0;
+}
+.tc-mm-item {
+  display: block;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+.tc-mm-item:hover { background: rgba(255, 255, 255, 0.05); }
+.tc-mm-item b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #FFFFFF;
+  transition: color 0.15s ease;
+}
+.tc-mm-item span {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #94A3B8;
+}
+.tc-mm-item:hover b,
+.tc-mm-item[aria-current="page"] b { color: var(--tc-aqua); }
+
+/* Frontline Financial: two businesses, the loan app link, the disclosures */
+.tc-mm-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 0.95rem;
+}
+.tc-mm-group-title { font-size: 13.5px; font-weight: 700; color: #FFFFFF; transition: color 0.15s ease; }
+.tc-mm-group-title:hover { color: var(--tc-aqua); }
+/* each business's services as one dotted line of names */
+.tc-mm-names { margin-top: 0.3rem; font-size: 12px; line-height: 1.55; color: #94A3B8; }
+.tc-mm-names li { display: inline; }
+.tc-mm-names li:not(:last-child)::after {
+  content: " · ";
+  content: " · " / "";
+  color: #64748B;
+}
+.tc-mm-app {
+  margin-top: 0.9rem;
+  border: 1px solid rgba(0, 252, 184, 0.2);
+  background: rgba(0, 252, 184, 0.04);
+}
+.tc-mm-app:hover { background: rgba(0, 252, 184, 0.08); }
+.tc-mm-legal { margin-top: 0.85rem; }
+.tc-mm-legal .tc-lp-legal { font-size: 11px; line-height: 1.55; }
+.tc-mm-legal .tc-lp-legal + .tc-lp-legal { margin-top: 0.35rem; }
+
+.tc-mm-foot { margin-top: auto; padding-top: 1rem; }
+.tc-mm-overview {
+  display: flex;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--tc-aqua);
+}
+
+/* Tiles and sections the menu links to take programmatic focus on arrival
+   (tabIndex -1), so keyboard users land on them. No ring for mouse arrivals. */
+.tc-page .tc-bento[tabindex="-1"]:focus,
+.tc-page section[tabindex="-1"]:focus { outline: none; }
+.tc-page .tc-bento[tabindex="-1"]:focus-visible {
+  outline: 2px solid rgba(0, 252, 184, 0.55);
+  outline-offset: 3px;
+}
+
+/* phones: Services as an accordion in the drawer */
+.tc-msvc-btn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #E2E8F0;
+  text-align: left;
+  background: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tc-msvc-caret { width: 1rem; height: 1rem; color: #94A3B8; transition: transform 0.2s ease; }
+.tc-msvc-caret.is-open { transform: rotate(180deg); color: var(--tc-aqua); }
+.tc-msvc-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tc-drawer .tc-msvc-row a {
+  flex: 1;
+  padding: 0.7rem 0 0.7rem 0.9rem;
+  font-size: 14.5px;
+  border-bottom: 0;
+}
+.tc-msvc-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+}
+.tc-msvc-sub {
+  padding: 0.25rem 0 0.85rem 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tc-drawer .tc-msvc-sub a {
+  padding: 0.45rem 0;
+  font-size: 13.5px;
+  color: #B7C4CF;
+  border-bottom: 0;
+}
+.tc-drawer .tc-msvc-sub a:hover { color: var(--tc-aqua); }
+.tc-drawer .tc-msvc-sub .tc-mm-group-title { padding-bottom: 0.1rem; font-weight: 700; color: #FFFFFF; }
+.tc-msvc-groups { display: grid; gap: 0.9rem; margin-top: 0.25rem; }
+.tc-msvc-groups .tc-mm-names { margin-top: 0.1rem; }
+.tc-drawer .tc-msvc-sub .tc-msvc-app {
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(0, 252, 184, 0.2);
+  border-radius: 10px;
+  background: rgba(0, 252, 184, 0.04);
+}
+.tc-msvc-app b { display: block; font-size: 14px; color: #FFFFFF; }
+.tc-msvc-app span { display: block; margin-top: 0.1rem; font-size: 12px; font-weight: 400; color: #94A3B8; }
+/* the disclosures' links stay inline, not drawer rows */
+.tc-drawer .tc-mm-legal a {
+  display: inline;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--tc-aqua);
+  border-bottom: 0;
+}
+.tc-drawer .tc-msvc-all {
+  padding-left: 0.9rem;
+  font-size: 14px;
+  color: var(--tc-teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-mm,
+  .tc-mm.is-open,
+  .tc-mm-pane,
+  .tc-mm-caret,
+  .tc-mm-row-go,
+  .tc-msvc-caret { transition: none; }
+  .tc-mm { transform: none; }
+}

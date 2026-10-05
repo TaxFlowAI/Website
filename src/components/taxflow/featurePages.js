@@ -405,7 +405,7 @@ export const FEATURE_PAGES = [
     flo: { pose: "stamp", say: "Let’s register your company." },
     steps: [
       ["Apply in the app", "Five short sections: name, address, people, director ID and terms."],
-      ["We lodge it with ASIC", "Lodged by Frontline Holdings Group Pty Ltd, ASIC agent 51843."],
+      ["We lodge it with ASIC", "Lodged by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial, ASIC agent 51843."],
       ["Manage its tax in the same place", "Your new company gets its own account in the app."],
     ],
     sections: [
@@ -418,7 +418,7 @@ export const FEATURE_PAGES = [
       { title: "Save your progress", body: "Come back any time and pick up your application where you left off." },
       {
         title: "Lodged by a registered ASIC agent",
-        body: "Your application is lodged with ASIC by Frontline Holdings Group Pty Ltd, ASIC agent 51843.",
+        body: "Your application is lodged with ASIC by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial, ASIC agent 51843.",
       },
       {
         title: "Then run it from the same place",
@@ -428,7 +428,7 @@ export const FEATURE_PAGES = [
     ],
     faq: [
       { q: "How much does it cost?", a: `${COMPANY_REGISTRATION_PRICE}, including GST and the ASIC fee.` },
-      { q: "Who lodges the application?", a: "Frontline Holdings Group Pty Ltd, a registered ASIC agent (51843)." },
+      { q: "Who lodges the application?", a: "Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial, a registered ASIC agent (51843)." },
       { q: "Can I stop and come back later?", a: "Yes. Your progress is saved." },
     ],
   },

@@ -33,7 +33,7 @@ export const metadata = {
 
 const TRUST = [
   ["/taxflow/tax-preparation", "REGISTERED TAX AGENT 26313222", "Returns are prepared and lodged by TAX7 T04 PTY LTD trading as TaxFlowAI."],
-  ["/taxflow/corporate-secretarial", "ASIC AGENT 51843", "ASIC lodgements are made by Frontline Holdings Group Pty Ltd."],
+  ["/taxflow/corporate-secretarial", "ASIC AGENT 51843", "ASIC lodgements are made by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."],
   ["/taxflow/security", "ISO 27001-ALIGNED", "Australian-hosted, encrypted, and two-factor sign-in on every account."],
 ].filter(([href]) => SHOW_TAX_SERVICES || href !== "/taxflow/tax-preparation");
 

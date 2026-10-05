@@ -4,12 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import BrandSwitcherBar from "@/components/BrandSwitcherBar";
 import { SignInButton } from "@/components/taxflow/SignInModal";
+import ServicesMenu, { MobileServicesMenu } from "@/components/taxflow/ServicesMenu";
 
 const TAXFLOW_REGISTER_URL = "https://taxflowai.frontline.financial/register";
 
 const NAV_LINKS = [
   { href: "/taxflow/about", label: "About us" },
-  { href: "/taxflow#services", label: "Services" },
+  /* a dropdown on desktop and an accordion on phones (ServicesMenu.js) */
+  { href: "/taxflow#services", label: "Services", menu: true },
   { href: "/taxflow/security", label: "Data security" },
   { href: "/taxflow/faq", label: "FAQ" },
   { href: "/taxflow/contact", label: "Contact" },
@@ -25,22 +27,26 @@ export default function TaxFlowHeader() {
         className="border-b"
         style={{ borderColor: "rgba(255,255,255,0.08)", background: "#0A1628" }}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
           <Link href="/taxflow" className="text-lg font-bold tracking-tight md:text-xl">
             <span className="text-white">TaxFlow</span>
             <span style={{ color: "#00FCB8" }}>AI</span>
           </Link>
           <nav className="hidden items-center gap-6 md:flex" aria-label="TaxFlowAI">
-            {NAV_LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="tc-nav-link text-[13.5px] font-medium"
-                style={{ color: "#C7D2DC" }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((l) =>
+              l.menu ? (
+                <ServicesMenu key={l.href} />
+              ) : (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="tc-nav-link text-[13.5px] font-medium"
+                  style={{ color: "#C7D2DC" }}
+                >
+                  {l.label}
+                </Link>
+              )
+            )}
             <a
               href="tel:+61406909862"
               className="tc-mono hidden text-[12.5px] lg:inline-block"
@@ -84,12 +90,19 @@ export default function TaxFlowHeader() {
           </div>
         </div>
         {open && (
-          <nav className="tc-drawer px-5 pb-4 pt-2 md:hidden" aria-label="TaxFlowAI mobile">
-            {NAV_LINKS.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
-                {l.label}
-              </Link>
-            ))}
+          <nav
+            className="tc-drawer max-h-[calc(100dvh-7.5rem)] overflow-y-auto px-5 pb-4 pt-2 md:hidden"
+            aria-label="TaxFlowAI mobile"
+          >
+            {NAV_LINKS.map((l) =>
+              l.menu ? (
+                <MobileServicesMenu key={l.href} onNavigate={() => setOpen(false)} />
+              ) : (
+                <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
+                  {l.label}
+                </Link>
+              )
+            )}
             <SignInButton onOpen={() => setOpen(false)} />
             <a href="tel:+61406909862" className="tc-mono">0406 909 862</a>
           </nav>

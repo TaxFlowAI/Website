@@ -36,9 +36,11 @@ export const metadata = {
 
 const STRIP = ["Quote first", "No subscription", "Registered tax agent", "Every entity type"];
 
-/* span is the tile width on the six-column bento */
+/* span is the tile width on the six-column bento; id is the anchor the
+   header Services menu links to (servicesNav.js) */
 const SERVICES = [
   {
+    id: "individual",
     code: "INDIVIDUAL",
     span: "md:col-span-3",
     title: "Individual tax returns",
@@ -46,6 +48,7 @@ const SERVICES = [
     tags: ["D1 to D9 deductions", "Working from home", "Dividends and interest", "Private health and Medicare"],
   },
   {
+    id: "sole-trader",
     code: "SOLE TRADER",
     span: "md:col-span-3",
     title: "Sole trader returns",
@@ -53,36 +56,42 @@ const SERVICES = [
     tags: ["Income and expense review", "Vehicle logbook claims", "PSI checks", "Asset write-offs"],
   },
   {
+    id: "entity-returns",
     code: "COMPANY · TRUST · PARTNERSHIP",
     span: "md:col-span-2",
     title: "Entity returns",
     body: "Annual returns with financial statements, tax reconciliations, distributions and Division 7A director-loan review.",
   },
   {
+    id: "activity-statements",
     code: "BAS · IAS",
     span: "md:col-span-2",
     title: "Activity statements",
     body: "Monthly or quarterly GST, PAYG withholding and PAYG instalments, prepared from your books and lodged on time.",
   },
   {
+    id: "cgt",
     code: "CGT",
     span: "md:col-span-2",
     title: "Capital gains tax",
     body: "Shares, crypto and property. Cost base, discounts and exemptions worked out and documented.",
   },
   {
+    id: "rental",
     code: "RENTAL",
     span: "md:col-span-2",
     title: "Investment property schedules",
     body: "Rental income, deductible expenses, depreciation and interest apportionment for every property you own.",
   },
   {
+    id: "catch-up",
     code: "CATCH-UP",
     span: "md:col-span-2",
     title: "Prior-year and overdue returns",
     body: "Behind on lodgements? Your agent brings every entity up to date and deals with the ATO on your behalf.",
   },
   {
+    id: "advice",
     code: "ADVICE",
     span: "md:col-span-2",
     title: "Tax planning and advice",
@@ -181,7 +190,13 @@ export default function TaxPreparationPage() {
           />
           <div className="tc-reveal mt-10 grid items-stretch gap-4 md:grid-cols-6">
             {SERVICES.map((s) => (
-              <div key={s.title} className={`tc-bento ${s.span} ${s.tags ? "tc-bento-accent" : ""}`}>
+              <div
+                key={s.title}
+                id={s.id}
+                tabIndex={-1}
+                className={`tc-bento ${s.span} ${s.tags ? "tc-bento-accent" : ""}`}
+                style={{ scrollMarginTop: "130px" }}
+              >
                 <span className="tc-lp-code tc-mono">{s.code}</span>
                 <h3 className="tc-bento-title mt-4">{s.title}</h3>
                 <p className="tc-bento-body">{s.body}</p>
@@ -274,7 +289,7 @@ export default function TaxPreparationPage() {
           </p>
           <p className="tc-fineprint mt-10">
             Tax agent services are provided by TAX7 T04 Pty Ltd, trading as TaxFlowAI, Registered Tax
-            Agent 26313222. The platform is owned and operated by Frontline Holdings Group Pty Ltd. See our{" "}
+            Agent 26313222. The platform is owned and operated by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial. See our{" "}
             <Link href="/taxflow/terms" className="tc-link">Terms of Service</Link> and{" "}
             <Link href="/taxflow/privacy-policy" className="tc-link">Privacy Policy</Link>.
           </p>

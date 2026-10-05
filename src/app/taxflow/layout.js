@@ -58,8 +58,8 @@ export const metadata = {
 
 /* LocalBusiness + Organization schema for TaxFlowAI, the trading name of
    TAX7 T04 PTY LTD (Registered Tax Agent 26313222). The platform itself is
-   owned and developed by Frontline Holdings Group Pty Ltd, a registered ASIC
-   agent.
+   owned and developed by Frontline Holdings Group Pty Ltd, trading as
+   TaxFlowAI by Frontline Financial, a registered ASIC agent.
    While tax services are switched off (src/data/taxflow-flags.js) the
    organisation is described as the platform owner instead.
    Both offices; geo coordinates are approximate (TODO: confirm exact pins). */
@@ -77,13 +77,13 @@ const ORG_SCHEMA = {
       ...(SHOW_TAX_SERVICES
         ? {
             description:
-              "Australian tax portal for individuals and small entities. Tax services are provided by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd.",
+              "Australian tax portal for individuals and small entities. Tax services are provided by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial.",
             legalName: "TAX7 T04 PTY LTD",
             taxID: "73 680 225 512",
           }
         : {
             description:
-              "Australian tax portal for individuals and small entities. The platform is owned and developed by Frontline Holdings Group Pty Ltd.",
+              "Australian tax portal for individuals and small entities. The platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial.",
             legalName: "Frontline Holdings Group Pty Ltd",
             taxID: "59 671 861 475",
           }),

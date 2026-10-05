@@ -55,8 +55,8 @@ export default function CompliancePage({
           <div className="compliance-entity-box">
             <div>
               <strong>Platform owner and operator:</strong>{" "}
-              {COMPLIANCE_CONFIG.FH_NAME} (ABN: {COMPLIANCE_CONFIG.FH_ABN}) — ASIC
-              Agent No. {COMPLIANCE_CONFIG.FH_ASIC}
+              {COMPLIANCE_CONFIG.FH_NAME} (ABN: {COMPLIANCE_CONFIG.FH_ABN}), trading as{" "}
+              {COMPLIANCE_CONFIG.FH_TRADING_NAME} — ASIC Agent No. {COMPLIANCE_CONFIG.FH_ASIC}
             </div>
             <div>
               <strong>Tax agent:</strong> {COMPLIANCE_CONFIG.TAX_NAME} (ABN:{" "}

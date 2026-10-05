@@ -237,6 +237,7 @@ export const COMPLIANCE_CONFIG = {
   TERMS_URL: "https://frontline.financial/taxflow/terms",
   // platform owner and operator, and registered ASIC agent
   FH_NAME: "Frontline Holdings Group Pty Ltd",
+  FH_TRADING_NAME: "TaxFlowAI by Frontline Financial",
   FH_ABN: "59 671 861 475",
   FH_ACN: "671 861 475",
   FH_ASIC: "51843",

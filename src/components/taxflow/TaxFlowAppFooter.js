@@ -12,7 +12,8 @@ const TAXFLOW_PHONE_LINK = "tel:+61406909862";
 /**
  * TaxFlowAI app footer.
  * Tax services: TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent
- * 26313222. Platform owner and ASIC agent: Frontline Holdings Group Pty Ltd.
+ * 26313222. Platform owner and ASIC agent: Frontline Holdings Group Pty Ltd
+ * trading as TaxFlowAI by Frontline Financial.
  * Keep the legal links (Privacy Policy | Collection Notice | Terms of
  * Service | Verify Tax Agent) and both entities' details. The tax agent's
  * details and the Verify Tax Agent link hide while tax services are switched
@@ -37,7 +38,7 @@ export default function TaxFlowAppFooter() {
               </p>
             )}
             <p className={`${SHOW_TAX_SERVICES ? "mt-1" : "mt-2"} text-sm text-[#94A3B8]`}>
-              Platform owned and developed by Frontline Holdings Group Pty Ltd.
+              Platform owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial.
             </p>
             {/* Social icons render only when REAL profile URLs are set in
                 src/data/taxflow-proof.js — never link to generic homepages */}
@@ -196,8 +197,8 @@ export default function TaxFlowAppFooter() {
                   <br />
                 </>
               )}
-              Platform owner &amp; ASIC agent: Frontline Holdings Group Pty Ltd (ABN
-              59 671 861 475), ASIC Agent 51843.
+              Platform owner &amp; ASIC agent: Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial
+              (ABN 59 671 861 475), ASIC Agent 51843.
               <br />
               Credit services are provided by Frontline Financial Pty Ltd (CRN 575968,
               ACL 389087) and Martyn Financial Pty Ltd t/a Frontline Financial: Asset
@@ -206,7 +207,7 @@ export default function TaxFlowAppFooter() {
             <p className="mt-4 text-xs text-[#94A3B8]">
               TaxFlowAI © {year} ·{" "}
               {SHOW_TAX_SERVICES ? "Tax services by TAX7 T04 PTY LTD · " : ""}Platform by
-              Frontline Holdings Group
+              Frontline Holdings Group trading as TaxFlowAI by Frontline Financial
             </p>
           </div>
         </div>

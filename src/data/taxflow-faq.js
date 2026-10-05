@@ -17,7 +17,7 @@ const ALL_FAQ = [
   {
     id: "who-lodges",
     q: "Who prepares and lodges my return?",
-    a: "A Registered Tax Agent. Tax services are provided by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222. The platform organises your receipts, documents and deadlines, and your return is prepared and lodged by registered professionals. The platform itself is owned and developed by Frontline Holdings Group Pty Ltd.",
+    a: "A Registered Tax Agent. Tax services are provided by TAX7 T04 PTY LTD trading as TaxFlowAI, Registered Tax Agent 26313222. The platform organises your receipts, documents and deadlines, and your return is prepared and lodged by registered professionals. The platform itself is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial.",
   },
   {
     id: "what-is-rta",

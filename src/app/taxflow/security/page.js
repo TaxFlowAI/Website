@@ -382,7 +382,7 @@ export default function SecurityPage() {
               className="tc-mono mt-10 border-t pt-6 text-[11.5px] leading-relaxed"
               style={{ borderColor: "rgba(255,255,255,0.08)", color: "#94A3B8" }}
             >
-              TaxFlowAI · Owned and operated by Frontline Holdings Group Pty Ltd · ABN 59 671 861 475 · ASIC Agent 51843
+              TaxFlowAI · Owned and operated by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial · ABN 59 671 861 475 · ASIC Agent 51843
             </p>
           </div>
         </div>

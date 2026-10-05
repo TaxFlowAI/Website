@@ -4,37 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import FrontlineLogoFull from "@/components/FrontlineLogoFull";
 import BrandSwitcherBar from "@/components/BrandSwitcherBar";
-
-const SERVICE_MENU = [
-  {
-    label: "Frontline Financial Brokers",
-    href: "/brokers",
-    activeKey: "brokers",
-    services: [
-      "Home Loans",
-      "First Home Buyers",
-      "Investment Property Loans",
-      "Refinancing",
-      "Commercial Loans",
-      "Construction Loans",
-      "Debt Consolidation",
-      "SMSF Loans",
-    ],
-  },
-  {
-    label: "Frontline Financial: Asset Solutions",
-    href: "/assetsolutions",
-    activeKey: "asset-solutions",
-    services: [
-      "Car Loans",
-      "Commercial Vehicle Finance",
-      "Equipment & Machinery",
-      "Personal Loans",
-      "Working Capital",
-      "Fleet Finance",
-    ],
-  },
-];
+import { FRONTLINE_SERVICE_MENU as SERVICE_MENU } from "@/data/frontline-services";
 
 export default function LayoutNav({ activeNav = "home" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
