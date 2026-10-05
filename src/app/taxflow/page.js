@@ -108,7 +108,7 @@ export default function TaxFlowHomePage() {
       </section>
 
       {/* ============ LAYERED WAVE ============ */}
-      <TaxFlowWaveLayers from={NAVY} to={NAVY} />
+      <TaxFlowWaveLayers from={NAVY} to={NAVY} draw />
 
       {/* ============ ABOUT US — team photo hero ============ */}
       <section id="about" className="tc-section-spined tc-depth-blue relative overflow-hidden" style={{ scrollMarginTop: "110px" }}>
@@ -321,7 +321,7 @@ export default function TaxFlowHomePage() {
 
             {/* 2FA */}
             <div className="tc-bento md:col-span-2">
-              <div className="mb-5 grid max-w-[15rem] grid-cols-6 gap-1.5" aria-hidden>
+              <div className="tc-code-type mb-5 grid max-w-[15rem] grid-cols-6 gap-1.5" aria-hidden>
                 {["4", "8", "2", "", "", ""].map((d, i) => (
                   <span
                     key={i}

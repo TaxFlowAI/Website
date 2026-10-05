@@ -2,10 +2,16 @@
    and blue stacked over the section colour below. `from` paints behind the
    waves (the section above), `to` is the front wave's fill (the section
    below). Same geometry family as WaveDivider, so it sits alongside the
-   single waves elsewhere on the page. */
-export default function TaxFlowWaveLayers({ from = "#0A1628", to = "#0A1628" }) {
+   single waves elsewhere on the page.
+   `draw` makes the glowing crest line draw itself once, when the wave first
+   scrolls into view (RevealInit adds tc-visible to .tc-observe). */
+export default function TaxFlowWaveLayers({ from = "#0A1628", to = "#0A1628", draw = false }) {
   return (
-    <div aria-hidden className="relative w-full overflow-hidden leading-none" style={{ background: from }}>
+    <div
+      aria-hidden
+      className={`relative w-full overflow-hidden leading-none ${draw ? "tc-observe" : ""}`}
+      style={{ background: from }}
+    >
       <svg
         viewBox="0 0 1440 140"
         preserveAspectRatio="none"
@@ -32,6 +38,8 @@ export default function TaxFlowWaveLayers({ from = "#0A1628", to = "#0A1628" }) 
         {/* glowing crest line on the blue wave */}
         <path
           d="M0 108C240 64 480 138 720 104C960 70 1200 74 1440 112"
+          pathLength={draw ? 1 : undefined}
+          className={draw ? "tc-wave-crest" : undefined}
           fill="none"
           stroke="#00FCB8"
           strokeOpacity="0.55"
