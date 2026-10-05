@@ -193,7 +193,7 @@ export default function ContactPage() {
             >
               <LocationIcon className="h-6 w-6 text-[#00FCB8]" />
               <span className="mt-1 font-medium text-white">Level 49, 8 Parramatta Square</span>
-              <span className="text-xs text-[#39B2B2]">Mon–Fri 9am–5pm</span>
+              <span className="text-xs text-[#39B2B2]">Mon–Fri 9am–5:30pm</span>
             </a>
           </div>
         </div>
@@ -407,7 +407,7 @@ export default function ContactPage() {
               </p>
               <ul className="mt-4 space-y-1 text-sm text-white">
                 <li>📍 Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
-                <li>🕐 Monday – Friday: 9:00am – 5:00pm</li>
+                <li>🕐 Monday – Friday: 9:00am – 5:30pm</li>
                 <li>📞 +61 422 959 486</li>
               </ul>
               <a

@@ -13,9 +13,9 @@ import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
    are left out on purpose (they need the credit disclosures).
 
    Runs once the intro (phone arrives, scan line, Flo lands; CSS in
-   the-current.css) has played. Pauses on hover or focus, off screen and in a
-   background tab; the pause button stops it for good. With reduced motion it
-   never plays by itself and Flo does not dance. */
+   the-current.css) has played, and keeps going by itself: it only waits while
+   off screen or in a background tab, and the pause button stops it. With
+   reduced motion it never plays by itself and Flo does not dance. */
 
 const SLIDES = [
   { id: "receipt-question", pose: "present", say: "Hello! I’m Flo." },
@@ -28,10 +28,10 @@ const SLIDES = [
 ].filter((s) => SHOW_TAX_SERVICES || !s.tax);
 
 const N = SLIDES.length;
-const HOLD = 3400; // time on each screen
-const SWIPE = 700; // phone swipe, matches .tc-reel-track transition
+const HOLD = 2800; // time on each screen
+const SWIPE = 600; // phone swipe, matches .tc-reel-track transition
 const SWIPE_AFTER = 120; // the phone moves just after Flo pushes off
-const START = 1500; // first preload, after the intro
+const START = 1200; // first preload, after the intro
 
 const PHONE_SIZES = "(min-width: 1024px) 232px, (min-width: 640px) 212px, 53vw";
 const FLO_SIZES = "(min-width: 1024px) 236px, (min-width: 640px) 210px, 52vw";
@@ -102,8 +102,6 @@ export default function HeroShowreel() {
   const [reach, setReach] = useState(0); // highest slide allowed to load
   const [armed, setArmed] = useState(false);
   const [playing, setPlaying] = useState(true);
-  const [hover, setHover] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [onScreen, setOnScreen] = useState(true);
   const [tabVisible, setTabVisible] = useState(true);
   const [reduced, setReduced] = useState(false);
@@ -220,7 +218,7 @@ export default function HeroShowreel() {
     setReach(N - 1);
   };
 
-  const paused = !playing || hover || focused || !onScreen || !tabVisible || reduced;
+  const paused = !playing || !onScreen || !tabVisible || reduced;
 
   const advance = useEffectEvent(() => goTo(cur + 1, { loop: cur === N - 1 }));
 
@@ -237,12 +235,6 @@ export default function HeroShowreel() {
       role="region"
       aria-roledescription="carousel"
       aria-label="A look inside the TaxFlowAI app"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onFocus={() => setFocused(true)}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);
-      }}
     >
       <div className="tc-hero-demo">
         <div className="tc-hero-demo-phone">

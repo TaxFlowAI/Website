@@ -15,7 +15,7 @@ export const metadata = {
   metadataBase: new URL("https://frontline.financial"),
   title: "Finance Broker Parramatta | Frontline Financial",
   description:
-    "Home loans, car loans and equipment finance from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
+    "Home loans and car loans from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

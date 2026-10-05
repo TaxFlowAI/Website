@@ -2728,7 +2728,7 @@
 .tc-reel-track {
   display: flex;
   height: 100%;
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .tc-reel-track.is-snap { transition: none; }
 .tc-reel-slide { flex: 0 0 100%; display: block; }

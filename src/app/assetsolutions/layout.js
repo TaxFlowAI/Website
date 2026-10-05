@@ -1,17 +1,18 @@
 /* SEO layout for /assetsolutions — the page itself is a client component,
-   so metadata and structured data live here. Target queries: car finance
-   Parramatta, car loan Parramatta, equipment finance Sydney. */
+   so metadata and structured data live here. Target queries: car loan
+   Parramatta, car finance Parramatta. Car loans and home loans are the core
+   services (owner, 5 Oct 2026), so the listing leads with car loans. */
 
 export const metadata = {
   metadataBase: new URL("https://frontline.financial"),
-  title: "Car & Equipment Finance Parramatta | Frontline Financial",
+  title: "Car Loans & Car Finance Parramatta | Frontline Financial",
   description:
-    "Award-winning car and equipment finance broker in Parramatta. Cars, utes, trucks, machinery and fleets from 30+ lenders. 100+ five-star Google reviews.",
+    "Award-winning car loan broker in Parramatta. We compare 30+ lenders for new and used cars, utes and vans. 100+ five-star Google reviews.",
   alternates: { canonical: "/assetsolutions" },
   openGraph: {
-    title: "Car & Equipment Finance Parramatta — Frontline Financial: Asset Solutions",
+    title: "Car Loans & Car Finance Parramatta — Frontline Financial: Asset Solutions",
     description:
-      "Car loans, equipment and fleet finance from 30+ lenders. 24hr approvals, 100+ five-star Google reviews. Visit us at Level 49, 8 Parramatta Square.",
+      "Car loans from 30+ lenders. 24hr approvals, 100+ five-star Google reviews. Visit us at Level 49, 8 Parramatta Square.",
     url: "/assetsolutions",
     siteName: "Frontline Financial",
     type: "website",
@@ -32,7 +33,7 @@ const ASSET_SOLUTIONS_SCHEMA = {
   telephone: "+61422959486",
   email: "sham@frontline.financial",
   description:
-    "Asset finance broker in Parramatta: car loans, commercial vehicle, equipment, machinery and fleet finance from 30+ lenders. Winner — Vehicle & Equipment Finance, Fintelligence Broker Awards FY25.",
+    "Car loan broker in Parramatta: new and used cars, utes and vans from 30+ lenders. Winner — Vehicle & Equipment Finance, Fintelligence Broker Awards FY25.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Level 49, 8 Parramatta Square",
