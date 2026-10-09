@@ -459,6 +459,53 @@
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 252, 184, 0.08);
 }
 
+/* ---------- home promo video ---------- */
+.tc-promo video { background: #000; }
+.tc-promo-poster { cursor: pointer; }
+.tc-promo-cta {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tc-promo-play {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--tc-aqua);
+  color: var(--tc-bg);
+  box-shadow: 0 0 0 8px rgba(0, 252, 184, 0.16), 0 0 36px var(--tc-glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tc-promo-play svg { width: 30px; height: 30px; margin-left: 3px; }
+.tc-promo-poster:hover .tc-promo-play,
+.tc-promo-poster:focus-visible .tc-promo-play {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 12px rgba(0, 252, 184, 0.2), 0 0 52px var(--tc-glow);
+}
+.tc-promo-poster:focus-visible { outline: 2px solid var(--tc-aqua); outline-offset: -4px; }
+.tc-promo-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.tc-promo-label .tc-mono { color: #94A3B8; font-size: 12px; font-weight: 400; }
+@media (max-width: 640px) {
+  /* the poster is small here: button only, in the corner clear of Flo */
+  .tc-promo-cta { left: 12px; bottom: 12px; }
+  .tc-promo-play { width: 44px; height: 44px; box-shadow: 0 0 0 5px rgba(0, 252, 184, 0.16), 0 0 24px var(--tc-glow); }
+  .tc-promo-play svg { width: 18px; height: 18px; margin-left: 2px; }
+  .tc-promo-label { display: none; }
+}
+
 /* ---------- Calendly embeds ---------- */
 .tc-calendly-inline {
   position: relative;

@@ -13,6 +13,7 @@ import MedicalShowcase from "@/components/taxflow/MedicalShowcase";
 import { container, CtaBand } from "@/components/taxflow/TaxFlowShared";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 import HeroShowreel from "@/components/taxflow/HeroShowreel";
+import PromoVideo from "@/components/taxflow/PromoVideo";
 
 export const metadata = {
   title: {
@@ -93,6 +94,25 @@ export default function TaxFlowHomePage() {
           </div>
         </div>
       </section>
+
+      {/* ============ PROMO VIDEO ============
+          the film shows returns being lodged and ends on the TAX7 T04
+          registration, so it hides with the tax services */}
+      {SHOW_TAX_SERVICES && (
+        <section id="video" style={{ background: NAVY, scrollMarginTop: "110px" }}>
+          <div className={`${container} pb-16 pt-4 md:pb-20`}>
+            <div className="tc-reveal mx-auto max-w-2xl text-center">
+              <p className="tc-eyebrow" style={{ color: "#39B2B2" }}>Watch</p>
+              <h2 className="tc-display mt-4 text-4xl text-white md:text-5xl">
+                Flo in 80 seconds
+              </h2>
+            </div>
+            <div className="tc-reveal mt-10">
+              <PromoVideo />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ============ LAYERED WAVE ============ */}
       <TaxFlowWaveLayers from={NAVY} to={NAVY} draw />
