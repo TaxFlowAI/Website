@@ -2,17 +2,30 @@ import { NextResponse } from "next/server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function getRecipient(teamMember) {
-  const hassan = process.env.CONTACT_EMAIL_HASSAN || "hassan@frontline.financial";
-  const sham = process.env.CONTACT_EMAIL_SHAM || "sham@frontline.financial";
-  const dean = process.env.CONTACT_EMAIL_DEAN || "dean@frontline.financial";
+const SEND_FAILED_MESSAGE =
+  "Something went wrong sending your message. Please try again, or call us on +61 422 959 486.";
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Each business line's leads go to one inbox:
+// Brokers → Hassan; Asset Solutions (incl. vehicle finance and Dean's page) → operations; TaxFlowAI → taxflowai.
+function getRecipient({ teamMember, consultationService, campaign }) {
+  const brokers = process.env.CONTACT_EMAIL_BROKERS || "hassan@frontline.financial";
+  const assetSolutions = process.env.CONTACT_EMAIL_ASSET_SOLUTIONS || "operations@frontline.financial";
   const taxflow = process.env.CONTACT_EMAIL_TAXFLOW || "taxflowai@frontline.financial";
-  const def = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
-  if (teamMember === "hassan") return hassan;
-  if (teamMember === "sham") return sham;
-  if (teamMember === "dean") return dean;
+  if (consultationService === "brokers" || teamMember === "hassan") return brokers;
+  if (consultationService === "asset-solutions" || teamMember === "sham" || campaign === "dean-landing") {
+    return assetSolutions;
+  }
   if (teamMember === "taxflow") return taxflow;
-  return def;
+  return process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
 }
 
 export async function POST(request) {
@@ -55,35 +68,27 @@ export async function POST(request) {
     return NextResponse.json({ success: false, error: "Message is required." }, { status: 400 });
   }
 
-  const to = getRecipient(teamMember);
-  const opsEmail = process.env.CONTACT_EMAIL_DEFAULT || "operations@frontline.financial";
-  const deanEmail = process.env.CONTACT_EMAIL_DEAN || "dean@frontline.financial";
-  // Dean campaign → ensure both ops and Dean receive a copy.
-  const ccList = campaign === "dean-landing"
-    ? [opsEmail, deanEmail].filter((addr) => addr && addr !== to)
-    : [opsEmail].filter((addr) => addr && addr !== to);
-  const cc = ccList.length ? ccList.join(", ") : undefined;
+  const to = getRecipient({ teamMember, consultationService, campaign });
   const servicesLabel = Array.isArray(services) && services.length ? services.join(", ") : "General enquiry";
   const subject = `New Enquiry — ${firstName.trim()} ${lastName.trim()} re: ${servicesLabel}`;
   const timestamp = new Date().toISOString();
   const html = `
 <h2>New Contact Form Submission</h2>
-<p><strong>Name:</strong> ${firstName.trim()} ${lastName.trim()}</p>
-<p><strong>Email:</strong> ${email.trim()}</p>
-<p><strong>Phone:</strong> ${phone.trim()}</p>
-<p><strong>Preferred contact:</strong> ${preferredContact}</p>
-<p><strong>Interested in:</strong> ${servicesLabel}</p>
+<p><strong>Name:</strong> ${escapeHtml(`${firstName.trim()} ${lastName.trim()}`)}</p>
+<p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
+<p><strong>Phone:</strong> ${escapeHtml(phone.trim())}</p>
+<p><strong>Preferred contact:</strong> ${escapeHtml(preferredContact)}</p>
+<p><strong>Interested in:</strong> ${escapeHtml(servicesLabel)}</p>
 <p><strong>Message:</strong></p>
-<p>${message.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br/>")}</p>
+<p>${escapeHtml(message.trim()).replace(/\n/g, "<br/>")}</p>
 <p><strong>Submitted:</strong> ${timestamp}</p>
 <hr/>
 <p style="color:grey;font-size:12px">Submitted via frontline.financial contact form</p>
 `;
 
-  const hasSmtp =
-    process.env.SMTP_HOST &&
-    process.env.SMTP_USER &&
-    process.env.SMTP_PASS;
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const from =
+    process.env.CONTACT_EMAIL_FROM || "Frontline Financial Website <website@frontline.financial>";
 
   const leadPayload = {
     firstName: firstName.trim(),
@@ -126,57 +131,42 @@ export async function POST(request) {
     return { forwardedTo: null, forwardError: null };
   };
 
-  if (!hasSmtp) {
-    // No SMTP configured: still return success so form works; optionally log
+  if (!resendApiKey) {
+    // Locally, let the form complete without a key so pages can be tested.
     if (process.env.NODE_ENV === "development") {
-      console.log("[Contact API] No SMTP configured. Would send to:", to, "CC:", cc, "Subject:", subject);
+      console.log("[Contact API] RESEND_API_KEY not set. Would send to:", to, "Subject:", subject);
+      const forward = await forwardToPlatform(request.url);
+      return NextResponse.json({ success: true, ...forward });
     }
-    const forward = await forwardToPlatform(request.url);
-    return NextResponse.json({ success: true, ...forward });
-  }
-
-  let nodemailer;
-  try {
-    // Module path from env so bundler does not resolve at build time when pkg is missing
-    const nodemailerModule = process.env.NODEMAILER_MODULE || "nodemailer";
-    nodemailer = (await import(nodemailerModule)).default;
-  } catch (e) {
-    if (process.env.NODE_ENV === "development") {
-      console.log("[Contact API] nodemailer not installed. Run: npm install nodemailer");
-    }
-    return NextResponse.json({ success: true });
+    // In production a missing key would silently drop the lead, so fail loudly instead.
+    console.error("[Contact API] RESEND_API_KEY is not set; enquiry from", email.trim(), "was not emailed.");
+    return NextResponse.json({ success: false, error: SEND_FAILED_MESSAGE }, { status: 500 });
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || "587", 10),
-      secure: process.env.SMTP_PORT === "465",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        subject,
+        html,
+        reply_to: email.trim(),
+      }),
     });
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to,
-      cc,
-      subject,
-      html,
-      replyTo: email.trim(),
-    });
+    if (!res.ok) {
+      const detail = await res.json().catch(() => ({}));
+      throw new Error(`Resend ${res.status}: ${detail.message || res.statusText}`);
+    }
     const forward = await forwardToPlatform(request.url);
     return NextResponse.json({ success: true, ...forward });
   } catch (err) {
-    // Log the real SMTP error server-side; never expose it to the visitor.
+    // Log the real Resend error server-side; never expose it to the visitor.
     console.error("[Contact API] Send failed:", err?.message || err);
-    return NextResponse.json(
-      {
-        success: false,
-        error:
-          "Something went wrong sending your message. Please try again, or call us on +61 422 959 486.",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: SEND_FAILED_MESSAGE }, { status: 500 });
   }
 }

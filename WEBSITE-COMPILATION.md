@@ -14,7 +14,7 @@ This document summarises everything implemented on the Frontline Financial websi
 | **Font** | DM Sans (Google Fonts), weights 400 & 700 |
 | **Dev server** | `npm run dev` — runs on port **3002** |
 | **Scripts** | `dev`, `build`, `start`, `lint` |
-| **Other** | nodemailer (contact form email), client-side fetch to API routes |
+| **Other** | Resend API (contact form email), client-side fetch to API routes |
 
 **Root layout** (`src/app/layout.js`):
 - Global metadata: title `"Frontline Financial | Finance Made Simple"`, description for Australian financial services (Brokers + Asset Solutions).
@@ -49,7 +49,7 @@ This document summarises everything implemented on the Frontline Financial websi
 
 | Route | File | Purpose |
 |-------|------|---------|
-| `POST /api/contact` | `src/app/api/contact/route.js` | Contact form: validates name, email, phone, message; sends email via SMTP (env: SMTP_*, CONTACT_EMAIL_*). If body includes `consultationService` then also forwards lead: `"brokers"` → Broker Engine, `"asset-solutions"` → Ambition Cloud. |
+| `POST /api/contact` | `src/app/api/contact/route.js` | Contact form: validates name, email, phone, message; sends email via the Resend API (env: RESEND_API_KEY, CONTACT_EMAIL_*). If body includes `consultationService` then also forwards lead: `"brokers"` → Broker Engine, `"asset-solutions"` → Ambition Cloud. |
 | `POST /api/broker-engine` | `src/app/api/broker-engine/route.js` | Forwards leads to Broker Engine (env: BROKER_ENGINE_API_URL, BROKER_ENGINE_API_KEY). |
 | `POST /api/ambition-cloud` | `src/app/api/ambition-cloud/route.js` | Forwards leads to Ambition Cloud / Fintelligence (env: AMBITION_CLOUD_API_KEY, AMBITION_CLOUD_API_URL). |
 

@@ -2,7 +2,18 @@
 
 ## Contact (`/api/contact`)
 
-Handles contact form submissions (email via SMTP). When the payload includes `consultationService`, the lead is also forwarded to the corresponding platform:
+Handles contact form submissions, emailed to staff through the [Resend](https://resend.com) API from `website@frontline.financial` (domain verified in Resend; DNS records at GoDaddy).
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `RESEND_API_KEY` | Yes | Resend API key (`re_…`). Without it, development logs the enquiry and returns success; production returns an error so the visitor sees the phone number instead of a false "sent". |
+| `CONTACT_EMAIL_FROM` | No | Sender (default: `Frontline Financial Website <website@frontline.financial>`). Must be on a domain verified in Resend. |
+| `CONTACT_EMAIL_BROKERS`, `_ASSET_SOLUTIONS`, `_TAXFLOW` | No | One inbox per business line (defaults: hassan@, operations@, taxflowai@). Asset Solutions includes the vehicle finance and Dean landing pages. No CCs. |
+| `CONTACT_EMAIL_DEFAULT` | No | Fallback for an enquiry that matches no business line (default: operations@). |
+
+Send failures are logged as `[Contact API] Send failed: Resend <status>: <message>` (check Vercel → Logs).
+
+When the payload includes `consultationService`, the lead is also forwarded to the corresponding platform:
 
 - `consultationService: "brokers"` → **Broker Engine** (Frontline Financial Brokers)
 - `consultationService: "asset-solutions"` → **Ambition Cloud** (Frontline Financial: Asset Solutions)
