@@ -1,5 +1,6 @@
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import MetaPixel from "@/components/MetaPixel";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${dmSans.variable} font-sans antialiased`}>
         {children}
+        <MetaPixel />
       </body>
     </html>
   );

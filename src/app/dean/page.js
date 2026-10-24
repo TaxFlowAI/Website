@@ -6,6 +6,7 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
+import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
 
 const SERVICE_AREAS = [
@@ -276,6 +277,7 @@ export default function DeanPage() {
                   });
                   const data = await res.json();
                   if (!res.ok) throw new Error(data.error || "Something went wrong");
+                  trackLead();
                   setSuccess(true);
                 } catch (err) {
                   setError(err.message || "Failed to submit. Please try again.");

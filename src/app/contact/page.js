@@ -7,6 +7,7 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
+import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
 
 const SERVICES_HASSAN = [
@@ -146,6 +147,7 @@ export default function ContactPage() {
         return;
       }
       const teamParam = teamMember === "hassan" ? "hassan" : teamMember === "sham" ? "sham" : "team";
+      trackLead();
       router.push(`/contact/thank-you?team=${teamParam}`);
     } catch {
       setSubmitError("Something went wrong. Please try again or call us on +61 422 959 486.");

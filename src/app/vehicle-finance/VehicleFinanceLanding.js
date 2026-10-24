@@ -7,6 +7,7 @@ import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
+import { trackMeta } from "@/components/MetaPixel";
 
 /* ================= real data only ================= */
 
@@ -62,17 +63,16 @@ const TEXT_STEPS = [
 const FINAL_STEP = TEXT_STEPS.length + QUALIFIERS.length; // 7
 const QUESTION_COUNT = FINAL_STEP; // 7 questions before the send screen
 
-/* analytics: GA4 + Meta Pixel + dataLayer when present (scripts load only
-   when the env IDs are configured — see bottom of component). */
+/* analytics: GA4 + Meta Pixel + dataLayer when present (GA4 loads at the
+   bottom of the component, the pixel from the root layout — each only when
+   its env ID is configured). */
 function track(eventName, fbStandard) {
   try {
     if (typeof window === "undefined") return;
     (window.dataLayer = window.dataLayer || []).push({ event: eventName });
     if (typeof window.gtag === "function") window.gtag("event", eventName);
-    if (typeof window.fbq === "function") {
-      if (fbStandard) window.fbq("track", fbStandard);
-      else window.fbq("trackCustom", eventName);
-    }
+    if (fbStandard) trackMeta(fbStandard);
+    else trackMeta(eventName, false);
   } catch {
     /* analytics must never break the page */
   }
@@ -954,9 +954,10 @@ export default function VehicleFinanceLanding() {
       )}
 
       {/* ============ ANALYTICS — load only when IDs are configured ============
-          TODO(Hassan): set NEXT_PUBLIC_GA4_ID and NEXT_PUBLIC_META_PIXEL_ID in
-          the deployment environment. Events: vf_form_view, vf_form_start,
-          vf_form_submit (+ Meta standard "Lead"). */}
+          TODO(Hassan): set NEXT_PUBLIC_GA4_ID in the deployment environment.
+          The Meta Pixel loads site-wide from the root layout (MetaPixel).
+          Events: vf_form_view, vf_form_start, vf_form_submit (+ Meta standard
+          "Lead"). */}
       {process.env.NEXT_PUBLIC_GA4_ID && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_ID}`} strategy="afterInteractive" />
@@ -964,11 +965,6 @@ export default function VehicleFinanceLanding() {
             {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA4_ID}');`}
           </Script>
         </>
-      )}
-      {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');fbq('track','PageView');`}
-        </Script>
       )}
     </div>
   );

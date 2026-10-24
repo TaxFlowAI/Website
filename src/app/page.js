@@ -7,6 +7,7 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
+import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
@@ -692,13 +693,8 @@ export default function Home() {
                       if (!res.ok) throw new Error(data.error || "Something went wrong");
                       const serviceId = selectedService?.id || "brokers";
                       const forwarded = data.forwardedTo ? `&forwarded=${data.forwardedTo}` : "";
-                      const contactParams = new URLSearchParams({
-                        fn: consultationForm.firstName.trim(),
-                        ln: consultationForm.lastName.trim(),
-                        em: consultationForm.email.trim(),
-                        ph: consultationForm.phone.trim(),
-                      }).toString();
-                      router.push(`/contact/thank-you?team=${serviceId}${forwarded}&${contactParams}`);
+                      trackLead();
+                      router.push(`/contact/thank-you?team=${serviceId}${forwarded}`);
                     } catch (err) {
                       setConsultationError(err.message || "Failed to submit. Please try again.");
                     } finally {
