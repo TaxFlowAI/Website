@@ -4,8 +4,10 @@ import { useState } from "react";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import { BROKERS_FAQ } from "@/data/brokers-faq";
 
 const LOAN_CARDS = [
+  { title: "Self-Employed Home Loans", tag: "Our Specialty", desc: "Sole traders, company directors and ABN holders. One year of tax returns, low doc and add-backs: we know which lenders allow what.", icon: "briefcase", href: "/self-employed-home-loans" },
   { title: "Home Loans", tag: "Most Popular", desc: "Owner-occupied loans for your primary residence. Variable, fixed, split — we find the structure that suits you.", icon: "house" },
   { title: "First Home Buyers", tag: "Grants Available", desc: "Navigate grants, stamp duty concessions, and LMI waivers. We guide first home buyers every step of the way.", icon: "key" },
   { title: "Investment Property Loans", tag: "Portfolio Growth", desc: "Build your portfolio with interest-only options, offset accounts, and structures designed for investors.", icon: "chart" },
@@ -24,13 +26,11 @@ const PROCESS_STEPS = [
   { num: 5, title: "Settlement", desc: "Your loan settles and you get the keys. We stay in touch for your next review." },
 ];
 
-const FAQ_ITEMS = [
-  { q: "How much does it cost to use a mortgage broker?", a: "Nothing. Our broking service is completely free to you as the borrower. We receive a commission from the lender once your loan settles — this does not affect the rate or product you receive." },
-  { q: "How is Frontline Financial different from going to my bank?", a: "Your bank can only offer you their own products. We have access to 30+ lenders and are legally obligated under the best interests duty to find the right loan for your situation — not the most profitable one for us." },
-  { q: "How long does the process take?", a: "From your initial assessment to approval typically takes 3–10 business days depending on the lender and complexity of your application. We'll give you a realistic timeline upfront." },
-  { q: "Can you help if I've been declined before?", a: "Yes. We specialise in complex applications including self-employed borrowers, those with imperfect credit, and non-standard income situations. Where one lender says no, another may say yes." },
-  { q: "Do I need a large deposit?", a: "Not always. Some lenders offer loans with as little as 5% deposit, and there are government schemes that can help first home buyers avoid Lenders Mortgage Insurance (LMI). We'll assess all options available to you." },
-  { q: "Can you help with investment loans?", a: "Absolutely. We work with many property investors and understand the structuring required to grow a portfolio tax-effectively with the right loan features." },
+const FAQ_ITEMS = BROKERS_FAQ;
+
+const SUBURBS = [
+  "Parramatta", "Harris Park", "Westmead", "North Parramatta", "Granville", "Merrylands",
+  "Wentworthville", "Rydalmere", "Ermington", "Toongabbie", "Baulkham Hills", "Castle Hill", "Blacktown",
 ];
 
 function LoanIcon({ type, className }) {
@@ -50,6 +50,8 @@ function LoanIcon({ type, className }) {
       return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9" /><path d="m18 15 4-4" /><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></svg>);
     case "merge":
       return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>);
+    case "briefcase":
+      return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>);
     case "piggybank":
       return (<svg className={c} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z" /><path d="M16 10h.01" /><path d="M2 8v1a2 2 0 0 0 2 2h1" /></svg>);
     default:
@@ -67,14 +69,17 @@ export default function BrokersPage() {
       {/* 1. HERO */}
       <section className="section-dot-grid-dark relative px-4 pt-12 pb-16 md:px-6 md:pt-16 md:pb-20 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl">
-            The right home loan.
+          <h1 className="font-bold leading-tight text-white">
+            <span className="block text-sm uppercase tracking-widest text-[#00FCB8] md:text-base">
+              Mortgage broker in Parramatta
+            </span>
+            <span className="mt-4 block text-5xl md:text-6xl">The right home loan.</span>
           </h1>
           <p className="mt-2 text-5xl font-bold text-[#00FCB8] md:text-6xl">
             For every Australian.
           </p>
           <p className="mt-6 text-xl text-[#39B2B2]">
-            Independent mortgage brokers who search 30+ lenders to find the right loan for your situation — at no cost to you.
+            Independent mortgage brokers at Parramatta Square who search 30+ lenders to find the right loan for your situation — at no cost to you.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
@@ -92,6 +97,10 @@ export default function BrokersPage() {
             <span className="text-white">100+ 5-Star Reviews</span>
           </div>
           <p className="mt-6 text-sm italic text-[#39B2B2]">We work for you — not the banks.</p>
+          <a href="/self-employed-home-loans" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#00FCB8] bg-[#00FCB8]/10 px-5 py-2 text-sm font-bold text-[#00FCB8] transition-colors hover:bg-[#00FCB8] hover:text-[#1C5472]">
+            Self-employed? See how we help business owners buy
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
         </div>
       </section>
 
@@ -194,19 +203,41 @@ export default function BrokersPage() {
             Every type of loan, one team.
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {LOAN_CARDS.map((card) => (
-              <article
-                key={card.title}
-                className="relative rounded-xl border-2 border-[#39B2B2] bg-[#1C5472] p-6 transition-all duration-200 hover:scale-105 hover:border-[#00FCB8]"
-              >
-                <span className="absolute right-4 top-4 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
-                  {card.tag}
-                </span>
-                <LoanIcon type={card.icon} />
-                <h3 className="mt-4 text-lg font-bold text-white">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/90">{card.desc}</p>
-              </article>
-            ))}
+            {LOAN_CARDS.map((card) =>
+              card.href ? (
+                /* Featured card: full width, links to its own page */
+                <a
+                  key={card.title}
+                  href={card.href}
+                  className="group relative flex flex-col gap-6 rounded-xl border-2 border-[#00FCB8] bg-[#00FCB8]/10 p-6 transition-all duration-200 hover:bg-[#00FCB8]/20 sm:col-span-2 md:flex-row md:items-center lg:col-span-4"
+                >
+                  <span className="absolute right-4 top-4 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
+                    {card.tag}
+                  </span>
+                  <LoanIcon type={card.icon} className="h-12 w-12 flex-shrink-0 text-[#00FCB8]" />
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white">{card.title}</h3>
+                    <p className="mt-2 max-w-3xl text-sm leading-relaxed text-white/90">{card.desc}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 font-bold text-[#00FCB8]">
+                    How it works
+                    <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </span>
+                </a>
+              ) : (
+                <article
+                  key={card.title}
+                  className="relative rounded-xl border-2 border-[#39B2B2] bg-[#1C5472] p-6 transition-all duration-200 hover:scale-105 hover:border-[#00FCB8]"
+                >
+                  <span className="absolute right-4 top-4 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
+                    {card.tag}
+                  </span>
+                  <LoanIcon type={card.icon} />
+                  <h3 className="mt-4 text-lg font-bold text-white">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/90">{card.desc}</p>
+                </article>
+              )
+            )}
           </div>
         </div>
       </section>
@@ -233,6 +264,37 @@ export default function BrokersPage() {
                 <p className="mt-2 text-sm leading-relaxed text-gray-600">{step.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LOCAL — office, hours and the suburbs we work with most */}
+      <section className="section-dot-grid relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#39B2B2]">LOCAL TO PARRAMATTA</p>
+          <h2 className="mt-2 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-[#1C5472] md:text-4xl">
+            Your mortgage broker in Parramatta and Western Sydney
+          </h2>
+          <p className="mt-6 leading-relaxed text-[#1C5472]">
+            Our office is on Level 49, 8 Parramatta Square, Parramatta NSW 2150, open Monday to Friday, 9:00 to 5:30. We help
+            home buyers, investors and business owners across {SUBURBS.slice(0, -1).join(", ")} and{" "}
+            {SUBURBS[SUBURBS.length - 1]}, and anywhere in NSW by phone and video.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=8%20Parramatta%20Square%2C%20Parramatta%20NSW%202150"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[#1C5472] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:bg-[#1C5472]/5"
+            >
+              Get directions
+            </a>
+            <a
+              href="/self-employed-home-loans"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-[#39B2B2] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:bg-[#39B2B2]/10"
+            >
+              Self-employed home loans
+            </a>
           </div>
         </div>
       </section>

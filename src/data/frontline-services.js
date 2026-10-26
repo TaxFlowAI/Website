@@ -8,6 +8,7 @@ export const FRONTLINE_SERVICE_MENU = [
     href: "/brokers",
     activeKey: "brokers",
     services: [
+      "Self-Employed Home Loans",
       "Home Loans",
       "First Home Buyers",
       "Investment Property Loans",

@@ -22,7 +22,7 @@ export default function LayoutNav({ activeNav = "home" }) {
       <BrandSwitcherBar />
       {/* MAIN NAVBAR */}
       <nav className="bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 md:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 sm:gap-4 md:px-6 lg:px-8">
           <Link href="/" className="flex shrink-0 items-center">
             <FrontlineLogoFull className="h-9 w-auto md:h-10" />
           </Link>

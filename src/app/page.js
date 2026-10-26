@@ -108,6 +108,33 @@ const CONSULTATION_SERVICES = [
   },
 ];
 
+/* Organization schema for the group home page, linking the two businesses'
+   own schema (on /brokers and /assetsolutions). Rendered in the page, not the
+   root layout, so it never reaches /taxflow. */
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://frontline.financial/#org",
+  name: "Frontline Financial Group",
+  url: "https://frontline.financial",
+  logo: "https://frontline.financial/images/logos/frontline-logo.svg",
+  telephone: "+61422959486",
+  email: "operations@frontline.financial",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Level 49, 8 Parramatta Square",
+    addressLocality: "Parramatta",
+    addressRegion: "NSW",
+    postalCode: "2150",
+    addressCountry: "AU",
+  },
+  sameAs: ["https://www.instagram.com/frontline.financial.group/"],
+  subOrganization: [
+    { "@id": "https://frontline.financial/brokers#business" },
+    { "@id": "https://frontline.financial/assetsolutions#business" },
+  ],
+};
+
 export default function Home() {
   const router = useRouter();
   const [reviewIndex, setReviewIndex] = useState(0);
@@ -155,14 +182,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#F5F5EF] font-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }} />
       <LayoutNav activeNav="home" />
 
       {/* HERO — split layout, dramatic */}
       <section id="home" className="section-dot-grid hero-gradient-animate relative w-full overflow-hidden px-4 pt-12 pb-20 md:px-6 md:pt-16 md:pb-28 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-[#1C5472] sm:text-6xl lg:text-7xl">
-              Finance made simple.
+            <h1 className="font-bold tracking-tight text-[#1C5472]">
+              <span className="block text-sm uppercase tracking-widest text-[#39B2B2] md:text-base">
+                Home loan and car loan brokers in Parramatta
+              </span>
+              <span className="mt-4 block text-5xl leading-[1.1] sm:text-6xl lg:text-7xl">Finance made simple.</span>
             </h1>
             <p className="mt-4 text-5xl font-bold sm:text-6xl lg:text-7xl">
               <span className="hero-highlight-gradient inline-block rounded-3xl px-5 py-3 leading-[1.15] text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">
@@ -250,11 +281,12 @@ export default function Home() {
               <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/brokers-home-couple.png"
+                  src="/images/brokers-home-couple.webp"
                   alt="Couple holding the keys to their new home"
                   className="h-full w-full object-cover"
-                  width={2000}
-                  height={900}
+                  width={1200}
+                  height={548}
+                  loading="lazy"
                 />
               </div>
               <div className="flex flex-col p-6 md:p-8">
@@ -262,6 +294,9 @@ export default function Home() {
                 <p className="mt-3 leading-relaxed text-[#1C5472]">
                   Independent mortgage and business-lending specialists who shop 30+ lenders, secure sharper rates, and handle every shred of paperwork.
                 </p>
+                <Link href="/self-employed-home-loans" className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
+                  Self-employed? Home loans for business owners
+                </Link>
                 <Link href="/brokers" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
                   Learn more
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -272,11 +307,12 @@ export default function Home() {
               <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/asset-solutions-showroom.png"
+                  src="/images/asset-solutions-showroom.webp"
                   alt="Row of new cars in a dealership showroom"
                   className="h-full w-full object-cover"
-                  width={2752}
-                  height={1536}
+                  width={1200}
+                  height={670}
+                  loading="lazy"
                 />
               </div>
               <div className="flex flex-col p-6 md:p-8">

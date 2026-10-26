@@ -346,7 +346,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
           </div>
         </div>
         <div className="hidden md:block">
-          <CTAProfilePhoto caption={name} src={name === "Sham" ? "/images/DSC01491.png" : "/images/DSC01459.png?v=3"} />
+          <CTAProfilePhoto caption={name} src={name === "Sham" ? "/images/sham-portrait.webp" : "/images/DSC01459.png?v=3"} />
         </div>
       </div>
     </div>

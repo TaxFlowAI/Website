@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
@@ -11,6 +11,7 @@ import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
 
 const SERVICES_HASSAN = [
+  "Self-Employed Home Loan",
   "Home Loan",
   "First Home Buyer",
   "Investment Property",
@@ -88,6 +89,18 @@ export default function ContactPage() {
   const [consent, setConsent] = useState(false);
   const [showConsentError, setShowConsentError] = useState(false);
 
+  /* Landing pages link here with ?service=<key> to preselect the broker and
+     service. Read from window, not useSearchParams, so the page stays static. */
+  useEffect(() => {
+    const preset = new URLSearchParams(window.location.search).get("service");
+    if (preset === "self-employed") {
+      // One-off read of the URL after hydration; the server render has no query string.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setTeamMember("hassan");
+      setServices(["Self-Employed Home Loan"]);
+    }
+  }, []);
+
   const serviceOptions =
     teamMember === "hassan"
       ? SERVICES_HASSAN
@@ -136,7 +149,8 @@ export default function ContactPage() {
           phone: phone.trim(),
           teamMember: teamMember || "team",
           services,
-          message: message.trim(),
+          /* The message box is optional here but /api/contact requires one */
+          message: message.trim() || `Enquiry about: ${services.join(", ")}. No message added.`,
           preferredContact,
         }),
       });

@@ -9,6 +9,7 @@ export default function sitemap() {
     ["/assetsolutions", 0.9],
     ["/vehicle-finance", 0.8],
     ["/brokers", 0.9],
+    ["/self-employed-home-loans", 0.9],
     ["/about", 0.7],
     ["/contact", 0.8],
     ["/financial-calculators", 0.6],
