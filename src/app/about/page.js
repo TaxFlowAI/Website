@@ -43,8 +43,11 @@ export default function AboutPage() {
       {/* 1. HERO */}
       <section className="section-dot-grid-dark relative px-4 pt-12 pb-16 md:px-6 md:pt-16 md:pb-20 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl">
-            We want to help every Australian.
+          <h1 className="font-bold leading-tight text-white">
+            <span className="block text-sm uppercase tracking-widest text-[#00FCB8] md:text-base">
+              About Frontline Financial
+            </span>
+            <span className="mt-4 block text-5xl md:text-6xl">We want to help every Australian.</span>
           </h1>
           <p className="mt-2 text-5xl font-bold text-[#00FCB8] md:text-6xl">
             Every. Single. One.
@@ -66,7 +69,8 @@ export default function AboutPage() {
 
       {/* VISION STATEMENT */}
       <section className="relative bg-[#0A1628] py-20">
-        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[200px] font-black text-white opacity-[0.04]" aria-hidden>26M</span>
+        {/* Watermark drawn by CSS, not page text: as text, Google used "26M" as this page's sitelink title */}
+        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[200px] font-black text-white opacity-[0.04] before:content-['26M']" aria-hidden />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">THE GOAL</p>
           <h2 className="mt-4 text-5xl font-bold text-white md:text-6xl">

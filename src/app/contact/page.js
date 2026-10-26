@@ -177,10 +177,13 @@ export default function ContactPage() {
       {/* 1. HERO */}
       <section className="section-dot-grid-dark relative px-4 pt-12 pb-20 md:px-6 md:pt-16 md:pb-24 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-bold text-white text-5xl sm:text-6xl tracking-tight">
-            Let&apos;s talk about
+          <h1 className="font-bold tracking-tight text-white">
+            <span className="block text-sm uppercase tracking-widest text-[#00FCB8] md:text-base">
+              Contact Frontline Financial
+            </span>
+            <span className="mt-4 block text-5xl sm:text-6xl">Let&apos;s talk about</span>
+            <span className="mt-2 block text-5xl text-[#00FCB8] sm:text-6xl">your goals.</span>
           </h1>
-          <p className="mt-2 font-bold text-[#00FCB8] text-5xl sm:text-6xl">your goals.</p>
           <p className="mx-auto mt-6 max-w-2xl text-[#39B2B2] text-xl">
             No pressure. No obligation. No confusing jargon. Just a conversation about what you need and how we can help.
           </p>
