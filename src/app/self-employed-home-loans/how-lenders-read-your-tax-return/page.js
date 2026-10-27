@@ -3,10 +3,11 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 
-/* Article: how lenders assess self-employed income. Written in Hassan's
-   voice around the Parramatta Lanes reel (filmed 24 Oct 2026, organic post
-   27 Oct). Supports /self-employed-home-loans for "self employed income",
-   "self employed home loan tax return" and add-back searches. On desktop the
+/* Article: how lenders assess self-employed income, for self-employed people
+   in Parramatta. Written in Hassan's voice around the Parramatta Lanes reel
+   (filmed 24 Oct 2026, organic post 27 Oct). Supports /self-employed-home-loans
+   (which owns "self-employed home loans Parramatta") with Parramatta-local
+   signals and add-back searches, and links to it with that anchor text. On desktop the
    video sits in a sticky sidebar; on phones it follows the intro. The example
    figures are illustrative and match the reel; lender policy stays general
    ("some lenders"). */
@@ -19,12 +20,12 @@ const POSTER = "/images/articles/parramatta-lanes-video-poster.webp";
 const SHARE_IMAGE = "/images/articles/self-employed-tax-return-share.jpg";
 
 export const metadata = {
-  title: "How Lenders Assess Self-Employed Income | Frontline Financial",
+  title: "Self-Employed in Parramatta? How Lenders Read Your Tax Return",
   description:
-    "Self-employed? Your tax return can show less income than your business makes. How lenders assess self-employed income and add-backs, with a simple example.",
+    "Self-employed in Parramatta and buying a home? Your tax return can show less than your business makes. How lenders read it, from a Parramatta Square broker.",
   alternates: { canonical: PATH },
   openGraph: {
-    title: "Self-employed? Your tax return can undersell what you earn.",
+    title: "Self-employed in Parramatta? Your tax return can undersell what you earn.",
     description: "Same tax return, two lenders, two very different answers. Here's why, with an example.",
     url: PATH,
     siteName: "Frontline Financial",
@@ -57,6 +58,10 @@ const FAQ_ITEMS = [
     q: "What income do lenders use if I’m self-employed?",
     a: "Most lenders start from the profit in your tax returns and financials. Some average your last two years, others use the latest year if your income is going up. Then they apply their own add-back rules.",
   },
+  {
+    q: "Can I meet a mortgage broker in Parramatta?",
+    a: "Yes. We’re on Level 49, 8 Parramatta Square, Parramatta NSW 2150, Monday to Friday 9:00 to 5:30. We also work by phone and video.",
+  },
 ];
 
 const SCHEMA = {
@@ -65,11 +70,12 @@ const SCHEMA = {
     {
       "@type": "Article",
       "@id": `https://frontline.financial${PATH}#article`,
-      headline: "Self-employed? Your tax return can undersell what you earn",
+      headline: "Self-employed in Parramatta? Your tax return can undersell what you earn",
       description:
-        "How lenders assess self-employed income, why a tax return can show less than the business really earns, and how some lenders add back items like depreciation.",
+        "For self-employed people in Parramatta: how lenders assess self-employed income, why a tax return can show less than the business really earns, and how some lenders add back items like depreciation.",
       articleSection: "Self-employed home loans",
-      about: ["Self-employed home loans", "Self-employed income", "Add-backs"],
+      about: ["Self-employed home loans", "Home loans in Parramatta", "Self-employed income", "Add-backs"],
+      spatialCoverage: { "@type": "Place", name: "Parramatta, New South Wales" },
       datePublished: PUBLISHED,
       dateModified: PUBLISHED,
       inLanguage: "en-AU",
@@ -94,6 +100,7 @@ const SCHEMA = {
       contentUrl: `https://frontline.financial${VIDEO}`,
       uploadDate: PUBLISHED,
       duration: "PT43S",
+      contentLocation: { "@type": "Place", name: "Parramatta Lanes, Parramatta NSW" },
     },
     {
       "@type": "FAQPage",
@@ -109,7 +116,7 @@ const SCHEMA = {
         { "@type": "ListItem", position: 1, name: "Home", item: "https://frontline.financial/" },
         { "@type": "ListItem", position: 2, name: "Home loans", item: "https://frontline.financial/brokers" },
         { "@type": "ListItem", position: 3, name: "Self-employed home loans", item: "https://frontline.financial/self-employed-home-loans" },
-        { "@type": "ListItem", position: 4, name: "How lenders assess self-employed income", item: `https://frontline.financial${PATH}` },
+        { "@type": "ListItem", position: 4, name: "How lenders read your tax return", item: `https://frontline.financial${PATH}` },
       ],
     },
   ],
@@ -186,9 +193,9 @@ export default function TaxReturnArticlePage() {
               <span className="mx-2" aria-hidden>/</span>
               <Link href="/self-employed-home-loans" className="hover:text-[#00FCB8]">Self-employed</Link>
             </nav>
-            <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">Self-employed home loans</p>
+            <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">Self-employed home loans in Parramatta</p>
             <h1 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
-              Self-employed? Your tax return can undersell what you earn.
+              Self-employed in Parramatta? Your tax return can undersell what you earn.
             </h1>
             <div className="mt-8 flex items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -234,7 +241,7 @@ export default function TaxReturnArticlePage() {
                   playsInline
                   preload="metadata"
                   poster={POSTER}
-                  aria-label="Video: Hassan Arif at Parramatta Lanes on how lenders read self-employed income"
+                  aria-label="Video: Hassan Arif at Parramatta Lanes on home loans for self-employed people in Parramatta"
                   className="mx-auto aspect-[9/16] w-full max-w-xs rounded-2xl bg-[#0A1628] shadow-xl lg:max-w-none"
                 >
                   <source src={VIDEO} type="video/mp4" />
@@ -299,14 +306,14 @@ export default function TaxReturnArticlePage() {
             </ul>
             <p className="mt-5">
               Some lenders can also count profit you&apos;ve left in your company, or income your trust has distributed.
-              There&apos;s more on that, and on full doc and low doc loans, on our{" "}
+              There&apos;s more on that, and on full doc and low doc loans, on our page about{" "}
               <Link href="/self-employed-home-loans" className="font-bold underline decoration-[#00FCB8] decoration-2 underline-offset-4 hover:text-[#39B2B2]">
-                self-employed home loans
-              </Link>{" "}
-              page.
+                self-employed home loans in Parramatta
+              </Link>
+              .
             </p>
 
-            <h2 className={H2}>Before you apply for a self-employed home loan</h2>
+            <h2 className={H2}>Before you apply for a self-employed home loan in Parramatta</h2>
             <p className="mt-5">
               I come from a tax and accounting background, and I&apos;ve seen it all. The first thing I do is go through
               your returns and financials the way a credit assessor will. Then we only go to lenders whose rules fit how
@@ -315,7 +322,7 @@ export default function TaxReturnArticlePage() {
             </p>
             <p className="mt-5">
               Anyway, big respect to everyone who ran a stall at the festival. If you&apos;re self-employed and thinking
-              about buying, come and see me at Parramatta Square or give me a call.
+              about buying, come and see me on Level 49 at 8 Parramatta Square or give me a call.
             </p>
 
             <h2 className={H2}>Quick answers</h2>
