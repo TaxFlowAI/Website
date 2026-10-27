@@ -3,11 +3,13 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 
-/* Article: how lenders read a self-employed tax return. Written in Hassan's
+/* Article: how lenders assess self-employed income. Written in Hassan's
    voice around the Parramatta Lanes reel (filmed 24 Oct 2026, organic post
-   27 Oct). Supports /self-employed-home-loans for "self employed home loan
-   tax return" and add-back searches. The example figures are illustrative
-   and match the reel; lender policy stays general ("some lenders"). */
+   27 Oct). Supports /self-employed-home-loans for "self employed income",
+   "self employed home loan tax return" and add-back searches. On desktop the
+   video sits in a sticky sidebar; on phones it follows the intro. The example
+   figures are illustrative and match the reel; lender policy stays general
+   ("some lenders"). */
 
 const PATH = "/self-employed-home-loans/how-lenders-read-your-tax-return";
 const CONSULT_HREF = "/contact?service=self-employed";
@@ -17,9 +19,9 @@ const POSTER = "/images/articles/parramatta-lanes-video-poster.webp";
 const SHARE_IMAGE = "/images/articles/self-employed-tax-return-share.jpg";
 
 export const metadata = {
-  title: "Self-Employed Home Loans: How Lenders Read Your Tax Return | Frontline Financial",
+  title: "How Lenders Assess Self-Employed Income | Frontline Financial",
   description:
-    "Your tax return is built to keep tax down, and lenders start from the same profit figure. How add-backs work, with an example, from a Parramatta broker with a tax background.",
+    "Self-employed? Your tax return can show less income than your business makes. How lenders assess self-employed income and add-backs, with a simple example.",
   alternates: { canonical: PATH },
   openGraph: {
     title: "Self-employed? Your tax return can undersell what you earn.",
@@ -42,8 +44,20 @@ const ADD_BACKS = [
   "Super paid above the compulsory amount",
 ];
 
-const TRANSCRIPT =
-  "I went to Parramatta Lanes on Saturday night, and it was packed. I had to get the skewers. Walking around, I kept noticing the same thing. Every stall is someone’s own business. People that have backed themselves. And the crazy part? Plenty of self-employed people find a home loan harder to get than someone on a salary. Not because they don’t earn enough, because after all the deductions their tax return makes it look like they earn less than what they actually do. With my tax and accounting background I’ve seen it all, and most people don’t realise that different lenders will read your numbers differently. Anyway, big respect to anyone who chose to run their own stall at the festival, and if you’re self-employed, you can also find me in Parramatta Square.";
+const FAQ_ITEMS = [
+  {
+    q: "What is an add-back?",
+    a: "It’s an expense a lender adds back to your profit when it works out your income, because it isn’t a cash cost you’ll keep paying. Depreciation is the most common one.",
+  },
+  {
+    q: "Do all lenders add back depreciation?",
+    a: "No. Some do and some don’t, and each lender has its own list of what it will add back and what proof it wants. That’s why the lender you choose matters.",
+  },
+  {
+    q: "What income do lenders use if I’m self-employed?",
+    a: "Most lenders start from the profit in your tax returns and financials. Some average your last two years, others use the latest year if your income is going up. Then they apply their own add-back rules.",
+  },
+];
 
 const SCHEMA = {
   "@context": "https://schema.org",
@@ -53,7 +67,9 @@ const SCHEMA = {
       "@id": `https://frontline.financial${PATH}#article`,
       headline: "Self-employed? Your tax return can undersell what you earn",
       description:
-        "Why a self-employed tax return can show less income than the business really earns, and how some lenders add back items like depreciation.",
+        "How lenders assess self-employed income, why a tax return can show less than the business really earns, and how some lenders add back items like depreciation.",
+      articleSection: "Self-employed home loans",
+      about: ["Self-employed home loans", "Self-employed income", "Add-backs"],
       datePublished: PUBLISHED,
       dateModified: PUBLISHED,
       inLanguage: "en-AU",
@@ -78,7 +94,14 @@ const SCHEMA = {
       contentUrl: `https://frontline.financial${VIDEO}`,
       uploadDate: PUBLISHED,
       duration: "PT43S",
-      transcript: TRANSCRIPT,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: FAQ_ITEMS.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
     },
     {
       "@type": "BreadcrumbList",
@@ -86,11 +109,13 @@ const SCHEMA = {
         { "@type": "ListItem", position: 1, name: "Home", item: "https://frontline.financial/" },
         { "@type": "ListItem", position: 2, name: "Home loans", item: "https://frontline.financial/brokers" },
         { "@type": "ListItem", position: 3, name: "Self-employed home loans", item: "https://frontline.financial/self-employed-home-loans" },
-        { "@type": "ListItem", position: 4, name: "How lenders read your tax return", item: `https://frontline.financial${PATH}` },
+        { "@type": "ListItem", position: 4, name: "How lenders assess self-employed income", item: `https://frontline.financial${PATH}` },
       ],
     },
   ],
 };
+
+const H2 = "mt-12 border-l-4 border-[#00FCB8] pl-4 text-2xl font-bold md:text-3xl";
 
 function Line({ label, value, add = false }) {
   return (
@@ -152,30 +177,32 @@ export default function TaxReturnArticlePage() {
 
       {/* HERO */}
       <section className="section-dot-grid-dark relative px-4 pt-12 pb-14 md:px-6 md:pt-16 md:pb-16 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-white/60">
-            <Link href="/" className="hover:text-[#00FCB8]">Home</Link>
-            <span className="mx-2" aria-hidden>/</span>
-            <Link href="/brokers" className="hover:text-[#00FCB8]">Home loans</Link>
-            <span className="mx-2" aria-hidden>/</span>
-            <Link href="/self-employed-home-loans" className="hover:text-[#00FCB8]">Self-employed</Link>
-          </nav>
-          <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">Self-employed home loans</p>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
-            Self-employed? Your tax return can undersell what you earn.
-          </h1>
-          <div className="mt-8 flex items-center gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/hassan-broker-v2.png"
-              alt="Hassan Arif JP"
-              className="h-12 w-12 rounded-full bg-[#0A1628] object-cover"
-            />
-            <div className="text-sm">
-              <p className="font-bold text-white">Hassan Arif JP</p>
-              <p className="text-[#39B2B2]">
-                <time dateTime={PUBLISHED}>27 October 2026</time> · 3 min read
-              </p>
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-3xl">
+            <nav aria-label="Breadcrumb" className="mb-6 text-sm text-white/60">
+              <Link href="/" className="hover:text-[#00FCB8]">Home</Link>
+              <span className="mx-2" aria-hidden>/</span>
+              <Link href="/brokers" className="hover:text-[#00FCB8]">Home loans</Link>
+              <span className="mx-2" aria-hidden>/</span>
+              <Link href="/self-employed-home-loans" className="hover:text-[#00FCB8]">Self-employed</Link>
+            </nav>
+            <p className="text-sm font-bold uppercase tracking-widest text-[#00FCB8]">Self-employed home loans</p>
+            <h1 className="mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
+              Self-employed? Your tax return can undersell what you earn.
+            </h1>
+            <div className="mt-8 flex items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/hassan-broker-v2.png"
+                alt="Hassan Arif JP, mortgage broker at Frontline Financial in Parramatta"
+                className="h-12 w-12 rounded-full bg-[#0A1628] object-cover"
+              />
+              <div className="text-sm">
+                <p className="font-bold text-white">Hassan Arif JP</p>
+                <p className="text-[#39B2B2]">
+                  <time dateTime={PUBLISHED}>27 October 2026</time> · 3 min read
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -183,113 +210,135 @@ export default function TaxReturnArticlePage() {
 
       <WaveDivider fill="#F5F5EF" />
 
-      {/* ARTICLE */}
+      {/* ARTICLE: intro, then the video (sidebar on desktop), then the body */}
       <article className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
-        <div className="mx-auto max-w-3xl text-lg leading-relaxed text-[#1C5472]">
-          <p>
-            On Saturday night I went down to Parramatta Lanes, and it was packed. Walking past the stalls, I kept noticing
-            the same thing. Every one of them was someone&apos;s own business. People who have backed themselves.
-          </p>
-          <p className="mt-5">
-            And plenty of them would find a home loan harder to get than someone on a salary. Not because they don&apos;t
-            earn enough. Because once all the deductions go through, their tax return makes it look like they earn less
-            than they do. I filmed a quick video about it on the night.
-          </p>
+        <div className="mx-auto grid max-w-6xl text-lg leading-relaxed text-[#1C5472] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-x-14">
+          <div className="lg:col-start-1 lg:row-start-1">
+            <p>
+              On Saturday night I went down to Parramatta Lanes, and it was packed. Walking past the stalls, I kept
+              noticing the same thing. Every one of them was someone&apos;s own business. People who have backed
+              themselves.
+            </p>
+            <p className="mt-5">
+              And plenty of them would find a home loan harder to get than someone on a salary. Not because they
+              don&apos;t earn enough. Because once all the deductions go through, their tax return makes it look like they
+              earn less than they do. I filmed a quick video about it on the night.
+            </p>
+          </div>
 
-          <figure className="my-10">
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster={POSTER}
-              className="mx-auto aspect-[9/16] w-full max-w-xs rounded-2xl bg-[#0A1628] shadow-xl"
-            >
-              <source src={VIDEO} type="video/mp4" />
-            </video>
-            <figcaption className="mt-3 text-center text-sm text-gray-500">
-              Filmed at Parramatta Lanes, Saturday 24 October 2026.
-            </figcaption>
-            <details className="mx-auto mt-4 max-w-xl rounded-xl bg-white px-5 py-3 text-base shadow-sm">
-              <summary className="cursor-pointer font-bold text-[#1C5472]">Read the transcript</summary>
-              <p className="mt-3 text-gray-600">{TRANSCRIPT}</p>
-            </details>
-          </figure>
+          <aside className="my-10 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:my-0">
+            <div className="lg:sticky lg:top-32">
+              <figure>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={POSTER}
+                  aria-label="Video: Hassan Arif at Parramatta Lanes on how lenders read self-employed income"
+                  className="mx-auto aspect-[9/16] w-full max-w-xs rounded-2xl bg-[#0A1628] shadow-xl lg:max-w-none"
+                >
+                  <source src={VIDEO} type="video/mp4" />
+                </video>
+                <figcaption className="mt-3 text-center text-sm text-gray-500">
+                  Filmed at Parramatta Lanes, Saturday 24 October 2026.
+                </figcaption>
+              </figure>
+              <div className="mt-6 hidden rounded-xl bg-[#1C5472] p-5 text-center lg:block">
+                <p className="font-bold text-white">Self-employed and buying?</p>
+                <a
+                  href={CONSULT_HREF}
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90"
+                >
+                  Get a Free Assessment
+                </a>
+              </div>
+            </div>
+          </aside>
 
-          <h2 className="mt-12 border-l-4 border-[#00FCB8] pl-4 text-2xl font-bold md:text-3xl">
-            Why a tax return can undersell a business
-          </h2>
-          <p className="mt-5">
-            If you&apos;re on a salary, a lender mostly looks at a couple of payslips. If you&apos;re self-employed, they
-            want your tax returns and financials, and they work your income out from the profit.
-          </p>
-          <p className="mt-5">
-            A good accountant&apos;s job is to keep your tax down, legally. Depreciation on the ute and equipment, a big
-            repair, interest on a loan you&apos;re about to pay out. All of it comes off your profit, which is what you want
-            at tax time. But it&apos;s also the figure a lender starts from when it works out what you can borrow.
-          </p>
+          <div className="lg:col-start-1 lg:row-start-2">
+            <h2 className={H2}>Why your tax return can undersell your income</h2>
+            <p className="mt-5">
+              If you&apos;re on a salary, a lender mostly looks at a couple of payslips. If you&apos;re self-employed, they
+              want your tax returns and financials, and they work your income out from the profit.
+            </p>
+            <p className="mt-5">
+              A good accountant&apos;s job is to keep your tax down, legally. Depreciation on the ute and equipment, a big
+              repair, interest on a loan you&apos;re about to pay out. All of it comes off your profit, which is what you
+              want at tax time. But it&apos;s also the figure a lender starts from when it works out what you can borrow.
+            </p>
 
-          <h2 className="mt-12 border-l-4 border-[#00FCB8] pl-4 text-2xl font-bold md:text-3xl">
-            Same tax return, two different answers
-          </h2>
-          <p className="mt-5">
-            Here&apos;s a simple example. The numbers are made up, it&apos;s not a real client.
-          </p>
-          <p className="mt-5">
-            A business turns over $420,000. After costs, the profit and loss shows a net profit of $68,000. That&apos;s
-            after $35,000 of depreciation and a $12,000 repair that won&apos;t come up every year.
-          </p>
+            <h2 className={H2}>Same tax return, two lenders, two different answers</h2>
+            <p className="mt-5">Here&apos;s a simple example. The numbers are made up, it&apos;s not a real client.</p>
+            <p className="mt-5">
+              A business turns over $420,000. After costs, the profit and loss shows a net profit of $68,000. That&apos;s
+              after $35,000 of depreciation and a $12,000 repair that won&apos;t come up every year.
+            </p>
 
-          <LenderExample />
+            <LenderExample />
 
-          <p>
-            Lender A takes the $68,000 and that&apos;s the income it uses. Lender B adds back the depreciation, because no
-            cash actually left the business for it that year, and the one-off repair. It uses $115,000.
-          </p>
-          <p className="mt-5">
-            Same business, same tax return, and a very different borrowing figure. Not every lender does this, and the ones
-            that do each have their own rules on what they&apos;ll add back and what proof they want.
-          </p>
+            <p>
+              Lender A takes the $68,000 and that&apos;s the income it uses. Lender B adds back the depreciation, because
+              no cash actually left the business for it that year, and the one-off repair. It uses $115,000.
+            </p>
+            <p className="mt-5">
+              Same business, same tax return, and a very different borrowing figure. Not every lender does this, and the
+              ones that do each have their own rules on what they&apos;ll add back and what proof they want.
+            </p>
 
-          <h2 className="mt-12 border-l-4 border-[#00FCB8] pl-4 text-2xl font-bold md:text-3xl">
-            What some lenders may add back
-          </h2>
-          <p className="mt-5">It depends on the lender, but these are the ones that come up most:</p>
-          <ul className="mt-5 space-y-3">
-            {ADD_BACKS.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 shrink-0 text-[#39B2B2]" aria-hidden>
-                  ✓
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5">
-            Some lenders can also count profit you&apos;ve left in your company, or income your trust has distributed.
-            There&apos;s more on that, and on full doc and low doc loans, on our{" "}
-            <Link href="/self-employed-home-loans" className="font-bold underline decoration-[#00FCB8] decoration-2 underline-offset-4 hover:text-[#39B2B2]">
-              self-employed home loans
-            </Link>{" "}
-            page.
-          </p>
+            <h2 className={H2}>What lenders may add back to self-employed income</h2>
+            <p className="mt-5">It depends on the lender, but these are the ones that come up most:</p>
+            <ul className="mt-5 space-y-3">
+              {ADD_BACKS.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-0.5 shrink-0 text-[#39B2B2]" aria-hidden>
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5">
+              Some lenders can also count profit you&apos;ve left in your company, or income your trust has distributed.
+              There&apos;s more on that, and on full doc and low doc loans, on our{" "}
+              <Link href="/self-employed-home-loans" className="font-bold underline decoration-[#00FCB8] decoration-2 underline-offset-4 hover:text-[#39B2B2]">
+                self-employed home loans
+              </Link>{" "}
+              page.
+            </p>
 
-          <h2 className="mt-12 border-l-4 border-[#00FCB8] pl-4 text-2xl font-bold md:text-3xl">
-            What I&apos;d do before you apply
-          </h2>
-          <p className="mt-5">
-            I come from a tax and accounting background, and I&apos;ve seen it all. The first thing I do is go through your
-            returns and financials the way a credit assessor will. Then we only go to lenders whose rules fit how your
-            business actually earns. One application to the right lender, instead of trying a few banks and having every
-            one of them show up on your credit file.
-          </p>
-          <p className="mt-5">
-            What I won&apos;t do is tell you to change how you report your income to get a loan. That&apos;s a tax decision,
-            and it&apos;s one for you and your accountant. I&apos;m happy to work with them.
-          </p>
-          <p className="mt-5">
-            Anyway, big respect to everyone who ran a stall at the festival. If you&apos;re self-employed and thinking about
-            buying, come and see me at Parramatta Square or give me a call.
-          </p>
+            <h2 className={H2}>Before you apply for a self-employed home loan</h2>
+            <p className="mt-5">
+              I come from a tax and accounting background, and I&apos;ve seen it all. The first thing I do is go through
+              your returns and financials the way a credit assessor will. Then we only go to lenders whose rules fit how
+              your business actually earns. One application to the right lender, instead of trying a few banks and having
+              every one of them show up on your credit file.
+            </p>
+            <p className="mt-5">
+              Anyway, big respect to everyone who ran a stall at the festival. If you&apos;re self-employed and thinking
+              about buying, come and see me at Parramatta Square or give me a call.
+            </p>
+
+            <h2 className={H2}>Quick answers</h2>
+            <div className="mt-6 border-t border-[#39B2B2]/50">
+              {FAQ_ITEMS.map((item) => (
+                <details key={item.q} className="group border-b border-[#39B2B2]/50">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-lg font-bold">{item.q}</h3>
+                    <svg
+                      className="h-5 w-5 shrink-0 text-[#39B2B2] transition-transform duration-200 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p className="pb-4 pr-8 text-base text-gray-600">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
       </article>
 
