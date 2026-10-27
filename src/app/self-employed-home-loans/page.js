@@ -334,6 +334,16 @@ export default function SelfEmployedHomeLoansPage() {
               </article>
             ))}
           </div>
+          <p className="mt-8 text-white/90">
+            See it with numbers:{" "}
+            <Link
+              href="/self-employed-home-loans/how-lenders-read-your-tax-return"
+              className="font-bold text-[#00FCB8] underline decoration-2 underline-offset-4 hover:opacity-80"
+            >
+              same tax return, two lenders, two different answers
+            </Link>
+            .
+          </p>
         </div>
       </section>
 

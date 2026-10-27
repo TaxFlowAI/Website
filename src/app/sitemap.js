@@ -10,6 +10,7 @@ export default function sitemap() {
     ["/vehicle-finance", 0.8],
     ["/brokers", 0.9],
     ["/self-employed-home-loans", 0.9],
+    ["/self-employed-home-loans/how-lenders-read-your-tax-return", 0.7],
     ["/about", 0.7],
     ["/contact", 0.8],
     ["/financial-calculators", 0.6],
