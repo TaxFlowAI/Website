@@ -276,7 +276,8 @@ export default function BrokersPage() {
             Your mortgage broker in Parramatta and Western Sydney
           </h2>
           <p className="mt-6 leading-relaxed text-[#1C5472]">
-            Our office is on Level 49, 8 Parramatta Square, Parramatta NSW 2150, open Monday to Friday, 9:00 to 5:30. We help
+            Our office is on Level 49, 8 Parramatta Square, Parramatta NSW 2150, and we take calls and appointments Monday to
+            Friday, 10:30am to 8pm. We help
             home buyers, investors and business owners across {SUBURBS.slice(0, -1).join(", ")} and{" "}
             {SUBURBS[SUBURBS.length - 1]}, and anywhere in NSW by phone and video.
           </p>

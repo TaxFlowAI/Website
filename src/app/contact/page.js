@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
+import { HOURS, getOpenStatus } from "@/config/business-hours";
+import { OFFICE, GOOGLE } from "@/config/location";
+import { CONTACT_FAQ } from "@/data/contact-faq";
 
 const SERVICES_HASSAN = [
   "Self-Employed Home Loan",
@@ -33,45 +35,65 @@ const SERVICES_SHAM = [
 ];
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function PhoneIcon({ className }) {
+const FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00FCB8]";
+const FIELD =
+  "mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] placeholder:text-[#1C5472]/80 focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/40";
+
+/* Hours table rows; "today" is matched against the Sydney weekday */
+const HOURS_ROWS = [
+  { label: "Monday to Friday", value: "10:30am – 8:00pm", days: HOURS.days },
+  { label: "Saturday", value: "Closed", days: ["Saturday"] },
+  { label: "Sunday", value: "Closed", days: ["Sunday"] },
+  { label: "Public holidays", value: "Closed", days: [] },
+];
+
+function Icon({ d, className, strokeWidth = 1.75 }) {
   return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={strokeWidth} viewBox="0 0 24 24" aria-hidden>
+      {[].concat(d).map((path) => (
+        <path key={path} strokeLinecap="round" strokeLinejoin="round" d={path} />
+      ))}
     </svg>
   );
 }
-function EmailIcon({ className }) {
+const ICONS = {
+  phone:
+    "M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z",
+  email:
+    "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75",
+  pin: ["M15 10.5a3 3 0 11-6 0 3 3 0 016 0z", "M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"],
+  video:
+    "M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z",
+  building:
+    "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
+  train: ["M8.25 18.75L6 21m9.75-2.25L18 21", "M6.75 3h10.5A1.5 1.5 0 0118.75 4.5v10.5a3.75 3.75 0 01-3.75 3.75H9a3.75 3.75 0 01-3.75-3.75V4.5A1.5 1.5 0 016.75 3z", "M5.25 10.5h13.5M9 15h.008M15 15h.008"],
+  arrow: "M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3",
+  external: "M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25",
+  chevron: "M19.5 8.25l-7.5 7.5-7.5-7.5",
+  trophy:
+    "M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0",
+};
+
+function Stars({ className }) {
   return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-  );
-}
-function LocationIcon({ className }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  );
-}
-function OfficeIcon({ className }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-    </svg>
-  );
-}
-function ClockIcon({ className }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
+    <span className={`flex gap-0.5 ${className}`} aria-hidden>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.85 4.75 17.6l1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+        </svg>
+      ))}
+    </span>
   );
 }
 
-const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/8+Parramatta+Square+Parramatta+NSW+2150";
-const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
+function StatusDot({ open }) {
+  return (
+    <span className="relative flex h-2.5 w-2.5" aria-hidden>
+      {open && <span className="absolute inline-flex h-full w-full rounded-full bg-[#00FCB8] opacity-60 motion-safe:animate-ping" />}
+      <span className={`relative inline-flex h-2.5 w-2.5 rounded-full ${open ? "bg-[#00FCB8]" : "bg-[#F5C26B]"}`} />
+    </span>
+  );
+}
 
 export default function ContactPage() {
   const router = useRouter();
@@ -88,6 +110,7 @@ export default function ContactPage() {
   const [submitError, setSubmitError] = useState(null);
   const [consent, setConsent] = useState(false);
   const [showConsentError, setShowConsentError] = useState(false);
+  const [status, setStatus] = useState(null); // open/closed line, worked out in Sydney time after hydration
 
   /* Landing pages link here with ?service=<key> to preselect the broker and
      service. Read from window, not useSearchParams, so the page stays static. */
@@ -99,6 +122,15 @@ export default function ContactPage() {
       setTeamMember("hassan");
       setServices(["Self-Employed Home Loan"]);
     }
+  }, []);
+
+  /* The static render can't know the time, so the "Open now" line fills in on
+     the client and refreshes every minute. */
+  useEffect(() => {
+    const update = () => setStatus(getOpenStatus());
+    update();
+    const id = setInterval(update, 60000);
+    return () => clearInterval(id);
   }, []);
 
   const serviceOptions =
@@ -169,220 +201,247 @@ export default function ContactPage() {
     }
   };
 
+  const statusText = status ? status.text : HOURS.short;
 
   return (
-    <div className="min-h-screen bg-[#F5F5EF] font-sans">
+    <div className="min-h-screen bg-[#F5F5EF] font-sans selection:bg-[#00FCB8] selection:text-[#0A1628]">
       <LayoutNav activeNav="contact" />
 
-      {/* 1. HERO */}
-      <section className="section-dot-grid-dark relative px-4 pt-12 pb-20 md:px-6 md:pt-16 md:pb-24 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-bold tracking-tight text-white">
-            <span className="block text-sm uppercase tracking-widest text-[#00FCB8] md:text-base">
-              Contact Frontline Financial
-            </span>
-            <span className="mt-4 block text-5xl sm:text-6xl">Let&apos;s talk about</span>
-            <span className="mt-2 block text-5xl text-[#00FCB8] sm:text-6xl">your goals.</span>
+      {/* 1. HERO: who to talk to, and the three ways to reach us */}
+      <section className="section-dot-grid-dark relative px-4 pt-12 md:px-6 md:pt-16 lg:px-8">
+        <div className="mx-auto max-w-6xl pb-14 md:pb-20">
+          <h1 className="max-w-3xl text-balance text-5xl font-bold tracking-tight text-white sm:text-6xl">
+            Talk to a broker at <span className="text-[#00FCB8]">Parramatta Square.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-[#39B2B2] text-xl">
-            No pressure. No obligation. No confusing jargon. Just a conversation about what you need and how we can help.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#CFEAEA]">
+            Home loans with Hassan. Car, ute and equipment finance with Sham. Meet us on Level 49, or by phone or
+            video. No pressure, no obligation.
           </p>
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <a
-              href="tel:+61422959486"
-              className="flex flex-col items-center rounded-full border border-white/20 bg-[#0A1628] px-6 py-3 text-center"
-            >
-              <PhoneIcon className="h-6 w-6 text-[#00FCB8]" />
-              <span className="mt-1 font-medium text-white">+61 422 959 486</span>
-              <span className="text-xs text-[#39B2B2]">Call us anytime</span>
+
+          <div className="mt-10 grid divide-y divide-white/10 overflow-hidden rounded-2xl bg-[#0A1628] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)] md:grid-cols-[1.15fr_1fr_1fr] md:divide-x md:divide-y-0">
+            <a href={OFFICE.phoneHref} className={`group flex gap-4 p-6 transition-colors hover:bg-white/[0.04] ${FOCUS}`}>
+              <Icon d={ICONS.phone} className="mt-1 h-6 w-6 shrink-0 text-[#00FCB8]" />
+              <span>
+                <span className="block text-sm text-[#CFEAEA]">Call us</span>
+                <span className="mt-0.5 block text-2xl font-bold tabular-nums text-white group-hover:text-[#00FCB8]">
+                  {OFFICE.phone}
+                </span>
+                <span className="mt-2 flex items-center gap-2 text-sm text-white" aria-live="polite">
+                  {status && <StatusDot open={status.open} />}
+                  {statusText}
+                </span>
+              </span>
+            </a>
+            <a href={`mailto:${OFFICE.email}`} className={`group flex gap-4 p-6 transition-colors hover:bg-white/[0.04] ${FOCUS}`}>
+              <Icon d={ICONS.email} className="mt-1 h-6 w-6 shrink-0 text-[#00FCB8]" />
+              <span className="min-w-0">
+                <span className="block text-sm text-[#CFEAEA]">Email us</span>
+                <span className="mt-0.5 block break-words text-lg font-bold text-white group-hover:text-[#00FCB8]">
+                  {OFFICE.email}
+                </span>
+                <span className="mt-2 block text-sm text-white/85">We reply within one business day</span>
+              </span>
             </a>
             <a
-              href="mailto:operations@frontline.financial"
-              className="flex flex-col items-center rounded-full border border-white/20 bg-[#0A1628] px-6 py-3 text-center"
-            >
-              <EmailIcon className="h-6 w-6 text-[#00FCB8]" />
-              <span className="mt-1 font-medium text-white">operations@frontline.financial</span>
-              <span className="text-xs text-[#39B2B2]">We reply within 24 hours</span>
-            </a>
-            <a
-              href={GOOGLE_MAPS_URL}
+              href={GOOGLE.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center rounded-full border border-white/20 bg-[#0A1628] px-6 py-3 text-center"
+              className={`group flex gap-4 p-6 transition-colors hover:bg-white/[0.04] ${FOCUS}`}
             >
-              <LocationIcon className="h-6 w-6 text-[#00FCB8]" />
-              <span className="mt-1 font-medium text-white">Level 49, 8 Parramatta Square</span>
-              <span className="text-xs text-[#39B2B2]">Mon–Fri 9am–5:30pm</span>
+              <Icon d={ICONS.pin} className="mt-1 h-6 w-6 shrink-0 text-[#00FCB8]" />
+              <span>
+                <span className="block text-sm text-[#CFEAEA]">Visit us</span>
+                <span className="mt-0.5 block text-lg font-bold text-white group-hover:text-[#00FCB8]">{OFFICE.street}</span>
+                <span className="mt-2 inline-flex items-center gap-1.5 text-sm text-white/85">
+                  Parramatta NSW 2150 · Get directions
+                  <Icon d={ICONS.arrow} className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+                </span>
+              </span>
             </a>
           </div>
         </div>
-        <WaveDivider fill="#F5F5EF" />
+        <div className="-mx-4 md:-mx-6 lg:-mx-8">
+          <WaveDivider fill="#F5F5EF" />
+        </div>
       </section>
 
-      {/* 2. MAIN CONTACT SECTION */}
-      <section className="section-dot-grid relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[55%_45%] lg:gap-12">
-          {/* LEFT — FORM */}
-          <div className="lg:order-1">
-            <div className="rounded-2xl bg-white p-8 shadow-lg">
-              <h2 className="font-bold text-[#1C5472] text-2xl">Get in touch</h2>
-              <p className="mt-1 text-sm text-gray-500">
-                Fill in your details and the right person will reach out to you directly.
+      {/* 2. FORM + OFFICE PANEL */}
+      <section className="section-dot-grid relative px-4 py-14 md:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12">
+          {/* FORM */}
+          <div>
+            <div className="rounded-2xl bg-white p-6 shadow-[0_14px_36px_-18px_rgba(10,22,40,0.35)] sm:p-8">
+              <h2 className="text-2xl font-bold text-[#1C5472]">Send us a message</h2>
+              <p className="mt-1 text-sm text-[#1C5472]/85">
+                Tell us a little about what you need and the right broker will contact you, usually the same day.
               </p>
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 {/* FIELD 1 — Who */}
-                <div>
-                  <label className="block text-sm font-medium text-[#1C5472]">Who do you need help from?</label>
-                  <div className="mt-3 space-y-3">
+                <fieldset>
+                  <legend className="block text-sm font-medium text-[#1C5472]">Who do you need help from?</legend>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
                     <button
                       type="button"
+                      aria-pressed={teamMember === "hassan"}
                       onClick={() => setTeamMember("hassan")}
-                      className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition ${
+                      className={`flex w-full items-center gap-4 rounded-xl p-4 text-left transition ${FOCUS} ${
                         teamMember === "hassan"
                           ? "border-2 border-[#00FCB8] bg-[#00FCB8]/5"
-                          : "border border-gray-200 bg-white"
+                          : "border border-gray-200 bg-white hover:border-[#39B2B2]"
                       }`}
                     >
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1C5472] font-bold text-white">HA</span>
-                      <div className="min-w-0 flex-1">
-                        <p className="font-bold text-[#1C5472] text-sm">Hassan Arif JP</p>
-                        <p className="text-xs text-gray-500">Home Loans · Investment · Commercial</p>
-                        <p className="text-xs text-[#39B2B2]">Frontline Financial Brokers</p>
-                      </div>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-bold text-[#1C5472]">Hassan Arif JP</span>
+                        <span className="block text-xs text-[#1C5472]/85">Home loans · Investment · Commercial</span>
+                        <span className="block text-xs font-medium text-[#23797A]">Frontline Financial Brokers</span>
+                      </span>
                     </button>
                     <button
                       type="button"
+                      aria-pressed={teamMember === "sham"}
                       onClick={() => setTeamMember("sham")}
-                      className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition ${
+                      className={`flex w-full items-center gap-4 rounded-xl p-4 text-left transition ${FOCUS} ${
                         teamMember === "sham"
                           ? "border-2 border-[#00FCB8] bg-[#00FCB8]/5"
-                          : "border border-gray-200 bg-white"
+                          : "border border-gray-200 bg-white hover:border-[#39B2B2]"
                       }`}
                     >
                       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1C5472] font-bold text-white">SH</span>
-                      <div className="min-w-0 flex-1">
-                        <p className="font-bold text-[#1C5472] text-sm">Sham</p>
-                        <p className="text-xs text-gray-500">Car · Equipment · Fleet Finance</p>
-                        <p className="text-xs text-[#39B2B2]">Frontline Financial Asset Solutions</p>
-                        <span className="mt-1 inline-block rounded-full border border-[#00FCB8] px-2 py-0.5 text-xs text-[#00FCB8]">🏆 Award Winner FY25</span>
-                      </div>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-bold text-[#1C5472]">Sham</span>
+                        <span className="block text-xs text-[#1C5472]/85">Car · Equipment · Fleet finance</span>
+                        <span className="block text-xs font-medium text-[#23797A]">Frontline Financial: Asset Solutions</span>
+                        <span className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-[#1C5472]">
+                          <Icon d={ICONS.trophy} className="h-3.5 w-3.5 text-[#23797A]" />
+                          FY25 Fintelligence award winner
+                        </span>
+                      </span>
                     </button>
                   </div>
-                  {errors.teamMember && <p className="mt-1 text-sm text-red-600">{errors.teamMember}</p>}
-                </div>
+                  {errors.teamMember && <p className="mt-1 text-sm text-red-700">{errors.teamMember}</p>}
+                </fieldset>
 
                 {/* Name row */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-medium text-[#1C5472]">First Name *</label>
+                    <label htmlFor="contact-first-name" className="block text-sm font-medium text-[#1C5472]">First name *</label>
                     <input
+                      id="contact-first-name"
                       type="text"
+                      autoComplete="given-name"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
+                      className={FIELD}
                       placeholder="First name"
                     />
-                    {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+                    {errors.firstName && <p className="mt-1 text-sm text-red-700">{errors.firstName}</p>}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1C5472]">Last Name *</label>
+                    <label htmlFor="contact-last-name" className="block text-sm font-medium text-[#1C5472]">Last name *</label>
                     <input
+                      id="contact-last-name"
                       type="text"
+                      autoComplete="family-name"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
+                      className={FIELD}
                       placeholder="Last name"
                     />
-                    {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+                    {errors.lastName && <p className="mt-1 text-sm text-red-700">{errors.lastName}</p>}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-[#1C5472]">Email Address *</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                    placeholder="you@example.com"
-                  />
-                  {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-[#1C5472]">Phone Number *</label>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                    placeholder="04XX XXX XXX"
-                  />
-                  {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-[#1C5472]">Email address *</label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={FIELD}
+                      placeholder="you@example.com"
+                    />
+                    {errors.email && <p className="mt-1 text-sm text-red-700">{errors.email}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-phone" className="block text-sm font-medium text-[#1C5472]">Phone number *</label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className={FIELD}
+                      placeholder="04XX XXX XXX"
+                    />
+                    {errors.phone && <p className="mt-1 text-sm text-red-700">{errors.phone}</p>}
+                  </div>
                 </div>
 
                 {/* Services — only show when team selected */}
                 {teamMember && (
-                  <div>
-                    <label className="block text-sm font-medium text-[#1C5472]">What can we help you with?</label>
+                  <fieldset>
+                    <legend className="block text-sm font-medium text-[#1C5472]">What can we help you with?</legend>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {serviceOptions.map((s) => (
                         <button
                           key={s}
                           type="button"
+                          aria-pressed={services.includes(s)}
                           onClick={() => toggleService(s)}
-                          className={`rounded-full px-4 py-2 text-sm transition ${
+                          className={`rounded-full px-4 py-2 text-sm transition ${FOCUS} ${
                             services.includes(s)
                               ? "border border-[#00FCB8] bg-[#00FCB8] font-bold text-[#0A1628]"
-                              : "border border-[#1C5472] bg-white text-[#1C5472]"
+                              : "border border-[#1C5472]/40 bg-white text-[#1C5472] hover:border-[#1C5472]"
                           }`}
                         >
                           {s}
                         </button>
                       ))}
                     </div>
-                    {errors.services && <p className="mt-1 text-sm text-red-600">{errors.services}</p>}
-                  </div>
+                    {errors.services && <p className="mt-1 text-sm text-red-700">{errors.services}</p>}
+                  </fieldset>
                 )}
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1C5472]">Message</label>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-[#1C5472]">Message</label>
                   <textarea
+                    id="contact-message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[#1C5472] focus:border-[#00FCB8] focus:outline-none focus:ring-1 focus:ring-[#00FCB8]"
-                    placeholder="Tell us about your situation and what you're hoping to achieve. The more detail the better — it helps us prepare before we reach out."
+                    className={FIELD}
+                    placeholder="Tell us about your situation and what you're hoping to achieve. The more detail, the better we can prepare before we call."
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-[#1C5472]">How would you prefer we contact you?</label>
-                  <div className="mt-2 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setPreferredContact("email")}
-                      className={`rounded-full px-4 py-2 text-sm transition ${
-                        preferredContact === "email"
-                          ? "bg-[#00FCB8] font-medium text-[#0A1628]"
-                          : "border border-[#1C5472] bg-white text-[#1C5472]"
-                      }`}
-                    >
-                      📧 Email
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setPreferredContact("phone")}
-                      className={`rounded-full px-4 py-2 text-sm transition ${
-                        preferredContact === "phone"
-                          ? "bg-[#00FCB8] font-medium text-[#0A1628]"
-                          : "border border-[#1C5472] bg-white text-[#1C5472]"
-                      }`}
-                    >
-                      📞 Phone call
-                    </button>
+                <fieldset>
+                  <legend className="block text-sm font-medium text-[#1C5472]">How would you like us to contact you?</legend>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {[
+                      { key: "email", label: "Email", icon: ICONS.email },
+                      { key: "phone", label: "Phone call", icon: ICONS.phone },
+                    ].map((opt) => (
+                      <button
+                        key={opt.key}
+                        type="button"
+                        aria-pressed={preferredContact === opt.key}
+                        onClick={() => setPreferredContact(opt.key)}
+                        className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${FOCUS} ${
+                          preferredContact === opt.key
+                            ? "bg-[#00FCB8] font-medium text-[#0A1628]"
+                            : "border border-[#1C5472]/40 bg-white text-[#1C5472] hover:border-[#1C5472]"
+                        }`}
+                      >
+                        <Icon d={opt.icon} className="h-4 w-4" />
+                        {opt.label}
+                      </button>
+                    ))}
                   </div>
-                </div>
+                </fieldset>
 
                 <div className="pt-2">
                   <FormConsent
@@ -393,12 +452,12 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {submitError && submitError !== CONSENT_ERROR && <p className="text-sm text-red-600">{submitError}</p>}
+                {submitError && submitError !== CONSENT_ERROR && <p className="text-sm text-red-700">{submitError}</p>}
 
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] transition hover:scale-105 hover:shadow-lg disabled:opacity-70"
+                  className={`flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-[0_10px_24px_-12px_rgba(0,160,120,0.7)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-12px_rgba(0,160,120,0.8)] disabled:translate-y-0 disabled:opacity-70 ${FOCUS}`}
                 >
                   {submitting ? (
                     <>
@@ -409,123 +468,226 @@ export default function ContactPage() {
                       Sending...
                     </>
                   ) : (
-                    "Send Message →"
+                    <>
+                      Send message
+                      <Icon d={ICONS.arrow} className="h-5 w-5" strokeWidth={2} />
+                    </>
                   )}
                 </button>
               </form>
             </div>
           </div>
 
-          {/* RIGHT — INFO PANEL (sticky) */}
-          <div className="lg:order-2 lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl bg-[#1C5472] p-6 mb-6">
-              <OfficeIcon className="h-8 w-8 text-[#00FCB8]" />
-              <h3 className="mt-2 font-bold text-white">Visit us in Parramatta</h3>
-              <p className="mt-2 text-sm text-[#39B2B2]">
-                Come in for a free, no-obligation consultation. No appointment needed — though booking ahead means we can prepare for your specific situation.
-              </p>
-              <ul className="mt-4 space-y-1 text-sm text-white">
-                <li>📍 Level 49, 8 Parramatta Square, Parramatta NSW 2150</li>
-                <li>🕐 Monday – Friday: 9:00am – 5:30pm</li>
-                <li>📞 +61 422 959 486</li>
-              </ul>
-              <a
-                href={GOOGLE_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex rounded-lg border-2 border-[#00FCB8] px-4 py-2 text-sm font-medium text-[#00FCB8] transition hover:bg-[#00FCB8]/10"
-              >
-                Get Directions →
-              </a>
-            </div>
-            <div className="rounded-2xl bg-[#39B2B2] p-6 mb-6">
-              <ClockIcon className="h-8 w-8 text-white" />
-              <h3 className="mt-2 font-bold text-white">We get back to you fast.</h3>
-              <p className="mt-2 text-sm text-white">
-                Send a message and you&apos;ll hear back within one business day — usually the same day.
-              </p>
-            </div>
-            <div className="rounded-2xl bg-white p-6 shadow">
-              <div className="flex items-center gap-2">
-                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                <span className="font-medium text-[#1C5472]">Google Reviews</span>
+          {/* OFFICE PANEL (sticky): address, hours, meeting options, reviews */}
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="rounded-2xl bg-[#1C5472] p-6 text-white shadow-[0_14px_36px_-18px_rgba(10,22,40,0.45)] sm:p-7">
+              <h2 className="text-xl font-bold">Office and hours</h2>
+
+              <div className="mt-5 flex gap-3">
+                <Icon d={ICONS.pin} className="mt-0.5 h-5 w-5 shrink-0 text-[#00FCB8]" />
+                <address className="not-italic leading-relaxed">
+                  <span className="font-semibold">{OFFICE.name}</span>
+                  <br />
+                  {OFFICE.street}
+                  <br />
+                  {OFFICE.locality} {OFFICE.region} {OFFICE.postcode}
+                </address>
               </div>
-              <div className="mt-2 flex text-amber-400" aria-hidden>★★★★★</div>
-              <p className="font-bold text-[#1C5472]">5.0 · 100+ reviews</p>
-              <p className="mt-2 text-sm italic text-[#1C5472]">
-                &ldquo;The team at Frontline Financial are extraordinary at what they do.&rdquo; — Oliver S.
-              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={GOOGLE.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1.5 rounded-lg bg-[#00FCB8] px-4 py-2 text-sm font-bold text-[#0A1628] transition hover:opacity-90 ${FOCUS}`}
+                >
+                  Get directions
+                  <Icon d={ICONS.arrow} className="h-4 w-4" strokeWidth={2} />
+                </a>
+                <a
+                  href={GOOGLE.listingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1.5 rounded-lg border border-white/35 px-4 py-2 text-sm font-medium text-white transition hover:border-[#00FCB8] hover:text-[#00FCB8] ${FOCUS}`}
+                >
+                  Open in Google Maps
+                  <Icon d={ICONS.external} className="h-4 w-4" />
+                </a>
+              </div>
+
+              <div className="mt-6 border-t border-white/15 pt-5">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-bold">Phone and appointments</h3>
+                  {status && (
+                    <span className="flex items-center gap-2 text-xs text-[#CFEAEA]">
+                      <StatusDot open={status.open} />
+                      {status.open ? "Open now" : "Closed now"}
+                    </span>
+                  )}
+                </div>
+                <dl className="mt-3 space-y-1.5 text-sm">
+                  {HOURS_ROWS.map((row) => {
+                    const isToday = status && row.days.includes(status.today);
+                    return (
+                      <div
+                        key={row.label}
+                        className={`flex justify-between gap-4 rounded-md px-2 py-1 ${isToday ? "bg-white/10 font-semibold" : ""}`}
+                      >
+                        <dt>{row.label}</dt>
+                        <dd className={`tabular-nums ${row.value === "Closed" ? "text-[#CFEAEA]" : ""}`}>{row.value}</dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+                <p className="mt-3 text-xs leading-relaxed text-[#CFEAEA]">
+                  Closed over the Christmas to New Year break (24 December to 1 January).
+                </p>
+              </div>
+
+              <div className="mt-6 flex gap-3 border-t border-white/15 pt-5">
+                <Icon d={ICONS.video} className="mt-0.5 h-5 w-5 shrink-0 text-[#00FCB8]" />
+                <p className="text-sm leading-relaxed text-white/90">
+                  <span className="font-semibold text-white">In person or online.</span> Hassan and Sham both meet at the
+                  office, or by phone or video, whichever suits you.
+                </p>
+              </div>
+
+              <div className="mt-6 border-t border-white/15 pt-5">
+                <div className="flex items-center gap-2">
+                  <Stars className="text-[#F5C26B]" />
+                  <span className="font-bold">5.0 from 100+ Google reviews</span>
+                </div>
+                <p className="mt-2 text-sm italic leading-relaxed text-white/90">
+                  &ldquo;The team at Frontline Financial are extraordinary at what they do.&rdquo; Oliver S.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+                  <a
+                    href={GOOGLE.reviewsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-[#00FCB8] underline decoration-[#00FCB8]/40 underline-offset-4 hover:decoration-[#00FCB8] ${FOCUS}`}
+                  >
+                    Read our reviews
+                  </a>
+                  <a
+                    href={GOOGLE.writeReviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-white underline decoration-white/40 underline-offset-4 hover:decoration-white ${FOCUS}`}
+                  >
+                    Leave a review
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
       <WaveDivider fill="#0A1628" />
 
-      {/* OUR LOCATION — Level 49, 8 Parramatta Square (matches homepage section) */}
-      <section className="relative overflow-hidden bg-[#0A1628] px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="pointer-events-none absolute left-0 bottom-0 h-64 w-64 rounded-full bg-[#39B2B2] opacity-[0.07] blur-[90px]" aria-hidden />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Our location</p>
-            <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
-              Visit us at Parramatta Square
-            </h2>
-            <p className="mt-5 text-lg font-semibold text-white">
-              Level 49, 8 Parramatta Square
-              <br />
-              Parramatta NSW 2150
-            </p>
-            <p className="mt-3 max-w-md text-sm text-white/70">
-              Level 49 of the 8 Parramatta Square tower, in the heart of the
-              precinct — drop in for a consultation, or find us on Google for
-              reviews, photos and opening hours.
-            </p>
-            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row">
-              <a
-                href={GOOGLE_REVIEW_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
-              >
-                <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
-                Find us on Google
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
-              </a>
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=8%20Parramatta%20Square%2C%20Parramatta%20NSW%202150"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]"
-              >
-                Get directions
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
-            </div>
-            <div className="mt-8 overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+      {/* 3. MAP: the Google Business Profile listing, plus how to get here */}
+      <section className="relative overflow-hidden bg-[#0A1628] px-4 pt-6 md:px-6 lg:px-8">
+        <div className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-[#39B2B2] opacity-[0.08] blur-[100px]" aria-hidden />
+        <div className="relative mx-auto max-w-6xl">
+          <h2 className="text-balance text-3xl font-bold text-white md:text-4xl">Find us at 8 Parramatta Square</h2>
+          <p className="mt-3 max-w-2xl text-[#CFEAEA]">
+            We&apos;re on Level 49 of the 8 Parramatta Square tower, in the heart of the Parramatta CBD.
+          </p>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+            <div className="overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-[0_20px_44px_-24px_rgba(0,0,0,0.8)]">
               <iframe
-                src="https://www.google.com/maps?q=8+Parramatta+Square,+Parramatta+NSW+2150&output=embed"
-                title="Map — Frontline Financial, Level 49, 8 Parramatta Square, Parramatta NSW 2150"
-                className="block h-56 w-full border-0 md:h-64"
+                src={GOOGLE.mapEmbedSrc}
+                title="Google Maps: Frontline Financial Group, Level 49, 8 Parramatta Square, Parramatta NSW 2150"
+                className="block h-80 w-full border-0 md:h-[440px]"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
             </div>
-          </div>
-          <div className="flex justify-center lg:justify-end">
-            <div className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/frontline-8-parramatta-square.webp"
-                alt="The 8 Parramatta Square tower — Frontline Financial's office is on Level 49"
-                className="block h-auto w-full max-w-md object-cover"
-                width={1066}
-                height={1421}
-                loading="lazy"
-              />
+
+            <div className="flex flex-col gap-6">
+              <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/frontline-8-parramatta-square.webp"
+                  alt="The 8 Parramatta Square tower, where Frontline Financial's office is on Level 49"
+                  className="block h-56 w-full object-cover object-[50%_30%] md:h-60"
+                  width={1066}
+                  height={1421}
+                  loading="lazy"
+                />
+              </div>
+              <ul className="space-y-4 text-sm text-white/90">
+                <li className="flex gap-3">
+                  <Icon d={ICONS.building} className="h-5 w-5 shrink-0 text-[#00FCB8]" />
+                  <span>Level 49, 8 Parramatta Square, Parramatta NSW 2150</span>
+                </li>
+                <li className="flex gap-3">
+                  <Icon d={ICONS.train} className="h-5 w-5 shrink-0 text-[#00FCB8]" />
+                  <span>A short walk from Parramatta Station</span>
+                </li>
+                <li className="flex gap-3">
+                  <Icon d={ICONS.video} className="h-5 w-5 shrink-0 text-[#00FCB8]" />
+                  <span>Can&apos;t make it in? We meet by phone or video anywhere in Australia.</span>
+                </li>
+              </ul>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={GOOGLE.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-lg bg-[#00FCB8] px-5 py-3 font-bold text-[#0A1628] transition hover:opacity-90 ${FOCUS}`}
+                >
+                  Get directions
+                  <Icon d={ICONS.arrow} className="h-5 w-5" strokeWidth={2} />
+                </a>
+                <a
+                  href={GOOGLE.listingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-lg border border-[#00FCB8]/60 px-5 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628] ${FOCUS}`}
+                >
+                  See us on Google
+                  <Icon d={ICONS.external} className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
+        </div>
+        <div className="-mx-4 mt-14 md:-mx-6 md:mt-16 lg:-mx-8">
+          <WaveDivider fill="#F5F5EF" />
+        </div>
+      </section>
+
+      {/* 4. FAQ */}
+      <section className="section-dot-grid px-4 py-16 md:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-balance text-3xl font-bold text-[#1C5472] md:text-4xl">Before you get in touch</h2>
+          <div className="mt-8 divide-y divide-[#1C5472]/15 border-y border-[#1C5472]/15">
+            {CONTACT_FAQ.map(({ q, a }) => (
+              <details key={q} className="group">
+                <summary
+                  className={`flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-semibold text-[#1C5472] [&::-webkit-details-marker]:hidden ${FOCUS}`}
+                >
+                  {q}
+                  <Icon
+                    d={ICONS.chevron}
+                    className="h-5 w-5 shrink-0 text-[#23797A] transition-transform duration-300 group-open:rotate-180"
+                    strokeWidth={2}
+                  />
+                </summary>
+                <p className="max-w-[65ch] pb-5 leading-relaxed text-[#1C5472]/85">{a}</p>
+              </details>
+            ))}
+          </div>
+          <p className="mt-8 text-[#1C5472]">
+            Still have a question?{" "}
+            <a href={OFFICE.phoneHref} className={`font-bold text-[#1C5472] underline decoration-[#00FCB8] decoration-2 underline-offset-4 ${FOCUS}`}>
+              Call {OFFICE.phone}
+            </a>
+            , {HOURS.label}.
+          </p>
         </div>
       </section>
 

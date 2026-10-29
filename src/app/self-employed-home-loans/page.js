@@ -525,7 +525,8 @@ export default function SelfEmployedHomeLoansPage() {
             A mortgage broker for Western Sydney&apos;s business owners
           </h2>
           <p className="mt-6 leading-relaxed text-[#1C5472]">
-            We&apos;re on Level 49 of 8 Parramatta Square, Parramatta NSW 2150, open Monday to Friday, 9:00 to 5:30. We help
+            We&apos;re on Level 49 of 8 Parramatta Square, Parramatta NSW 2150, and take calls and appointments Monday to
+            Friday, 10:30am to 8pm. We help
             self-employed buyers across {SUBURBS.slice(0, -1).join(", ")} and {SUBURBS[SUBURBS.length - 1]}, and right
             across Western Sydney. Can&apos;t make it in? We work by phone and video anywhere in NSW.
           </p>

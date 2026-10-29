@@ -890,7 +890,7 @@ export default function VehicleFinanceLanding() {
         <p className="mx-auto max-w-4xl text-center text-white">
           Prefer to talk now? Call{" "}
           <a href={PHONE_LINK} className="font-bold text-[#00FCB8] hover:underline">{PHONE}</a>.
-          {" "}Monday to Friday, 9am to 5pm.
+          {" "}Monday to Friday, 10:30am to 8pm.
         </p>
       </section>
 

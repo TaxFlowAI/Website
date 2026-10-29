@@ -60,7 +60,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Can I meet a mortgage broker in Parramatta?",
-    a: "Yes. We’re on Level 49, 8 Parramatta Square, Parramatta NSW 2150, Monday to Friday 9:00 to 5:30. We also work by phone and video.",
+    a: "Yes. We’re on Level 49, 8 Parramatta Square, Parramatta NSW 2150, and take calls and appointments Monday to Friday, 10:30am to 8pm. We also meet by phone and video.",
   },
 ];
 

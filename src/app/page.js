@@ -128,7 +128,12 @@ const ORG_SCHEMA = {
     postalCode: "2150",
     addressCountry: "AU",
   },
-  sameAs: ["https://www.instagram.com/frontline.financial.group/"],
+  sameAs: [
+    "https://maps.google.com/?cid=1907814861488993659",
+    "https://www.facebook.com/profile.php?id=61560475306366",
+    "https://www.instagram.com/frontline.financial.group/",
+    "https://au.linkedin.com/company/frontline-financial-group",
+  ],
   subOrganization: [
     { "@id": "https://frontline.financial/brokers#business" },
     { "@id": "https://frontline.financial/assetsolutions#business" },

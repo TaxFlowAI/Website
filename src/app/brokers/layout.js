@@ -1,4 +1,6 @@
 import { BROKERS_FAQ } from "@/data/brokers-faq";
+import { HOURS } from "@/config/business-hours";
+import { OFFICE, GOOGLE } from "@/config/location";
 
 /* SEO layout for /brokers — the page itself is a client component, so
    metadata and structured data live here. Target queries: mortgage broker
@@ -49,12 +51,13 @@ const BROKERS_SCHEMA = {
         postalCode: "2150",
         addressCountry: "AU",
       },
-      geo: { "@type": "GeoCoordinates", latitude: -33.8172, longitude: 151.0036 },
+      geo: { "@type": "GeoCoordinates", ...OFFICE.geo },
+      hasMap: GOOGLE.listingUrl,
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "17:30",
+        dayOfWeek: HOURS.days,
+        opens: HOURS.opens,
+        closes: HOURS.closes,
       },
       areaServed: [
         { "@type": "City", name: "Parramatta" },
