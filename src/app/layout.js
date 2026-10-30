@@ -17,11 +17,16 @@ export const metadata = {
   title: "Finance Broker Parramatta | Frontline Financial",
   description:
     "Home loans and car loans from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
+  /* F-mark icon set. The ?v= suffix makes browsers drop the old cached icon. */
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon-32.png?v=2", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-192.png?v=2", type: "image/png", sizes: "192x192" },
+      { url: "/favicon-512.png?v=2", type: "image/png", sizes: "512x512" },
     ],
+    shortcut: "/favicon.ico?v=2",
+    apple: { url: "/apple-touch-icon.png?v=2", sizes: "180x180" },
   },
 };
 

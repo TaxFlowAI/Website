@@ -6,6 +6,9 @@
       "Bash(sort -k6,8)",
       "Bash(sort -k6,8 -r)",
       "Bash(curl -s http://localhost:3002/ -o /dev/null -w \"%{http_code}\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Hassa\\Frontline Financial Dropbox\\Hassan Arif\\Frontline Financial\\FFG Marketing"
     ]
   }
 }

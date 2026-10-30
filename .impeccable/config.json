@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/self-employed-home-loans/page.js"
+        ],
+        "createdAt": "2026-10-26T01:29:44.080Z",
+        "reason": "Claude: border-l-4 accent on headings and cards is the site's established pattern (home, about, assetsolutions and the pre-existing brokers page all use it); the new page matches it"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/brokers/page.js"
+        ],
+        "createdAt": "2026-10-26T01:29:44.624Z",
+        "reason": "Claude: the flagged border-l-4 headings and card on /brokers predate this change and are the site's established pattern"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/self-employed-home-loans/how-lenders-read-your-tax-return/page.js"
+        ],
+        "createdAt": "2026-10-27T05:13:57.266Z",
+        "reason": "Claude triage: flagged line is the H2 heading accent (border-l-4 aqua), the site's established heading style used 7 times on /self-employed-home-loans; not a card side-tab"
+      }
+    ]
+  }
+}
