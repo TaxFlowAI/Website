@@ -13,7 +13,7 @@ import WaveDivider from "@/components/WaveDivider";
    ("some lenders"). */
 
 const PATH = "/self-employed-home-loans/how-lenders-read-your-tax-return";
-const CONSULT_HREF = "/contact?service=self-employed";
+const CONSULT_HREF = "/self-employed-home-loans/assessment";
 const PUBLISHED = "2026-10-27";
 const VIDEO = "/videos/parramatta-lanes-self-employed.mp4";
 const POSTER = "/images/articles/parramatta-lanes-video-poster.webp";

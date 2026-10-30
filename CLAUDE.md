@@ -32,9 +32,13 @@ live, so push only with the user's OK.
 - `/vehicle-finance` (`src/app/vehicle-finance/`) is the Meta campaign landing page: a 7-question quiz that posts to
   `/api/contact` and fires the Meta `Lead` event (plus GA4 `vf_form_submit` once GA4 is set up).
 - `/self-employed-home-loans` (server component, `src/app/self-employed-home-loans/page.js`) is the Brokers niche page
-  (self-employed borrowers, from 26 Oct 2026). Its buttons go to `/contact?service=self-employed`, which preselects
-  Hassan and "Self-Employed Home Loan". Lender policy stays general ("some lenders"), with no lender names.
-- `/api/contact` emails the operations inbox through Resend and forwards to `/api/ambition-cloud` (the CRM).
+  (self-employed borrowers, from 26 Oct 2026). Its buttons go to `/self-employed-home-loans/assessment`, a six-question
+  quiz (noindex) that fires the Meta `Lead` event. `/contact?service=self-employed` still preselects Hassan and
+  "Self-Employed Home Loan". Lender policy stays general ("some lenders"), with no lender names.
+- `/api/contact` emails the right inbox through Resend. It forwards Asset Solutions leads to `/api/ambition-cloud`.
+  Brokers leads (`consultationService: "brokers"` or `teamMember: "hassan"`) go to the Zapier webhook in
+  `ZAPIER_BROKERS_WEBHOOK_URL`, and the Zap creates the Broker Engine card. Quiz answers travel as `answers`
+  ({label: value}) plus a `summary` block for the card notes.
 - The Meta pixel (`src/components/MetaPixel.js`, loaded in `src/app/layout.js`) runs site-wide except `/taxflow`, switched
   on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean` and
   `/vehicle-finance` forms. Test custom events on the live site: Meta drops some of them from localhost.

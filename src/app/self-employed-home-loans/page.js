@@ -11,7 +11,7 @@ import WaveDivider from "@/components/WaveDivider";
    Lender policy is described in general terms only ("some lenders"): no
    lender names, no approval promises, tax questions go to the accountant. */
 
-const CONSULT_HREF = "/contact?service=self-employed";
+const CONSULT_HREF = "/self-employed-home-loans/assessment";
 
 export const metadata = {
   title: "Self-Employed Home Loans Parramatta | Frontline Financial",

@@ -14,6 +14,17 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+// Quiz answers arrive as { "Question label": "Answer" }. Keep only short strings so the
+// webhook can't be used to pass anything else along.
+function cleanAnswers(answers) {
+  if (!answers || typeof answers !== "object" || Array.isArray(answers)) return {};
+  const clean = {};
+  for (const [label, value] of Object.entries(answers).slice(0, 20)) {
+    if (typeof value === "string" && value.trim()) clean[label.slice(0, 80)] = value.trim().slice(0, 200);
+  }
+  return clean;
+}
+
 // Each business line's leads go to one inbox:
 // Brokers → Hassan; Asset Solutions (incl. vehicle finance and Dean's page) → operations; TaxFlowAI → taxflowai.
 function getRecipient({ teamMember, consultationService, campaign }) {
@@ -47,6 +58,7 @@ export async function POST(request) {
     preferredContact = "email",
     consultationService,
     campaign,
+    answers,
   } = body;
 
   if (!firstName || typeof firstName !== "string" || !firstName.trim()) {
@@ -124,11 +136,45 @@ export async function POST(request) {
         return { forwardedTo: null, forwardError: e?.message || "Network error" };
       }
     }
-    // Broker Engine forwarding disabled for now — Brokers enquiries still succeed; no external forward.
-    if (consultationService === "brokers") {
-      return { forwardedTo: null, forwardError: null };
+    // Home-loan leads go to a Zapier webhook, which creates the card in Broker Engine.
+    if (consultationService === "brokers" || teamMember === "hassan") {
+      return forwardToBrokerEngine();
     }
     return { forwardedTo: null, forwardError: null };
+  };
+
+  const forwardToBrokerEngine = async () => {
+    const hookUrl = process.env.ZAPIER_BROKERS_WEBHOOK_URL;
+    if (!hookUrl) return { forwardedTo: null, forwardError: null };
+    const quizAnswers = cleanAnswers(answers);
+    try {
+      const r = await fetch(hookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...leadPayload,
+          fullName: `${leadPayload.firstName} ${leadPayload.lastName}`,
+          services: servicesLabel,
+          preferredContact,
+          campaign: campaign || "website-contact",
+          answers: quizAnswers,
+          /* One block of text for the card's notes */
+          summary: [
+            ...Object.entries(quizAnswers).map(([label, value]) => `${label}: ${value}`),
+            `Services: ${servicesLabel}`,
+            `Preferred contact: ${preferredContact}`,
+            `Message: ${leadPayload.message}`,
+          ].join("\n"),
+          submittedAt: timestamp,
+        }),
+      });
+      if (r.ok) return { forwardedTo: "zapier", forwardError: null };
+      console.error("[Contact API] Zapier forward failed:", r.status);
+      return { forwardedTo: null, forwardError: `HTTP ${r.status}` };
+    } catch (e) {
+      console.error("[Contact API] Zapier forward error:", e?.message || e);
+      return { forwardedTo: null, forwardError: e?.message || "Network error" };
+    }
   };
 
   if (!resendApiKey) {

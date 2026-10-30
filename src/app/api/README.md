@@ -10,12 +10,13 @@ Handles contact form submissions, emailed to staff through the [Resend](https://
 | `CONTACT_EMAIL_FROM` | No | Sender (default: `Frontline Financial Website <website@frontline.financial>`). Must be on a domain verified in Resend. |
 | `CONTACT_EMAIL_BROKERS`, `_ASSET_SOLUTIONS`, `_TAXFLOW` | No | One inbox per business line (defaults: hassan@, operations@, taxflowai@). Asset Solutions includes the vehicle finance and Dean landing pages. No CCs. |
 | `CONTACT_EMAIL_DEFAULT` | No | Fallback for an enquiry that matches no business line (default: operations@). |
+| `ZAPIER_BROKERS_WEBHOOK_URL` | No | Zapier "Catch Hook" URL. Home-loan leads are posted here, and the Zap creates the Broker Engine card. Unset = no forward. Keep it server-only (never `NEXT_PUBLIC_`). |
 
 Send failures are logged as `[Contact API] Send failed: Resend <status>: <message>` (check Vercel → Logs).
 
-When the payload includes `consultationService`, the lead is also forwarded to the corresponding platform:
+After the email is sent, the lead is also forwarded:
 
-- `consultationService: "brokers"` → **Broker Engine** (Frontline Financial Brokers)
+- Brokers (`consultationService: "brokers"` or `teamMember: "hassan"`) → the Zapier webhook → **Broker Engine** (Frontline Financial Brokers). Broker Engine has no public API, so Zapier's "New Card" action does the write. The body carries the contact fields, `campaign`, `answers` ({label: value} from a quiz) and `summary` (one text block for the card notes). Failures log as `[Contact API] Zapier forward …` and don't affect the visitor.
 - `consultationService: "asset-solutions"` → **Ambition Cloud** (Frontline Financial: Asset Solutions)
 
 ---
