@@ -140,6 +140,18 @@ const ORG_SCHEMA = {
   ],
 };
 
+/* Asks Google to show this as the site name in search results. Google reads
+   it from the home page only, so it stays here with ORG_SCHEMA. */
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://frontline.financial/#website",
+  name: "Frontline Financial",
+  alternateName: "Frontline Financial Group",
+  url: "https://frontline.financial/",
+  publisher: { "@id": "https://frontline.financial/#org" },
+};
+
 export default function Home() {
   const router = useRouter();
   const [reviewIndex, setReviewIndex] = useState(0);
@@ -188,6 +200,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F5F5EF] font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }} />
       <LayoutNav activeNav="home" />
 
       {/* HERO — split layout, dramatic */}

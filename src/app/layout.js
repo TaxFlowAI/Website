@@ -22,6 +22,8 @@ export const metadata = {
   title: "Finance Broker Parramatta | Frontline Financial",
   description:
     "Home loans and car loans from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
+  /* Backs up WEBSITE_SCHEMA on the home page. /taxflow sets its own openGraph, which replaces this. */
+  openGraph: { siteName: "Frontline Financial" },
   /* F-mark icon set, dark blue on aqua (the guide's monochrome logo). The ?v= suffix makes browsers
      drop the old cached icon. Google asks for a stable icon URL, so don't bump it without a new icon. */
   icons: {
