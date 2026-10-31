@@ -306,7 +306,7 @@ export default function AboutPage() {
                 <span className="text-[#00FCB8]">★★★★★</span> &quot;Hassan was proactive and professional throughout the process of home loan applications and settlement leading to a successful settlement. Highly recommend his services.&quot; — Brendan Piech
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <a href="mailto:hassan@frontline.financial" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Email</a>
+                <Link href="/contact?team=hassan" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Enquire</Link>
                 <a href="tel:+61422959486" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Phone</a>
                 <a href="https://www.linkedin.com/in/hassan-arif-555382354/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">LinkedIn</a>
               </div>

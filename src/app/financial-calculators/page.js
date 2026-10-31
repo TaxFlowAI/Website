@@ -340,7 +340,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
             <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
               Call {name}: {phone}
             </a>
-            <Link href="/contact" className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
+            <Link href={`/contact?team=${name.toLowerCase()}`} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
               Book a free consultation
             </Link>
           </div>

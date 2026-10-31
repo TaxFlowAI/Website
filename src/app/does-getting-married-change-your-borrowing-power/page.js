@@ -12,7 +12,7 @@ import WaveDivider from "@/components/WaveDivider";
    figures, because HEM tables aren't public; lender policy stays general. */
 
 const PATH = "/does-getting-married-change-your-borrowing-power";
-const CONSULT_HREF = "/contact";
+const CONSULT_HREF = "/contact?team=hassan";
 const PUBLISHED = "2026-10-31";
 const VIDEO = "/videos/sham-wedding-hem.mp4";
 const POSTER = "/images/articles/sham-wedding-video-poster.webp";

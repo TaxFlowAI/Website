@@ -113,14 +113,18 @@ export default function ContactPage() {
   const [status, setStatus] = useState(null); // open/closed line, worked out in Sydney time after hydration
 
   /* Landing pages link here with ?service=<key> to preselect the broker and
-     service. Read from window, not useSearchParams, so the page stays static. */
+     service, or ?team=hassan|sham for just the broker. Read from window, not
+     useSearchParams, so the page stays static. */
   useEffect(() => {
-    const preset = new URLSearchParams(window.location.search).get("service");
-    if (preset === "self-employed") {
+    const params = new URLSearchParams(window.location.search);
+    const team = params.get("team");
+    if (params.get("service") === "self-employed") {
       // One-off read of the URL after hydration; the server render has no query string.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setTeamMember("hassan");
       setServices(["Self-Employed Home Loan"]);
+    } else if (team === "hassan" || team === "sham") {
+      setTeamMember(team);
     }
   }, []);
 

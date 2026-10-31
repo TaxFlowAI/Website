@@ -50,7 +50,7 @@ const QUALIFIERS = [
 ];
 
 const TEXT_STEPS = [
-  { key: "fullName", type: "text", label: "What's your name?", placeholder: "Your name", autoComplete: "name" },
+  { key: "fullName", type: "text", label: "What's your full name?", placeholder: "Your full name", autoComplete: "name" },
   { key: "phone", type: "tel", label: "Best number for Hassan to call?", placeholder: "04XX XXX XXX", autoComplete: "tel", inputMode: "tel" },
   { key: "email", type: "email", label: "And your email?", placeholder: "you@example.com", autoComplete: "email", inputMode: "email" },
 ];
