@@ -97,6 +97,19 @@ export default function BrokersPage() {
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">100+ 5-Star Reviews</span>
           </div>
+          <a
+            href="https://brokerscore.com.au/mortgage-broker/frontline-financial-group"
+            target="_blank"
+            rel="noopener"
+            className="mt-6 inline-block"
+          >
+            <img
+              src="https://brokerscore.com.au/badge/frontline-financial-group.svg?shape=hexagon&theme=dark"
+              alt="Frontline Financial Group on BrokerScore"
+              width={240}
+              height={108}
+            />
+          </a>
           <p className="mt-6 text-sm italic text-[#39B2B2]">We work for you — not the banks.</p>
           <a href="/self-employed-home-loans" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#00FCB8] bg-[#00FCB8]/10 px-5 py-2 text-sm font-bold text-[#00FCB8] transition-colors hover:bg-[#00FCB8] hover:text-[#1C5472]">
             Self-employed? See how we help business owners buy
