@@ -265,6 +265,16 @@ export default function BrokersPage() {
               </div>
             ))}
           </div>
+          <p className="mt-12 text-center text-[#1C5472]">
+            Just got married, or had a baby?{" "}
+            <a
+              href="/does-getting-married-change-your-borrowing-power"
+              className="font-bold underline decoration-[#00FCB8] decoration-2 underline-offset-4 hover:text-[#39B2B2]"
+            >
+              Here&apos;s how that changes your borrowing power
+            </a>
+            .
+          </p>
         </div>
       </section>
 

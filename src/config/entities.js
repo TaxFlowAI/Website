@@ -59,6 +59,7 @@ export const ROUTE_ENTITY_MAP = {
   // ---- BROKERS pages ----
   "/brokers": ENTITY.BROKERS,
   "/self-employed-home-loans": ENTITY.BROKERS,
+  "/does-getting-married-change-your-borrowing-power": ENTITY.BROKERS,
   "/credit-guide": ENTITY.BROKERS,
   "/privacy-consent": ENTITY.BROKERS,
   "/calculator-disclaimer-broking": ENTITY.BROKERS,
