@@ -1,25 +1,36 @@
-import { Outfit, DM_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./the-current.css";
 import { BookingProvider } from "@/components/taxflow/BookingModal";
 import { SignInProvider } from "@/components/taxflow/SignInModal";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+/* Self-hosted (see src/fonts/README.md). Each variable file is listed per weight
+   so only these weights exist as faces, as they did with Google Fonts. */
+const outfit = localFont({
   variable: "--font-display-tf",
+  src: [
+    { path: "../../fonts/outfit-latin.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/outfit-latin.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/outfit-latin.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const dmSans = localFont({
   variable: "--font-body-tf",
+  src: [
+    { path: "../../fonts/dm-sans-latin.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/dm-sans-latin.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/dm-sans-latin.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const jetbrainsMono = localFont({
   variable: "--font-mono-tf",
+  src: [
+    { path: "../../fonts/jetbrains-mono-latin.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/jetbrains-mono-latin.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/jetbrains-mono-latin.woff2", weight: "600", style: "normal" },
+  ],
 });
 
 /* Metadata for the /taxflow section only — overrides the root (lending)

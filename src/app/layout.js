@@ -1,11 +1,16 @@
-import { DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
 
-const dmSans = DM_Sans({
+/* Self-hosted (see src/fonts/README.md). The one variable file is listed per
+   weight on purpose: only these weights exist as faces, so font-medium still
+   renders at 400 and font-semibold at 700, as they did with Google Fonts. */
+const dmSans = localFont({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  src: [
+    { path: "../fonts/dm-sans-latin.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/dm-sans-latin.woff2", weight: "700", style: "normal" },
+  ],
 });
 
 /* The home page is a client component, so its title and description live
