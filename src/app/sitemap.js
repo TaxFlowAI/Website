@@ -2,7 +2,10 @@ import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const BASE = "https://frontline.financial";
 
-/* Sitemap: core Frontline Financial marketing pages + the TaxFlowAI section. */
+/* Sitemap: core Frontline Financial marketing pages + the TaxFlowAI section.
+   A route's optional third value is the date its content really changed. Leave it
+   off unless it's known: a build-time date on every URL tells Google that every page
+   changed on every deploy, so it stops trusting the field. */
 export default function sitemap() {
   const routes = [
     ["/", 1.0],
@@ -10,8 +13,8 @@ export default function sitemap() {
     ["/vehicle-finance", 0.8],
     ["/brokers", 0.9],
     ["/self-employed-home-loans", 0.9],
-    ["/self-employed-home-loans/how-lenders-read-your-tax-return", 0.7],
-    ["/does-getting-married-change-your-borrowing-power", 0.7],
+    ["/self-employed-home-loans/how-lenders-read-your-tax-return", 0.7, "2026-10-27"],
+    ["/does-getting-married-change-your-borrowing-power", 0.7, "2026-10-31"],
     ["/about", 0.7],
     ["/contact", 0.8],
     ["/financial-calculators", 0.6],
@@ -41,9 +44,9 @@ export default function sitemap() {
     ["/taxflow/collection-notice", 0.3],
     ["/taxflow/terms", 0.3],
   ];
-  return routes.map(([path, priority]) => ({
+  return routes.map(([path, priority, lastModified]) => ({
     url: `${BASE}${path}`,
-    lastModified: new Date(),
+    ...(lastModified && { lastModified }),
     changeFrequency: "monthly",
     priority,
   }));
