@@ -364,7 +364,7 @@ export default function TaxReturnArticlePage() {
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-              Call Hassan: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
           <p className="mx-auto mt-10 max-w-3xl text-xs leading-relaxed text-[#1C5472]/80">

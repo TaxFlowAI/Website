@@ -8,7 +8,7 @@ export const CONTACT_FAQ = [
   },
   {
     q: "Can we meet by phone or video instead?",
-    a: "Yes. Hassan (home loans) and Sham (car, ute, truck and equipment finance) both meet by phone or video, so you don't need to come into Parramatta. We help clients anywhere in NSW and across Australia.",
+    a: "Yes. We meet by phone or video, so you don't need to come into Parramatta. We help clients anywhere in NSW and across Australia.",
   },
   {
     q: "When can I call you?",
@@ -16,7 +16,7 @@ export const CONTACT_FAQ = [
   },
   {
     q: "Who will I speak with?",
-    a: "For home loans, refinancing and investment loans, Hassan Arif at Frontline Financial Brokers. For car, ute, van, truck and equipment finance, Sham at Frontline Financial: Asset Solutions. Not sure which you need? Send the form and we'll pass it to the right person.",
+    a: "Someone from our team first, to understand what you need. Hassan Arif leads home loans, refinancing and investment loans at Frontline Financial Brokers, and you'll talk with him through the process. Sham leads car, ute, van, truck and equipment finance at Frontline Financial: Asset Solutions. Not sure which you need? Send the form and we'll pass it to the right person.",
   },
   {
     q: "Does the first conversation cost anything?",
@@ -24,7 +24,7 @@ export const CONTACT_FAQ = [
   },
   {
     q: "How quickly will you get back to me?",
-    a: "Within one business day, and usually the same day.",
+    a: "Within one business day.",
   },
   {
     q: "Where exactly is your office?",

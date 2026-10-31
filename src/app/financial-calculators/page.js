@@ -338,7 +338,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
           <p className="mt-2 text-[#39B2B2]">{blurb}</p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
-              Call {name}: {phone}
+              Call us: {phone}
             </a>
             <Link href={`/contact?team=${name.toLowerCase()}`} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
               Book a free consultation
@@ -346,7 +346,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
           </div>
         </div>
         <div className="hidden md:block">
-          <CTAProfilePhoto caption={name} src={name === "Sham" ? "/images/sham-portrait.webp" : "/images/DSC01459.png?v=3"} />
+          <CTAProfilePhoto caption={name} src={name === "Sham" ? "/images/sham-portrait.webp" : "/images/hassan-portrait.webp"} />
         </div>
       </div>
     </div>

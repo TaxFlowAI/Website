@@ -104,7 +104,7 @@ export default function CarLoanForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </span>
-        <h2 className="mt-5 text-2xl font-bold text-[#1C5472]">Thanks {result.firstName}. Sham will call you within one business day.</h2>
+        <h2 className="mt-5 text-2xl font-bold text-[#1C5472]">Thanks {result.firstName}. Someone from our team will call you within one business day.</h2>
         {result.privacyLink && (
           <div className="mt-6 rounded-2xl bg-[#F5F5EF] p-5">
             <p className="font-bold text-[#1C5472]">Want to save time on the call?</p>
@@ -136,7 +136,7 @@ export default function CarLoanForm() {
   return (
     <>
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-2xl font-bold text-[#1C5472]">Get a call from Sham</h2>
+        <h2 className="text-2xl font-bold text-[#1C5472]">Get a call from our team</h2>
         <span className="shrink-0 rounded-full bg-[#00FCB8]/15 px-3 py-1 text-xs font-bold text-[#00795c]">1 MIN</span>
       </div>
 

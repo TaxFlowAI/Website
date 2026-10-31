@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import FinanceSelector from "@/components/FinanceSelector";
+import OpenStatus from "@/components/OpenStatus";
+import SettledDeals from "@/components/SettledDeals";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
@@ -204,62 +207,72 @@ export default function Home() {
       <LayoutNav activeNav="home" />
 
       {/* HERO — split layout, dramatic */}
-      <section id="home" className="section-dot-grid hero-gradient-animate relative w-full overflow-hidden px-4 pt-12 pb-20 md:px-6 md:pt-16 md:pb-28 lg:px-8">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="text-center lg:text-left">
+      <section id="home" className="section-dot-grid hero-gradient-animate relative w-full scroll-mt-20 overflow-hidden px-4 pt-6 pb-16 md:px-6 md:pt-16 md:pb-28 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-x-16 gap-y-6 lg:grid-cols-[minmax(0,1fr)_440px] lg:gap-y-8 xl:grid-cols-[minmax(0,1fr)_480px]">
+          <div className="text-center lg:col-start-1 lg:row-start-1 lg:self-end lg:text-left">
             <h1 className="font-bold tracking-tight text-[#1C5472]">
               <span className="block text-sm uppercase tracking-widest text-[#39B2B2] md:text-base">
                 Home loan and car loan brokers in Parramatta
               </span>
-              <span className="mt-4 block text-5xl leading-[1.1] sm:text-6xl lg:text-7xl">Finance made simple.</span>
+              <span className="mt-3 block text-4xl leading-[1.1] sm:mt-4 sm:text-6xl xl:text-7xl">Finance made simple.</span>
             </h1>
-            <p className="mt-4 text-5xl font-bold sm:text-6xl lg:text-7xl">
+            <p className="mt-3 text-4xl font-bold sm:mt-4 sm:text-6xl xl:text-7xl">
               <span className="hero-highlight-gradient inline-block rounded-3xl px-5 py-3 leading-[1.15] text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">
                 For every single Australian.
               </span>
             </p>
-            <p className="mx-auto mt-6 max-w-xl text-lg font-normal text-[#1C5472] lg:mx-0 md:text-xl">
-              Yes, every one of them. 26 million people. That&apos;s the goal. We&apos;re starting with you.
+            <p className="mx-auto mt-4 max-w-xl text-lg font-normal leading-snug text-[#1C5472] sm:mt-6 sm:leading-normal lg:mx-0 md:text-xl">
+              A real broker compares 30+ lenders for you, and someone from our team calls within one business day.
+              <span className="hidden sm:inline"> 26 million Australians to help. We&apos;re starting with you.</span>
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
-              <a href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
-                Talk to our experts
-              </a>
-              <a href="#services" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/5 sm:w-auto">
-                Learn more
-              </a>
-            </div>
-            <div className="mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-8 lg:justify-start">
-              <p className="text-5xl font-bold sm:text-6xl">
-                <span className="hero-highlight-gradient inline-block rounded-2xl px-4 py-2 leading-none text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">26M</span>
-              </p>
-              <span className="h-8 w-px bg-[#39B2B2]" aria-hidden />
-              <p className="text-lg font-bold text-[#1C5472]">Australians to help</p>
-              <span className="h-8 w-px bg-[#39B2B2]" aria-hidden />
-              <p className="text-lg italic text-[#39B2B2]">Starting now</p>
-            </div>
-            <p className="mt-4 text-sm italic text-gray-500">So far: 500+ helped. Long way to go.</p>
           </div>
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="absolute right-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#39B2B2] opacity-15 lg:h-96 lg:w-96" aria-hidden />
-            <div className="relative z-10">
-              <div className="float-animate w-full max-w-md rounded-2xl bg-[#1C5472] p-6 shadow-[0_20px_50px_-12px_rgba(28,84,114,0.35)]">
-                <p className="text-sm font-bold uppercase tracking-wider text-white/80">Your Finance Summary</p>
-                <ul className="mt-4 space-y-2 text-sm text-white">
-                  <li className="flex items-center gap-2">Home Loan <span className="text-[#00FCB8]">✓ Approved</span></li>
-                  <li className="flex items-center gap-2">Asset Finance <span className="text-[#00FCB8]">✓ Active</span></li>
-                  <li className="text-white/90">Next Review: 28 Feb</li>
-                </ul>
-                <div className="mt-4">
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-white/20">
-                    <div className="h-full w-[75%] rounded-full bg-[#00FCB8]" />
-                  </div>
-                  <p className="mt-1 text-xs text-white/70">Profile strength 75%</p>
-                </div>
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
+            <FinanceSelector />
+          </div>
+          <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+            {/* proof first: a stranger needs a reason to trust us before they tap anything */}
+            <dl className="hero-highlight-gradient grid divide-y divide-white/15 rounded-2xl text-left text-white shadow-lg shadow-[#1C5472]/30 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-1 lg:divide-x-0 lg:divide-y xl:grid-cols-3 xl:divide-x xl:divide-y-0">
+              <div className="flex min-w-0 flex-col justify-center p-4">
+                <dt className="flex gap-0.5 text-[#FFD700]" aria-label="5 out of 5 stars">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </dt>
+                <dd className="mt-1.5 text-lg font-bold leading-tight">5.0 on Google</dd>
+                <dd className="mt-0.5 text-sm text-white/85">
+                  <a href={GOOGLE_REVIEW_LINK} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:no-underline">
+                    from 100+ reviews
+                  </a>
+                </dd>
               </div>
-              <div className="float-animate-delay absolute -left-4 top-[85%] z-20 -rotate-3 rounded-xl bg-white px-4 py-3 shadow-lg">
-                <p className="text-sm font-medium text-[#1C5472]">Latest approval: Car Loan <span className="text-[#00FCB8]">✓</span></p>
+              <div className="flex min-w-0 items-center gap-3 p-4">
+                <dt className="shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/fintelligence-fy25-seal.webp" alt="Winner seal" width={72} height={59} className="h-[59px] w-[72px]" />
+                </dt>
+                <dd className="min-w-0 text-sm leading-snug">
+                  <span className="block text-lg font-bold leading-tight">Award winner</span>
+                  <span className="text-white/85">Fintelligence FY25, Vehicle and Equipment Finance</span>
+                </dd>
               </div>
+              <div className="flex min-w-0 flex-col justify-center p-4">
+                <dt className="text-2xl font-bold leading-none text-[#00FCB8]">30+ lenders</dt>
+                <dd className="mt-1.5 text-sm text-white/85">500+ helped. 26 million to go.</dd>
+              </div>
+            </dl>
+            <div className="mt-5 flex flex-col items-center gap-x-5 gap-y-3 sm:flex-row sm:flex-wrap lg:justify-start">
+              <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center gap-2 rounded-lg border-2 border-[#1C5472] px-5 py-2.5 font-bold text-[#1C5472] transition-colors duration-200 hover:bg-[#1C5472]/5 sm:w-auto">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                  <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                Call +61 422 959 486
+              </a>
+              <OpenStatus className="text-sm font-medium text-[#1C5472]" />
+              <a href="#just-settled" className="text-sm font-bold text-[#1C5472] underline underline-offset-4 hover:no-underline">
+                See deals we&apos;ve settled
+              </a>
             </div>
           </div>
         </div>
@@ -312,8 +325,14 @@ export default function Home() {
                 <p className="mt-3 leading-relaxed text-[#1C5472]">
                   Independent mortgage and business-lending specialists who shop 30+ lenders, secure sharper rates, and handle every shred of paperwork.
                 </p>
-                <Link href="/self-employed-home-loans" className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
+                <Link href="/apply/home-loan" className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8] px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/70">
+                  Apply for a home loan
+                </Link>
+                <Link href="/self-employed-home-loans" className="mt-2 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
                   Self-employed? Home loans for business owners
+                </Link>
+                <Link href="/brokers#credit-proposal" className="mt-2 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
+                  See a sample credit proposal
                 </Link>
                 <Link href="/brokers" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
                   Learn more
@@ -336,8 +355,20 @@ export default function Home() {
               <div className="flex flex-col p-6 md:p-8">
                 <h3 className="text-xl font-bold text-[#1C5472] md:text-2xl">Frontline Financial Asset Solutions</h3>
                 <p className="mt-3 leading-relaxed text-[#1C5472]">
-                  Dedicated car and equipment-finance experts who fast-track approvals from personal vehicles to full commercial fleets.
+                  Dedicated car, equipment, personal loan and working capital specialists, from your next car to a full commercial fleet.
                 </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {[
+                    ["Car loan", "/apply/car-loan"],
+                    ["Equipment finance", "/apply/equipment-finance"],
+                    ["Personal loan", "/apply/personal-loan"],
+                    ["Working capital", "/apply/working-capital"],
+                  ].map(([label, href]) => (
+                    <Link key={href} href={href} className="rounded-full bg-[#00FCB8] px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/70">
+                      {label}
+                    </Link>
+                  ))}
+                </div>
                 <Link href="/assetsolutions" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
                   Learn more
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -347,6 +378,20 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="bg-[#1C5472]">
+        <WaveDivider fill="#F5F5EF" />
+      </div>
+
+      {/* JUST SETTLED — the approved posts, as proof for "would they take my deal?" */}
+      <SettledDeals
+        ids={["01-prime-mover", "06-hilux-renting", "05-personal-loan-new-job", "12-mazda-part-time"]}
+        heading="Think your deal is too hard?"
+        intro="No property. Renting with no deposit. Three months into a new job. Part-time income. These all settled recently."
+        tone="light"
+        ctaHref="#home"
+        ctaLabel="Start your application"
+      />
 
       <WaveDivider fill="#39B2B2" />
 
@@ -591,75 +636,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TAXFLOWAI TEASER — matches TaxFlowAI home hero; great leap in tax technology */}
-      <section id="taxflowai" className="taxflow-teaser-bg relative overflow-hidden px-4 py-20 md:px-6 md:py-28 lg:px-8">
-        {/* Subtle glow orbs for depth */}
-        <div className="pointer-events-none absolute bottom-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[#00FCB8] opacity-[0.06] blur-[100px]" aria-hidden />
-        <div className="pointer-events-none absolute top-1/4 right-0 h-96 w-96 rounded-full bg-[#39B2B2] opacity-[0.05] blur-[100px]" aria-hidden />
-        {/* Watermark — slightly more visible for sophistication */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden>
-          <span className="text-[clamp(5rem,22vw,14rem)] font-bold leading-none tracking-tighter text-white/[0.06]">TaxFlowAI</span>
-        </div>
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          {/* Badge: + in lime green, "Introducing TaxFlowAI" in white, thin outline */}
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#0A1628]/80 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-            <span className="text-[#00FCB8]" aria-hidden>+</span>
-            <span className="text-white">Introducing TaxFlowAI</span>
-          </p>
-          <h2 className="mt-8 text-5xl font-bold leading-tight text-white drop-shadow-sm md:text-6xl lg:text-7xl">
-            Your tax life, organised.
-          </h2>
-          <p className="mt-5 max-w-2xl mx-auto text-xl text-white/95 md:text-2xl">
-            A smarter way to manage your tax lodgements and stay connected with your accountant.
-          </p>
-          <p className="mt-3 text-sm font-medium uppercase tracking-widest text-[#00FCB8]/90">
-            The next step in tax technology
-          </p>
-          {/* Feature cards — rounded outlines, distinct icon colors like TaxFlowAI hero */}
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                <svg className="h-6 w-6 text-white/90" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                </svg>
-              </span>
-              <span className="font-medium text-white">Track Lodgements</span>
-            </div>
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-amber-500/20">
-                <svg className="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-                </svg>
-              </span>
-              <span className="font-medium text-white">Manage Documents</span>
-            </div>
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-violet-500/20">
-                <svg className="h-6 w-6 text-violet-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                </svg>
-              </span>
-              <span className="font-medium text-white">Accountant Connected</span>
-            </div>
-          </div>
-          <div className="mt-12">
-            <Link
-              href="/taxflow"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-10 py-4 text-lg font-bold text-white shadow-[0_0_30px_rgba(0,252,184,0.25)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,252,184,0.35)]"
-            >
-              Explore TaxFlowAI
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </Link>
-          </div>
-          <p className="mt-8 text-sm text-white/70">
-            {SHOW_TAX_SERVICES
-              ? "TaxFlowAI's tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."
-              : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."}
-          </p>
-        </div>
-      </section>
-
-      <WaveDivider fill="#00FCB8" />
+      <div className="bg-[#0A1628]">
+        <WaveDivider fill="#00FCB8" />
+      </div>
 
       {/* CTA BANNER — aqua green with stripe overlay + embedded consultation form */}
       <section id="consultation" className="cta-stripe-pattern relative bg-[#00FCB8] px-4 py-14 md:px-6 md:py-16 lg:px-8">
@@ -679,7 +658,7 @@ export default function Home() {
             </div>
           ) : consultationStep === "choose" ? (
             <>
-              <p className="mt-8 text-sm font-medium uppercase tracking-wider text-[#1C5472]/90">Choose your service</p>
+              <p className="mt-8 text-sm font-medium uppercase tracking-wider text-[#1C5472]/90">Want us to call you instead? Choose your service</p>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {CONSULTATION_SERVICES.map((svc) => (
                   <button
@@ -873,14 +852,82 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
                 </svg>
               </div>
-              <h3 className="mt-4 text-xl font-bold">Fast approvals</h3>
-              <p className="mt-2 text-sm leading-relaxed">Streamlined process from application to approval so you get outcomes sooner.</p>
+              <h3 className="mt-4 text-xl font-bold">Fast answers</h3>
+              <p className="mt-2 text-sm leading-relaxed">A call within one business day and a straight answer on where you stand, before anything goes to a lender.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <WaveDivider fill="#1C5472" />
+      <WaveDivider fill="#0A1628" />
+
+      {/* TAXFLOWAI TEASER — matches TaxFlowAI home hero; great leap in tax technology */}
+      <section id="taxflowai" className="taxflow-teaser-bg relative overflow-hidden px-4 py-20 md:px-6 md:py-28 lg:px-8">
+        {/* Subtle glow orbs for depth */}
+        <div className="pointer-events-none absolute bottom-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[#00FCB8] opacity-[0.06] blur-[100px]" aria-hidden />
+        <div className="pointer-events-none absolute top-1/4 right-0 h-96 w-96 rounded-full bg-[#39B2B2] opacity-[0.05] blur-[100px]" aria-hidden />
+        {/* Watermark — slightly more visible for sophistication */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden>
+          <span className="text-[clamp(5rem,22vw,14rem)] font-bold leading-none tracking-tighter text-white/[0.06]">TaxFlowAI</span>
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          {/* Badge: + in lime green, "Introducing TaxFlowAI" in white, thin outline */}
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#0A1628]/80 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+            <span className="text-[#00FCB8]" aria-hidden>+</span>
+            <span className="text-white">Introducing TaxFlowAI</span>
+          </p>
+          <h2 className="mt-8 text-5xl font-bold leading-tight text-white drop-shadow-sm md:text-6xl lg:text-7xl">
+            Your tax life, organised.
+          </h2>
+          <p className="mt-5 max-w-2xl mx-auto text-xl text-white/95 md:text-2xl">
+            A smarter way to manage your tax lodgements and stay connected with your accountant.
+          </p>
+          <p className="mt-3 text-sm font-medium uppercase tracking-widest text-[#00FCB8]/90">
+            The next step in tax technology
+          </p>
+          {/* Feature cards — rounded outlines, distinct icon colors like TaxFlowAI hero */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                <svg className="h-6 w-6 text-white/90" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+              </span>
+              <span className="font-medium text-white">Track Lodgements</span>
+            </div>
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-amber-500/20">
+                <svg className="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                </svg>
+              </span>
+              <span className="font-medium text-white">Manage Documents</span>
+            </div>
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-violet-500/20">
+                <svg className="h-6 w-6 text-violet-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </span>
+              <span className="font-medium text-white">Accountant Connected</span>
+            </div>
+          </div>
+          <div className="mt-12">
+            <Link
+              href="/taxflow"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-10 py-4 text-lg font-bold text-white shadow-[0_0_30px_rgba(0,252,184,0.25)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,252,184,0.35)]"
+            >
+              Explore TaxFlowAI
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
+          </div>
+          <p className="mt-8 text-sm text-white/70">
+            {SHOW_TAX_SERVICES
+              ? "TaxFlowAI's tax services are provided by TAX7 T04 PTY LTD, Registered Tax Agent 26313222. The platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."
+              : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."}
+          </p>
+        </div>
+      </section>
 
       <LayoutFooter />
     </div>

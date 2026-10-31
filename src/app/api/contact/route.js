@@ -209,7 +209,8 @@ ${ambitionLine}
             ...Object.entries(quizAnswers).map(([label, value]) => `${label}: ${value}`),
             `Services: ${servicesLabel}`,
             `Preferred contact: ${preferredContact}`,
-            `Message: ${leadPayload.message}`,
+            /* Quiz messages repeat the answers for the email, so the note keeps their first line */
+            `Message: ${Object.keys(quizAnswers).length ? leadPayload.message.split("\n")[0] : leadPayload.message}`,
           ].join("\n"),
           submittedAt: timestamp,
         }),

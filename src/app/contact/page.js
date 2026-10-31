@@ -277,7 +277,7 @@ export default function ContactPage() {
             <div className="rounded-2xl bg-white p-6 shadow-[0_14px_36px_-18px_rgba(10,22,40,0.35)] sm:p-8">
               <h2 className="text-2xl font-bold text-[#1C5472]">Send us a message</h2>
               <p className="mt-1 text-sm text-[#1C5472]/85">
-                Tell us a little about what you need and the right broker will contact you, usually the same day.
+                Tell us a little about what you need and someone from our team will contact you within one business day.
               </p>
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 {/* FIELD 1 — Who */}
@@ -550,8 +550,8 @@ export default function ContactPage() {
               <div className="mt-6 flex gap-3 border-t border-white/15 pt-5">
                 <Icon d={ICONS.video} className="mt-0.5 h-5 w-5 shrink-0 text-[#00FCB8]" />
                 <p className="text-sm leading-relaxed text-white/90">
-                  <span className="font-semibold text-white">In person or online.</span> Hassan and Sham both meet at the
-                  office, or by phone or video, whichever suits you.
+                  <span className="font-semibold text-white">In person or online.</span> We meet at the office, or by phone or
+                  video, whichever suits you.
                 </p>
               </div>
 

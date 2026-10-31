@@ -90,7 +90,7 @@ const FINANCE_CARDS = [
 
 const STEPS = [
   { num: 1, title: "Tell us what you need", desc: "Fill out our quick 5-minute form with your requirements and basic details." },
-  { num: 2, title: "We search 30+ lenders", desc: "Sham personally reviews your application and matches you with the best available lender for your situation." },
+  { num: 2, title: "We search 30+ lenders", desc: "Our team reviews your application and matches you with the best available lender for your situation." },
   { num: 3, title: "Get your options", desc: "We present you with clear options — rates, terms, repayments — no hidden fees or confusing jargon." },
   { num: 4, title: "Drive away approved", desc: "Once you choose, we handle all the paperwork and get you approved fast." },
 ];
@@ -135,7 +135,7 @@ export default function AssetSolutionsPage() {
               Apply Now
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
-              Talk to Sham
+              Talk to our team
             </a>
           </div>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
@@ -231,16 +231,16 @@ export default function AssetSolutionsPage() {
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">YOUR SPECIALIST</p>
               <h2 className="mt-2 text-3xl font-bold text-[#1C5472] md:text-4xl">
-                You&apos;ll deal directly with Sham.
+                Led by Sham, an award-winning broker.
               </h2>
               <p className="mt-6 leading-relaxed text-[#1C5472]">
-                No call centres. No being passed around. When you work with Frontline Financial Asset Solutions, you deal directly with Sham from start to finish — someone who genuinely cares about getting you the best outcome.
+                No call centres. Someone from our team makes the first call and keeps things moving, and Sham leads the work on your finance. A team that genuinely cares about getting you the best outcome.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  "Direct line to your specialist — no middlemen",
+                  "A small team that knows your file",
                   "Personalised advice for your exact situation",
-                  "Fast responses — typically same day",
+                  "A call within one business day",
                   "Ongoing support beyond settlement",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-[#1C5472]">
@@ -483,14 +483,14 @@ export default function AssetSolutionsPage() {
             We&apos;ll find it.
           </p>
           <p className="mt-4 text-lg text-[#1C5472] md:text-xl">
-            30+ lenders. One specialist who actually gives a damn. Any situation welcome. Let&apos;s get you moving.
+            30+ lenders. A team that actually gives a damn. Any situation welcome. Let&apos;s get you moving.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
               Apply Now
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-              Call Sham: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
         </div>

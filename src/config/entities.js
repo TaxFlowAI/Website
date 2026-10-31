@@ -59,6 +59,7 @@ export const ROUTE_ENTITY_MAP = {
   // ---- BROKERS pages ----
   "/brokers": ENTITY.BROKERS,
   "/self-employed-home-loans": ENTITY.BROKERS,
+  "/apply/home-loan": ENTITY.BROKERS,
   "/does-getting-married-change-your-borrowing-power": ENTITY.BROKERS,
   "/credit-guide": ENTITY.BROKERS,
   "/privacy-consent": ENTITY.BROKERS,
@@ -67,6 +68,10 @@ export const ROUTE_ENTITY_MAP = {
   // ---- ASSET SOLUTIONS pages ----
   "/assetsolutions": ENTITY.ASSET_SOLUTIONS,
   "/asset-solutions": ENTITY.ASSET_SOLUTIONS,
+  "/apply/car-loan": ENTITY.ASSET_SOLUTIONS,
+  "/apply/equipment-finance": ENTITY.ASSET_SOLUTIONS,
+  "/apply/personal-loan": ENTITY.ASSET_SOLUTIONS,
+  "/apply/working-capital": ENTITY.ASSET_SOLUTIONS,
   "/credit-guide-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/calculator-disclaimer-asset-solutions": ENTITY.ASSET_SOLUTIONS,
@@ -76,6 +81,7 @@ export const ROUTE_ENTITY_MAP = {
 
   // ---- SHARED pages ----
   "/": ENTITY.SHARED,
+  "/apply": ENTITY.SHARED,
   "/about": ENTITY.SHARED,
   "/contact": ENTITY.SHARED,
   "/contact/thank-you": ENTITY.SHARED,

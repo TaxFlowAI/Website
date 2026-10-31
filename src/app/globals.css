@@ -89,6 +89,26 @@ body {
   animation: heroHighlightShift 9s ease-in-out infinite;
 }
 
+/* Home page finance selector: the indicator slides between tabs, and the new
+   tab's answers rise in behind it */
+.finance-tab-indicator {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes financeRowIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.finance-row-in {
+  animation: financeRowIn 280ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finance-tab-indicator { transition: none; }
+  .finance-row-in { animation: none; }
+}
+
 .float-animate {
   animation: float 4s ease-in-out infinite;
 }

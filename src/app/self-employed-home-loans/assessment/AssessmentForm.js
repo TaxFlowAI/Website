@@ -51,7 +51,7 @@ const QUALIFIERS = [
 
 const TEXT_STEPS = [
   { key: "fullName", type: "text", label: "What's your full name?", placeholder: "Your full name", autoComplete: "name" },
-  { key: "phone", type: "tel", label: "Best number for Hassan to call?", placeholder: "04XX XXX XXX", autoComplete: "tel", inputMode: "tel" },
+  { key: "phone", type: "tel", label: "Best number to call you on?", placeholder: "04XX XXX XXX", autoComplete: "tel", inputMode: "tel" },
   { key: "email", type: "email", label: "And your email?", placeholder: "you@example.com", autoComplete: "email", inputMode: "email" },
 ];
 
@@ -228,7 +228,7 @@ export default function AssessmentForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </span>
-        <h2 className="mt-5 text-2xl font-bold text-[#1C5472]">Thanks. Hassan will call you within one business day.</h2>
+        <h2 className="mt-5 text-2xl font-bold text-[#1C5472]">Thanks. Someone from our team will call you within one business day.</h2>
         <p className="mt-3 text-[#1C5472]/80">
           If you have your last two years of tax returns handy, keep them nearby for the call. In a hurry? Call{" "}
           <a href={PHONE_LINK} className="font-bold text-[#39B2B2] hover:underline">{PHONE}</a>.
@@ -374,7 +374,7 @@ export default function AssessmentForm() {
                   <span key={sendingMsg} className="text-base">{SENDING_MESSAGES[sendingMsg]}</span>
                 </span>
               ) : (
-                "Send to Hassan"
+                "Send my details"
               )}
             </button>
             <p className="mt-3 text-center text-xs text-gray-400">Sending this doesn&apos;t run a credit check or lodge anything with a lender.</p>

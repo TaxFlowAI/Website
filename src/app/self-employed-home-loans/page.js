@@ -2,6 +2,7 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import CreditProposalShowcase from "@/components/CreditProposalShowcase";
 
 /* Self-employed home loans: the Brokers niche from 26 Oct 2026 (self-employed
    people buying residential property). Target queries: self employed home
@@ -266,7 +267,7 @@ export default function SelfEmployedHomeLoansPage() {
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
-              Call Hassan: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
@@ -413,14 +414,14 @@ export default function SelfEmployedHomeLoansPage() {
               </h2>
               <p className="mt-6 leading-relaxed text-[#39B2B2]">
                 Hassan has a background in tax and accounting, so he reads your returns and financial statements the way a
-                credit assessor will, before any lender sees them. You deal with him from the first call to settlement.
+                credit assessor will, before any lender sees them. Someone from our team makes the first call, and you&apos;ll talk with him through the process.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
                   "Goes through your tax returns and financials line by line",
                   "Access to 30+ lenders, including non-bank lenders",
                   "Meet at Parramatta Square, or by phone and video",
-                  "Available after hours and on weekends",
+                  "Calls and appointments Monday to Friday, 10:30am to 8pm",
                   "Fluent in English and Arabic",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-white">
@@ -515,7 +516,11 @@ export default function SelfEmployedHomeLoansPage() {
         </div>
       </section>
 
-      <WaveDivider fill="#F5F5EF" />
+      <div className="bg-[#1C5472]">
+        <WaveDivider fill="#F5F5EF" />
+      </div>
+
+      <CreditProposalShowcase ctaHref={CONSULT_HREF} ctaLabel="Get a Free Assessment" tone="light" />
 
       {/* 8. LOCAL */}
       <section className="bg-[#F5F5EF] px-4 py-16 md:px-6 md:py-20 lg:px-8">
@@ -593,7 +598,7 @@ export default function SelfEmployedHomeLoansPage() {
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-              Call Hassan: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
           <p className="mx-auto mt-10 max-w-3xl text-xs leading-relaxed text-[#1C5472]/80">

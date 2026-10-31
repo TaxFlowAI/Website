@@ -289,7 +289,7 @@ export default function AboutPage() {
             <article id="hassan" className="scroll-mt-28 rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
               <div className="aspect-square w-full max-w-[240px] overflow-hidden rounded-2xl bg-[#1C5472] mx-auto flex items-center justify-center">
                 <img
-                  src="/images/DSC01459.png?v=3"
+                  src="/images/hassan-portrait.webp"
                   alt="Hassan Arif JP"
                   className="h-full w-full object-cover"
                   onError={(e) => { e.target.style.display = "none"; e.target.nextElementSibling?.classList.remove("hidden"); }}

@@ -9,6 +9,7 @@ const CONSENT_ERROR = "You must agree to the Credit Guide and Privacy Consent to
 function ConsentCheckbox({ config, checked, onChange, creditGuideLabel = "Credit Guide", theme = "light" }) {
   if (!config) return null;
   const textClass = theme === "dark" ? "text-white/80" : "text-[#1C5472]";
+  const linkClass = `font-medium underline hover:no-underline ${theme === "dark" ? "text-[#00FCB8]" : "text-[#1C5472]"}`;
   return (
     <label className="flex cursor-pointer items-start gap-3 text-sm">
       <input
@@ -20,11 +21,11 @@ function ConsentCheckbox({ config, checked, onChange, creditGuideLabel = "Credit
       />
       <span className={textClass}>
         I have read and agree to the{" "}
-        <Link href={config.creditGuidePath} className="font-medium text-[#00FCB8] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+        <Link href={config.creditGuidePath} className={linkClass} target="_blank" rel="noopener noreferrer">
           {creditGuideLabel}
         </Link>{" "}
         and{" "}
-        <Link href={config.privacyConsentPath} className="font-medium text-[#00FCB8] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+        <Link href={config.privacyConsentPath} className={linkClass} target="_blank" rel="noopener noreferrer">
           Privacy Consent
         </Link>{" "}
         of {config.legalName}

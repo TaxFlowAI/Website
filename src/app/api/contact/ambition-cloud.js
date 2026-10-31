@@ -80,12 +80,12 @@ export function privacyConsentEmail({ firstName, link }) {
     <img src="${SITE_URL}/email/frontline-email-header.png" width="560" alt="Frontline Financial" style="display:block;width:100%;height:auto;border:0" />
     <div style="padding:28px 24px">
       <p style="${paragraph}">Hi ${firstName},</p>
-      <p style="${paragraph}">Thanks for your enquiry. Sham will call you to go through your options.</p>
+      <p style="${paragraph}">Thanks for your enquiry. Someone from our team will call you to go through your options.</p>
       <p style="${paragraph}">To save time on the call, you can sign our privacy consent now. We need it before we can check your options with lenders, and it includes our Credit Guide and Quote. It takes a few minutes on your phone. Have your driver licence handy, because it asks for a photo of the front and back.</p>
       <p style="margin:24px 0;text-align:center">
         <a href="${link}" style="display:inline-block;padding:14px 28px;border-radius:8px;background:#00FCB8;color:#0A1628;font-size:16px;font-weight:bold;text-decoration:none">Sign your privacy consent</a>
       </p>
-      <p style="${paragraph}">This link works for 24 hours. No rush if you'd rather talk first: Sham can go through it with you on the call and send you a new link.</p>
+      <p style="${paragraph}">This link works for 24 hours. No rush if you'd rather talk first: we can go through it with you on the call and send you a new link.</p>
       <p style="${paragraph}">Any questions, reply to this email or call +61 422 959 486.</p>
       <p style="${paragraph}">Operations Team<br />Frontline Financial: Asset Solutions</p>
       <hr style="border:0;border-top:1px solid #e3e8e4;margin:24px 0" />

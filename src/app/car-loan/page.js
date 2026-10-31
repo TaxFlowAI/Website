@@ -9,7 +9,7 @@ import CarLoanForm from "./CarLoanForm";
 export const metadata = {
   title: "Car Loan Enquiry | Frontline Financial",
   description:
-    "Tell us what you're buying and Sham calls you to go through your options across 30+ lenders. Free, no obligation.",
+    "Tell us what you're buying and someone from our team calls you to go through your options across 30+ lenders. Free assessment, no obligation.",
   alternates: { canonical: "/car-loan" },
   robots: { index: false, follow: true },
 };
@@ -29,7 +29,8 @@ export default function CarLoanPage() {
               Buying a car? Let&apos;s <span className="text-[#00FCB8]">sort the finance.</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-[#39B2B2] lg:mx-0">
-              Tell us what you&apos;re buying and Sham calls you to go through your options. Free, no obligation.
+              Tell us what you&apos;re buying and someone from our team calls you to go through your options. Free assessment, no
+              obligation.
             </p>
             <p className="mt-5 text-sm text-white/85">
               <span className="text-[#FFD700]" aria-hidden>★★★★★</span> 5.0 stars on Google from 100+ reviews. Winner,

@@ -35,6 +35,27 @@ live, so push only with the user's OK.
   (self-employed borrowers, from 26 Oct 2026). Its buttons go to `/self-employed-home-loans/assessment`, a six-question
   quiz (noindex) that fires the Meta `Lead` event. `/contact?service=self-employed` still preselects Hassan and
   "Self-Employed Home Loan". Lender policy stays general ("some lenders"), with no lender names.
+- The home page hero's selector (`src/components/FinanceSelector.js`) leads to the application forms at
+  `/apply/home-loan`, `/apply/car-loan`, `/apply/equipment-finance`, `/apply/personal-loan` and
+  `/apply/working-capital` (`src/app/apply/[product]/`, noindex). The
+  questions are in `src/data/finance-applications.js`, and `?start=<option id>` answers the first one, so ads can link
+  straight past it. Home loans go to Hassan and Broker Engine. The Asset Solutions forms go to operations and Ambition
+  Cloud, and the thank-you screen shows the privacy consent link that is also emailed to the client. Say "free
+  assessment" for Asset Solutions, never "free": its Credit Guide & Quote can carry a fee. These
+  answers travel by email, so don't add ID, licence or tax file numbers, date of birth or bank details.
+- Never promise that Hassan or Sham personally calls or replies (Hassan, 1 Nov 2026: lead volume won't allow it). Copy
+  says someone from our team calls within one business day. Hassan stays involved, and home loan clients talk with him
+  through the process. The `/dean` page is first person by Dean and customer reviews stay verbatim.
+- `src/components/CreditProposalShowcase.js` shows off the credit proposal on `/apply/home-loan`, `/brokers` and
+  `/self-employed-home-loans`. Its document is a made-up sample. Real proposals hold client details, so never publish a
+  screenshot of one. It leaves out interest rates (an advertised rate has to carry a comparison rate) and lender names.
+- `src/components/SettledDeals.js` shows the approved "Just settled" posts as proof (`src/data/settled-deals.js`). They
+  hold no client names or amounts, and their disclaimer has to stay under them. The free Equifax report
+  (`FreeCreditReportOffer.js`) stays on vehicle and equipment pages only, because its terms say so.
+- The home loan form's "check your email" step is the Broker Engine "000. Web lead" workflow, so it needs the Zap running.
+  Change that copy if the Zap ever stops.
+- Don't run `npm run build` while the dev server is running: it breaks the dev server's chunks and forms stop loading.
+  Stop it first, or restart it afterwards.
 - Pages about Hassan link to `/contact?team=hassan` (`team=sham` also works), which preselects him, so the enquiry
   reaches Broker Engine. Phone links and the credit guide's email address can't go through the form.
 - `/car-loan` (`src/app/car-loan/`, noindex) is a one-page car loan enquiry.
@@ -45,7 +66,9 @@ live, so push only with the user's OK.
   `ZAPIER_BROKERS_WEBHOOK_URL`, and the Zap creates the Broker Engine card. Quiz answers travel as `answers`
   ({label: value}) plus a `summary` block for the card notes.
 - The Meta pixel (`src/components/MetaPixel.js`, loaded in `src/app/layout.js`) runs site-wide except `/taxflow`, switched
-  on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean` and
-  `/vehicle-finance` forms. Test custom events on the live site: Meta drops some of them from localhost.
+  on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean`,
+  `/vehicle-finance` and `/apply` forms. Test custom events on the live site: Meta drops some of them from localhost.
 - GA4 (`NEXT_PUBLIC_GA4_ID`) is not set yet.
-- Never submit test leads to the live site without the user's OK. They reach the CRM and the ops inbox.
+- Never submit test leads to the live site without the user's OK. They reach the CRM and the ops inbox. `.env.local`
+  holds live Resend and Ambition Cloud keys, so a submit from localhost sends for real too: stub `window.fetch` in the
+  browser when testing a form.

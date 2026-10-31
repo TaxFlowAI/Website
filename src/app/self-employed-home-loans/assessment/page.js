@@ -10,7 +10,7 @@ import AssessmentForm from "./AssessmentForm";
 export const metadata = {
   title: "Free Self-Employed Home Loan Assessment | Frontline Financial",
   description:
-    "Six quick questions, then a call from Hassan, a Parramatta broker with a tax and accounting background. Free and no obligation.",
+    "Six quick questions, then a call from our team. Hassan, our Parramatta broker, has a tax and accounting background. Free and no obligation.",
   alternates: { canonical: "/self-employed-home-loans/assessment" },
   robots: { index: false, follow: true },
 };
@@ -34,7 +34,7 @@ export default function SelfEmployedAssessmentPage() {
               Self-employed? See <span className="text-[#00FCB8]">where you stand.</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-[#39B2B2] lg:mx-0">
-              Six quick questions, then Hassan calls you. He has a tax and accounting background, so he reads your
+              Six quick questions, then someone from our team calls you. Hassan has a tax and accounting background, so he reads your
               returns the way a lender will, before any lender sees them. Free, no obligation.
             </p>
             <p className="mt-5 text-sm text-white/85">

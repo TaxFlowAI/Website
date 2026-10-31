@@ -4,6 +4,7 @@ import { useState } from "react";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import CreditProposalShowcase from "@/components/CreditProposalShowcase";
 import { BROKERS_FAQ } from "@/data/brokers-faq";
 
 const LOAN_CARDS = [
@@ -20,7 +21,7 @@ const LOAN_CARDS = [
 
 const PROCESS_STEPS = [
   { num: 1, title: "Free Assessment", desc: "Tell us your goals, income, and situation. We assess your borrowing power at no cost." },
-  { num: 2, title: "We Search the Market", desc: "Hassan personally reviews 30+ lenders and hundreds of products to find your best match." },
+  { num: 2, title: "We Search the Market", desc: "We review 30+ lenders and hundreds of products to find your best match." },
   { num: 3, title: "Loan Recommendation", desc: "We present you with clear options — rates, features, repayments — with our recommendation explained simply." },
   { num: 4, title: "Application & Approval", desc: "We prepare and lodge your application, liaise with the lender, and keep you updated every step of the way." },
   { num: 5, title: "Settlement", desc: "Your loan settles and you get the keys. We stay in touch for your next review." },
@@ -86,7 +87,7 @@ export default function BrokersPage() {
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
-              Call Hassan: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
@@ -169,13 +170,13 @@ export default function BrokersPage() {
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">YOUR BROKER</p>
               <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
-                You&apos;ll work directly with Hassan.
+                You&apos;ll talk with Hassan through the process.
               </h2>
               <p className="mt-6 leading-relaxed text-[#39B2B2]">
-                No junior staff, no call centres. When you come to Frontline Financial Brokers, you work directly with Hassan from your first call to settlement day and beyond. Someone who takes the time to understand your situation and genuinely fights to get you the best outcome.
+                No call centres. Someone from our team makes the first call and keeps things moving, and you&apos;ll talk with Hassan through the process, to settlement day and beyond. He takes the time to understand your situation and genuinely fights to get you the best outcome.
               </p>
               <ul className="mt-6 space-y-3">
-                {["Direct access to your broker from day one", "Available after hours and on weekends", "Fluent in English and Arabic", "Specialist in complex and non-standard applications"].map((item) => (
+                {["Your broker stays across your loan", "Calls and appointments Monday to Friday, 10:30am to 8pm", "Fluent in English and Arabic", "Specialist in complex and non-standard applications"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-white">
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center text-[#00FCB8]" aria-hidden>✓</span>
                     {item}
@@ -278,6 +279,12 @@ export default function BrokersPage() {
         </div>
       </section>
 
+      <WaveDivider fill="#1C5472" />
+      <CreditProposalShowcase ctaHref="/apply/home-loan" ctaLabel="Start your application" />
+      <div className="bg-[#1C5472]">
+        <WaveDivider fill="#F5F5EF" />
+      </div>
+
       {/* LOCAL — office, hours and the suburbs we work with most */}
       <section className="section-dot-grid relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
         <div className="mx-auto max-w-4xl">
@@ -373,7 +380,7 @@ export default function BrokersPage() {
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-              Call Hassan: +61 422 959 486
+              Call us: +61 422 959 486
             </a>
           </div>
         </div>

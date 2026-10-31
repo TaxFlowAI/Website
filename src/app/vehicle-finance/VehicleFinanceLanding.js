@@ -549,7 +549,7 @@ export default function VehicleFinanceLanding() {
             <span className="mt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#00FCB8]/90 md:text-xs">Asset Solutions</span>
           </div>
           <div className="text-center md:text-left">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Who will actually call you</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Who&apos;s behind your deal</p>
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-5xl">
               Award Winning.
             </h2>
@@ -560,9 +560,9 @@ export default function VehicleFinanceLanding() {
               Winner — Vehicle &amp; Equipment Finance
             </p>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/80 md:mx-0 md:mt-5">
-              Sham runs vehicle and equipment finance at Frontline Financial. He&apos;s
-              the one who calls you, reads your situation against 30+ lenders, and
-              chases the approval — recognised for exactly this work at the
+              Sham runs vehicle and equipment finance at Frontline Financial. He and
+              the team read your situation against 30+ lenders and
+              chase the approval — recognised for exactly this work at the
               Fintelligence Broker Awards.
             </p>
             <button
@@ -570,7 +570,7 @@ export default function VehicleFinanceLanding() {
               onClick={scrollToForm}
               className="mt-7 inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
             >
-              Get Sham to look at my situation
+              Get our team to look at my situation
             </button>
           </div>
         </div>
@@ -691,7 +691,7 @@ export default function VehicleFinanceLanding() {
               {[
                 ["Your Equifax score", "See where you stand, in plain numbers"],
                 ["Your full report", "Every enquiry, account and default on file"],
-                ["Explained by Sham", "What lenders will see — and what it means"],
+                ["Explained by our team", "What lenders will see — and what it means"],
                 ["Fixable before you apply", "Spot errors or old defaults early"],
               ].map(([title, sub]) => (
                 <li key={title} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">

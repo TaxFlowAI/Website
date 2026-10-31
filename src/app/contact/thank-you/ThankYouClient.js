@@ -111,9 +111,7 @@ const isBrokers = team === "brokers";
           {isHassan || isSham ? "You're in good hands." : "Message received."}
         </h1>
         <p className="mt-4 max-w-lg text-center text-xl text-[#39B2B2]">
-          {isHassan && "Hassan will reach out to you directly — usually within the same business day."}
-          {isSham && "Sham will reach out to you directly — usually within the same business day."}
-          {!isHassan && !isSham && "Our team will reach out within one business day."}
+          Someone from our team will be in touch within one business day.
         </p>
         {isHassan && (
           <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-[#0A1628] p-8">
@@ -125,7 +123,7 @@ const isBrokers = team === "brokers";
               </div>
             </div>
             <p className="mt-4 text-sm italic text-gray-400">
-              Thanks for getting in touch. I personally review every enquiry and will reach out to discuss your goals. Looking forward to speaking with you.
+              Thanks for getting in touch. Someone from my team will call you first, and I stay across your loan as it moves. Looking forward to speaking with you.
             </p>
           </div>
         )}
@@ -140,7 +138,7 @@ const isBrokers = team === "brokers";
               </div>
             </div>
             <p className="mt-4 text-sm italic text-gray-400">
-              Thanks for reaching out. I&apos;ll be in touch shortly to talk through your finance options and find the right solution for you.
+              Thanks for reaching out. Someone from the team will be in touch to talk through your finance options and find the right solution for you.
             </p>
           </div>
         )}
