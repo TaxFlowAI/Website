@@ -22,16 +22,19 @@ export const metadata = {
   title: "Finance Broker Parramatta | Frontline Financial",
   description:
     "Home loans and car loans from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
-  /* F-mark icon set. The ?v= suffix makes browsers drop the old cached icon. */
+  /* F-mark icon set, dark blue on aqua (the guide's monochrome logo). The ?v= suffix makes browsers
+     drop the old cached icon. Google asks for a stable icon URL, so don't bump it without a new icon. */
   icons: {
     icon: [
-      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
-      { url: "/favicon-32.png?v=2", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-192.png?v=2", type: "image/png", sizes: "192x192" },
-      { url: "/favicon-512.png?v=2", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon-32.png?v=3", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-48.png?v=3", type: "image/png", sizes: "48x48" },
+      { url: "/favicon-96.png?v=3", type: "image/png", sizes: "96x96" },
+      { url: "/favicon-192.png?v=3", type: "image/png", sizes: "192x192" },
+      { url: "/favicon-512.png?v=3", type: "image/png", sizes: "512x512" },
     ],
-    shortcut: "/favicon.ico?v=2",
-    apple: { url: "/apple-touch-icon.png?v=2", sizes: "180x180" },
+    shortcut: "/favicon.ico?v=3",
+    apple: { url: "/apple-touch-icon.png?v=3", sizes: "180x180" },
   },
 };
 
