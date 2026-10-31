@@ -22,8 +22,19 @@ export const metadata = {
   title: "Finance Broker Parramatta | Frontline Financial",
   description:
     "Home loans and car loans from a Parramatta finance broker. We compare 30+ lenders for you. 100+ five-star Google reviews.",
-  /* Backs up WEBSITE_SCHEMA on the home page. /taxflow sets its own openGraph, which replaces this. */
-  openGraph: { siteName: "Frontline Financial" },
+  /* The home page's link preview, and the default for pages with no openGraph of their own. siteName backs
+     up WEBSITE_SCHEMA on the home page. /taxflow sets its own openGraph, which replaces this. */
+  openGraph: {
+    siteName: "Frontline Financial",
+    images: [
+      {
+        url: "/images/frontline-home-share.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frontline Financial: finance made simple. Home loans and car loans at Level 49, 8 Parramatta Square.",
+      },
+    ],
+  },
   /* F-mark icon set, dark blue on aqua (the guide's monochrome logo). The ?v= suffix makes browsers
      drop the old cached icon. Google asks for a stable icon URL, so don't bump it without a new icon. */
   icons: {
