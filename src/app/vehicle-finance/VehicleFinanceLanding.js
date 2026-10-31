@@ -234,6 +234,8 @@ export default function VehicleFinanceLanding() {
           services: ["Commercial vehicle finance"],
           preferredContact: "phone",
           campaign: "vehicle-finance-reels",
+          applicationType: "commercial",
+          assetType: "car",
           message: [
             "Free assessment request — VEHICLE FINANCE REELS landing page.",
             `Valid ABN: ${answers.abn}`,

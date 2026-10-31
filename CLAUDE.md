@@ -37,7 +37,10 @@ live, so push only with the user's OK.
   "Self-Employed Home Loan". Lender policy stays general ("some lenders"), with no lender names.
 - Pages about Hassan link to `/contact?team=hassan` (`team=sham` also works), which preselects him, so the enquiry
   reaches Broker Engine. Phone links and the credit guide's email address can't go through the form.
-- `/api/contact` emails the right inbox through Resend. It forwards Asset Solutions leads to `/api/ambition-cloud`.
+- `/car-loan` (`src/app/car-loan/`, noindex) is a one-page car loan enquiry.
+- `/api/contact` emails the right inbox through Resend. Asset Solutions leads go straight to Ambition Cloud
+  (`src/app/api/contact/ambition-cloud.js`, needs `AMBITION_CLOUD_API_KEY`). That returns a link to its Privacy Consent form,
+  which the route emails to the client. This creates real leads, so don't test it with real keys without the user's OK.
   Brokers leads (`consultationService: "brokers"` or `teamMember: "hassan"`) go to the Zapier webhook in
   `ZAPIER_BROKERS_WEBHOOK_URL`, and the Zap creates the Broker Engine card. Quiz answers travel as `answers`
   ({label: value}) plus a `summary` block for the card notes.

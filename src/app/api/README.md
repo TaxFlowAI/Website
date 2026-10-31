@@ -17,31 +17,23 @@ Send failures are logged as `[Contact API] Send failed: Resend <status>: <messag
 After the email is sent, the lead is also forwarded:
 
 - Brokers (`consultationService: "brokers"` or `teamMember: "hassan"`) → the Zapier webhook → **Broker Engine** (Frontline Financial Brokers). Broker Engine has no public API, so Zapier's "New Card" action does the write. The body carries the contact fields, `campaign`, `answers` ({label: value} from a quiz) and `summary` (one text block for the card notes). Failures log as `[Contact API] Zapier forward …` and don't affect the visitor.
-- `consultationService: "asset-solutions"` → **Ambition Cloud** (Frontline Financial: Asset Solutions)
+- Asset Solutions (`consultationService: "asset-solutions"`, `teamMember: "sham"` or `campaign: "dean-landing"`) → **Ambition Cloud**. See below.
 
 ---
 
-## Ambition Cloud — Asset Solutions (`/api/ambition-cloud`)
+## Ambition Cloud — Asset Solutions (`src/app/api/contact/ambition-cloud.js`)
 
 **Platform:** Ambition Cloud (Fintelligence) — compliance, application process, submission to lenders for **Frontline Financial: Asset Solutions**.
 
-### Environment variables
-
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `AMBITION_CLOUD_API_KEY` | Yes (to enable) | API key from Fintelligence / Ambition Cloud |
-| `AMBITION_CLOUD_API_URL` | No | Base URL (default: `https://api.fintelligence.com.au`) |
-| `AMBITION_CLOUD_HEADERS` | No | JSON object of extra headers to send |
+| `AMBITION_CLOUD_API_KEY` | Yes (to enable) | Tenant API key: Ambition Cloud > Settings > API Keys and Security. Without it, the lead still reaches the ops inbox, marked as not added. |
 
-If `AMBITION_CLOUD_API_KEY` is not set, the route returns success without forwarding (so the rest of the flow still works).
+There are no published API docs. The format comes from Fintelligence's Gravity Forms plugin (`ambition-cloud-gf-add-on`): a form-encoded `POST https://frontlinefinancial.ambitioncloud.com.au/api/add-lead` with an `x-tenant-key` header. `POST /api` tests the key, and `/api/list-sources`, `/api/default-fields` and `/api/redirect-forms` list the IDs in use. Ambition's Inbound API Reports screen logs each request.
 
-### Payload (POST body)
-
-The route accepts the same shape as the contact form and maps it for Ambition Cloud:
-
-- `firstName`, `lastName`, `email`, `phone`, `message`, `services`, `source`
-
-Endpoint and field names may need to be adjusted once you have the official **Ambition Cloud Inbound API** documentation from Fintelligence.
+- **Order:** the lead is added before the ops email, so the email can say whether it landed. A failure logs `[Contact API] Ambition Cloud add-lead failed: ...`, and the email asks staff to enter the lead by hand. The visitor still sees success.
+- **Privacy consent:** Ambition has no trigger for a new lead, so it can't send this itself. `redirect_form` asks add-lead for a link to the "Frontline Financial - Privacy Consent" form (`fast_track_link`), and `/api/contact` emails that link to the client from operations@ and returns it as `privacyLink`.
+- **Optional body fields:** `amount`, `postcode`, `applicationType` (`consumer` or `commercial`) and `assetType` (`car`).
 
 ---
 
@@ -79,7 +71,6 @@ We send: `first_name`, `last_name`, `email`, `phone`, `message`, `services`, `so
 
 ```bash
 # Ambition Cloud (Asset Solutions)
-AMBITION_CLOUD_API_URL=https://api.fintelligence.com.au
 AMBITION_CLOUD_API_KEY=your_ambition_cloud_api_key
 
 # Broker Engine (Brokers)
@@ -87,30 +78,12 @@ BROKER_ENGINE_API_URL=https://api.brokerengine.com.au
 BROKER_ENGINE_API_KEY=your_broker_engine_api_key
 ```
 
-Replace URLs and keys with the values provided by Fintelligence and Broker Engine.
+Replace the keys with the real values. A real key on localhost creates real leads and sends real emails.
 
 ---
 
 ## How to check if it’s working
 
-1. **Run the site**  
-   `npm run dev` and open the homepage.
+Don't send test leads without the user's OK: they reach the CRM and the inboxes. To test a form safely, leave the keys unset, or stub `window.fetch` in the browser.
 
-2. **Send a test consultation**  
-   Scroll to the green “26 million Australians…” section.  
-   - Choose **Frontline Financial Brokers** → fill the form → submit.  
-   - Then try **Frontline Financial: Asset Solutions** → fill the form → submit.
-
-3. **Check the thank-you page**  
-   If the integration worked, you’ll see:  
-   *“Your enquiry has been sent to Broker Engine / Ambition Cloud and our team will follow up.”*
-
-4. **Check the terminal**  
-   In the window where `npm run dev` is running, look for:  
-   - `[Contact API] ✓ Forwarded to Broker Engine (Brokers)`  
-   - `[Contact API] ✓ Forwarded to Ambition Cloud (Asset Solutions)`  
-   If forwarding fails (wrong URL, key, or API error), you’ll see a log like  
-   `[Contact API] Broker Engine forward failed: 401 ...` instead.
-
-5. **Check the platforms**  
-   Log into Broker Engine and Ambition Cloud and confirm the test leads appear there.
+After a real test, check Ambition Cloud's Inbound API Reports and Opportunities, the "Ambition Cloud:" line in the ops email, and the privacy consent email.

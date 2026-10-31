@@ -70,6 +70,7 @@ export const ROUTE_ENTITY_MAP = {
   "/credit-guide-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/calculator-disclaimer-asset-solutions": ENTITY.ASSET_SOLUTIONS,
+  "/car-loan": ENTITY.ASSET_SOLUTIONS,
   "/dean": ENTITY.ASSET_SOLUTIONS,
   "/eofy-2026": ENTITY.ASSET_SOLUTIONS,
 

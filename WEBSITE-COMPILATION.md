@@ -225,7 +225,7 @@ See `src/app/api/README.md` for env vars and payload shapes.
 | 14 | `/calculator-disclaimer-asset-solutions` | Asset Solutions disclaimer |
 | 15 | `/taxflow` | TaxFlowAI product |
 
-API routes: `/api/contact`, `/api/broker-engine`, `/api/ambition-cloud`.
+API routes: `/api/contact`, `/api/broker-engine`.
 
 ---
 

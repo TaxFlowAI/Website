@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { addAmbitionLead, privacyConsentEmail } from "./ambition-cloud";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -59,6 +60,10 @@ export async function POST(request) {
     consultationService,
     campaign,
     answers,
+    amount,
+    postcode,
+    applicationType,
+    assetType,
   } = body;
 
   if (!firstName || typeof firstName !== "string" || !firstName.trim()) {
@@ -81,9 +86,32 @@ export async function POST(request) {
   }
 
   const to = getRecipient({ teamMember, consultationService, campaign });
+  const isBrokers = consultationService === "brokers" || teamMember === "hassan";
+  const isAssetSolutions =
+    !isBrokers && (consultationService === "asset-solutions" || teamMember === "sham" || campaign === "dean-landing");
   const servicesLabel = Array.isArray(services) && services.length ? services.join(", ") : "General enquiry";
   const subject = `New Enquiry — ${firstName.trim()} ${lastName.trim()} re: ${servicesLabel}`;
   const timestamp = new Date().toISOString();
+  const ambition = isAssetSolutions
+    ? await addAmbitionLead({
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        notes: [`Services: ${servicesLabel}`, `Preferred contact: ${preferredContact}`, message.trim()].join("\n"),
+        campaign,
+        amount,
+        postcode,
+        applicationType,
+        assetType,
+      })
+    : null;
+  if (ambition && !ambition.added) console.error("[Contact API] Ambition Cloud add-lead failed:", ambition.error);
+  const ambitionLine = !ambition
+    ? ""
+    : ambition.added
+      ? `<p><strong>Ambition Cloud:</strong> added${ambition.refId ? ` (ref ${escapeHtml(ambition.refId)})` : ""}.</p>`
+      : `<p style="color:#b91c1c"><strong>Ambition Cloud: NOT added. Please enter this lead by hand.</strong></p>`;
   const html = `
 <h2>New Contact Form Submission</h2>
 <p><strong>Name:</strong> ${escapeHtml(`${firstName.trim()} ${lastName.trim()}`)}</p>
@@ -94,6 +122,7 @@ export async function POST(request) {
 <p><strong>Message:</strong></p>
 <p>${escapeHtml(message.trim()).replace(/\n/g, "<br/>")}</p>
 <p><strong>Submitted:</strong> ${timestamp}</p>
+${ambitionLine}
 <hr/>
 <p style="color:grey;font-size:12px">Submitted via frontline.financial contact form</p>
 `;
@@ -112,32 +141,48 @@ export async function POST(request) {
     source: "frontline-website",
   };
 
-  const forwardToPlatform = async (requestUrl) => {
-    const origin = requestUrl ? new URL(requestUrl).origin : null;
-    if (!origin) return { forwardedTo: null, forwardError: null };
-    if (consultationService === "asset-solutions") {
-      try {
-        const r = await fetch(`${origin}/api/ambition-cloud`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(leadPayload),
-        });
-        const d = await r.json().catch(() => ({}));
-        if (r.ok && d.forwarded) {
-          if (process.env.NODE_ENV === "development") console.log("[Contact API] ✓ Forwarded to Ambition Cloud (Asset Solutions)");
-          return { forwardedTo: "ambition-cloud", forwardError: null };
-        }
-        if (!r.ok && process.env.NODE_ENV === "development") {
-          console.log("[Contact API] Ambition Cloud forward failed:", r.status, d);
-        }
-        return { forwardedTo: null, forwardError: d.error || `HTTP ${r.status}` };
-      } catch (e) {
-        if (process.env.NODE_ENV === "development") console.log("[Contact API] Ambition Cloud forward error:", e?.message);
-        return { forwardedTo: null, forwardError: e?.message || "Network error" };
-      }
+  /* Sent separately from the ops email: a failure here must not fail the enquiry. */
+  const sendPrivacyEmail = async () => {
+    if (!ambition?.privacyLink || !resendApiKey) return false;
+    try {
+      const privacy = privacyConsentEmail({
+        firstName: escapeHtml(firstName.trim()),
+        link: escapeHtml(ambition.privacyLink),
+      });
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Frontline Financial: Asset Solutions <operations@frontline.financial>",
+          to: [email.trim()],
+          subject: privacy.subject,
+          html: privacy.html,
+          reply_to: "operations@frontline.financial",
+        }),
+      });
+      if (res.ok) return true;
+      console.error("[Contact API] Privacy consent email failed:", res.status);
+      return false;
+    } catch (e) {
+      console.error("[Contact API] Privacy consent email error:", e?.message || e);
+      return false;
+    }
+  };
+
+  const forwardToPlatform = async () => {
+    if (ambition) {
+      return {
+        forwardedTo: ambition.added ? "ambition-cloud" : null,
+        forwardError: ambition.added ? null : ambition.error,
+        privacyLink: ambition.privacyLink || null,
+        privacyEmailed: await sendPrivacyEmail(),
+      };
     }
     // Home-loan leads go to a Zapier webhook, which creates the card in Broker Engine.
-    if (consultationService === "brokers" || teamMember === "hassan") {
+    if (isBrokers) {
       return forwardToBrokerEngine();
     }
     return { forwardedTo: null, forwardError: null };
@@ -182,7 +227,7 @@ export async function POST(request) {
     // Locally, let the form complete without a key so pages can be tested.
     if (process.env.NODE_ENV === "development") {
       console.log("[Contact API] RESEND_API_KEY not set. Would send to:", to, "Subject:", subject);
-      const forward = await forwardToPlatform(request.url);
+      const forward = await forwardToPlatform();
       return NextResponse.json({ success: true, ...forward });
     }
     // In production a missing key would silently drop the lead, so fail loudly instead.
@@ -209,7 +254,7 @@ export async function POST(request) {
       const detail = await res.json().catch(() => ({}));
       throw new Error(`Resend ${res.status}: ${detail.message || res.statusText}`);
     }
-    const forward = await forwardToPlatform(request.url);
+    const forward = await forwardToPlatform();
     return NextResponse.json({ success: true, ...forward });
   } catch (err) {
     // Log the real Resend error server-side; never expose it to the visitor.

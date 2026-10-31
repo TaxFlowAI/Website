@@ -9,14 +9,11 @@ import LayoutFooter from "@/components/LayoutFooter";
 function ThankYouContent() {
   const searchParams = useSearchParams();
   const team = searchParams.get("team") || "team";
-  const forwarded = searchParams.get("forwarded") || "";
 const isBrokers = team === "brokers";
   const isAssetSolutions = team === "asset-solutions";
   const isHassan = team === "hassan";
   const isSham = team === "sham";
   const isConsultation = isBrokers || isAssetSolutions;
-  const forwardedToBrokerEngine = forwarded === "broker-engine";
-  const forwardedToAmbitionCloud = forwarded === "ambition-cloud";
 
   /* Consultation thank-you: light green stripe + dark blue box (Brokers or Asset Solutions) */
   if (isConsultation) {
@@ -52,11 +49,6 @@ const isBrokers = team === "brokers";
               <p className="mt-3 text-lg text-white/95">
                 A member of our team will contact you shortly.
               </p>
-              {(forwardedToBrokerEngine || forwardedToAmbitionCloud) && (
-                <p className="mt-3 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-[#00FCB8]">
-                  ✓ Your enquiry has been sent to {forwardedToBrokerEngine ? "Broker Engine" : "Ambition Cloud"} and our team will follow up.
-                </p>
-              )}
               {isBrokers && (
                 <div className="mx-auto mt-8 max-w-xl text-left">
                   <p className="font-semibold text-[#00FCB8]">Next step: complete your home loan application</p>
