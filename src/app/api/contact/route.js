@@ -160,6 +160,7 @@ export async function POST(request) {
           answers: quizAnswers,
           /* One block of text for the card's notes */
           summary: [
+            `Source: ${campaign || "website-contact"}`,
             ...Object.entries(quizAnswers).map(([label, value]) => `${label}: ${value}`),
             `Services: ${servicesLabel}`,
             `Preferred contact: ${preferredContact}`,
