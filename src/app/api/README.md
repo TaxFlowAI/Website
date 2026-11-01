@@ -14,6 +14,8 @@ Handles contact form submissions, emailed to staff through the [Resend](https://
 
 Send failures are logged as `[Contact API] Send failed: Resend <status>: <message>` (check Vercel → Logs).
 
+The vehicle finance page also sends `attribution` — the UTM tags and `fbclid` from the URL the visitor landed on (e.g. a Meta ad link with `utm_content={{ad.name}}`). The staff email then carries a **Source** block (Meta ad, campaign, source / medium), or "Source: direct / unknown" when the visit had no tags. Without `RESEND_API_KEY`, development logs the full email body, so this can be checked locally. Leave `AMBITION_CLOUD_API_KEY` and `ZAPIER_BROKERS_WEBHOOK_URL` unset as well, because the lead is still forwarded without Resend.
+
 After the email is sent, the lead is also forwarded:
 
 - Brokers (`consultationService: "brokers"` or `teamMember: "hassan"`) → the Zapier webhook → **Broker Engine** (Frontline Financial Brokers). Broker Engine has no public API, so Zapier's "New Card" action does the write. The body carries the contact fields, `campaign`, `answers` ({label: value} from a quiz) and `summary` (one text block for the card notes). Failures log as `[Contact API] Zapier forward …` and don't affect the visitor.

@@ -26,6 +26,33 @@ function cleanAnswers(answers) {
   return clean;
 }
 
+// Ad attribution a landing page captured from its URL (UTM tags + Meta's fbclid).
+const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
+
+// Only forms that send `attribution` (the vehicle finance page) get a Source block.
+function sourceHtml(attribution) {
+  if (!attribution || typeof attribution !== "object") return "";
+  const a = {};
+  for (const key of ATTRIBUTION_KEYS) {
+    const value = attribution[key];
+    if (typeof value === "string" && value.trim()) a[key] = escapeHtml(value.trim().slice(0, 200));
+  }
+  const lines = [];
+  if (a.utm_content) {
+    const isMeta = /^(meta|facebook|fb|instagram|ig)$/i.test(a.utm_source || "");
+    lines.push(`${isMeta ? "Meta ad" : "Ad"}: ${a.utm_content}`);
+  }
+  if (a.utm_campaign) lines.push(`Campaign: ${a.utm_campaign}`);
+  if (a.utm_source || a.utm_medium) lines.push(`Source / medium: ${a.utm_source || "—"} / ${a.utm_medium || "—"}`);
+  if (a.utm_term) lines.push(`Term: ${a.utm_term}`);
+  const clickId = a.fbclid ? `\n<p style="color:grey;font-size:12px">Meta click ID: ${a.fbclid}</p>` : "";
+  if (!lines.length) {
+    const label = a.fbclid ? "Facebook / Instagram link (no ad name tagged)" : "direct / unknown";
+    return `<p><strong>Source:</strong> ${label}</p>${clickId}`;
+  }
+  return `<p><strong>Source:</strong><br/>${lines.join("<br/>")}</p>${clickId}`;
+}
+
 // Each business line's leads go to one inbox:
 // Brokers → Hassan; Asset Solutions (incl. vehicle finance and Dean's page) → operations; TaxFlowAI → taxflowai.
 function getRecipient({ teamMember, consultationService, campaign }) {
@@ -64,6 +91,7 @@ export async function POST(request) {
     postcode,
     applicationType,
     assetType,
+    attribution,
   } = body;
 
   if (!firstName || typeof firstName !== "string" || !firstName.trim()) {
@@ -123,6 +151,7 @@ export async function POST(request) {
 <p>${escapeHtml(message.trim()).replace(/\n/g, "<br/>")}</p>
 <p><strong>Submitted:</strong> ${timestamp}</p>
 ${ambitionLine}
+${sourceHtml(attribution)}
 <hr/>
 <p style="color:grey;font-size:12px">Submitted via frontline.financial contact form</p>
 `;
@@ -227,7 +256,7 @@ ${ambitionLine}
   if (!resendApiKey) {
     // Locally, let the form complete without a key so pages can be tested.
     if (process.env.NODE_ENV === "development") {
-      console.log("[Contact API] RESEND_API_KEY not set. Would send to:", to, "Subject:", subject);
+      console.log("[Contact API] RESEND_API_KEY not set. Would send to:", to, "Subject:", subject, "\n" + html);
       const forward = await forwardToPlatform();
       return NextResponse.json({ success: true, ...forward });
     }
