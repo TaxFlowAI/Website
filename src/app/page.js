@@ -258,8 +258,23 @@ export default function Home() {
                 </dd>
               </div>
               <div className="flex min-w-0 flex-col justify-center p-4">
-                <dt className="text-2xl font-bold leading-none text-[#00FCB8]">30+ lenders</dt>
-                <dd className="mt-1.5 text-sm text-white/85">500+ helped. 26 million to go.</dd>
+                <dt>
+                  <a
+                    href="https://brokerscore.com.au/mortgage-broker/frontline-financial-group"
+                    target="_blank"
+                    rel="noopener"
+                    className="block w-fit max-w-full rounded-xl transition-all duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00FCB8]"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://brokerscore.com.au/badge/frontline-financial-group.svg?shape=label&theme=light"
+                      alt="Frontline Financial Group on BrokerScore"
+                      width={170}
+                      height={61}
+                    />
+                  </a>
+                </dt>
+                <dd className="mt-1 text-sm text-white/85">Home loans, on BrokerScore</dd>
               </div>
             </dl>
             <div className="mt-5 flex flex-col items-center gap-x-5 gap-y-3 sm:flex-row sm:flex-wrap lg:justify-start">
