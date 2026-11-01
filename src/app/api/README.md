@@ -14,7 +14,7 @@ Handles contact form submissions, emailed to staff through the [Resend](https://
 
 Send failures are logged as `[Contact API] Send failed: Resend <status>: <message>` (check Vercel → Logs).
 
-The vehicle finance page also sends `attribution` — the UTM tags and `fbclid` from the URL the visitor landed on (e.g. a Meta ad link with `utm_content={{ad.name}}`). The staff email then carries a **Source** block (Meta ad, campaign, source / medium), or "Source: direct / unknown" when the visit had no tags. Without `RESEND_API_KEY`, development logs the full email body, so this can be checked locally. Leave `AMBITION_CLOUD_API_KEY` and `ZAPIER_BROKERS_WEBHOOK_URL` unset as well, because the lead is still forwarded without Resend.
+`/vehicle-finance`, `/car-loan` and the `/apply` forms also send `attribution` — the UTM tags and `fbclid` from the URL the visitor landed on (e.g. a Meta ad link with `utm_content={{ad.name}}`), kept for the visit by `src/components/useAdAttribution.js`. The home page and `/apply` keep them too, through `FinanceSelector`. The staff email then carries a **Source** block (Meta ad, campaign, source / medium), or "Source: direct / unknown" when the visit had no tags. Without `RESEND_API_KEY`, development logs the full email body, so this can be checked locally. Leave `AMBITION_CLOUD_API_KEY` and `ZAPIER_BROKERS_WEBHOOK_URL` unset as well, because the lead is still forwarded without Resend.
 
 After the email is sent, the lead is also forwarded:
 

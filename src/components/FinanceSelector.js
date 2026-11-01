@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import OpenStatus from "@/components/OpenStatus";
 import { trackMeta } from "@/components/MetaPixel";
+import useAdAttribution from "@/components/useAdAttribution";
 import { APPLICATION_LIST, TEAM_PHONE } from "@/data/finance-applications";
 
 const ICON_CLASS = "h-6 w-6";
@@ -74,6 +75,8 @@ export default function FinanceSelector({ headingLevel: Heading = "h2" }) {
   const [active, setActive] = useState(0);
   const [switched, setSwitched] = useState(false);
   const tabRefs = useRef([]);
+  /* Tags on the home page or /apply URL have to reach the form these rows link to */
+  useAdAttribution();
   const tab = TABS[active];
   const app = tab.steps ? tab : null;
 

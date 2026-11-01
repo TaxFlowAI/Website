@@ -29,7 +29,7 @@ function cleanAnswers(answers) {
 // Ad attribution a landing page captured from its URL (UTM tags + Meta's fbclid).
 const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
 
-// Only forms that send `attribution` (the vehicle finance page) get a Source block.
+// Only forms that send `attribution` (/vehicle-finance, /car-loan, /apply) get a Source block.
 function sourceHtml(attribution) {
   if (!attribution || typeof attribution !== "object") return "";
   const a = {};

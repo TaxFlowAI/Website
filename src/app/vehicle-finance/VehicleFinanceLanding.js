@@ -8,6 +8,7 @@ import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
 import { trackMeta } from "@/components/MetaPixel";
+import useAdAttribution from "@/components/useAdAttribution";
 
 /* ================= real data only ================= */
 
@@ -78,36 +79,6 @@ function track(eventName, fbStandard) {
   }
 }
 
-/* ad attribution: the UTM tags (+ Meta's fbclid) on the landing URL, e.g.
-   ?utm_source=meta&utm_campaign=…&utm_content=R1 Ute Too Old - A. Kept in
-   sessionStorage for the visit (first ad touch wins) and sent with the lead,
-   so the lead email shows which ad brought it in. */
-const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
-const ATTRIBUTION_STORAGE_KEY = "vf_attribution";
-
-function readAttribution() {
-  const fromUrl = {};
-  try {
-    const params = new URLSearchParams(window.location.search);
-    ATTRIBUTION_KEYS.forEach((key) => {
-      const value = params.get(key)?.trim();
-      if (value) fromUrl[key] = value.slice(0, 200);
-    });
-  } catch {
-    /* attribution must never break the page */
-  }
-  try {
-    const stored = JSON.parse(sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) || "null");
-    if (stored && Object.keys(stored).length) return stored;
-    if (Object.keys(fromUrl).length) {
-      sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(fromUrl));
-    }
-  } catch {
-    /* storage blocked (some in-app browsers) — fall back to this URL */
-  }
-  return fromUrl;
-}
-
 const inputClass =
   "mt-1.5 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-[15px] text-[#1C5472] placeholder-gray-400 transition focus:border-[#00FCB8] focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/30";
 
@@ -127,12 +98,7 @@ export default function VehicleFinanceLanding() {
   const [sendingMsg, setSendingMsg] = useState(0);
   const startedRef = useRef(false);
   const formRef = useRef(null);
-  const attributionRef = useRef({});
-
-  /* capture the ad's UTM tags on landing, before any quiz step */
-  useEffect(() => {
-    attributionRef.current = readAttribution();
-  }, []);
+  const attributionRef = useAdAttribution();
 
   /* rotate the funny sending lines while the lead is in transit */
   useEffect(() => {

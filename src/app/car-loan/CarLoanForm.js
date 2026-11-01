@@ -4,6 +4,7 @@ import { useState } from "react";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
 import { trackMeta } from "@/components/MetaPixel";
+import useAdAttribution from "@/components/useAdAttribution";
 
 const PHONE = "+61 422 959 486";
 const PHONE_LINK = "tel:+61422959486";
@@ -33,6 +34,7 @@ export default function CarLoanForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [result, setResult] = useState(null);
+  const attributionRef = useAdAttribution();
 
   const validate = () => {
     const e = {};
@@ -75,6 +77,7 @@ export default function CarLoanForm() {
           amount: amountDigits,
           applicationType: use.type,
           assetType: "car",
+          attribution: attributionRef.current,
           message: [
             "Website enquiry: CAR LOAN form.",
             `Buying: ${use.label}`,

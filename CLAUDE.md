@@ -69,6 +69,9 @@ live, so push only with the user's OK.
   on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean`,
   `/vehicle-finance` and `/apply` forms. Test custom events on the live site: Meta drops some of them from localhost.
 - GA4 (`NEXT_PUBLIC_GA4_ID`) is not set yet.
+- `/vehicle-finance`, `/car-loan` and the `/apply` forms send the landing URL's UTM tags and `fbclid` as `attribution`
+  (`src/components/useAdAttribution.js`, kept in sessionStorage for the visit, first touch wins). `/api/contact` shows
+  them as a Source block in the staff email only: they don't reach Ambition Cloud or Broker Engine and don't affect routing.
 - Never submit test leads to the live site without the user's OK. They reach the CRM and the ops inbox. `.env.local`
   holds live Resend and Ambition Cloud keys, so a submit from localhost sends for real too: stub `window.fetch` in the
   browser when testing a form.

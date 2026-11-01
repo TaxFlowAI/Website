@@ -5,6 +5,7 @@ import Link from "next/link";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import OpenStatus from "@/components/OpenStatus";
 import { trackMeta } from "@/components/MetaPixel";
+import useAdAttribution from "@/components/useAdAttribution";
 import { getApplication, TEAM_PHONE } from "@/data/finance-applications";
 import { HOURS } from "@/config/business-hours";
 
@@ -111,6 +112,7 @@ export default function ApplicationForm({ slug }) {
   const movedRef = useRef(false);
   const advancingRef = useRef(false);
   const cardRef = useRef(null);
+  const attributionRef = useAdAttribution();
   const eventName = (suffix) => `apply_${slug.replace(/-/g, "_")}_${suffix}`;
 
   /* The questions that apply given the answers so far, plus contact details and review */
@@ -330,6 +332,7 @@ export default function ApplicationForm({ slug }) {
           postcode: contact.postcode.trim(),
           applicationType: app.applicationType?.(answers),
           assetType: app.assetType,
+          attribution: attributionRef.current,
           answers: labelled,
           message: [
             `Website application: ${app.title.toUpperCase()}.`,
