@@ -16,7 +16,7 @@ function ConsentCheckbox({ config, checked, onChange, creditGuideLabel = "Credit
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="mt-1 h-4 w-4 shrink-0 rounded border-[#39B2B2]/50 text-[#00FCB8] focus:ring-[#00FCB8]"
+        className="mt-0.5 h-5 w-5 shrink-0 rounded border-[#39B2B2]/50 accent-[#1C5472] focus:ring-[#00FCB8]"
         aria-describedby={config.entityCRN ? undefined : undefined}
       />
       <span className={textClass}>

@@ -1,8 +1,7 @@
-/* The free Equifax report offer from /vehicle-finance, for the vehicle and equipment
+/* The free Equifax report offer, for /vehicle-finance and the vehicle and equipment
    applications. Its terms limit it to vehicle or equipment finance, so it stays off
-   the home loan, personal loan and working capital pages. Same terms as that page:
-   change both together. */
-export default function FreeCreditReportOffer({ ctaHref = "#application" }) {
+   the home loan, personal loan and working capital pages. */
+export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLabel = "Back to your application" }) {
   return (
     <section id="free-credit-report" className="relative scroll-mt-24 overflow-hidden bg-[#0A1628] px-4 py-14 md:px-6 md:py-20 lg:px-8">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -40,7 +39,7 @@ export default function FreeCreditReportOffer({ ctaHref = "#application" }) {
             href={ctaHref}
             className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto"
           >
-            Back to your application
+            {ctaLabel}
           </a>
           <div className="mt-6 max-w-xl text-xs leading-relaxed text-white/70">
             <p className="font-bold text-white/80">*Free Equifax credit report: terms and conditions</p>

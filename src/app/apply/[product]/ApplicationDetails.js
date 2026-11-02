@@ -9,7 +9,7 @@ import { TEAM_PHONE } from "@/data/finance-applications";
    dealing with, and what's the catch. Copy lives with each application in
    data/finance-applications.js. */
 
-const COMPARE = [
+export const COMPARE = [
   ["Only that lender's products", "30+ lenders compared for you"],
   ["One lender's rules on how it reads your income", "The lenders whose rules fit your situation"],
   ["Every application you try shows on your credit file", "We choose the right lender before anything is lodged"],
@@ -33,7 +33,7 @@ function Cross() {
   );
 }
 
-function NextSteps({ steps }) {
+export function NextSteps({ steps }) {
   return (
     <section className="section-dot-grid px-4 py-14 md:px-6 md:py-20 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -100,7 +100,7 @@ function SelfEmployedVideo() {
   );
 }
 
-function Compare({ rows }) {
+export function Compare({ rows }) {
   return (
     <section className="px-4 pb-14 md:px-6 md:pb-20 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -128,7 +128,7 @@ function Compare({ rows }) {
   );
 }
 
-function AwardAndBroker({ app }) {
+export function AwardAndBroker({ app }) {
   const { broker, review } = app;
   const isSham = broker.name === "Sham";
   return (
@@ -217,7 +217,7 @@ function AwardAndBroker({ app }) {
   );
 }
 
-function FinalPush({ app }) {
+export function FinalPush({ ctaLabel = "Back to your application" }) {
   return (
     <section className="cta-stripe-pattern relative bg-[#00FCB8] px-4 py-12 md:px-6 md:py-16 lg:px-8">
       <div className="relative z-10 mx-auto max-w-3xl text-center">
@@ -225,7 +225,7 @@ function FinalPush({ app }) {
         <p className="mt-3 text-lg text-[#1C5472]">Tell us what you need and someone from our team calls you within one business day.</p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a href="#application" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
-            Back to your application
+            {ctaLabel}
           </a>
           <a href={TEAM_PHONE.link} className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] px-6 py-3 font-bold text-[#1C5472] transition-colors hover:bg-[#1C5472]/10 sm:w-auto">
             Call us: {TEAM_PHONE.display}
@@ -272,7 +272,7 @@ export default function ApplicationDetails({ app }) {
       <Compare rows={isHomeLoan ? [...COMPARE, HOME_LOAN_COMPARE] : COMPARE} />
       <AwardAndBroker app={app} />
       <WaveDivider fill="#00FCB8" />
-      <FinalPush app={app} />
+      <FinalPush />
     </>
   );
 }

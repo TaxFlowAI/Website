@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
    small truck, no plates) is supplied, rebuild this with the photo behind the
    headline. Until then: brand navy with the headline. */
 
-export const alt = "Commercial vehicle finance, sorted. Free assessment — Frontline Financial";
+export const alt = "Ute, van or truck finance, sorted. Free assessment — Frontline Financial";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,7 +34,7 @@ export default function Image() {
           }}
         />
         <div style={{ display: "flex", flexDirection: "column", fontSize: "76px", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.1 }}>
-          <span>Commercial vehicle</span>
+          <span>Ute, van or truck</span>
           <span style={{ display: "flex" }}>
             finance,&nbsp;<span style={{ color: "#00FCB8" }}>sorted.</span>
           </span>

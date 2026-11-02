@@ -73,6 +73,17 @@ body {
   background-size: 24px 24px;
 }
 
+/* /vehicle-finance opens on the hook of the ad that was tapped. All the headlines
+   are in the HTML; vehicle-finance/page.js sets data-vf-angle before first paint. */
+.vf-angle { display: none; }
+.vf-angle-default { display: block; }
+html[data-vf-angle] .vf-angle-default { display: none; }
+html[data-vf-angle="r1"] .vf-angle-r1,
+html[data-vf-angle="r2"] .vf-angle-r2,
+html[data-vf-angle="r3"] .vf-angle-r3,
+html[data-vf-angle="r4"] .vf-angle-r4,
+html[data-vf-angle="r5"] .vf-angle-r5 { display: block; }
+
 .hero-gradient-animate {
   animation: heroGradientShift 8s ease-in-out infinite;
 }

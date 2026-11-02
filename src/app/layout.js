@@ -53,7 +53,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    /* suppressHydrationWarning: /vehicle-finance sets data-vf-angle here before hydrating */
+    <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         {children}
         <MetaPixel />

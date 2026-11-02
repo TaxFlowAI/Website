@@ -29,8 +29,12 @@ live, so push only with the user's OK.
   `CLAUDE.md` gives it.
 
 ## Campaign landing pages and tracking
-- `/vehicle-finance` (`src/app/vehicle-finance/`) is the Meta campaign landing page: a 7-question quiz that posts to
-  `/api/contact` and fires the Meta `Lead` event (plus GA4 `vf_form_submit` once GA4 is set up).
+- `/vehicle-finance` (`src/app/vehicle-finance/`, copy and questions in `src/data/vehicle-finance.js`) is the Meta campaign
+  landing page. The form asks tap questions first and contact details last, posts to `/api/contact`, fires the Meta `Lead`
+  event (plus GA4 `vf_form_submit` once GA4 is set up), and its thank-you screen shows the privacy consent link. `vf_step_<key>`
+  events show where people drop out: send question keys to the pixel, never answers. The page opens on the hook of the ad that
+  was tapped, read from `utm_content`, so ad names have to keep starting R1 to R5. `page.js` sets `data-vf-angle` before first
+  paint, which keeps the page static with no headline swap. It has no site nav, on purpose.
 - `/self-employed-home-loans` (server component, `src/app/self-employed-home-loans/page.js`) is the Brokers niche page
   (self-employed borrowers, from 26 Oct 2026). Its buttons go to `/self-employed-home-loans/assessment`, a six-question
   quiz (noindex) that fires the Meta `Lead` event. `/contact?service=self-employed` still preselects Hassan and
