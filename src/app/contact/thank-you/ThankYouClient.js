@@ -39,7 +39,7 @@ const isBrokers = team === "brokers";
                   Car and equipment finance, made simple.
                 </h1>
                 <p className="mt-4 text-lg text-[#1C5472] md:text-xl">
-                  Fast approvals. Competitive rates.<br />
+                  30+ lenders. Plain English.<br />
                   We&apos;re here to get you behind the wheel or into the gear you need.
                 </p>
               </>
@@ -65,7 +65,7 @@ const isBrokers = team === "brokers";
                 <div className="mx-auto mt-8 max-w-xl text-left">
                   <p className="font-semibold text-[#00FCB8]">What happens next</p>
                   <p className="mt-2 text-sm text-white/90">
-                    Our Asset Solutions team will reach out to discuss your car or equipment finance needs. We specialise in personal and commercial vehicles, machinery, and fleet — with fast approvals and competitive rates.
+                    Our Asset Solutions team will reach out to discuss your car or equipment finance needs. We specialise in personal and commercial vehicles, machinery, and fleet. Keep an eye on your inbox: we email a link to our privacy consent, which saves time on the call.
                   </p>
                   <ul className="mt-4 space-y-2 text-sm text-white/90">
                     <li className="flex items-center gap-2">✓ Car loans & novated leasing</li>

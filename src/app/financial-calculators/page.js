@@ -329,7 +329,9 @@ function CTAProfilePhoto({ caption, src }) {
   return <img src={src} alt={caption} className={className} width={120} height={120} onError={() => setError(true)} />;
 }
 
-function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
+/* Asset Solutions CTAs pass `assessmentHref`: its form is the next step, and its service
+   can't be called free (only the assessment is), so it replaces the consultation button. */
+function ContactCTA({ emoji, title, blurb, name, phone, tel, assessmentHref, note }) {
   return (
     <div className="mt-8 overflow-hidden rounded-2xl bg-gradient-to-r from-[#1C5472] to-[#0A1628] p-6 text-white md:p-8">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -337,13 +339,27 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel }) {
           <h3 className="text-xl font-bold md:text-2xl">{emoji} {title}</h3>
           <p className="mt-2 text-[#39B2B2]">{blurb}</p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
-              Call us: {phone}
-            </a>
-            <Link href={`/contact?team=${name.toLowerCase()}`} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
-              Book a free consultation
-            </Link>
+            {assessmentHref ? (
+              <>
+                <Link href={assessmentHref} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
+                  Get your free assessment
+                </Link>
+                <a href={tel} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
+                  Call us: {phone}
+                </a>
+              </>
+            ) : (
+              <>
+                <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
+                  Call us: {phone}
+                </a>
+                <Link href={`/contact?team=${name.toLowerCase()}`} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
+                  Book a free consultation
+                </Link>
+              </>
+            )}
           </div>
+          {note}
         </div>
         <div className="hidden md:block">
           <CTAProfilePhoto caption={name} src={name === "Sham" ? "/images/sham-portrait.webp" : "/images/hassan-portrait.webp"} />
@@ -900,7 +916,21 @@ export default function FinancialCalculatorsPage() {
                 <AmortTable rows={carResult.rows} expand={carExpandTable} setExpand={setCarExpandTable} showOffset={false} download={downloadCarCSV} />
                 <FAQBlock title="Car loan FAQs" items={CAR_FAQS} />
                 <AssetDisclaimer />
-                <ContactCTA emoji="🚗" title="Ready to get behind the wheel?" blurb="Get a free car loan eligibility check — fast approvals, competitive rates. Sham — Award-winning finance broker, FY25." name="Sham" phone="0450 553 877" tel="tel:+61450553877" />
+                <ContactCTA
+                  emoji="🚗"
+                  title="Ready to get behind the wheel?"
+                  blurb="A free assessment across 30+ lenders, with no obligation. Sham — Award-winning finance broker, FY25."
+                  name="Sham"
+                  phone="0450 553 877"
+                  tel="tel:+61450553877"
+                  assessmentHref="/apply/car-loan"
+                  note={
+                    <p className="mt-4 text-sm text-white/90">
+                      Buying a ute, van or truck for work?{" "}
+                      <Link href="/vehicle-finance" className="font-bold text-[#00FCB8] underline underline-offset-2 hover:no-underline">Start here</Link>
+                    </p>
+                  }
+                />
               </div>
             )}
 
@@ -959,7 +989,7 @@ export default function FinancialCalculatorsPage() {
                 <AmortTable rows={personalResult.rows} expand={personalExpandTable} setExpand={setPersonalExpandTable} showOffset={false} download={downloadPersonalCSV} />
                 <FAQBlock title="Personal loan FAQs" items={PERSONAL_FAQS} />
                 <AssetDisclaimer />
-                <ContactCTA emoji="💰" title="Need funds for something important?" blurb="Fast approvals, competitive rates. Sham — Award-winning finance broker, FY25." name="Sham" phone="0450 553 877" tel="tel:+61450553877" />
+                <ContactCTA emoji="💰" title="Need funds for something important?" blurb="A free assessment across 30+ lenders, with no obligation. Sham — Award-winning finance broker, FY25." name="Sham" phone="0450 553 877" tel="tel:+61450553877" assessmentHref="/apply/personal-loan" />
               </div>
             )}
           </div>

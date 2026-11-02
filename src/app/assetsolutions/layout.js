@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: "Car Loans & Car Finance Parramatta — Frontline Financial: Asset Solutions",
     description:
-      "Car loans from 30+ lenders. 24hr approvals, 100+ five-star Google reviews. Visit us at Level 49, 8 Parramatta Square.",
+      "Car loans from 30+ lenders. Free assessment, 100+ five-star Google reviews. Visit us at Level 49, 8 Parramatta Square.",
     url: "/assetsolutions",
     siteName: "Frontline Financial",
     type: "website",

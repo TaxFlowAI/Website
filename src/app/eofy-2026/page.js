@@ -143,7 +143,7 @@ export default function Eofy2026Page() {
             Get it earning from day one.
           </p>
           <p className="mt-6 text-xl text-[#39B2B2]">
-            Finance your next business asset before EOFY. Fast approvals, zero jargon — that&apos;s how we do it.
+            Finance your next business asset before EOFY. 30+ lenders, zero jargon — that&apos;s how we do it.
           </p>
           <div className="mt-10">
             <Countdown />
@@ -158,7 +158,7 @@ export default function Eofy2026Page() {
             </a>
           </div>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
-            <span className="text-white">24hr Approvals</span>
+            <span className="text-white">Free assessment</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">30+ Lenders</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />

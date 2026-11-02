@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
@@ -7,8 +8,9 @@ import WaveDivider from "@/components/WaveDivider";
 const FINANCE_CARDS = [
   {
     title: "Car Loans",
-    description: "New or used, we find you the best rate from 30+ lenders. Fast approval, minimal paperwork.",
+    description: "New or used, we compare 30+ lenders to find one that fits. Minimal paperwork.",
     tag: "Personal & Business",
+    href: "/apply/car-loan",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
@@ -22,6 +24,7 @@ const FINANCE_CARDS = [
     title: "Commercial Vehicle Finance",
     description: "Utes, vans, trucks and everything in between. Keep your business moving with flexible terms.",
     tag: "Business",
+    href: "/vehicle-finance",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
@@ -36,6 +39,7 @@ const FINANCE_CARDS = [
     title: "Equipment & Machinery",
     description: "Fund the tools that grow your business. From construction equipment to medical devices.",
     tag: "Business",
+    href: "/apply/equipment-finance",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M10 18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a3 3 0 0 1-3-3 1 1 0 0 1 1-1z" />
@@ -49,8 +53,9 @@ const FINANCE_CARDS = [
   },
   {
     title: "Personal Loans",
-    description: "For life's bigger moments. Fast approvals, competitive rates, no hidden fees.",
+    description: "For life's bigger moments. Options across 30+ lenders, with fees set out up front.",
     tag: "Personal",
+    href: "/apply/personal-loan",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
@@ -65,6 +70,7 @@ const FINANCE_CARDS = [
     title: "Working Capital",
     description: "Keep cash flowing when you need it most. Business lines of credit and working capital solutions.",
     tag: "Business",
+    href: "/apply/working-capital",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M3 3v18h18" />
@@ -76,6 +82,7 @@ const FINANCE_CARDS = [
     title: "Fleet Finance",
     description: "Scale your fleet without the stress. Tailored fleet funding solutions for businesses of any size.",
     tag: "Business",
+    href: "/vehicle-finance",
     icon: (
       <svg className="h-10 w-10 flex-shrink-0 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
         <path d="M13 6v5a1 1 0 0 0 1 1h6.102a1 1 0 0 1 .712.298l.898.91a1 1 0 0 1 .288.702V17a1 1 0 0 1-1 1h-3" />
@@ -89,10 +96,10 @@ const FINANCE_CARDS = [
 ];
 
 const STEPS = [
-  { num: 1, title: "Tell us what you need", desc: "Fill out our quick 5-minute form with your requirements and basic details." },
-  { num: 2, title: "We search 30+ lenders", desc: "Our team reviews your application and matches you with the best available lender for your situation." },
-  { num: 3, title: "Get your options", desc: "We present you with clear options — rates, terms, repayments — no hidden fees or confusing jargon." },
-  { num: 4, title: "Drive away approved", desc: "Once you choose, we handle all the paperwork and get you approved fast." },
+  { num: 1, title: "Tell us what you need", desc: "Answer a few quick questions. It takes about 2 minutes." },
+  { num: 2, title: "We search 30+ lenders", desc: "Someone from our team calls within one business day, then checks which lenders fit your situation." },
+  { num: 3, title: "Get your options", desc: "We present you with clear options: rates, terms, repayments and fees, without the jargon." },
+  { num: 4, title: "We handle the paperwork", desc: "If you decide to go ahead, we take it to the lender and deal with them for you." },
 ];
 
 const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
@@ -128,18 +135,22 @@ export default function AssetSolutionsPage() {
             For every Australian.
           </p>
           <p className="mt-6 text-xl text-[#39B2B2]">
-            Your award-winning asset finance broker in Parramatta — fast approvals on car loans, equipment finance and fleet solutions for everyday Australians and growing businesses.
+            Your award-winning asset finance broker in Parramatta, for car loans, equipment finance and fleet solutions for everyday Australians and growing businesses.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="#apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
-              Apply Now
-            </a>
+            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+              Get your free assessment
+            </Link>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
               Talk to our team
             </a>
           </div>
+          <p className="mt-5 text-white">
+            Buying a ute, van or truck for work?{" "}
+            <Link href="/vehicle-finance" className="font-bold text-[#00FCB8] underline underline-offset-2 hover:no-underline">Start here</Link>
+          </p>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 md:gap-8">
-            <span className="text-white">24hr Approvals</span>
+            <span className="text-white">Free assessment</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
             <span className="text-white">30+ Lenders</span>
             <span className="h-5 w-px bg-[#39B2B2]" aria-hidden />
@@ -180,6 +191,9 @@ export default function AssetSolutionsPage() {
                     </span>
                     <h3 className="mt-3 text-xl font-bold text-[#1C5472]">{card.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#1C5472]">{card.description}</p>
+                    <Link href={card.href} className="mt-3 inline-block text-sm font-bold text-[#1C5472] underline underline-offset-2 hover:no-underline">
+                      Get your free assessment
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -195,7 +209,7 @@ export default function AssetSolutionsPage() {
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">THE PROCESS</p>
           <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
-            Approved in as little as 24 hours
+            How it works
           </h2>
           <div className="mt-14 grid gap-10 md:grid-cols-4 md:gap-0">
             {STEPS.map((step, i) => (
@@ -328,10 +342,10 @@ export default function AssetSolutionsPage() {
                 Read the full article
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
               </a>
-              <a href="#apply" className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
-                Apply Now
+              <Link href="/apply" className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#00FCB8] bg-[#00FCB8]/10 px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8] hover:text-[#0A1628]">
+                Get your free assessment
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -486,9 +500,9 @@ export default function AssetSolutionsPage() {
             30+ lenders. A team that actually gives a damn. Any situation welcome. Let&apos;s get you moving.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
-              Apply Now
-            </a>
+            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+              Get your free assessment
+            </Link>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
               Call us: +61 422 959 486
             </a>

@@ -1,7 +1,7 @@
 export const metadata = {
   title: "EOFY 2026 — Beat the June 30 Deadline | Frontline Financial: Asset Solutions",
   description:
-    "Finance your next business asset before EOFY 2026 and get it earning from day one. Fast approvals, zero jargon.",
+    "Finance your next business asset before EOFY 2026 and get it earning from day one. 30+ lenders, zero jargon.",
   robots: {
     index: false,
     follow: false,

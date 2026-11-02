@@ -154,7 +154,7 @@ export default function BrokersPage() {
             <div className="rounded-xl border-l-4 border-[#39B2B2] bg-white p-6 shadow-md">
               <h3 className="text-lg font-bold text-[#1C5472]">What we actually do for you</h3>
               <ul className="mt-4 space-y-3">
-                {["Access to 30+ lenders and hundreds of products", "We're legally obligated to act in your best interest", "Tailored to your exact situation", "We handle everything end to end", "Fast approvals — often within days"].map((item) => (
+                {["Access to 30+ lenders and hundreds of products", "We're legally obligated to act in your best interest", "Tailored to your exact situation", "We handle everything end to end", "Clear next steps, in plain English"].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="mt-0.5 shrink-0 text-[#00FCB8]" aria-hidden>✓</span>
                     <span className="text-[#1C5472]">{item}</span>

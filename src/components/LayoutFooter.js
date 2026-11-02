@@ -41,6 +41,7 @@ export default function LayoutFooter() {
               <li><a href="/brokers" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Home Loans (Brokers)</a></li>
               <li><a href="/self-employed-home-loans" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Self-Employed Home Loans</a></li>
               <li><a href="/assetsolutions" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Asset Solutions</a></li>
+              <li><a href="/vehicle-finance" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Ute, Van &amp; Truck Finance</a></li>
               <li><a href="/contact" className="text-sm text-white/80 transition-colors hover:text-[#00FCB8]">Book a Consultation</a></li>
             </ul>
           </div>

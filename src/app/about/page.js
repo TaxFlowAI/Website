@@ -180,7 +180,7 @@ export default function AboutPage() {
               </svg>
               <h3 className="mt-4 text-xl font-bold text-white">Frontline Financial Asset Solutions</h3>
               <p className="mt-4 text-sm leading-relaxed text-white/95">
-                Car, equipment, and fleet finance specialists helping individuals and businesses acquire the assets they need to move forward. From personal vehicles to full commercial fleets — fast approvals, competitive rates, real expertise.
+                Car, equipment, and fleet finance specialists helping individuals and businesses acquire the assets they need to move forward. From personal vehicles to full commercial fleets — 30+ lenders, real expertise.
               </p>
               <ul className="mt-4 space-y-2 text-sm text-[#39B2B2]">
                 {["Car & Personal Vehicle Finance", "Commercial Vehicle Finance", "Equipment & Machinery Finance", "Fleet Finance Solutions", "Working Capital"].map((item) => (
@@ -330,10 +330,10 @@ export default function AboutPage() {
                 Fintelligence Award Winner FY25
               </p>
               <p className="mt-4 text-sm leading-relaxed text-[#1C5472]">
-                Sham leads Frontline Financial Asset Solutions with a reputation for getting results others can&apos;t. With over 5 years in vehicle and equipment finance, he has settled more than $25 million in car, commercial, and fleet loans and helped hundreds of clients and businesses get funded. He works with 30+ lenders to secure competitive rates and regularly achieves same-day or next-day approvals. His approach: understand the client&apos;s goals first, then find the right asset finance solution to get them there — with speed, care, and a track record that speaks for itself.
+                Sham leads Frontline Financial Asset Solutions with a reputation for getting results others can&apos;t. With over 5 years in vehicle and equipment finance, he has settled more than $25 million in car, commercial, and fleet loans and helped hundreds of clients and businesses get funded. He works with 30+ lenders to find the finance that fits. His approach: understand the client&apos;s goals first, then find the right asset finance solution to get them there — with speed, care, and a track record that speaks for itself.
               </p>
               <p className="mt-4 text-sm italic text-gray-600">
-                <span className="text-[#00FCB8]">★★★★★</span> &quot;Sham was phenomenal. Approved in less than 24 hours.&quot; — Mikhail A.
+                <span className="text-[#00FCB8]">★★★★★</span> &quot;Sham was phenomenal to say the least. He got my loan approved in less than 24 hours. Absolute legend!&quot; — Mikhail A.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <a href="mailto:sham@frontline.financial" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">Email</a>
@@ -366,7 +366,7 @@ export default function AboutPage() {
             <p className="mt-2 text-lg text-[#39B2B2]">Winner — Vehicle & Equipment Finance</p>
             <div className="mx-auto my-6 h-px w-16 bg-[#00FCB8]" aria-hidden />
             <p className="text-sm leading-relaxed text-[#39B2B2]">
-              Awarded to Sham at Frontline Financial Asset Solutions for outstanding performance in vehicle and equipment finance — recognising exceptional client outcomes, fast approvals, and consistent excellence in asset finance broking.
+              Awarded to Sham at Frontline Financial Asset Solutions for outstanding performance in vehicle and equipment finance — recognising exceptional client outcomes and consistent excellence in asset finance broking.
             </p>
           </div>
         </div>
