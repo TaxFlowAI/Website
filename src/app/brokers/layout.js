@@ -1,6 +1,6 @@
 import { BROKERS_FAQ } from "@/data/brokers-faq";
 import { HOURS } from "@/config/business-hours";
-import { OFFICE, GOOGLE } from "@/config/location";
+import { OFFICE, GOOGLE, HASSAN_PROFILES } from "@/config/location";
 
 /* SEO layout for /brokers — the page itself is a client component, so
    metadata and structured data live here. Target queries: mortgage broker
@@ -70,7 +70,7 @@ const BROKERS_SCHEMA = {
         "@type": "Person",
         name: "Hassan Arif",
         jobTitle: "Mortgage & Finance Broker",
-        sameAs: ["https://www.linkedin.com/in/hassan-arif-555382354/"],
+        sameAs: HASSAN_PROFILES,
       },
       parentOrganization: {
         "@type": "Organization",

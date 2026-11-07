@@ -2,6 +2,7 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import { HASSAN_PROFILES } from "@/config/location";
 
 /* Article: how getting married changes borrowing power, through HEM. Written in
    Hassan's voice around the Sham's wedding reel (organic post 30 Oct 2026). It
@@ -124,6 +125,7 @@ const SCHEMA = {
         name: "Hassan Arif",
         jobTitle: "Mortgage and finance broker",
         url: "https://frontline.financial/brokers",
+        sameAs: HASSAN_PROFILES,
       },
       publisher: { "@id": "https://frontline.financial/brokers#business" },
       video: { "@id": `https://frontline.financial${PATH}#video` },

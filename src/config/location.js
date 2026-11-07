@@ -36,3 +36,11 @@ export const SOCIAL = {
   instagram: "https://www.instagram.com/frontline.financial.group/",
   linkedin: "https://au.linkedin.com/company/frontline-financial-group",
 };
+
+/* Hassan's own profiles on other sites, for the `sameAs` of his Person schema.
+   Structured data only: the Broker Pages profile (7 Nov 2026) has no reviews yet,
+   so it isn't linked or shown on any page. */
+export const HASSAN_PROFILES = [
+  "https://www.linkedin.com/in/hassan-arif-555382354/",
+  "https://brokerpages.com.au/mortgage-broker/hassan-arif/",
+];

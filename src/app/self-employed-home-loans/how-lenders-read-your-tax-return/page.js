@@ -2,6 +2,7 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
+import { HASSAN_PROFILES } from "@/config/location";
 
 /* Article: how lenders assess self-employed income, for self-employed people
    in Parramatta. Written in Hassan's voice around the Parramatta Lanes reel
@@ -86,6 +87,7 @@ const SCHEMA = {
         name: "Hassan Arif",
         jobTitle: "Mortgage and finance broker",
         url: "https://frontline.financial/self-employed-home-loans",
+        sameAs: HASSAN_PROFILES,
       },
       publisher: { "@id": "https://frontline.financial/brokers#business" },
       video: { "@id": `https://frontline.financial${PATH}#video` },
