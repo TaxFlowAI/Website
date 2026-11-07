@@ -8,7 +8,7 @@ import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
 import FinanceSelector from "@/components/FinanceSelector";
 import OpenStatus from "@/components/OpenStatus";
-import SettledDeals from "@/components/SettledDeals";
+import SettledDealsWall from "@/components/SettledDealsWall";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
@@ -398,12 +398,10 @@ export default function Home() {
         <WaveDivider fill="#F5F5EF" />
       </div>
 
-      {/* JUST SETTLED — the approved posts, as proof for "would they take my deal?" */}
-      <SettledDeals
-        ids={["01-prime-mover", "06-hilux-renting", "05-personal-loan-new-job", "12-mazda-part-time"]}
+      {/* JUST SETTLED — every approved post, as proof for "would they take my deal?" */}
+      <SettledDealsWall
         heading="Think your deal is too hard?"
-        intro="No property. Renting with no deposit. Three months into a new job. Part-time income. These all settled recently."
-        tone="light"
+        intro="No property. Renting with no deposit. Three months into a new job. A 15-year-old truck. A company six months old. These all settled recently."
         ctaHref="#home"
         ctaLabel="Start your application"
       />

@@ -120,6 +120,44 @@ html[data-vf-angle="r5"] .vf-angle-r5 { display: block; }
   .finance-row-in { animation: none; }
 }
 
+/* Home page "Just settled" wall: two rows of posts drifting in opposite directions.
+   The track holds two copies of its row, so moving it by half loops seamlessly. */
+.deals-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+@keyframes dealsDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.deals-track {
+  animation: dealsDrift var(--deals-duration, 48s) linear infinite;
+}
+
+.deals-track-reverse {
+  animation-direction: reverse;
+}
+
+.deals-wall:hover .deals-track,
+.deals-wall:focus-within .deals-track,
+.deals-wall[data-paused] .deals-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deals-row {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding: 0 1rem;
+  }
+  .deals-track { animation: none; }
+  .deals-copy, .deals-pause { display: none; }
+}
+
 .float-animate {
   animation: float 4s ease-in-out infinite;
 }
