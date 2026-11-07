@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
 import { trackMeta } from "@/components/MetaPixel";
+import HomeLoanBooking from "@/components/HomeLoanBooking";
 
 const PHONE = "+61 422 959 486";
 const PHONE_LINK = "tel:+61422959486";
@@ -233,6 +234,7 @@ export default function AssessmentForm() {
           If you have your last two years of tax returns handy, keep them nearby for the call. In a hurry? Call{" "}
           <a href={PHONE_LINK} className="font-bold text-[#39B2B2] hover:underline">{PHONE}</a>.
         </p>
+        <HomeLoanBooking name={fullName} email={email} className="mx-auto mt-6 max-w-md" />
       </div>
     );
   }

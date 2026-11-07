@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
+import HomeLoanBooking from "@/components/HomeLoanBooking";
 
 function ThankYouContent() {
   const searchParams = useSearchParams();
@@ -59,6 +60,7 @@ const isBrokers = team === "brokers";
                     <li className="flex items-center gap-2">✓ Access to 30+ lenders</li>
                     <li className="flex items-center gap-2">✓ No obligation, no cost to you</li>
                   </ul>
+                  <HomeLoanBooking tone="dark" className="mt-6" />
                 </div>
               )}
               {isAssetSolutions && (
@@ -127,6 +129,7 @@ const isBrokers = team === "brokers";
             </p>
           </div>
         )}
+        {isHassan && <HomeLoanBooking tone="dark" className="mx-auto mt-6 w-full max-w-lg" />}
         {isSham && (
           <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-[#0A1628] p-8">
             <div className="flex items-center gap-4">

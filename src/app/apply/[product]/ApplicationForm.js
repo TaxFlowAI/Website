@@ -5,6 +5,7 @@ import Link from "next/link";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import OpenStatus from "@/components/OpenStatus";
 import { trackMeta } from "@/components/MetaPixel";
+import HomeLoanBooking from "@/components/HomeLoanBooking";
 import useAdAttribution from "@/components/useAdAttribution";
 import { getApplication, TEAM_PHONE } from "@/data/finance-applications";
 import { HOURS } from "@/config/business-hours";
@@ -478,6 +479,10 @@ export default function ApplicationForm({ slug }) {
                 <p className="mt-3 text-[#1C5472]/80">
                   Someone from our team will call you within one business day. We take calls {HOURS.label}.
                 </p>
+              )}
+              {/* home loans: let them book a time with Hassan straight away */}
+              {app.teamMember === "hassan" && (
+                <HomeLoanBooking name={contact.fullName} email={contact.email} className="mt-6" />
               )}
               {/* Ambition Cloud's signed link for this lead, same wording as /car-loan */}
               {privacy && (
