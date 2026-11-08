@@ -135,14 +135,15 @@ const homeLoan = {
   ],
   selectorPitch: "Self-employed? Hassan reads business financials the way a lender will.",
   selectorQuestion: "What are you looking to do?",
-  /* The email is the Broker Engine "000. Web lead" workflow, which needs the Zap running */
+  /* The fact find goes out through the Broker Engine "000. Web lead" workflow: automatic while the Zap runs, by hand
+     while it's off (Zapier lapsed 13 Nov 2026). So the copy promises the email, not that it's instant. */
   afterSubmit: [
-    "Check your email. A secure link to your fact find and document list is on its way.",
+    "We email you a secure link to your fact find and document list.",
     "Someone from our team calls you within one business day.",
     "You get a written credit proposal with your loan options and our recommendation, and talk it through with Hassan.",
   ],
   nextSteps: [
-    { title: "Check your email", desc: "A secure link to your fact find and document list arrives, so you can add the detail lenders need." },
+    { title: "We send your fact find", desc: "A secure link to your fact find and document list, so you can add the detail lenders need." },
     { title: "We call you", desc: "Someone from our team calls within one business day, to understand what matters to you and what you're looking for." },
     { title: "You get your credit proposal", desc: "Your loan options and our recommendation, in writing, with every cost set out. You talk it through with Hassan." },
     { title: "We lodge and manage it", desc: "Once you decide to go ahead, we lodge your application and deal with the lender through to settlement." },

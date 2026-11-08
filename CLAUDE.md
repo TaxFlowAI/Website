@@ -56,8 +56,9 @@ live, so push only with the user's OK.
 - `src/components/SettledDeals.js` shows the approved "Just settled" posts as proof (`src/data/settled-deals.js`). They
   hold no client names or amounts, and their disclaimer has to stay under them. The free Equifax report
   (`FreeCreditReportOffer.js`) stays on vehicle and equipment pages only, because its terms say so.
-- The home loan form's "check your email" step is the Broker Engine "000. Web lead" workflow, so it needs the Zap running.
-  Change that copy if the Zap ever stops.
+- The home loan form's fact find step is the Broker Engine "000. Web lead" workflow. Hassan let the Zapier plan lapse on
+  13 Nov 2026, so it's sent by hand until he re-subscribes. The copy says "We email you a secure link" with no timing,
+  so it stays true either way.
 - Don't run `npm run build` while the dev server is running: it breaks the dev server's chunks and forms stop loading.
   Stop it first, or restart it afterwards.
 - Pages about Hassan link to `/contact?team=hassan` (`team=sham` also works), which preselects him, so the enquiry
