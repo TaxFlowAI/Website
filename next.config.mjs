@@ -25,11 +25,14 @@ const nextConfig = {
       { source: "/taxflow/features/meetings", destination: "/taxflow/features/flo#meetings", permanent: true },
       /* Old WordPress site URLs that Google still had (Search Console, 26 Oct 2026). Each goes to the page that
          replaced it; old pages with no equivalent (blog, privacy policy, terms, EOFY 2025, thank-you) stay 404.
-         Specific paths come before the :path* catch-alls. */
+         Specific paths come before the :path* catch-alls. The LMI article and the accountants category were added on
+         9 Nov 2026: they had no search impressions, so the 26 Oct list missed them, and the indexing report showed
+         them as 404s. */
       { source: "/frontline-financial-brokers/:path*", destination: "/brokers", permanent: true },
       { source: "/category/frontline-financial-brokers", destination: "/brokers", permanent: true },
       { source: "/increase-borrowing-power-apra-debt-to-income-rules", destination: "/brokers", permanent: true },
       { source: "/first-home-buyer-guide-australia-2025", destination: "/brokers", permanent: true },
+      { source: "/lenders-mortgage-insurance-lmi-australia", destination: "/brokers", permanent: true },
       { source: "/frontline-financial-asset-solutions/commercial-vehicle-finance", destination: "/vehicle-finance", permanent: true },
       { source: "/frontline-financial-asset-solutions/:path*", destination: "/assetsolutions", permanent: true },
       { source: "/frontline-financial-asset-solutions-wins-at-the-fy25-fintelligence-broker-awards", destination: "/assetsolutions", permanent: true },
@@ -39,6 +42,7 @@ const nextConfig = {
       { source: "/frontline-financial-accountants/business-activity-statements-bas", destination: "/taxflow/for/sole-traders", permanent: true },
       { source: "/frontline-financial-accountants/:path*", destination: "/taxflow", permanent: true },
       { source: "/accountants", destination: "/taxflow", permanent: true },
+      { source: "/category/frontline-financial-accountants", destination: "/taxflow", permanent: true },
       { source: "/capital-gains-tax-australia-2026", destination: "/taxflow/for/property-investors", permanent: true },
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/book-a-consultation", destination: "/contact", permanent: true },
