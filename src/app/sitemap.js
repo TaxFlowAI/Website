@@ -15,6 +15,7 @@ export default function sitemap() {
     ["/self-employed-home-loans", 0.9],
     ["/self-employed-home-loans/how-lenders-read-your-tax-return", 0.7, "2026-10-27"],
     ["/does-getting-married-change-your-borrowing-power", 0.7, "2026-10-31"],
+    ["/how-much-cash-to-buy-an-apartment-in-manly", 0.7, "2026-11-11"],
     ["/about", 0.7],
     ["/contact", 0.8],
     ["/financial-calculators", 0.6],
