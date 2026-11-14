@@ -398,7 +398,7 @@ export default function Home() {
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">
                 Rated five stars. Every. Single. Review.
               </p>
-              <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-5xl">
+              <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
                 Trusted by clients across Australia
               </h2>
               <p className="mt-4 max-w-lg text-base text-white/85 md:text-lg">
@@ -569,7 +569,7 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00FCB8] md:text-sm">Our location</p>
-            <h2 className="mt-3 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
               Visit us at Parramatta Square
             </h2>
             <p className="mt-5 text-lg font-semibold text-white">
@@ -815,7 +815,7 @@ export default function Home() {
       {/* WHY CHOOSE US — dot grid + heading accent, below CTA */}
       <section className="section-dot-grid relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-[#1C5472] md:text-4xl">
+          <h2 className="text-3xl font-bold text-[#1C5472] md:text-4xl">
             Save time. Save money. Stress less.
           </h2>
           <div className="mt-14 grid gap-10 md:grid-cols-3">
