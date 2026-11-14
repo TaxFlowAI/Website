@@ -45,44 +45,34 @@ const GOOGLE_REVIEWS = [
 
 const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
 
-/* The two businesses, each led by the person who runs it. Hints under each
-   link come from that form's first question, so they promise nothing the form
-   doesn't offer. Hassan's photo is the smiling headshot he asked for (AI-tagged). */
+/* The two businesses as two doors: what you're buying, one line, one main
+   button, one other way in. Kept this short on purpose (Hassan, 14 Nov 2026: a
+   visitor has about 30 seconds). Hassan's photo is the smiling headshot he asked
+   for (AI-tagged). Copy here repeats claims made elsewhere on the site only. */
 const SERVICE_SIDES = [
   {
     id: "brokers",
-    business: "Frontline Financial Brokers",
-    person: "Hassan Arif",
-    role: "Mortgage & Finance Broker",
+    title: "Home loans",
+    line: "30+ lenders compared, including for the self-employed.",
+    cta: ["Apply for a home loan", "/apply/home-loan"],
+    alt: ["Self-employed? Start here", "/self-employed-home-loans"],
+    business: ["Frontline Financial Brokers", "/brokers"],
+    person: "with Hassan Arif",
     photo: "/images/hassan-portrait.webp",
-    photoSize: [800, 800],
-    photoPosition: "50% 30%",
-    summary:
-      "Home loans compared across 30+ lenders, with the paperwork handled for you. Self-employed? Hassan's tax and accounting background means he reads business financials the way a lender will.",
-    links: [
-      ["Apply for a home loan", "Buy, invest, refinance, build or renovate", "/apply/home-loan"],
-      ["Self-employed home loans", "Sole traders, company directors, trusts and ABN contractors", "/self-employed-home-loans"],
-      ["See a sample credit proposal", "Your options and our recommendation, in writing", "/brokers#credit-proposal"],
-    ],
-    more: ["More about Frontline Financial Brokers", "/brokers"],
+    photoAlt: "Hassan Arif",
+    photoPosition: "50% 25%",
   },
   {
     id: "asset-solutions",
-    business: "Frontline Financial: Asset Solutions",
-    person: "Sham",
-    role: "Asset Finance Specialist",
+    title: "Cars and equipment",
+    line: "Cars, utes, trucks and machinery, from an award-winning team.",
+    cta: ["Apply for a car loan", "/apply/car-loan"],
+    alt: ["Equipment finance", "/apply/equipment-finance"],
+    business: ["Frontline Financial: Asset Solutions", "/assetsolutions"],
+    person: "led by Sham",
     photo: "/images/sham-portrait.webp",
-    photoSize: [600, 907],
-    photoPosition: "50% 18%",
-    summary:
-      "Cars, utes, trucks and equipment, plus personal loans and working capital, from your next car to a full commercial fleet. Led by Sham, an award-winning broker.",
-    links: [
-      ["Car loan", "Personal or business, dealer or private sale", "/apply/car-loan"],
-      ["Equipment finance", "Trucks, trailers, machinery and trade tools", "/apply/equipment-finance"],
-      ["Personal loan", "Consolidate debts, renovate or make a big purchase", "/apply/personal-loan"],
-      ["Working capital", "Cash flow, stock, or taking on more work", "/apply/working-capital"],
-    ],
-    more: ["More about Asset Solutions", "/assetsolutions"],
+    photoAlt: "Sham",
+    photoPosition: "50% 15%",
   },
 ];
 
@@ -298,73 +288,57 @@ export default function Home() {
 
       <WaveDivider fill="#1C5472" />
 
-      {/* SERVICES — the two businesses, led by the people who run them */}
-      <section id="services" className="scroll-mt-20 bg-[#1C5472] px-4 pb-16 pt-8 md:px-6 md:pb-24 md:pt-12 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="max-w-4xl text-balance text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-[3.25rem]">
-            Home loans on one side. <span className="sm:block">Cars and equipment on the other.</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#BFDCE3]">
-            Frontline is two finance businesses, each with its own credit licence, working from the one office at Parramatta Square.
-          </p>
-
-          <div className="mt-12 grid md:mt-16 lg:grid-cols-2">
-            {SERVICE_SIDES.map((side, i) => (
-              <article
-                key={side.id}
-                id={side.id}
-                aria-labelledby={`${side.id}-name`}
-                className={`scroll-mt-24 ${i === 0 ? "lg:pr-12 xl:pr-16" : "mt-14 border-t border-white/15 pt-14 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0 xl:pl-16"}`}
-              >
-                <div className="flex items-end gap-5 sm:gap-7">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={side.photo}
-                    alt={`${side.person}, ${side.role}`}
-                    width={side.photoSize[0]}
-                    height={side.photoSize[1]}
-                    loading="lazy"
-                    className="aspect-[4/5] w-28 shrink-0 rounded-xl object-cover shadow-[0_22px_40px_-24px_rgba(5,16,30,0.9)] sm:w-36 xl:w-44"
-                    style={{ objectPosition: side.photoPosition }}
-                  />
-                  <div className="min-w-0 pb-1">
-                    <h3 id={`${side.id}-name`} className="text-balance text-2xl font-bold leading-tight text-white md:text-[1.75rem]">
-                      {side.business}
-                    </h3>
-                    <p className="mt-2 text-sm leading-snug text-[#BFDCE3] md:text-base">
-                      <span className="font-bold text-white">{side.person}</span>
-                      <span className="block">{side.role}</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="mt-7 max-w-[56ch] text-base leading-relaxed text-white/90 md:text-lg">{side.summary}</p>
-                <ul className="mt-8 border-t border-white/20">
-                  {side.links.map(([label, hint, href]) => (
-                    <li key={href} className="border-b border-white/20">
-                      <Link
-                        href={href}
-                        className="group -mx-3 flex items-center justify-between gap-4 rounded-lg px-3 py-4 transition-colors duration-200 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FCB8]"
-                      >
-                        <span className="min-w-0">
-                          <span className="block text-lg font-bold text-white transition-colors duration-200 group-hover:text-[#00FCB8]">{label}</span>
-                          <span className="mt-0.5 block text-sm text-[#BFDCE3]">{hint}</span>
-                        </span>
-                        <svg className="h-5 w-5 shrink-0 text-[#00FCB8] transition-transform duration-300 ease-out group-hover:translate-x-1.5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
-                          <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+      {/* SERVICES — two doors: home loans, or cars and equipment */}
+      <section id="services" aria-label="Our services" className="scroll-mt-20 bg-[#1C5472] px-4 pb-16 pt-6 md:px-6 md:pb-20 md:pt-10 lg:px-8">
+        <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
+          {SERVICE_SIDES.map((side, i) => (
+            <article
+              key={side.id}
+              id={side.id}
+              aria-labelledby={`${side.id}-title`}
+              className={`flex scroll-mt-24 flex-col ${i === 0 ? "pb-12 lg:pb-0 lg:pr-12 xl:pr-20" : "border-t border-white/15 pt-12 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0 xl:pl-20"}`}
+            >
+              <h2 id={`${side.id}-title`} className="text-4xl font-bold leading-none tracking-tight text-white sm:text-5xl">
+                {side.title}
+              </h2>
+              <p className="mt-4 max-w-xl text-pretty text-lg leading-snug text-[#BFDCE3]">{side.line}</p>
+              <div className="mt-8 flex flex-col items-start gap-x-6 gap-y-4 sm:flex-row sm:items-center">
                 <Link
-                  href={side.more[1]}
-                  className="mt-6 inline-block text-sm font-bold text-white underline decoration-[#00FCB8] decoration-2 underline-offset-[6px] transition-colors hover:text-[#00FCB8] focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#00FCB8] focus-visible:ring-offset-4 focus-visible:ring-offset-[#1C5472]"
+                  href={side.cta[1]}
+                  className="group inline-flex items-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3.5 text-base font-bold text-[#0A1628] transition-colors duration-200 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C5472]"
                 >
-                  {side.more[0]}
+                  {side.cta[0]}
+                  <svg className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                    <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </Link>
-              </article>
-            ))}
-          </div>
+                <Link
+                  href={side.alt[1]}
+                  className="text-base font-bold text-white underline decoration-[#00FCB8] decoration-2 underline-offset-[6px] transition-colors hover:text-[#00FCB8] focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#00FCB8] focus-visible:ring-offset-4 focus-visible:ring-offset-[#1C5472]"
+                >
+                  {side.alt[0]}
+                </Link>
+              </div>
+              <div className="mt-10 flex items-center gap-3 text-sm text-[#BFDCE3]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={side.photo}
+                  alt={side.photoAlt}
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  className="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-white/20"
+                  style={{ objectPosition: side.photoPosition }}
+                />
+                <p>
+                  <Link href={side.business[1]} className="font-bold text-white hover:underline hover:decoration-[#00FCB8] hover:underline-offset-4">
+                    {side.business[0]}
+                  </Link>
+                  , {side.person}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
