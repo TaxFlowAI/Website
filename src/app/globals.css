@@ -171,16 +171,6 @@ html[data-vf-angle="r5"] .vf-angle-r5 { display: block; }
   animation: trophyShimmer 2.5s ease-in-out infinite;
 }
 
-/* Trust badge icons: subtle shimmer matching Figma */
-.trust-badge-icon-animate {
-  animation: trophyShimmer 3s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .trust-badge-icon-animate {
-    animation: none;
-  }
-}
-
 /* Multi-card review carousel: step per breakpoint */
 .review-carousel-track {
   transform: translateX(calc(-1 * var(--review-index, 0) * 100%));

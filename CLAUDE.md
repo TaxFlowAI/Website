@@ -53,6 +53,8 @@ live, so push only with the user's OK.
 - `src/components/CreditProposalShowcase.js` shows off the credit proposal on `/apply/home-loan`, `/brokers` and
   `/self-employed-home-loans`. Its document is a made-up sample. Real proposals hold client details, so never publish a
   screenshot of one. It leaves out interest rates (an advertised rate has to carry a comparison rate) and lender names.
+- Articles: the home page lists every article, newest first, from `src/data/articles.js` (`LatestArticles.js`, using each
+  article's 9:16 video poster). When an article goes live, add its line there as well as in `sitemap.js`.
 - `src/components/SettledDeals.js` shows the approved "Just settled" posts as proof (`src/data/settled-deals.js`). They
   hold no client names or amounts, and their disclaimer has to stay under them. The free Equifax report
   (`FreeCreditReportOffer.js`) stays on vehicle and equipment pages only, because its terms say so.

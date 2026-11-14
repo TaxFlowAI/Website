@@ -9,6 +9,7 @@ import WaveDivider from "@/components/WaveDivider";
 import FinanceSelector from "@/components/FinanceSelector";
 import OpenStatus from "@/components/OpenStatus";
 import SettledDealsWall from "@/components/SettledDealsWall";
+import LatestArticles from "@/components/LatestArticles";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
@@ -44,42 +45,44 @@ const GOOGLE_REVIEWS = [
 
 const GOOGLE_REVIEW_LINK = "https://www.google.com/search?q=frontline+financial+group&rlz=1C1RXQR_en-GBAU1181AU1181&oq=frontline+financ&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGEEyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQgyMDM4ajBqNKgCALACAQ&sourceid=chrome&ie=UTF-8#lrd=0x22393410488c393:0x1a79eb822c43357b,1,,,,";
 
-const TRUST_BADGES = [
+/* The two businesses, each led by the person who runs it. Hints under each
+   link come from that form's first question, so they promise nothing the form
+   doesn't offer. Hassan's photo is the smiling headshot he asked for (AI-tagged). */
+const SERVICE_SIDES = [
   {
-    icon: (
-      <svg className="h-7 w-7 flex-shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-      </svg>
-    ),
-    line1: "ASIC Regulated",
-    line2: "Licensed & Compliant",
+    id: "brokers",
+    business: "Frontline Financial Brokers",
+    person: "Hassan Arif",
+    role: "Mortgage & Finance Broker",
+    photo: "/images/hassan-portrait.webp",
+    photoSize: [800, 800],
+    photoPosition: "50% 30%",
+    summary:
+      "Home loans compared across 30+ lenders, with the paperwork handled for you. Self-employed? Hassan's tax and accounting background means he reads business financials the way a lender will.",
+    links: [
+      ["Apply for a home loan", "Buy, invest, refinance, build or renovate", "/apply/home-loan"],
+      ["Self-employed home loans", "Sole traders, company directors, trusts and ABN contractors", "/self-employed-home-loans"],
+      ["See a sample credit proposal", "Your options and our recommendation, in writing", "/brokers#credit-proposal"],
+    ],
+    more: ["More about Frontline Financial Brokers", "/brokers"],
   },
   {
-    icon: (
-      <svg className="h-7 w-7 flex-shrink-0 text-[#00FCB8]" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" />
-      </svg>
-    ),
-    line1: "100+ 5-Star Reviews",
-    line2: "500+ Clients Helped",
-  },
-  {
-    icon: (
-      <svg className="h-7 w-7 flex-shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" />
-      </svg>
-    ),
-    line1: "Award Winner FY25",
-    line2: "Fintelligence Broker Awards",
-  },
-  {
-    icon: (
-      <svg className="h-7 w-7 flex-shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-      </svg>
-    ),
-    line1: "Australian Owned",
-    line2: "Serving Clients Nationwide",
+    id: "asset-solutions",
+    business: "Frontline Financial: Asset Solutions",
+    person: "Sham",
+    role: "Asset Finance Specialist",
+    photo: "/images/sham-portrait.webp",
+    photoSize: [600, 907],
+    photoPosition: "50% 18%",
+    summary:
+      "Cars, utes, trucks and equipment, plus personal loans and working capital, from your next car to a full commercial fleet. Led by Sham, an award-winning broker.",
+    links: [
+      ["Car loan", "Personal or business, dealer or private sale", "/apply/car-loan"],
+      ["Equipment finance", "Trucks, trailers, machinery and trade tools", "/apply/equipment-finance"],
+      ["Personal loan", "Consolidate debts, renovate or make a big purchase", "/apply/personal-loan"],
+      ["Working capital", "Cash flow, stock, or taking on more work", "/apply/working-capital"],
+    ],
+    more: ["More about Asset Solutions", "/assetsolutions"],
   },
 ];
 
@@ -295,101 +298,72 @@ export default function Home() {
 
       <WaveDivider fill="#1C5472" />
 
-      {/* TRUST BADGES ROW */}
-      <section className="bg-[#1C5472] px-4 py-8 md:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 place-items-center gap-6 lg:flex lg:flex-row lg:justify-center lg:gap-0">
-          {TRUST_BADGES.map((badge, i) => (
-            <div
-              key={i}
-              className={`flex flex-col items-center justify-center px-6 py-6 text-center lg:px-8 ${i < TRUST_BADGES.length - 1 ? "lg:border-r lg:border-[#39B2B2]/40" : ""}`}
-            >
-              <div className="trust-badge-icon-animate mb-2 flex justify-center">
-                {badge.icon}
-              </div>
-              <p className="text-sm font-bold uppercase tracking-wide text-white">{badge.line1}</p>
-              <p className="mt-0.5 text-xs font-normal text-[#39B2B2]">{badge.line2}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <WaveDivider fill="#1C5472" />
-
-      {/* SERVICES — dramatic cards with gradient top + icon */}
-      <section id="services" className="bg-[#1C5472] px-4 py-16 md:px-6 md:py-20 lg:px-8">
+      {/* SERVICES — the two businesses, led by the people who run them */}
+      <section id="services" className="scroll-mt-20 bg-[#1C5472] px-4 pb-16 pt-8 md:px-6 md:pb-24 md:pt-12 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#00FCB8]">Our Services</p>
-          <h2 className="mt-2 border-l-4 border-[#00FCB8] pl-4 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            End-to-end finance solutions that scale with you
+          <h2 className="max-w-4xl text-balance text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-[3.25rem]">
+            Home loans on one side. <span className="sm:block">Cars and equipment on the other.</span>
           </h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <article id="brokers" className="flex min-h-[380px] flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-              <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/brokers-home-couple.webp"
-                  alt="Couple holding the keys to their new home"
-                  className="h-full w-full object-cover"
-                  width={1200}
-                  height={548}
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex flex-col p-6 md:p-8">
-                <h3 className="text-xl font-bold text-[#1C5472] md:text-2xl">Frontline Financial Brokers</h3>
-                <p className="mt-3 leading-relaxed text-[#1C5472]">
-                  Independent mortgage and business-lending specialists who shop 30+ lenders, secure sharper rates, and handle every shred of paperwork.
-                </p>
-                <Link href="/apply/home-loan" className="mt-4 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8] px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/70">
-                  Apply for a home loan
-                </Link>
-                <Link href="/self-employed-home-loans" className="mt-2 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
-                  Self-employed? Home loans for business owners
-                </Link>
-                <Link href="/brokers#credit-proposal" className="mt-2 inline-flex items-center gap-2 self-start rounded-full bg-[#00FCB8]/15 px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/30">
-                  See a sample credit proposal
-                </Link>
-                <Link href="/brokers" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
-                  Learn more
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </Link>
-              </div>
-            </article>
-            <article id="asset-solutions" className="flex min-h-[380px] flex-col overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-              <div className="relative h-52 w-full overflow-hidden bg-[#1C5472]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/asset-solutions-showroom.webp"
-                  alt="Row of new cars in a dealership showroom"
-                  className="h-full w-full object-cover"
-                  width={1200}
-                  height={670}
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex flex-col p-6 md:p-8">
-                <h3 className="text-xl font-bold text-[#1C5472] md:text-2xl">Frontline Financial Asset Solutions</h3>
-                <p className="mt-3 leading-relaxed text-[#1C5472]">
-                  Dedicated car, equipment, personal loan and working capital specialists, from your next car to a full commercial fleet.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {[
-                    ["Car loan", "/apply/car-loan"],
-                    ["Equipment finance", "/apply/equipment-finance"],
-                    ["Personal loan", "/apply/personal-loan"],
-                    ["Working capital", "/apply/working-capital"],
-                  ].map(([label, href]) => (
-                    <Link key={href} href={href} className="rounded-full bg-[#00FCB8] px-3 py-1 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#00FCB8]/70">
-                      {label}
-                    </Link>
-                  ))}
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#BFDCE3]">
+            Frontline is two finance businesses, each with its own credit licence, working from the one office at Parramatta Square.
+          </p>
+
+          <div className="mt-12 grid md:mt-16 lg:grid-cols-2">
+            {SERVICE_SIDES.map((side, i) => (
+              <article
+                key={side.id}
+                id={side.id}
+                aria-labelledby={`${side.id}-name`}
+                className={`scroll-mt-24 ${i === 0 ? "lg:pr-12 xl:pr-16" : "mt-14 border-t border-white/15 pt-14 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0 xl:pl-16"}`}
+              >
+                <div className="flex items-end gap-5 sm:gap-7">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={side.photo}
+                    alt={`${side.person}, ${side.role}`}
+                    width={side.photoSize[0]}
+                    height={side.photoSize[1]}
+                    loading="lazy"
+                    className="aspect-[4/5] w-28 shrink-0 rounded-xl object-cover shadow-[0_22px_40px_-24px_rgba(5,16,30,0.9)] sm:w-36 xl:w-44"
+                    style={{ objectPosition: side.photoPosition }}
+                  />
+                  <div className="min-w-0 pb-1">
+                    <h3 id={`${side.id}-name`} className="text-balance text-2xl font-bold leading-tight text-white md:text-[1.75rem]">
+                      {side.business}
+                    </h3>
+                    <p className="mt-2 text-sm leading-snug text-[#BFDCE3] md:text-base">
+                      <span className="font-bold text-white">{side.person}</span>
+                      <span className="block">{side.role}</span>
+                    </p>
+                  </div>
                 </div>
-                <Link href="/assetsolutions" className="mt-6 inline-flex items-center gap-2 font-bold text-[#39B2B2] transition-all duration-200 hover:scale-105 hover:text-[#00FCB8]">
-                  Learn more
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                <p className="mt-7 max-w-[56ch] text-base leading-relaxed text-white/90 md:text-lg">{side.summary}</p>
+                <ul className="mt-8 border-t border-white/20">
+                  {side.links.map(([label, hint, href]) => (
+                    <li key={href} className="border-b border-white/20">
+                      <Link
+                        href={href}
+                        className="group -mx-3 flex items-center justify-between gap-4 rounded-lg px-3 py-4 transition-colors duration-200 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FCB8]"
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-lg font-bold text-white transition-colors duration-200 group-hover:text-[#00FCB8]">{label}</span>
+                          <span className="mt-0.5 block text-sm text-[#BFDCE3]">{hint}</span>
+                        </span>
+                        <svg className="h-5 w-5 shrink-0 text-[#00FCB8] transition-transform duration-300 ease-out group-hover:translate-x-1.5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                          <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={side.more[1]}
+                  className="mt-6 inline-block text-sm font-bold text-white underline decoration-[#00FCB8] decoration-2 underline-offset-[6px] transition-colors hover:text-[#00FCB8] focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#00FCB8] focus-visible:ring-offset-4 focus-visible:ring-offset-[#1C5472]"
+                >
+                  {side.more[0]}
                 </Link>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -579,6 +553,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="bg-[#1C5472]">
+        <WaveDivider fill="#F5F5EF" />
+      </div>
+
+      {/* ARTICLES — every article gets a home here, newest first */}
+      <LatestArticles />
 
       <WaveDivider fill="#0A1628" />
 
