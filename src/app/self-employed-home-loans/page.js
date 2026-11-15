@@ -383,7 +383,14 @@ export default function SelfEmployedHomeLoansPage() {
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-gray-600">
             Low doc loans cost more, so we only recommend one when it genuinely suits your situation, and we&apos;ll show
-            you the full doc alternative side by side.
+            you the full doc alternative side by side. Already on one?{" "}
+            <Link
+              href="/self-employed-home-loans/refinance-non-bank-loan"
+              className="font-bold text-[#1C5472] underline decoration-[#00FCB8] decoration-2 underline-offset-4 hover:text-[#39B2B2]"
+            >
+              Here&apos;s how one couple moved from a non-bank loan to a major bank
+            </Link>
+            .
           </p>
         </div>
       </section>
