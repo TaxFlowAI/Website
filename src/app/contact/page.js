@@ -8,6 +8,7 @@ import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 import { HOURS, getOpenStatus } from "@/config/business-hours";
 import { OFFICE, GOOGLE } from "@/config/location";
 import { CONTACT_FAQ } from "@/data/contact-faq";
@@ -188,6 +189,7 @@ export default function ContactPage() {
           /* The message box is optional here but /api/contact requires one */
           message: message.trim() || `Enquiry about: ${services.join(", ")}. No message added.`,
           preferredContact,
+          consent: consentPayload(contactEntity),
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -447,14 +449,17 @@ export default function ContactPage() {
                   </div>
                 </fieldset>
 
-                <div className="pt-2">
-                  <FormConsent
-                    entity={contactEntity}
-                    value={consent}
-                    onChange={(v) => { setConsent(v); setShowConsentError(false); setSubmitError(null); }}
-                    showError={showConsentError}
-                  />
-                </div>
+                {/* Shown once a person is picked, so the box names that business's documents */}
+                {teamMember && (
+                  <div className="pt-2">
+                    <FormConsent
+                      entity={contactEntity}
+                      value={consent}
+                      onChange={(v) => { setConsent(v); setShowConsentError(false); setSubmitError(null); }}
+                      showError={showConsentError}
+                    />
+                  </div>
+                )}
 
                 {submitError && submitError !== CONSENT_ERROR && <p className="text-sm text-red-700">{submitError}</p>}
 

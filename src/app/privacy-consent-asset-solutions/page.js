@@ -5,6 +5,9 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import { CREDIT_PROVIDERS } from "./credit-providers";
+import LegalPdfButton, { LegalPrintSource } from "@/components/LegalPdfButton";
+import { CONSENT_DOCS, PRIVACY_POLICY_PATH } from "@/config/consent";
+import { ENTITY } from "@/config/entities";
 
 const USE_INFO_LIST = [
   "assess and verify your identity and financial situation;",
@@ -77,20 +80,22 @@ export default function PrivacyConsentAssetSolutionsPage() {
   }, [search]);
 
   return (
-    <div className="min-h-screen bg-[#0A1628] font-sans text-white">
+    <div className="legal-doc min-h-screen bg-[#0A1628] font-sans text-white">
       <LayoutNav activeNav="asset-solutions" />
       <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-3xl font-bold text-white md:text-4xl">Privacy Consent</h1>
-          <a
-            href="/documents/privacy-consent-asset-solutions.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90"
-          >
-            Download Privacy Consent (PDF)
-          </a>
+          <div>
+            <h1 className="text-3xl font-bold text-white md:text-4xl">Privacy Consent</h1>
+            <LegalPrintSource path="/privacy-consent-asset-solutions" asAt={CONSENT_DOCS[ENTITY.ASSET_SOLUTIONS].updated} />
+          </div>
+          <LegalPdfButton href="/documents/privacy-consent-asset-solutions.pdf" label="Download Privacy Consent (PDF)" />
         </div>
+
+        <p className="-mt-4 mb-8 text-sm text-[#9CA3AF]">
+          Web copy of the consent you sign through our application system, updated {CONSENT_DOCS[ENTITY.ASSET_SOLUTIONS].updated}. How we
+          handle the details you give us on this website is in our{" "}
+          <Link href={PRIVACY_POLICY_PATH} className="text-[#00FCB8] hover:underline">Privacy Policy</Link>.
+        </p>
 
         <Section title="Intro / Entity Details">
           <Card className="space-y-4">
@@ -235,7 +240,7 @@ export default function PrivacyConsentAssetSolutionsPage() {
               </p>
             </div>
           </Card>
-          <div className="mt-4">
+          <div className="mt-4 print:hidden">
             <label htmlFor="credit-provider-search" className="sr-only">Search credit providers</label>
             <input
               id="credit-provider-search"
@@ -286,7 +291,15 @@ export default function PrivacyConsentAssetSolutionsPage() {
           </Card>
         </Section>
 
-        <div className="mt-12 flex flex-wrap gap-4">
+        <Section title="Acknowledgement" className="mt-12">
+          <Card>
+            <p className="text-[#9CA3AF] leading-relaxed">
+              By signing below, as applicant or guarantor, I acknowledge and declare that I have read and understood this Privacy Consent. I consent to the collection, storage, use and disclosure of my personal information and credit information in accordance with this Privacy Consent.
+            </p>
+          </Card>
+        </Section>
+
+        <div className="mt-12 flex flex-wrap gap-4 print:hidden">
           <Link href="/assetsolutions" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
             Back to Asset Solutions
           </Link>

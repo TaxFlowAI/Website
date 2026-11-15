@@ -8,6 +8,7 @@ import {
   getEntityConfig,
 } from "@/config/entities";
 import { useComplianceEntityOverride } from "@/context/ComplianceEntityContext";
+import { PRIVACY_POLICY_PATH } from "@/config/consent";
 
 function EntityBlock({ config, label }) {
   if (!config) return null;
@@ -34,6 +35,10 @@ function EntityBlock({ config, label }) {
           className="text-[#00FCB8] transition hover:underline"
         >
           Privacy Consent
+        </Link>
+        <span className="text-white/50">|</span>
+        <Link href={PRIVACY_POLICY_PATH} className="text-[#00FCB8] transition hover:underline">
+          Privacy Policy
         </Link>
       </p>
     </div>

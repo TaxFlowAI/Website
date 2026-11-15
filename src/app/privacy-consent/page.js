@@ -1,6 +1,9 @@
 import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
+import LegalPdfButton, { LegalPrintSource } from "@/components/LegalPdfButton";
+import { CONSENT_DOCS, PRIVACY_POLICY_PATH } from "@/config/consent";
+import { ENTITY } from "@/config/entities";
 
 const DISCLOSURE_ENTITIES = [
   "Any persons who provide credit or other products or services to us, or to whom an application has been made for those products or services",
@@ -33,22 +36,29 @@ function Card({ children, className = "" }) {
 
 export default function PrivacyConsentPage() {
   return (
-    <div className="min-h-screen bg-[#0A1628] font-sans text-white">
+    <div className="legal-doc min-h-screen bg-[#0A1628] font-sans text-white">
       <LayoutNav activeNav="brokers" />
       <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-3xl font-bold text-white md:text-4xl">Privacy Disclosure Statement and Consent</h1>
             <p className="mt-2 text-sm text-[#9CA3AF]">Each consent given in this document continues until withdrawn in writing.</p>
+            <LegalPrintSource path="/privacy-consent" asAt={CONSENT_DOCS[ENTITY.BROKERS].updated} />
           </div>
-          <a
-            href="/documents/privacy-consent.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90"
-          >
-            Download Privacy Consent Form (PDF)
-          </a>
+          <LegalPdfButton href="/documents/privacy-consent.pdf" label="Download Privacy Consent (PDF)" />
+        </div>
+
+        <div className="mb-10 rounded-xl border border-[#00FCB8]/30 bg-[#0d1f33] p-5 text-sm leading-relaxed text-[#9CA3AF] md:p-6">
+          <p>
+            This is the privacy disclosure statement and consent of our licensee, Australian Finance Group Ltd (AFG), Australian
+            Credit Licence 389087. In it, &quot;the Appointed Credit Service Provider&quot; is your broker: Frontline Financial Pty Ltd
+            t/a Frontline Financial Brokers, Authorised Credit Representative 575968.
+          </p>
+          <p className="mt-3">
+            How we handle the details you give us on this website is in our{" "}
+            <Link href={PRIVACY_POLICY_PATH} className="text-[#00FCB8] hover:underline">Privacy Policy</Link>. Web copy of
+            AFG&apos;s current form, updated {CONSENT_DOCS[ENTITY.BROKERS].updated}.
+          </p>
         </div>
 
         <Section title="Privacy Disclosure Statement and Consent">
@@ -57,7 +67,7 @@ export default function PrivacyConsentPage() {
               I/We consent to you using Personal Information, financial information and Credit Information about me/us for the purpose of arranging or providing credit, providing credit assistance, insuring credit, and for direct marketing of products and services offered by you or any organisation you are affiliated with or represent each of which may contact me/us for such a purpose including by telephone and electronically and acknowledge that you may receive a fee or commission for referring me/us to a product or service provider, such as an insurance provider.
             </p>
             <p className="text-[#9CA3AF] leading-relaxed">
-              In this document &quot;you&quot; means each of Australian Finance Group Ltd AFG, each subsidiary of AFG, the Appointed Credit Service Provider and their organisation and any assignees or transferees of the commissions relating to any credit provided to me arranged by the Appointed Credit Service Provider or their organisation.
+              In this document &quot;you&quot; means each of Australian Finance Group Ltd (AFG), each subsidiary of AFG, the Appointed Credit Service Provider and their organisation and any assignees or transferees of the commissions relating to any credit provided to me arranged by the Appointed Credit Service Provider or their organisation.
             </p>
             <p className="text-[#9CA3AF] leading-relaxed">
               In this document, &apos;Personal Information&apos; includes any sensitive information (including health information) and any information I/we tell you about any vulnerability I/we may have.
@@ -81,6 +91,14 @@ export default function PrivacyConsentPage() {
               </li>
             ))}
           </ul>
+        </Section>
+
+        <Section title="Artificial Intelligence and Automated Decision Making" className="mt-12">
+          <Card>
+            <p className="text-[#9CA3AF] leading-relaxed">
+              I/We consent to you using artificial intelligence and other automated technologies to collect, use and analyse Personal Information, financial information and Credit Information about me/us, including to make, or to substantially assist in making, decisions about me/us (automated decisions), for the purpose of arranging or providing credit, providing credit assistance or insuring credit. I/We acknowledge that you may disclose that information for this purpose to the types of entities described above, including technology and artificial intelligence service providers, some of which may be located overseas. I/We acknowledge that information about the kinds of decisions made using automated technologies is set out in your Privacy Policy and that I/we may ask for a decision about me/us to be reviewed by a person by contacting you.
+            </p>
+          </Card>
         </Section>
 
         <Section title="Credit Information" className="mt-12">
@@ -115,7 +133,7 @@ export default function PrivacyConsentPage() {
           </Card>
         </Section>
 
-        <div className="mt-12 flex flex-wrap gap-4">
+        <div className="mt-12 flex flex-wrap gap-4 print:hidden">
           <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
             Back to Brokers
           </Link>

@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 import { HOURS } from "@/config/business-hours";
 import { trackMeta } from "@/components/MetaPixel";
 import useAdAttribution from "@/components/useAdAttribution";
@@ -423,6 +424,7 @@ export default function AssessmentForm() {
           applicationType: answers.abnAge === NO_ABN ? "consumer" : "commercial",
           assetType: CAR_LIKE.includes(answers.vehicle) ? "car" : undefined,
           attribution: attributionRef.current,
+          consent: consentPayload(ENTITY.ASSET_SOLUTIONS),
           message: [
             "Free assessment request: VEHICLE FINANCE landing page.",
             ...visible.filter((q) => q.options).map((q) => `${q.label}: ${answers[q.key]}`),

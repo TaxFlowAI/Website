@@ -1,6 +1,9 @@
 import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
+import LegalPdfButton, { LegalPrintSource } from "@/components/LegalPdfButton";
+import { CONSENT_DOCS } from "@/config/consent";
+import { ENTITY } from "@/config/entities";
 
 const BROKER_DETAILS = [
   { label: "Broker/Our/Us", value: "Hassan Arif" },
@@ -65,19 +68,15 @@ function Card({ children, className = "" }) {
 
 export default function CreditGuidePage() {
   return (
-    <div className="min-h-screen bg-[#0A1628] font-sans text-white">
+    <div className="legal-doc min-h-screen bg-[#0A1628] font-sans text-white">
       <LayoutNav activeNav="brokers" />
       <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-3xl font-bold text-white md:text-4xl">Credit Guide</h1>
-          <a
-            href="/documents/credit-guide.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90"
-          >
-            Download Credit Guide (PDF)
-          </a>
+          <div>
+            <h1 className="text-3xl font-bold text-white md:text-4xl">Credit Guide</h1>
+            <LegalPrintSource path="/credit-guide" asAt={CONSENT_DOCS[ENTITY.BROKERS].updated} />
+          </div>
+          <LegalPdfButton href="/documents/credit-guide.pdf" label="Download Credit Guide (PDF)" />
         </div>
 
         <p className="text-[#9CA3AF] leading-relaxed">
@@ -369,7 +368,7 @@ export default function CreditGuidePage() {
           </div>
         </Section>
 
-        <div className="mt-12 flex flex-wrap gap-4">
+        <div className="mt-12 flex flex-wrap gap-4 print:hidden">
           <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
             Back to Brokers
           </Link>

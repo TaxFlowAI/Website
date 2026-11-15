@@ -9,6 +9,7 @@ import HomeLoanBooking from "@/components/HomeLoanBooking";
 import useAdAttribution from "@/components/useAdAttribution";
 import { getApplication, TEAM_PHONE } from "@/data/finance-applications";
 import { HOURS } from "@/config/business-hours";
+import { consentPayload } from "@/config/consent";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -334,6 +335,7 @@ export default function ApplicationForm({ slug }) {
           applicationType: app.applicationType?.(answers),
           assetType: app.assetType,
           attribution: attributionRef.current,
+          consent: consentPayload(app.entity),
           answers: labelled,
           message: [
             `Website application: ${app.title.toUpperCase()}.`,

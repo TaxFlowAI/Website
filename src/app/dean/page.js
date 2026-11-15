@@ -8,6 +8,7 @@ import WaveDivider from "@/components/WaveDivider";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 
 const SERVICE_AREAS = [
   {
@@ -273,6 +274,7 @@ export default function DeanPage() {
                       message: "Call back request from Dean's landing page.",
                       services: ["Asset Solutions — Dean Tinellis Call Back Request"],
                       campaign: "dean-landing",
+                      consent: consentPayload(ENTITY.ASSET_SOLUTIONS),
                     }),
                   });
                   const data = await res.json();

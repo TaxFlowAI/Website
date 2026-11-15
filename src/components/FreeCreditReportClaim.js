@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { trackLead } from "@/components/MetaPixel";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 import { CREDIT_REPORT_BULLETS, CreditReportTerms } from "@/components/FreeCreditReportOffer";
 
 /* Home page: claim the free Equifax credit report (Hassan, 15 Nov 2026). It replaced the
@@ -54,6 +55,7 @@ export default function FreeCreditReportClaim() {
           message: `Free Equifax credit report claim (home page). Finance needed: ${purpose.label}`,
           services: [`Free credit report: ${purpose.label}`],
           consultationService: purpose.id,
+          consent: consentPayload(purpose.entity),
         }),
       });
       const data = await res.json();

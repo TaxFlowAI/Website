@@ -64,6 +64,7 @@ export default function LayoutFooter() {
               <div className="mt-2 flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
                 <a href="/credit-guide" className="text-white/70 transition-colors hover:text-[#00FCB8]">Credit Guide</a>
                 <a href="/privacy-consent" className="text-white/70 transition-colors hover:text-[#00FCB8]">Privacy Consent</a>
+                <a href="/privacy-policy" className="text-white/70 transition-colors hover:text-[#00FCB8]">Privacy Policy</a>
                 <a href="/calculator-disclaimer-broking" className="text-white/70 transition-colors hover:text-[#00FCB8]">Calculator Disclaimer</a>
               </div>
             </div>
@@ -73,6 +74,7 @@ export default function LayoutFooter() {
               <div className="mt-2 flex flex-wrap justify-center sm:justify-end gap-4 text-sm">
                 <a href="/credit-guide-asset-solutions" className="text-white/70 transition-colors hover:text-[#00FCB8]">Credit Guide &amp; Quote</a>
                 <a href="/privacy-consent-asset-solutions" className="text-white/70 transition-colors hover:text-[#00FCB8]">Privacy Consent</a>
+                <a href="/privacy-policy" className="text-white/70 transition-colors hover:text-[#00FCB8]">Privacy Policy</a>
                 <a href="/calculator-disclaimer-asset-solutions" className="text-white/70 transition-colors hover:text-[#00FCB8]">Calculator Disclaimer</a>
               </div>
             </div>

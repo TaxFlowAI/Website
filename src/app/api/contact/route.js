@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { addAmbitionLead, privacyConsentEmail } from "./ambition-cloud";
+import { buildConsentRecord } from "./consent-record";
+import { ENTITY } from "@/config/entities";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -92,6 +94,7 @@ export async function POST(request) {
     applicationType,
     assetType,
     attribution,
+    consent,
   } = body;
 
   if (!firstName || typeof firstName !== "string" || !firstName.trim()) {
@@ -117,6 +120,18 @@ export async function POST(request) {
   const isBrokers = consultationService === "brokers" || teamMember === "hassan";
   const isAssetSolutions =
     !isBrokers && (consultationService === "asset-solutions" || teamMember === "sham" || campaign === "dean-landing");
+  /* Frontline leads carry the tick box record for the business they're routed to. */
+  const routedEntity = isBrokers ? ENTITY.BROKERS : isAssetSolutions ? ENTITY.ASSET_SOLUTIONS : null;
+  const consentRecord = buildConsentRecord({
+    consent,
+    routedEntity,
+    headers: request.headers,
+    name: `${firstName.trim()} ${lastName.trim()}`,
+    email: email.trim(),
+  });
+  if (consentRecord?.error) {
+    return NextResponse.json({ success: false, error: consentRecord.error }, { status: 400 });
+  }
   const servicesLabel = Array.isArray(services) && services.length ? services.join(", ") : "General enquiry";
   const subject = `New Enquiry — ${firstName.trim()} ${lastName.trim()} re: ${servicesLabel}`;
   const timestamp = new Date().toISOString();
@@ -126,7 +141,9 @@ export async function POST(request) {
         lastName: lastName.trim(),
         email: email.trim(),
         phone: phone.trim(),
-        notes: [`Services: ${servicesLabel}`, `Preferred contact: ${preferredContact}`, message.trim()].join("\n"),
+        notes: [`Services: ${servicesLabel}`, `Preferred contact: ${preferredContact}`, message.trim(), consentRecord?.note]
+          .filter(Boolean)
+          .join("\n"),
         campaign,
         amount,
         postcode,
@@ -151,12 +168,15 @@ export async function POST(request) {
 <p>${escapeHtml(message.trim()).replace(/\n/g, "<br/>")}</p>
 <p><strong>Submitted:</strong> ${timestamp}</p>
 ${ambitionLine}
+${consentRecord?.html || ""}
 ${sourceHtml(attribution)}
 <hr/>
 <p style="color:grey;font-size:12px">Submitted via frontline.financial contact form</p>
 `;
 
   const resendApiKey = process.env.RESEND_API_KEY;
+  /* Optional: an inbox that keeps a copy of every Frontline lead, consent record included */
+  const recordsInbox = process.env.CONTACT_EMAIL_RECORDS;
   const from =
     process.env.CONTACT_EMAIL_FROM || "Frontline Financial Website <website@frontline.financial>";
 
@@ -240,7 +260,11 @@ ${sourceHtml(attribution)}
             `Preferred contact: ${preferredContact}`,
             /* Quiz messages repeat the answers for the email, so the note keeps their first line */
             `Message: ${Object.keys(quizAnswers).length ? leadPayload.message.split("\n")[0] : leadPayload.message}`,
-          ].join("\n"),
+            consentRecord?.note,
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          consent: consentRecord?.data || null,
           submittedAt: timestamp,
         }),
       });
@@ -275,6 +299,7 @@ ${sourceHtml(attribution)}
       body: JSON.stringify({
         from,
         to: [to],
+        ...(routedEntity && recordsInbox ? { bcc: [recordsInbox] } : {}),
         subject,
         html,
         reply_to: email.trim(),

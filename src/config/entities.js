@@ -92,6 +92,7 @@ export const ROUTE_ENTITY_MAP = {
   "/calculator-disclaimer": ENTITY.SHARED,
   "/terms": ENTITY.SHARED,
   "/privacy": ENTITY.SHARED,
+  "/privacy-policy": ENTITY.SHARED,
 };
 
 export function getEntityForRoute(pathname) {

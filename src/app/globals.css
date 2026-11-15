@@ -627,3 +627,28 @@ html[data-vf-angle="r5"] .vf-angle-r5 { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .credit-popup-in { animation: none; }
 }
+
+/* Legal pages (credit guides, privacy consents, privacy policy) print, and save as PDF, in
+   dark blue on white with no site chrome. public/documents/*.pdf are made this way: see
+   public/documents/README.md. */
+@media print {
+  @page { margin: 16mm 14mm; }
+  body:has(.legal-doc) > :not(.legal-doc) { display: none !important; }
+  html:has(.legal-doc), body:has(.legal-doc) { background: #fff !important; }
+  .legal-doc { background: #fff !important; min-height: 0 !important; }
+  .legal-doc > :not(main) { display: none !important; }
+  .legal-doc main { padding: 0 !important; max-width: none !important; }
+  .legal-doc main * {
+    color: #1f2937 !important;
+    background: transparent !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+  .legal-doc main h1, .legal-doc main h2 { color: #1C5472 !important; }
+  .legal-doc main h2 { border-color: #39B2B2 !important; break-after: avoid; }
+  .legal-doc main a { text-decoration: none !important; }
+  .legal-doc main li, .legal-doc main tr, .legal-doc main p { break-inside: avoid; }
+  .legal-doc main .legal-print-only { display: block !important; }
+  nextjs-portal { display: none !important; }
+}
+.legal-print-only { display: none; }

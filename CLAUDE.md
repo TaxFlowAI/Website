@@ -75,6 +75,14 @@ live, so push only with the user's OK.
   Brokers leads (`consultationService: "brokers"` or `teamMember: "hassan"`) go to the Zapier webhook in
   `ZAPIER_BROKERS_WEBHOOK_URL`, and the Zap creates the Broker Engine card. Quiz answers travel as `answers`
   ({label: value}) plus a `summary` block for the card notes.
+- Consent (from 15 Nov 2026): every Frontline form shows `FormConsent`, whose wording comes from `src/config/consent.js`.
+  The form sends `consent: consentPayload(entity)` with the enquiry. `/api/contact` (`consent-record.js`) refuses a tick
+  that is missing `agreed` or names the other business. It writes a consent record into the staff email, the Ambition
+  notes and the Broker Engine summary: the wording, the document versions, the page, the time, the IP address, the
+  device and the site build. A lead with no record at all (a page opened before the change) still goes through, with a red
+  warning. If the Vercel env var `CONTACT_EMAIL_RECORDS` is set, every Frontline lead is also BCC'd there as an archive.
+  When a Credit Guide or Privacy Consent page changes, bump its date in `CONSENT_DOCS` and reprint the PDFs
+  (`public/documents/README.md`). The Privacy Policy is `/privacy-policy` (both businesses). Keep its service list true.
 - The Meta pixel (`src/components/MetaPixel.js`, loaded in `src/app/layout.js`) runs site-wide except `/taxflow`, switched
   on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean`,
   `/vehicle-finance` and `/apply` forms. Test custom events on the live site: Meta drops some of them from localhost.

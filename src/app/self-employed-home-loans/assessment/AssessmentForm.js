@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 import { trackMeta } from "@/components/MetaPixel";
 import HomeLoanBooking from "@/components/HomeLoanBooking";
 
@@ -200,6 +201,7 @@ export default function AssessmentForm() {
           services: ["Self-Employed Home Loan"],
           preferredContact: "phone",
           campaign: "self-employed-assessment",
+          consent: consentPayload(ENTITY.BROKERS),
           answers: labelled,
           message: [
             "Free assessment request: SELF-EMPLOYED HOME LOAN quiz.",

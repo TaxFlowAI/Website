@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
 import { ENTITY } from "@/config/entities";
+import { consentPayload } from "@/config/consent";
 import { trackMeta } from "@/components/MetaPixel";
 import useAdAttribution from "@/components/useAdAttribution";
 
@@ -78,6 +79,7 @@ export default function CarLoanForm() {
           applicationType: use.type,
           assetType: "car",
           attribution: attributionRef.current,
+          consent: consentPayload(ENTITY.ASSET_SOLUTIONS),
           message: [
             "Website enquiry: CAR LOAN form.",
             `Buying: ${use.label}`,
