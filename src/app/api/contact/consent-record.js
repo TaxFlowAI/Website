@@ -4,7 +4,7 @@
    Ambition Cloud notes and the Broker Engine card.
    Relative imports only, so a script can load this file outside Next. */
 import { ENTITY } from "../../../config/entities.js";
-import { CONSENT_DOCS, PRIVACY_POLICY_PATH, PRIVACY_POLICY_UPDATED, consentParts, consentText } from "../../../config/consent.js";
+import { CONSENT_DOCS, consentParts, consentText } from "../../../config/consent.js";
 
 const SITE_URL = "https://frontline.financial";
 
@@ -56,8 +56,8 @@ export function buildConsentRecord({ consent, routedEntity, headers, name, email
     creditGuide: `${SITE_URL}${parts.creditGuidePath}`,
     privacyConsent: `${SITE_URL}${parts.privacyConsentPath}`,
     documentsUpdated: docs.updated,
-    privacyPolicy: `${SITE_URL}${PRIVACY_POLICY_PATH}`,
-    privacyPolicyUpdated: PRIVACY_POLICY_UPDATED,
+    privacyPolicy: `${SITE_URL}${parts.privacyPolicyPath}`,
+    privacyPolicyUpdated: docs.policyUpdated,
     page,
     at: now.toISOString(),
     ip,
@@ -71,7 +71,7 @@ export function buildConsentRecord({ consent, routedEntity, headers, name, email
 <p style="margin:0 0 6px"><strong>Consent record</strong></p>
 <p style="margin:0;font-size:13px;line-height:1.6">
 ${escapeHtml(name)} (${escapeHtml(email)}) ticked: "${escapeHtml(text)}"<br/>
-Documents: ${link(data.creditGuide, parts.creditGuideLabel)} and ${link(data.privacyConsent, "Privacy Consent")} (web copies as at ${escapeHtml(docs.updated)}). ${link(data.privacyPolicy, "Privacy Policy")} (updated ${escapeHtml(PRIVACY_POLICY_UPDATED)}) linked beside the box.<br/>
+Documents: ${link(data.creditGuide, parts.creditGuideLabel)} and ${link(data.privacyConsent, "Privacy Consent")} (web copies as at ${escapeHtml(docs.updated)}). ${link(data.privacyPolicy, "Privacy Policy")} (updated ${escapeHtml(docs.policyUpdated)}) linked beside the box.<br/>
 Page: ${escapeHtml(SITE_URL + page)}<br/>
 Time: ${escapeHtml(sydney)} Sydney time (${escapeHtml(data.at)})<br/>
 IP address: ${escapeHtml(ip)}<br/>

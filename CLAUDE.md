@@ -82,7 +82,7 @@ live, so push only with the user's OK.
   device and the site build. A lead with no record at all (a page opened before the change) still goes through, with a red
   warning. If the Vercel env var `CONTACT_EMAIL_RECORDS` is set, every Frontline lead is also BCC'd there as an archive.
   When a Credit Guide or Privacy Consent page changes, bump its date in `CONSENT_DOCS` and reprint the PDFs
-  (`public/documents/README.md`). The Privacy Policy is `/privacy-policy` (both businesses). Keep its service list true.
+  (`public/documents/README.md`). Each business has its own Privacy Policy: `/privacy-policy` (home loans, AFG) and `/privacy-policy-asset-solutions` (Fintelligence format, deliberately silent on overseas disclosure for now). Keep their service lists true.
 - The Meta pixel (`src/components/MetaPixel.js`, loaded in `src/app/layout.js`) runs site-wide except `/taxflow`, switched
   on by the Vercel env var `NEXT_PUBLIC_META_PIXEL_ID`. Lead fires on the home consultation, `/contact`, `/dean`,
   `/vehicle-finance` and `/apply` forms. Test custom events on the live site: Meta drops some of them from localhost.

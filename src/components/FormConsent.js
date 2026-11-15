@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ENTITY } from "@/config/entities";
-import { PRIVACY_POLICY_PATH, consentParts } from "@/config/consent";
+import { consentParts } from "@/config/consent";
 
 const CONSENT_ERROR = "You must agree to the Credit Guide and Privacy Consent to proceed.";
 
@@ -37,12 +37,15 @@ function ConsentCheckbox({ entity, checked, onChange, theme = "light" }) {
   );
 }
 
-function PolicyNote({ theme }) {
+/* The Privacy Policy of the business whose box is shown */
+function PolicyNote({ entity, theme }) {
+  const p = consentParts(entity);
+  if (!p) return null;
   return (
     <p className={`mt-2 pl-8 text-xs ${theme === "dark" ? "text-white/60" : "text-[#1C5472]/70"}`}>
       Our{" "}
       <Link
-        href={PRIVACY_POLICY_PATH}
+        href={p.privacyPolicyPath}
         target="_blank"
         rel="noopener noreferrer"
         className="underline hover:no-underline"
@@ -97,7 +100,7 @@ export default function FormConsent({
     return (
       <div className={className}>
         <ConsentCheckbox entity={entity} checked={value} onChange={onChange} theme={theme} />
-        <PolicyNote theme={theme} />
+        <PolicyNote entity={entity} theme={theme} />
         {showError && !value && (
           <p className="mt-2 text-sm text-red-600" role="alert">
             {CONSENT_ERROR}
@@ -120,7 +123,7 @@ export default function FormConsent({
         <ConsentCheckbox entity={ENTITY.BROKERS} checked={brokersChecked} onChange={handleBrokersConsent} theme={theme} />
         <ConsentCheckbox entity={ENTITY.ASSET_SOLUTIONS} checked={assetChecked} onChange={handleAssetConsent} theme={theme} />
       </div>
-      <PolicyNote theme={theme} />
+      <PolicyNote entity={assetChecked ? ENTITY.ASSET_SOLUTIONS : ENTITY.BROKERS} theme={theme} />
       {showError && !sharedValue && (
         <p className="text-sm text-red-600" role="alert">
           {CONSENT_ERROR}

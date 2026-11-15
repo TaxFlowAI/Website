@@ -6,14 +6,13 @@
  */
 import { ENTITY, getEntityConfig } from "./entities.js";
 
-export const PRIVACY_POLICY_PATH = "/privacy-policy";
-
-/* When each web copy last changed. Bump the date when a document's page changes, so each
-   lead's consent record names the version the person agreed to. */
-export const PRIVACY_POLICY_UPDATED = "15 Nov 2026";
+/* Each business has its own Credit Guide, Privacy Consent and Privacy Policy (paths in
+   entities.js). `updated` is the date of the Credit Guide and Privacy Consent web copies,
+   `policyUpdated` the Privacy Policy's. Bump them when a page changes, so each lead's
+   consent record names the versions the person saw. */
 export const CONSENT_DOCS = {
-  [ENTITY.BROKERS]: { creditGuideLabel: "Credit Guide", updated: "15 Nov 2026" },
-  [ENTITY.ASSET_SOLUTIONS]: { creditGuideLabel: "Credit Guide & Quote", updated: "15 Nov 2026" },
+  [ENTITY.BROKERS]: { creditGuideLabel: "Credit Guide", updated: "15 Nov 2026", policyUpdated: "15 Nov 2026" },
+  [ENTITY.ASSET_SOLUTIONS]: { creditGuideLabel: "Credit Guide & Quote", updated: "15 Nov 2026", policyUpdated: "15 Nov 2026" },
 };
 
 /* The pieces of the tick-box sentence, for FormConsent to render with links. */
@@ -26,7 +25,9 @@ export function consentParts(entity) {
     creditGuideLabel: docs.creditGuideLabel,
     creditGuidePath: config.creditGuidePath,
     privacyConsentPath: config.privacyConsentPath,
+    privacyPolicyPath: config.privacyPolicyPath,
     updated: docs.updated,
+    policyUpdated: docs.policyUpdated,
     party: `${config.legalName}${tradingAs} (Authorised Credit Representative CRN: ${
       config.entityCRN || config.creditRepNumber
     }, Australian Credit Licence No. ${config.aclNumber})`,

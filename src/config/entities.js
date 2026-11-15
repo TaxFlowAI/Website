@@ -24,6 +24,7 @@ export const ENTITY_CONFIG = {
     address: "86b Orange Street, Greystanes, NSW, 2145",
     creditGuidePath: "/credit-guide",
     privacyConsentPath: "/privacy-consent",
+    privacyPolicyPath: "/privacy-policy",
     calculatorDisclaimerPath: "/calculator-disclaimer-broking",
     creditGuidePDF: "/documents/credit-guide.pdf",
     privacyConsentPDF: "/documents/privacy-consent.pdf",
@@ -45,6 +46,7 @@ export const ENTITY_CONFIG = {
     address: "Level 49, 8 Parramatta Square, Parramatta NSW 2150",
     creditGuidePath: "/credit-guide-asset-solutions",
     privacyConsentPath: "/privacy-consent-asset-solutions",
+    privacyPolicyPath: "/privacy-policy-asset-solutions",
     calculatorDisclaimerPath: "/calculator-disclaimer-asset-solutions",
     creditGuidePDF: "/documents/credit-guide-asset-solutions.pdf",
     privacyConsentPDF: "/documents/privacy-consent-asset-solutions.pdf",
@@ -63,6 +65,7 @@ export const ROUTE_ENTITY_MAP = {
   "/does-getting-married-change-your-borrowing-power": ENTITY.BROKERS,
   "/credit-guide": ENTITY.BROKERS,
   "/privacy-consent": ENTITY.BROKERS,
+  "/privacy-policy": ENTITY.BROKERS,
   "/calculator-disclaimer-broking": ENTITY.BROKERS,
 
   // ---- ASSET SOLUTIONS pages ----
@@ -74,6 +77,7 @@ export const ROUTE_ENTITY_MAP = {
   "/apply/working-capital": ENTITY.ASSET_SOLUTIONS,
   "/credit-guide-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/privacy-consent-asset-solutions": ENTITY.ASSET_SOLUTIONS,
+  "/privacy-policy-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/calculator-disclaimer-asset-solutions": ENTITY.ASSET_SOLUTIONS,
   "/car-loan": ENTITY.ASSET_SOLUTIONS,
   "/vehicle-finance": ENTITY.ASSET_SOLUTIONS,
@@ -92,7 +96,6 @@ export const ROUTE_ENTITY_MAP = {
   "/calculator-disclaimer": ENTITY.SHARED,
   "/terms": ENTITY.SHARED,
   "/privacy": ENTITY.SHARED,
-  "/privacy-policy": ENTITY.SHARED,
 };
 
 export function getEntityForRoute(pathname) {

@@ -27,26 +27,30 @@ const HOW_WE_WORK = [
   { title: "Here to help", text: "If your circumstances and goals happen to change, we are here to help with your future loan needs." },
 ];
 
+/* AFG's lender panel, from AFG Credit Guide v4.0 generated 6 Nov 2026 (shown there as logos) */
 const LENDERS_PANEL = [
-  "AFG Home Loans (Align, Alpha, Bright, Edge, Link, Options, Retro)", "AMP Bank", "ANZ", "ASCF", "Australian Military Bank", "Auswide Bank", "BCU", "Bank Australia", "BankSA", "Bank of China", "Bank of Melbourne", "BOQ", "Bank of Sydney", "Bankwest", "Beyond Bank", "Commonwealth Bank", "Credit Union SA", "Firefighters Mutual Bank", "Firstmac", "Funding", "GMCU", "Granite Home Loans", "Great Southern Bank", "HSBC", "Health Professionals Bank", "Heartland Reverse Mortgages", "Hejaz", "Heritage Bank", "HomeStart", "Hume Bank", "ING", "Keystart", "La Trobe Financial", "Liberty", "ME", "Macquarie Bank", "MyState", "NAB", "Newcastle Permanent", "P&N Bank", "People's Choice", "Pepper Money", "QBank", "Queensland Country Bank", "RedZed", "Resimac", "St.George", "Suncorp", "Teachers Mutual Bank", "Capricornian Bank", "UBank", "UniBank", "Westpac", "AMMF", "Angle Finance", "AFS (Automotive Financial Services)", "GreenLight", "Alex Bank", "Latitude", "MoneyPlace", "NOW Finance", "Plenti", "SocietyOne", "Wisr",
+  "AFG Home Loans (Align, Alpha, Bridge, Bright, Edge, Options, Retro)", "AMP Bank", "ANZ", "ASCF", "Australian Military Bank", "Auswide Bank", "BCU", "Bank Australia", "BankSA", "Bank of China", "Bank of Melbourne", "BOQ", "Bank of Sydney", "Bankwest", "Beyond Bank", "Commonwealth Bank", "Credit Union SA", "Firefighters Mutual Bank", "Firstmac", "Funding", "Granite Home Loans", "Great Southern Bank", "HSBC", "Health Professionals Bank", "Heartland Reverse Mortgages", "Hejaz", "Heritage Bank", "HomeStart Finance", "Hume Bank", "ING", "Judo Bank", "Keystart", "La Trobe Financial", "Liberty", "ME", "Macquarie Bank", "MSquared Capital", "MyState", "NAB", "Newcastle Permanent", "P&N Bank", "People First Bank", "Pepper Money", "QBank", "Queensland Country Bank", "RedZed", "Resimac", "St.George", "Teachers Mutual Bank", "The Capricornian", "UBank", "UniBank", "Westpac", "AMMF", "Angle Finance", "AFS (Automotive Financial Services)", "GreenLight", "Alex Bank", "Latitude", "MoneyPlace", "NOW Finance", "Plenti", "SocietyOne", "Wisr",
 ];
 
+/* "I have settled loans with the following lenders in the last 12 months" (same guide) */
+const SETTLED_WITH = ["UBank", "AFG Home Loans (Retro)", "ANZ", "Bankwest", "Westpac", "Pepper Money"];
+
 const COMMONLY_USED_LICENSEE = [
-  { rank: 1, name: "Macquarie Bank", pct: "13.41%" },
-  { rank: 2, name: "Westpac", pct: "12.82%" },
-  { rank: 3, name: "ANZ", pct: "11.68%" },
-  { rank: 4, name: "Commonwealth Bank", pct: "10.34%" },
-  { rank: 5, name: "NAB", pct: "9.51%" },
-  { rank: 6, name: "Bankwest", pct: "5.91%" },
+  { rank: 1, name: "Macquarie Bank", pct: "13.6%" },
+  { rank: 2, name: "ANZ", pct: "12.96%" },
+  { rank: 3, name: "Westpac", pct: "11.95%" },
+  { rank: 4, name: "Commonwealth Bank", pct: "10.79%" },
+  { rank: 5, name: "NAB", pct: "7.79%" },
+  { rank: 6, name: "Bankwest", pct: "6.11%" },
 ];
 
 const COMMONLY_USED_US = [
-  { rank: 1, name: "Commonwealth Bank", pct: "0%" },
-  { rank: 2, name: "Macquarie Bank", pct: "0%" },
-  { rank: 3, name: "ANZ", pct: "0%" },
-  { rank: 4, name: "NAB", pct: "0%" },
-  { rank: 5, name: "Bankwest", pct: "0%" },
-  { rank: 6, name: "Westpac", pct: "0%" },
+  { rank: 1, name: "Bankwest", pct: "33.45%" },
+  { rank: 2, name: "AFG Home Loans (Retro)", pct: "23.28%" },
+  { rank: 3, name: "ANZ", pct: "21.31%" },
+  { rank: 4, name: "Westpac", pct: "14.68%" },
+  { rank: 5, name: "UBank", pct: "4.92%" },
+  { rank: 6, name: "Macquarie Bank", pct: "2.36%" },
 ];
 
 function Section({ title, children, className = "" }) {
@@ -85,6 +89,7 @@ export default function CreditGuidePage() {
         <p className="mt-2 text-[#9CA3AF] leading-relaxed">
           This Credit Guide summarises our offerings, fees and commissions we may receive, and the process to follow if you have a complaint. Please don&apos;t hesitate to ask if you need more information or clarification.
         </p>
+        <p className="mt-2 text-xs text-[#9CA3AF]">Web copy of Credit Guide v4.0 from our licensee, Australian Finance Group Ltd (AFG), generated 6 November 2026.</p>
 
         <Section title="Broker Details" className="mt-12">
           <Card>
@@ -155,13 +160,18 @@ export default function CreditGuidePage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-[#9CA3AF] leading-relaxed">
-            As at 04/02/2026. The lenders listed above are part of our aggregator&apos;s, Australian Finance Group Ltd (AFG), lender panel through which we submit loan applications. In order to submit loan applications to these lenders, a broker is required to be accredited with that lender. We are not accredited with each of the lenders listed above. Typically, brokers are accredited with 10 to 15 lenders. If we are not accredited with a lender in the panel above, we can refer you to another AFG broker who is accredited with that lender. Please contact me for further information.
+            As at 06/11/2026. The lenders listed above are part of our aggregator&apos;s, Australian Finance Group Ltd (AFG), lender panel through which we submit loan applications. In order to submit loan applications to these lenders, a broker is required to be accredited with that lender. We are not accredited with each of the lenders listed above. Typically, brokers are accredited with 10 to 15 lenders. If we are not accredited with a lender in the panel above, we can refer you to another AFG broker who is accredited with that lender. Please contact me for further information.
+          </p>
+          <p className="mt-6 text-[#9CA3AF] leading-relaxed">I have settled loans with the following lenders in the last 12 months:</p>
+          <p className="mt-2 text-white">{SETTLED_WITH.join(", ")}</p>
+          <p className="mt-4 text-[#9CA3AF] leading-relaxed">
+            We aim to provide you with information from a range of lenders and products / loans that we are accredited with. Once you have chosen a loan that is suitable for you, we will help you obtain an approval.
           </p>
         </Section>
 
         <Section title="Commonly Used Lenders by Licensee" className="mt-12">
           <p className="text-[#9CA3AF] leading-relaxed">
-            The list below documents the 6 most commonly used lenders by our Licensee in the previous 12 months. This does not necessarily reflect all of the financial institutions that our Licensee is able to conduct business through.
+            The list below documents the 6 most commonly used lenders by our Licensee in the previous 12 months. This does not necessarily reflect all of the financial institutions that our Licensee is able to conduct business through. However, if less than six lenders are displayed below, this is a summary of the lenders that our Licensee is able to utilise for loan submission purposes.
           </p>
           <Card className="mt-4 overflow-x-auto">
             <table className="w-full text-left text-sm">
@@ -242,6 +252,9 @@ export default function CreditGuidePage() {
               <p className="mt-2 text-sm text-[#9CA3AF] leading-relaxed">
                 We may receive referrals from a range of sources, including accountants, financial planners, real estate agents and others. If you were introduced or referred to us, we may pay the referrer a commission, fee or remunerate them in other ways. Details of any commission or fees being paid to the referrer will be included in the Credit Proposal Disclosure document provided to you.
               </p>
+              <p className="mt-3 text-sm text-[#9CA3AF] leading-relaxed">
+                We hold referral relationship with AIA Financial Wellbeing, Broli Finance, Bond Property Lawyers, Marketplace Finance and Allianz Insurance. If we introduce or refer you to them, we may receive remuneration from them or remunerate them in other ways. Details of any remuneration we may receive will be included in the Credit Proposal document provided to you.
+              </p>
             </div>
             <div>
               <p className="font-semibold text-white">Credit & Valuation Reports:</p>
@@ -287,7 +300,7 @@ export default function CreditGuidePage() {
             We are authorised to engage in credit activities by the Licensee, Australian Finance Group Ltd. As Licensee, they share responsibility in the credit assistance we provide to you.
           </p>
           <p className="mt-4 text-[#9CA3AF] leading-relaxed">
-            The list below documents the 6 lenders most commonly used by us in the previous 12 months. The lenders disclosed below may be different to the lenders that the Licensee has already disclosed above. This may be due to different accreditation requirements or different types of consumers. The list below does not necessarily reflect all the financial institutions that we are able to conduct business through.
+            The list below documents the 6 lenders most commonly used by us in the previous 12 months. The lenders disclosed below may be different to the lenders that the Licensee has already disclosed above. This may be due to different accreditation requirements or different types of consumers. The list below does not necessarily reflect all the financial institutions that we are able to conduct business through. However, if less than 6 lenders are displayed below, this is a summary of the lenders that we are able to utilise for loan submission purposes.
           </p>
           <Card className="mt-4 overflow-x-auto">
             <table className="w-full text-left text-sm">

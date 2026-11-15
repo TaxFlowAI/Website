@@ -2,7 +2,7 @@ import Link from "next/link";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import LegalPdfButton, { LegalPrintSource } from "@/components/LegalPdfButton";
-import { CONSENT_DOCS, PRIVACY_POLICY_PATH } from "@/config/consent";
+import { CONSENT_DOCS } from "@/config/consent";
 import { ENTITY } from "@/config/entities";
 
 const DISCLOSURE_ENTITIES = [
@@ -56,7 +56,7 @@ export default function PrivacyConsentPage() {
           </p>
           <p className="mt-3">
             How we handle the details you give us on this website is in our{" "}
-            <Link href={PRIVACY_POLICY_PATH} className="text-[#00FCB8] hover:underline">Privacy Policy</Link>. Web copy of
+            <Link href="/privacy-policy" className="text-[#00FCB8] hover:underline">Privacy Policy</Link>. Web copy of
             AFG&apos;s current form, updated {CONSENT_DOCS[ENTITY.BROKERS].updated}.
           </p>
         </div>

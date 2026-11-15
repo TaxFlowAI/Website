@@ -6,7 +6,7 @@ import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import { CREDIT_PROVIDERS } from "./credit-providers";
 import LegalPdfButton, { LegalPrintSource } from "@/components/LegalPdfButton";
-import { CONSENT_DOCS, PRIVACY_POLICY_PATH } from "@/config/consent";
+import { CONSENT_DOCS } from "@/config/consent";
 import { ENTITY } from "@/config/entities";
 
 const USE_INFO_LIST = [
@@ -94,7 +94,7 @@ export default function PrivacyConsentAssetSolutionsPage() {
         <p className="-mt-4 mb-8 text-sm text-[#9CA3AF]">
           Web copy of the consent you sign through our application system, updated {CONSENT_DOCS[ENTITY.ASSET_SOLUTIONS].updated}. How we
           handle the details you give us on this website is in our{" "}
-          <Link href={PRIVACY_POLICY_PATH} className="text-[#00FCB8] hover:underline">Privacy Policy</Link>.
+          <Link href="/privacy-policy-asset-solutions" className="text-[#00FCB8] hover:underline">Privacy Policy</Link>.
         </p>
 
         <Section title="Intro / Entity Details">

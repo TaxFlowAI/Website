@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Privacy Policy | Frontline Financial",
+  title: "Privacy Policy: Home Loans | Frontline Financial Brokers",
   description:
-    "How Frontline Financial Brokers (home loans) and Frontline Financial: Asset Solutions (vehicle, equipment, personal and business finance) collect, use, share and protect your personal and credit information.",
+    "How Frontline Financial Brokers (Frontline Financial Pty Ltd, Authorised Credit Representative 575968 of AFG, Australian Credit Licence 389087) collects, uses, shares and protects your personal and credit information.",
   alternates: { canonical: "/privacy-policy" },
-  /* Legal page: public and linked from the footer and every form, but out of Google like the other legal pages */
+  /* Legal page: public and linked from the footer and every home-loan form, but out of Google like the other legal pages */
   robots: { index: false, follow: true },
 };
 
