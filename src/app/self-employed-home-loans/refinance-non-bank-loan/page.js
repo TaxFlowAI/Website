@@ -14,7 +14,7 @@ const PATH = "/self-employed-home-loans/refinance-non-bank-loan";
 const CONSULT_HREF = "/self-employed-home-loans/assessment";
 const PUBLISHED = "2026-11-15";
 const VIDEO = "/videos/non-bank-to-major-bank.mp4";
-const POSTER = "/images/articles/non-bank-to-major-bank-video-poster.webp";
+const POSTER = "/images/articles/non-bank-to-major-bank-cover.webp";
 const SHARE_IMAGE = "/images/articles/non-bank-to-major-bank-share.jpg";
 const CHANGED = "Numbers changed to protect our client. The scenario is real.";
 

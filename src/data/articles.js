@@ -7,7 +7,7 @@ export const ARTICLES = [
     href: "/self-employed-home-loans/refinance-non-bank-loan",
     title: "Made $398,000. The bank thought $24,900.",
     published: "2026-11-15",
-    poster: "/images/articles/non-bank-to-major-bank-video-poster.webp",
+    poster: "/images/articles/non-bank-to-major-bank-cover.webp",
   },
   {
     href: "/how-much-cash-to-buy-an-apartment-in-manly",
