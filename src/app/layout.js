@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
+import CreditReportPopup from "@/components/CreditReportPopup";
 
 /* Self-hosted (see src/fonts/README.md). The one variable file is listed per
    weight on purpose: only these weights exist as faces, so font-medium still
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         {children}
+        <CreditReportPopup />
         <MetaPixel />
       </body>
     </html>

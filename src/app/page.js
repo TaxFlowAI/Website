@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import LayoutNav from "@/components/LayoutNav";
 import LayoutFooter from "@/components/LayoutFooter";
 import WaveDivider from "@/components/WaveDivider";
@@ -10,9 +9,7 @@ import FinanceSelector from "@/components/FinanceSelector";
 import OpenStatus from "@/components/OpenStatus";
 import SettledDealsWall from "@/components/SettledDealsWall";
 import LatestArticles from "@/components/LatestArticles";
-import FormConsent, { CONSENT_ERROR } from "@/components/FormConsent";
-import { trackLead } from "@/components/MetaPixel";
-import { ENTITY } from "@/config/entities";
+import FreeCreditReportClaim from "@/components/FreeCreditReportClaim";
 import { SHOW_TAX_SERVICES } from "@/data/taxflow-flags";
 
 const GOOGLE_REVIEWS = [
@@ -76,34 +73,6 @@ const SERVICE_SIDES = [
   },
 ];
 
-const CONSULTATION_SERVICES = [
-  {
-    id: "brokers",
-    label: "Frontline Financial Brokers",
-    shortLabel: "Brokers",
-    description: "Home loans & mortgage",
-    icon: (
-      <svg className="h-16 w-16 text-[#1C5472] sm:h-20 sm:w-20" fill="none" stroke="currentColor" strokeWidth={1.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-      </svg>
-    ),
-  },
-  {
-    id: "asset-solutions",
-    label: "Frontline Financial: Asset Solutions",
-    shortLabel: "Asset Solutions",
-    description: "Car & equipment finance",
-    icon: (
-      <svg className="h-16 w-16 text-[#1C5472] sm:h-20 sm:w-20" fill="none" stroke="currentColor" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
-        <circle cx="7" cy="17" r="2" />
-        <path d="M9 17h6" />
-        <circle cx="17" cy="17" r="2" />
-      </svg>
-    ),
-  },
-];
-
 /* Organization schema for the group home page, linking the two businesses'
    own schema (on /brokers and /assetsolutions). Rendered in the page, not the
    root layout, so it never reaches /taxflow. */
@@ -149,7 +118,6 @@ const WEBSITE_SCHEMA = {
 };
 
 export default function Home() {
-  const router = useRouter();
   const [reviewIndex, setReviewIndex] = useState(0);
   const [reviewCount, setReviewCount] = useState(0);
 
@@ -178,13 +146,6 @@ export default function Home() {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-  const [consultationStep, setConsultationStep] = useState("choose"); // "choose" | "form"
-  const [selectedService, setSelectedService] = useState(null);
-  const [consultationForm, setConsultationForm] = useState({ firstName: "", lastName: "", email: "", phone: "" });
-  const [consultationConsent, setConsultationConsent] = useState(false);
-  const [consultationSubmitting, setConsultationSubmitting] = useState(false);
-  const [consultationSuccess, setConsultationSuccess] = useState(false);
-  const [consultationError, setConsultationError] = useState("");
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -605,229 +566,15 @@ export default function Home() {
       </section>
 
       <div className="bg-[#0A1628]">
-        <WaveDivider fill="#00FCB8" />
+        <WaveDivider fill="#1C5472" />
       </div>
 
-      {/* CTA BANNER — aqua green with stripe overlay + embedded consultation form */}
-      <section id="consultation" className="cta-stripe-pattern relative bg-[#00FCB8] px-4 py-14 md:px-6 md:py-16 lg:px-8">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-[#1C5472] md:text-5xl lg:text-6xl">
-            26 million Australians need better finance.
-          </h2>
-          <p className="mt-4 text-lg text-[#1C5472] md:text-xl">
-            We&apos;ve helped 500+.<br />
-            We&apos;re not stopping there. Are you next?
-          </p>
+      {/* FREE CREDIT REPORT — claim form (Hassan, 15 Nov 2026); the site-wide pop-up links here */}
+      <FreeCreditReportClaim />
 
-          {consultationSuccess ? (
-            <div className="mt-10 rounded-xl bg-[#1C5472] px-6 py-8 text-white">
-              <p className="text-xl font-bold">Thanks — we&apos;ll be in touch soon.</p>
-              <p className="mt-2 text-white/90">A member of our team will contact you shortly.</p>
-            </div>
-          ) : consultationStep === "choose" ? (
-            <>
-              <p className="mt-8 text-sm font-medium uppercase tracking-wider text-[#1C5472]/90">Want us to call you instead? Choose your service</p>
-              <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                {CONSULTATION_SERVICES.map((svc) => (
-                  <button
-                    key={svc.id}
-                    type="button"
-                    onClick={() => {
-                      setSelectedService(svc);
-                      setConsultationStep("form");
-                      setConsultationError("");
-                    }}
-                    className="flex flex-col items-center gap-4 rounded-xl border-2 border-[#1C5472]/30 bg-white/60 px-6 py-8 shadow-md transition-all duration-200 hover:scale-[1.02] hover:border-[#1C5472] hover:bg-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#1C5472] focus:ring-offset-2 focus:ring-offset-[#00FCB8]"
-                  >
-                    <span className="flex h-24 w-24 items-center justify-center rounded-full bg-[#1C5472]/10 text-[#1C5472]">
-                      {svc.icon}
-                    </span>
-                    <span className="font-bold text-[#1C5472]">{svc.label}</span>
-                    <span className="text-sm text-[#1C5472]/80">{svc.description}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="mt-10">
-                <a href="/contact" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">
-                  Call us now
-                </a>
-              </div>
-            </>
-          ) : (
-            <div className="mt-10 text-left">
-              <div className="mx-auto max-w-md rounded-xl border-2 border-[#1C5472]/30 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
-                <button
-                  type="button"
-                  onClick={() => { setConsultationStep("choose"); setSelectedService(null); setConsultationError(""); }}
-                  className="mb-4 inline-flex items-center gap-1 text-sm font-medium text-[#1C5472] hover:underline"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                  Change service
-                </button>
-                <p className="mb-6 rounded-lg bg-[#1C5472]/10 px-3 py-2 text-sm font-medium text-[#1C5472]">
-                  Service: {selectedService?.label}
-                </p>
-                <form
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    setConsultationError("");
-                    if (!consultationConsent) {
-                      setConsultationError(CONSENT_ERROR);
-                      return;
-                    }
-                    setConsultationSubmitting(true);
-                    try {
-                      const res = await fetch("/api/contact", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                          firstName: consultationForm.firstName.trim(),
-                          lastName: consultationForm.lastName.trim(),
-                          email: consultationForm.email.trim(),
-                          phone: consultationForm.phone.trim(),
-                          message: `Consultation request — ${selectedService?.label}`,
-                          services: [selectedService?.label],
-                          consultationService: selectedService?.id,
-                        }),
-                      });
-                      const data = await res.json();
-                      if (!res.ok) throw new Error(data.error || "Something went wrong");
-                      const serviceId = selectedService?.id || "brokers";
-                      const forwarded = data.forwardedTo ? `&forwarded=${data.forwardedTo}` : "";
-                      trackLead();
-                      router.push(`/contact/thank-you?team=${serviceId}${forwarded}`);
-                    } catch (err) {
-                      setConsultationError(err.message || "Failed to submit. Please try again.");
-                    } finally {
-                      setConsultationSubmitting(false);
-                    }
-                  }}
-                  className="space-y-4"
-                >
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="text-sm font-medium text-[#1C5472]">First name</span>
-                      <input
-                        type="text"
-                        required
-                        value={consultationForm.firstName}
-                        onChange={(e) => setConsultationForm((f) => ({ ...f, firstName: e.target.value }))}
-                        className="mt-1 w-full rounded-lg border border-[#1C5472]/30 bg-white px-3 py-2.5 text-[#1C5472] placeholder-[#1C5472]/50 focus:border-[#1C5472] focus:outline-none focus:ring-1 focus:ring-[#1C5472]"
-                        placeholder="First name"
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-[#1C5472]">Last name</span>
-                      <input
-                        type="text"
-                        required
-                        value={consultationForm.lastName}
-                        onChange={(e) => setConsultationForm((f) => ({ ...f, lastName: e.target.value }))}
-                        className="mt-1 w-full rounded-lg border border-[#1C5472]/30 bg-white px-3 py-2.5 text-[#1C5472] placeholder-[#1C5472]/50 focus:border-[#1C5472] focus:outline-none focus:ring-1 focus:ring-[#1C5472]"
-                        placeholder="Last name"
-                      />
-                    </label>
-                  </div>
-                  <label className="block">
-                    <span className="text-sm font-medium text-[#1C5472]">Email</span>
-                    <input
-                      type="email"
-                      required
-                      value={consultationForm.email}
-                      onChange={(e) => setConsultationForm((f) => ({ ...f, email: e.target.value }))}
-                      className="mt-1 w-full rounded-lg border border-[#1C5472]/30 bg-white px-3 py-2.5 text-[#1C5472] placeholder-[#1C5472]/50 focus:border-[#1C5472] focus:outline-none focus:ring-1 focus:ring-[#1C5472]"
-                      placeholder="you@example.com"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-sm font-medium text-[#1C5472]">Phone</span>
-                    <input
-                      type="tel"
-                      required
-                      value={consultationForm.phone}
-                      onChange={(e) => setConsultationForm((f) => ({ ...f, phone: e.target.value }))}
-                      className="mt-1 w-full rounded-lg border border-[#1C5472]/30 bg-white px-3 py-2.5 text-[#1C5472] placeholder-[#1C5472]/50 focus:border-[#1C5472] focus:outline-none focus:ring-1 focus:ring-[#1C5472]"
-                      placeholder="04XX XXX XXX"
-                    />
-                  </label>
-                  <div className="pt-2">
-                    <FormConsent
-                      entity={selectedService?.id === "asset-solutions" ? ENTITY.ASSET_SOLUTIONS : ENTITY.BROKERS}
-                      value={consultationConsent}
-                      onChange={setConsultationConsent}
-                      showError={Boolean(consultationError && consultationError === CONSENT_ERROR)}
-                    />
-                  </div>
-                  {consultationError && consultationError !== CONSENT_ERROR && (
-                    <p className="text-sm font-medium text-red-600">{consultationError}</p>
-                  )}
-                  <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                    <button
-                      type="submit"
-                      disabled={consultationSubmitting}
-                      className="w-full rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:opacity-90 disabled:opacity-70 sm:w-auto"
-                    >
-                      {consultationSubmitting ? "Sending…" : "Request consultation"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setConsultationStep("choose"); setSelectedService(null); }}
-                      className="w-full rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] hover:bg-[#1C5472]/10 sm:w-auto"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <WaveDivider fill="#F5F5EF" />
-
-      {/* WHY CHOOSE US — dot grid + heading accent, below CTA */}
-      <section className="section-dot-grid relative px-4 py-16 md:px-6 md:py-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-3xl font-bold text-[#1C5472] md:text-4xl">
-            Save time. Save money. Stress less.
-          </h2>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center text-[#1C5472] shadow-md">
-              <div className="rounded-full bg-[#39B2B2]/20 p-4">
-                <svg className="h-10 w-10 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-xl font-bold">All in one place</h3>
-              <p className="mt-2 text-sm leading-relaxed">Loans and finance in one place so you don&apos;t have to juggle multiple providers.</p>
-            </div>
-            <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center text-[#1C5472] shadow-md">
-              <div className="rounded-full bg-[#39B2B2]/20 p-4">
-                <svg className="h-10 w-10 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-xl font-bold">Expert team</h3>
-              <p className="mt-2 text-sm leading-relaxed">10+ years of industry experience, ready to guide you.</p>
-            </div>
-            <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center text-[#1C5472] shadow-md">
-              <div className="rounded-full bg-[#39B2B2]/20 p-4">
-                <svg className="h-10 w-10 text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-xl font-bold">Fast answers</h3>
-              <p className="mt-2 text-sm leading-relaxed">A call within one business day and a straight answer on where you stand, before anything goes to a lender.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <WaveDivider fill="#0A1628" />
+      <div className="bg-[#1C5472]">
+        <WaveDivider fill="#0A1628" />
+      </div>
 
       {/* TAXFLOWAI TEASER — matches TaxFlowAI home hero; great leap in tax technology */}
       <section id="taxflowai" className="taxflow-teaser-bg relative overflow-hidden px-4 py-20 md:px-6 md:py-28 lg:px-8">

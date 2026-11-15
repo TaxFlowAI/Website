@@ -615,3 +615,15 @@ html[data-vf-angle="r5"] .vf-angle-r5 { display: block; }
   font-size: 0.72rem;
   line-height: 1.6;
 }
+
+/* Credit report pop-up (CreditReportPopup.js): slides up on phones, fades in on larger screens */
+@keyframes creditPopupIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.credit-popup-in {
+  animation: creditPopupIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .credit-popup-in { animation: none; }
+}

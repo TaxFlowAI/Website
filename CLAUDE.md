@@ -57,7 +57,10 @@ live, so push only with the user's OK.
   article's 9:16 video poster). When an article goes live, add its line there as well as in `sitemap.js`.
 - `src/components/SettledDeals.js` shows the approved "Just settled" posts as proof (`src/data/settled-deals.js`). They
   hold no client names or amounts, and their disclaimer has to stay under them. The free Equifax report
-  (`FreeCreditReportOffer.js`) stays on vehicle and equipment pages only, because its terms say so.
+  (`FreeCreditReportOffer.js`) covers every kind of finance since 15 Nov 2026 (Hassan): it shows on
+  `/vehicle-finance`, every `/apply` form, the home page claim form (`FreeCreditReportClaim.js`) and the
+  site-wide pop-up (`CreditReportPopup.js`, delayed, once per 30 days, off TaxFlowAI, forms and legal pages).
+  Never give it a dollar value: the same report is free from Equifax, and the terms say so.
 - The home loan form's fact find step is the Broker Engine "000. Web lead" workflow. Hassan let the Zapier plan lapse on
   13 Nov 2026, so it's sent by hand until he re-subscribes. The copy says "We email you a secure link" with no timing,
   so it stays true either way.

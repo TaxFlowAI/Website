@@ -1,6 +1,32 @@
-/* The free Equifax report offer, for /vehicle-finance and the vehicle and equipment
-   applications. Its terms limit it to vehicle or equipment finance, so it stays off
-   the home loan, personal loan and working capital pages. */
+/* The free Equifax report offer. Hassan widened it to every kind of finance on 15 Nov 2026
+   (it was vehicle and equipment only), so it shows on /vehicle-finance, every /apply form, the
+   home page (FreeCreditReportClaim) and the site-wide pop-up (CreditReportPopup). Never give it a
+   dollar value: anyone can get the same report free from Equifax, which the terms say. */
+
+export const CREDIT_REPORT_BULLETS = [
+  "Every enquiry, account and default on file",
+  "Spot errors or old defaults before you apply",
+  "It doesn't lodge an application with any lender",
+];
+
+export function CreditReportTerms({ id, className = "" }) {
+  return (
+    <div id={id} className={`scroll-mt-24 text-xs leading-relaxed text-white/70 ${className}`}>
+      <p className="font-bold text-white/80">*Free Equifax credit report: terms and conditions</p>
+      <ul className="mt-1.5 list-disc space-y-1 pl-4">
+        <li>
+          Offered at our discretion as part of an assessment for a home loan or for vehicle, equipment, personal or business
+          finance. We may decline to provide the report if, after reviewing your enquiry, we determine you do not meet the
+          criteria for the finance you are seeking.
+        </li>
+        <li>Obtaining your report requires your consent and identity verification. Accessing it for this purpose does not lodge a finance application with any lender.</li>
+        <li>One report per customer. The offer may be changed or withdrawn at any time.</li>
+        <li>You are also entitled to request a free copy of your credit report directly from Equifax and other credit reporting bodies.</li>
+      </ul>
+    </div>
+  );
+}
+
 export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLabel = "Back to your application" }) {
   return (
     <section id="free-credit-report" className="relative scroll-mt-24 overflow-hidden bg-[#0A1628] px-4 py-14 md:px-6 md:py-20 lg:px-8">
@@ -26,7 +52,7 @@ export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLab
             see, so there are no surprises when your application goes in.*
           </p>
           <ul className="mt-6 max-w-xl space-y-3 text-white">
-            {["Every enquiry, account and default on file", "Spot errors or old defaults before you apply", "It doesn't lodge an application with any lender"].map((item) => (
+            {CREDIT_REPORT_BULLETS.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <svg className="mt-1 h-4 w-4 shrink-0 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
                   <path d="M5 13l4 4L19 7" />
@@ -41,18 +67,7 @@ export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLab
           >
             {ctaLabel}
           </a>
-          <div className="mt-6 max-w-xl text-xs leading-relaxed text-white/70">
-            <p className="font-bold text-white/80">*Free Equifax credit report: terms and conditions</p>
-            <ul className="mt-1.5 list-disc space-y-1 pl-4">
-              <li>
-                Offered at our discretion as part of an assessment for vehicle or equipment finance. We may decline to provide
-                the report if, after reviewing your enquiry, we determine you do not meet the criteria for the finance you are seeking.
-              </li>
-              <li>Obtaining your report requires your consent and identity verification. Accessing it for this purpose does not lodge a finance application with any lender.</li>
-              <li>One report per customer. The offer may be changed or withdrawn at any time.</li>
-              <li>You are also entitled to request a free copy of your credit report directly from Equifax and other credit reporting bodies.</li>
-            </ul>
-          </div>
+          <CreditReportTerms className="mt-6 max-w-xl" />
         </div>
       </div>
     </section>

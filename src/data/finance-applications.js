@@ -113,6 +113,7 @@ const NEW_ABN_QUESTION = {
 };
 
 const homeLoan = {
+  freeReport: true,
   slug: "home-loan",
   tab: "Home",
   title: "Home loan application",
@@ -547,6 +548,7 @@ const equipmentFinance = {
 };
 
 const personalLoan = {
+  freeReport: true,
   slug: "personal-loan",
   tab: "Personal",
   title: "Personal loan application",
@@ -665,6 +667,7 @@ const personalLoan = {
 };
 
 const workingCapital = {
+  freeReport: true,
   slug: "working-capital",
   tab: "Working capital",
   title: "Working capital application",
