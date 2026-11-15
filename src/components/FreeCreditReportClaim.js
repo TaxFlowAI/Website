@@ -13,12 +13,13 @@ import { CREDIT_REPORT_BULLETS, CreditReportTerms } from "@/components/FreeCredi
    operations and Ambition Cloud, through the same /api/contact routing the old form used. */
 
 const PURPOSES = [
-  { id: "brokers", label: "A home loan", entity: ENTITY.BROKERS },
-  { id: "asset-solutions", label: "A car, equipment, personal or business loan", entity: ENTITY.ASSET_SOLUTIONS },
+  { id: "brokers", label: "Home loan", hint: "Buying, refinancing or investing in property.", entity: ENTITY.BROKERS },
+  { id: "asset-solutions", label: "Car or other loan", hint: "A car, ute, equipment, personal or business loan.", entity: ENTITY.ASSET_SOLUTIONS },
 ];
 
+const labelClass = "text-sm font-bold text-[#1C5472]";
 const inputClass =
-  "mt-1 w-full rounded-lg border border-[#1C5472]/30 bg-white px-3 py-2.5 text-[#1C5472] placeholder-[#1C5472]/50 focus:border-[#1C5472] focus:outline-none focus:ring-1 focus:ring-[#1C5472]";
+  "mt-1.5 w-full rounded-xl border border-transparent bg-[#F5F5EF] px-4 py-3 text-base text-[#1C5472] placeholder-[#1C5472]/40 transition-colors focus:border-[#1C5472] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00FCB8]/60";
 
 export default function FreeCreditReportClaim() {
   const router = useRouter();
@@ -102,52 +103,54 @@ export default function FreeCreditReportClaim() {
           </ul>
         </div>
 
-        <form onSubmit={onSubmit} className="rounded-2xl bg-white p-6 text-[#1C5472] shadow-xl md:p-8">
-          <fieldset>
-            <legend className="text-base font-bold">What do you need finance for?</legend>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {PURPOSES.map((p) => (
-                <label
+        <form onSubmit={onSubmit} className="rounded-2xl bg-white p-6 text-[#1C5472] shadow-[0_30px_70px_-25px_rgba(10,22,40,0.75)] sm:p-8">
+          <p className="text-2xl font-bold leading-tight">Get your free report</p>
+          <p className="mt-1 text-sm text-[#1C5472]/75">It takes a minute. Someone from our team calls within one business day.</p>
+
+          <div role="radiogroup" aria-label="What do you need finance for?" className="mt-6 grid grid-cols-2 gap-1 rounded-xl bg-[#F5F5EF] p-1">
+            {PURPOSES.map((p) => {
+              const active = purpose.id === p.id;
+              return (
+                <button
                   key={p.id}
-                  className={`flex cursor-pointer items-center gap-3 rounded-lg border-2 px-4 py-3 text-sm font-bold transition-colors ${
-                    purpose.id === p.id ? "border-[#1C5472] bg-[#1C5472]/5" : "border-[#1C5472]/20 hover:border-[#1C5472]/50"
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => {
+                    setPurpose(p);
+                    setConsent(false);
+                  }}
+                  className={`rounded-lg px-3 py-2.5 text-sm font-bold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FCB8] ${
+                    active ? "bg-[#1C5472] text-white shadow-sm" : "text-[#1C5472]/85 hover:text-[#1C5472]"
                   }`}
                 >
-                  <input
-                    type="radio"
-                    name="credit-report-purpose"
-                    value={p.id}
-                    checked={purpose.id === p.id}
-                    onChange={() => {
-                      setPurpose(p);
-                      setConsent(false);
-                    }}
-                    className="h-4 w-4 shrink-0 accent-[#1C5472]"
-                  />
                   {p.label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-[#1C5472]/65">{purpose.hint}</p>
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div className="mt-5 grid grid-cols-2 gap-3">
             <label className="block">
-              <span className="text-sm font-medium">First name</span>
-              <input type="text" required autoComplete="given-name" className={inputClass} placeholder="First name" {...field("firstName")} />
+              <span className={labelClass}>First name</span>
+              <input type="text" required autoComplete="given-name" className={inputClass} {...field("firstName")} />
             </label>
             <label className="block">
-              <span className="text-sm font-medium">Last name</span>
-              <input type="text" required autoComplete="family-name" className={inputClass} placeholder="Last name" {...field("lastName")} />
+              <span className={labelClass}>Last name</span>
+              <input type="text" required autoComplete="family-name" className={inputClass} {...field("lastName")} />
             </label>
           </div>
-          <label className="mt-4 block">
-            <span className="text-sm font-medium">Email</span>
-            <input type="email" required autoComplete="email" className={inputClass} placeholder="you@example.com" {...field("email")} />
-          </label>
-          <label className="mt-4 block">
-            <span className="text-sm font-medium">Phone</span>
-            <input type="tel" required autoComplete="tel" className={inputClass} placeholder="04XX XXX XXX" {...field("phone")} />
-          </label>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <label className="block">
+              <span className={labelClass}>Mobile</span>
+              <input type="tel" required autoComplete="tel" inputMode="tel" className={inputClass} placeholder="04XX XXX XXX" {...field("phone")} />
+            </label>
+            <label className="block">
+              <span className={labelClass}>Email</span>
+              <input type="email" required autoComplete="email" className={inputClass} placeholder="you@example.com" {...field("email")} />
+            </label>
+          </div>
 
           <FormConsent
             key={purpose.id}
@@ -155,18 +158,23 @@ export default function FreeCreditReportClaim() {
             value={consent}
             onChange={setConsent}
             showError={error === CONSENT_ERROR}
-            className="mt-5"
+            className="mt-5 [&_label]:text-xs [&_label]:leading-relaxed [&_label>span]:text-[#1C5472]/75"
           />
           {error && error !== CONSENT_ERROR && <p className="mt-3 text-sm font-medium text-red-600">{error}</p>}
 
           <button
             type="submit"
             disabled={submitting}
-            className="mt-6 w-full rounded-lg bg-[#00FCB8] px-6 py-3.5 text-base font-bold text-[#0A1628] transition-colors duration-200 hover:bg-[#1C5472] hover:text-white disabled:opacity-70"
+            className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-6 py-4 text-base font-bold text-[#0A1628] transition-colors duration-200 hover:bg-[#1C5472] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1C5472] focus-visible:ring-offset-2 disabled:opacity-70"
           >
             {submitting ? "Sending…" : "Claim my free report"}
+            {!submitting && (
+              <svg className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            )}
           </button>
-          <p className="mt-3 text-center text-sm text-[#1C5472]/80">Someone from our team calls within one business day.</p>
+          <p className="mt-3 text-center text-xs text-[#1C5472]/65">No cost, and no application goes to any lender.</p>
         </form>
       </div>
       <CreditReportTerms id="free-credit-report-terms" className="mx-auto mt-10 max-w-7xl" />
