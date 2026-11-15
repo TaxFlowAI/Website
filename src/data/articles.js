@@ -4,6 +4,12 @@
    PUBLISHED date, poster its 9:16 video poster (720x1280). */
 export const ARTICLES = [
   {
+    href: "/self-employed-home-loans/refinance-non-bank-loan",
+    title: "Made $398,000. The bank thought $24,900.",
+    published: "2026-11-15",
+    poster: "/images/articles/non-bank-to-major-bank-video-poster.webp",
+  },
+  {
     href: "/how-much-cash-to-buy-an-apartment-in-manly",
     title: "How much cash do you need to buy an apartment in Manly?",
     published: "2026-11-11",
