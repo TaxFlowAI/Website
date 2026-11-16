@@ -550,12 +550,15 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <div className="overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
+            {/* The frame needs its own width: shrink-wrapped, it had none until the lazy photo
+                loaded, then grew ~475px on phones and pushed the claim form below out of reach
+                of the "Unlock my free report" jump. */}
+            <div className="w-full max-w-md overflow-hidden rounded-2xl border-2 border-[#00FCB8]/30 shadow-xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/frontline-8-parramatta-square.webp"
                 alt="The 8 Parramatta Square tower — Frontline Financial's office is on Level 49"
-                className="block h-auto w-full max-w-md object-cover"
+                className="block h-auto w-full object-cover"
                 width={1066}
                 height={1421}
                 loading="lazy"
