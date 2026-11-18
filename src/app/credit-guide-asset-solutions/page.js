@@ -107,7 +107,7 @@ export default function CreditGuideAssetSolutionsPage() {
             <p className="mt-4 text-[#9CA3AF] leading-relaxed">
               If you are not satisfied with the outcome of our attempt to resolve your complaint, you may refer the matter to the Australian Financial Complaints Authority Australia on phone <a href="tel:1800931678" className="text-white hover:text-[#00FCB8]">1800 931 678</a> or by writing to GPO Box 3 Melbourne VIC 3001. The Australian Financial Complaints Authority Australia is a no-charge external and independent dispute resolution service.
             </p>
-            <dl className="mt-4 space-y-2 rounded-lg border border-white/[0.08] bg-[#0A1628] p-4 text-sm">
+            <dl className="mt-4 space-y-2 rounded-lg p-4 text-sm sq-panel-navy">
               <div><dt className="text-[#9CA3AF]">Name</dt><dd className="text-white">AFCA (Australian Financial Complaints Authority)</dd></div>
               <div><dt className="text-[#9CA3AF]">Phone</dt><dd><a href="tel:1800931678" className="text-white hover:text-[#00FCB8]">1800 931 678</a></dd></div>
               <div><dt className="text-[#9CA3AF]">Address</dt><dd className="text-white">GPO Box 3, Melbourne VIC 3001</dd></div>
@@ -138,7 +138,7 @@ export default function CreditGuideAssetSolutionsPage() {
         </Section>
 
         <div className="mt-12 flex flex-wrap gap-4 print:hidden">
-          <Link href="/assetsolutions" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
+          <Link href="/assetsolutions" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
             Back to Asset Solutions
           </Link>
           <Link href="/privacy-consent-asset-solutions" className="inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10">

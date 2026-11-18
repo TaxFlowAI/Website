@@ -12,7 +12,7 @@ import { useComplianceEntityOverride } from "@/context/ComplianceEntityContext";
 function EntityBlock({ config, label }) {
   if (!config) return null;
   return (
-    <div className="rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm">
+    <div className="rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm sq-glass">
       {label && (
         <p className="mb-2 font-semibold uppercase tracking-wider text-white/90">
           {label}

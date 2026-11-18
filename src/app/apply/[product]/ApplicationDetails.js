@@ -114,7 +114,7 @@ export function Compare({ rows }) {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl bg-white p-6 shadow-md">
+          <div className="rounded-2xl p-6 sq-card">
             <h3 className="text-lg font-bold text-[#1C5472]">Applying through us</h3>
             <ul className="mt-4 space-y-3 font-medium text-[#1C5472]">
               {rows.map(([, us]) => (
@@ -153,7 +153,7 @@ export function AwardAndBroker({ app }) {
                 Frontline Financial and works with the team across 30+ lenders, recognised for this work at the Fintelligence
                 Broker Awards.
               </p>
-              <figure className="mt-5 max-w-xl overflow-hidden rounded-2xl bg-white shadow-md">
+              <figure className="mt-5 max-w-xl overflow-hidden rounded-2xl sq-card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/fintelligence-award.png"
@@ -200,7 +200,7 @@ export function AwardAndBroker({ app }) {
               </details>
             ))}
           </div>
-          <figure className="mt-6 rounded-2xl bg-white p-5 shadow-md">
+          <figure className="mt-6 rounded-2xl p-5 sq-card">
             <div className="flex gap-0.5 text-[#FFD700]" role="img" aria-label="5 out of 5 stars">
               {[1, 2, 3, 4, 5].map((i) => (
                 <svg key={i} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
@@ -224,7 +224,7 @@ export function FinalPush({ ctaLabel = "Back to your application" }) {
         <h2 className="text-3xl font-bold tracking-tight text-[#1C5472] md:text-5xl">About 2 minutes. Then it&apos;s our problem.</h2>
         <p className="mt-3 text-lg text-[#1C5472]">Tell us what you need and someone from our team calls you within one business day.</p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="#application" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+          <a href="#application" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
             {ctaLabel}
           </a>
           <a href={TEAM_PHONE.link} className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] px-6 py-3 font-bold text-[#1C5472] transition-colors hover:bg-[#1C5472]/10 sm:w-auto">

@@ -10,7 +10,7 @@ export default function FAQAccordion({ items = [] }) {
   const [open, setOpen] = useState(0);
 
   return (
-    <div className="divide-y divide-[#1C5472]/10 overflow-hidden rounded-xl border border-[#1C5472]/10 bg-white">
+    <div className="divide-y divide-[#1C5472]/10 overflow-hidden rounded-xl sq-card">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (

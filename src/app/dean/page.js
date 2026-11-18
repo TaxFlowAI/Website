@@ -70,7 +70,7 @@ export default function DeanPage() {
         <div className="pointer-events-none absolute bottom-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[#39B2B2] opacity-[0.08] blur-[100px]" aria-hidden />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[3fr_2fr]">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+            <p className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               <span aria-hidden>+</span>
               Frontline Financial: Asset Solutions
             </p>
@@ -84,7 +84,7 @@ export default function DeanPage() {
               After sitting out a non-compete period, I&apos;ve transitioned into a Partner role at Frontline Financial: Asset Solutions — working alongside an award-winning team to workshop scenarios, structure deals, and match clients with the right lender from the outset.
             </p>
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap">
-              <a href="tel:+61450355483" className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+              <a href="tel:+61450355483" className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-1.86.93a11 11 0 005.52 5.52l.93-1.86a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" /></svg>
                 Call Dean: 0450 355 483
               </a>
@@ -164,7 +164,7 @@ export default function DeanPage() {
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {SERVICE_AREAS.map((area) => (
-              <article key={area.title} className="rounded-2xl border border-[#39B2B2]/30 bg-[#0A1628] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#00FCB8]">
+              <article key={area.title} className="rounded-2xl border border-[#39B2B2]/30 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#00FCB8] sq-panel-navy">
                 <div className="rounded-xl bg-[#00FCB8]/10 p-3 inline-flex">
                   {area.icon}
                 </div>
@@ -175,7 +175,7 @@ export default function DeanPage() {
           </div>
 
           {/* Award strip */}
-          <div className="mt-10 rounded-2xl border border-[#00FCB8]/30 bg-[#0A1628] p-6 md:flex md:items-center md:justify-between md:gap-6">
+          <div className="mt-10 rounded-2xl border border-[#00FCB8]/30 p-6 md:flex md:items-center md:justify-between md:gap-6 sq-panel-navy">
             <div className="flex items-start gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#00FCB8]/15">
                 <svg className="h-6 w-6 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -234,7 +234,7 @@ export default function DeanPage() {
 
         <div className="relative z-10 mx-auto max-w-2xl">
           <div className="text-center">
-            <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+            <p className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
               Let&apos;s catch up
             </p>
             <h2 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -246,14 +246,14 @@ export default function DeanPage() {
           </div>
 
           {success ? (
-            <div className="mt-12 rounded-3xl border border-[#00FCB8]/40 bg-[#0A1628] px-6 py-12 text-center shadow-2xl">
+            <div className="mt-12 rounded-3xl border border-[#00FCB8]/40 px-6 py-12 text-center sq-panel-navy">
               <svg className="mx-auto h-16 w-16 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               <p className="mt-5 text-2xl font-bold text-white md:text-3xl">Got it — thanks.</p>
               <p className="mt-3 text-[#39B2B2]">Dean will give you a call back shortly.</p>
             </div>
           ) : (
             <form
-              className="mt-12 space-y-5 rounded-3xl border border-[#00FCB8]/30 bg-white p-6 shadow-2xl ring-1 ring-[#00FCB8]/10 md:p-10"
+              className="mt-12 space-y-5 rounded-3xl border border-[#00FCB8]/30 p-6 ring-1 ring-[#00FCB8]/10 md:p-10 sq-card"
               onSubmit={async (e) => {
                 e.preventDefault();
                 setError("");
@@ -372,7 +372,7 @@ export default function DeanPage() {
             Good to be back in touch.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
-            <a href="tel:+61450355483" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-8 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href="tel:+61450355483" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-8 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Call Dean
             </a>
             <a href="mailto:dean@frontline.financial" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-8 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

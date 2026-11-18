@@ -48,7 +48,7 @@ export default function PrivacyConsentPage() {
           <LegalPdfButton href="/documents/privacy-consent.pdf" label="Download Privacy Consent (PDF)" />
         </div>
 
-        <div className="mb-10 rounded-xl border border-[#00FCB8]/30 bg-[#0d1f33] p-5 text-sm leading-relaxed text-[#9CA3AF] md:p-6">
+        <div className="mb-10 rounded-xl border border-[#00FCB8]/30 p-5 text-sm leading-relaxed text-[#9CA3AF] md:p-6 sq-panel-navy">
           <p>
             This is the privacy disclosure statement and consent of our licensee, Australian Finance Group Ltd (AFG), Australian
             Credit Licence 389087. In it, &quot;the Appointed Credit Service Provider&quot; is your broker: Frontline Financial Pty Ltd
@@ -85,7 +85,7 @@ export default function PrivacyConsentPage() {
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {DISCLOSURE_ENTITIES.map((item, i) => (
-              <li key={i} className="flex gap-2 rounded-lg border border-white/[0.08] bg-[#111827] px-4 py-3 text-sm text-[#9CA3AF]">
+              <li key={i} className="flex gap-2 rounded-lg px-4 py-3 text-sm text-[#9CA3AF] sq-panel-navy">
                 <span className="mt-0.5 shrink-0 text-[#00FCB8]">•</span>
                 {item}
               </li>
@@ -134,7 +134,7 @@ export default function PrivacyConsentPage() {
         </Section>
 
         <div className="mt-12 flex flex-wrap gap-4 print:hidden">
-          <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
+          <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
             Back to Brokers
           </Link>
           <Link href="/credit-guide" className="inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10">

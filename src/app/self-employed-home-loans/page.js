@@ -263,7 +263,7 @@ export default function SelfEmployedHomeLoansPage() {
             the home you want to live in or invest in.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
@@ -293,7 +293,7 @@ export default function SelfEmployedHomeLoansPage() {
           </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {PAIN_POINTS.map((p) => (
-              <article key={p.q} className="rounded-xl border-l-4 border-[#39B2B2] bg-white p-6 shadow-md">
+              <article key={p.q} className="rounded-xl border-l-4 border-l-[#39B2B2] p-6 sq-card">
                 <h3 className="text-lg font-bold text-[#1C5472]">{p.q}</h3>
                 <p className="mt-3 leading-relaxed text-gray-600">{p.a}</p>
               </article>
@@ -303,7 +303,7 @@ export default function SelfEmployedHomeLoansPage() {
             <h3 className="text-lg font-bold text-[#1C5472]">Who we help</h3>
             <ul className="mt-4 flex flex-wrap gap-3">
               {WHO_WE_HELP.map((w) => (
-                <li key={w} className="rounded-full border border-[#39B2B2] bg-white px-4 py-2 text-sm font-medium text-[#1C5472]">
+                <li key={w} className="rounded-md border border-[#39B2B2] bg-white px-4 py-2 text-sm font-medium text-[#1C5472]">
                   {w}
                 </li>
               ))}
@@ -458,7 +458,7 @@ export default function SelfEmployedHomeLoansPage() {
             </h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {[["You", DOCS_YOU], ["Your business", DOCS_BUSINESS]].map(([label, list]) => (
-                <div key={label} className="rounded-xl bg-white p-6 shadow-md">
+                <div key={label} className="rounded-xl p-6 sq-card">
                   <h3 className="text-lg font-bold text-[#1C5472]">{label}</h3>
                   <ul className="mt-4 space-y-3">
                     {list.map((d) => (
@@ -601,7 +601,7 @@ export default function SelfEmployedHomeLoansPage() {
             tell us where things are at.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

@@ -129,7 +129,7 @@ function LockedFile() {
         {FILE_ROWS.map(([label, width], i) => (
           <li key={label} className={`${i > 1 ? "hidden sm:flex" : "flex"} items-center justify-between rounded-lg bg-white/[0.06] px-2.5 py-1.5 text-[11px]`}>
             <span className="text-white/75">{label}</span>
-            <span className={`credit-popup-blur h-2.5 ${width} rounded-full bg-[#00FCB8]/70`} aria-hidden />
+            <span className={`credit-popup-blur h-2.5 ${width} rounded-xs bg-[#00FCB8]/70`} aria-hidden />
           </li>
         ))}
       </ul>
@@ -206,7 +206,7 @@ export default function CreditReportPopup() {
           type="button"
           onClick={() => setOpen(false)}
           aria-label="Close"
-          className="absolute right-3 top-3 z-20 rounded-full bg-white/80 p-2 text-[#1C5472] backdrop-blur transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1C5472]"
+          className="absolute right-3 top-3 z-20 rounded-md bg-white/80 p-2 text-[#1C5472] backdrop-blur transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1C5472]"
         >
           <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" viewBox="0 0 24 24" aria-hidden>
             <path d="M6 6l12 12M18 6L6 18" />

@@ -55,7 +55,7 @@ export default function SelfEmployedAssessmentPage() {
 
           <div className="relative">
             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#00FCB8] via-[#39B2B2] to-[#1C5472] opacity-70 blur-sm" aria-hidden />
-            <div className="relative rounded-3xl bg-white p-6 shadow-2xl md:p-8">
+            <div className="relative rounded-3xl p-6 md:p-8 sq-card sq-edge">
               <AssessmentForm />
             </div>
           </div>

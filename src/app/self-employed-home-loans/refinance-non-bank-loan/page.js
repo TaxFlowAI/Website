@@ -157,7 +157,7 @@ function Exhibit({ src, alt, caption }) {
 
 function LenderRules() {
   return (
-    <figure className="my-10 overflow-hidden rounded-2xl bg-white shadow-lg">
+    <figure className="my-10 overflow-hidden rounded-2xl sq-card">
       <div className="bg-[#1C5472] px-6 py-5">
         <p className="font-bold uppercase tracking-wider text-white">What each lender rule would count</p>
         <p className="mt-1 text-sm text-[#bfe3df]">Last year $24,900, this year $398,000. Same couple, same returns.</p>
@@ -185,7 +185,7 @@ function Results() {
   return (
     <div className="my-10 grid gap-3 sm:grid-cols-2">
       {RESULTS.map(([label, value]) => (
-        <div key={label} className="rounded-xl border-2 border-[#d5e4df] bg-white px-5 py-4">
+        <div key={label} className="rounded-xl border-2 border-[#d5e4df] px-5 py-4 sq-card">
           <p className="text-xs font-bold uppercase tracking-wider text-[#39B2B2]">{label}</p>
           <p className="mt-1 text-xl font-bold text-[#1C5472]">{value}</p>
         </div>
@@ -242,7 +242,7 @@ export default function NonBankRefinanceArticlePage() {
       <article className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mx-auto grid max-w-6xl text-lg leading-relaxed text-[#1C5472] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-x-14">
           <div className="lg:col-start-1 lg:row-start-1">
-            <p className="rounded-lg border-l-4 border-[#39B2B2] bg-white px-4 py-3 text-base text-gray-600">
+            <p className="rounded-lg border-l-4 border-l-[#39B2B2] px-4 py-3 text-base text-gray-600 sq-card">
               {CHANGED} We keep the story and change every client figure, so nobody can tell who it is.
             </p>
             <p className="mt-6">
@@ -271,11 +271,11 @@ export default function NonBankRefinanceArticlePage() {
                 </video>
                 <figcaption className="mt-3 text-center text-sm text-gray-500">{CHANGED}</figcaption>
               </figure>
-              <div className="mt-6 hidden rounded-xl bg-[#1C5472] p-5 text-center lg:block">
+              <div className="mt-6 hidden rounded-xl p-5 text-center lg:block sq-panel">
                 <p className="font-bold text-white">On a non-bank loan now?</p>
                 <a
                   href={CONSULT_HREF}
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90 sq-btn-aqua"
                 >
                   Get a Free Assessment
                 </a>
@@ -453,7 +453,7 @@ export default function NonBankRefinanceArticlePage() {
             within one business day, and you&apos;ll talk with me through the process.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

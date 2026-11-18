@@ -237,7 +237,7 @@ function HeadlineCard({ caption, amount, sub, note, stats }) {
 
 function BreakdownCard({ segments, centerLabel, centerValue, legend }) {
   return (
-    <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-sm">
+    <div className="rounded-2xl p-5 sq-card">
       <p className="text-sm font-semibold text-[#1C5472]">Where your money goes</p>
       <div className="mt-4 flex items-center gap-5">
         <div className="h-[150px] w-[150px] shrink-0">
@@ -270,7 +270,7 @@ function ResultStat({ label, value, accent }) {
 
 function ChartCard({ title, legend, children, note }) {
   return (
-    <div className="mt-6 rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-sm">
+    <div className="mt-6 rounded-2xl p-5 sq-card">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm font-semibold text-[#1C5472]">{title}</p>
         {legend && <div className="flex flex-wrap gap-4 text-xs text-[#1C5472]/70">{legend}</div>}
@@ -282,7 +282,7 @@ function ChartCard({ title, legend, children, note }) {
 }
 
 const SolidLegend = ({ color, label }) => (
-  <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-4 rounded-full" style={{ background: color }} />{label}</span>
+  <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-4 rounded-xs" style={{ background: color }} />{label}</span>
 );
 const DashedLegend = ({ label }) => (
   <span className="flex items-center gap-1.5"><span className="inline-block h-0 w-4 border-t-2 border-dashed border-[#1C5472]" />{label}</span>
@@ -341,7 +341,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel, assessmentHref, not
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {assessmentHref ? (
               <>
-                <Link href={assessmentHref} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
+                <Link href={assessmentHref} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
                   Get your free assessment
                 </Link>
                 <a href={tel} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
@@ -350,7 +350,7 @@ function ContactCTA({ emoji, title, blurb, name, phone, tel, assessmentHref, not
               </>
             ) : (
               <>
-                <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">
+                <a href={tel} className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
                   Call us: {phone}
                 </a>
                 <Link href={`/contact?team=${name.toLowerCase()}`} className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-6 py-3 font-bold text-white transition hover:bg-white/10">
@@ -385,7 +385,7 @@ function AmortTable({ rows, expand, setExpand, showOffset, download }) {
     <>
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <p className="text-sm font-semibold text-[#1C5472]">Amortisation schedule</p>
-        <button type="button" onClick={download} className="inline-flex items-center gap-2 rounded-lg bg-[#1C5472] px-4 py-2 text-sm font-bold text-white transition hover:opacity-90">
+        <button type="button" onClick={download} className="inline-flex items-center gap-2 rounded-lg bg-[#1C5472] px-4 py-2 text-sm font-bold text-white transition hover:opacity-90 sq-btn-blue">
           Download CSV
         </button>
       </div>
@@ -693,7 +693,7 @@ export default function FinancialCalculatorsPage() {
           <div className="mx-auto max-w-7xl">
             {/* ── Mortgage ── */}
             {activeTab === "mortgage" && mortgage && (
-              <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-lg md:p-7">
+              <div className="rounded-2xl p-5 md:p-7 sq-card">
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Mortgage calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Principal &amp; Interest or Interest Only, with optional offset and extra repayments.</p>
 
@@ -787,7 +787,7 @@ export default function FinancialCalculatorsPage() {
 
             {/* ── Refinance ── */}
             {activeTab === "refinance" && refResult && (
-              <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-lg md:p-7">
+              <div className="rounded-2xl p-5 md:p-7 sq-card">
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Refinance calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">See how much a sharper rate could save you — and when you&apos;d break even on the switching costs.</p>
 
@@ -811,7 +811,7 @@ export default function FinancialCalculatorsPage() {
                         { label: "Per year", value: fmt0(refResult.monthlySavings * 12) },
                       ]}
                     />
-                    <div className="space-y-4 rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-sm">
+                    <div className="space-y-4 rounded-2xl p-5 sq-card">
                       <ResultStat label="Total interest saved (after costs)" value={fmt0(refResult.netSavings)} accent={refResult.netSavings >= 0} />
                       {refResult.breakEvenMonths != null ? (
                         <ResultStat label="Break-even on switching costs" value={`${refResult.breakEvenMonths} months`} />
@@ -846,7 +846,7 @@ export default function FinancialCalculatorsPage() {
 
             {/* ── Car loan ── */}
             {activeTab === "car" && carResult && (
-              <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-lg md:p-7">
+              <div className="rounded-2xl p-5 md:p-7 sq-card">
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Car loan calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Work out your repayments, with an optional balloon (residual) payment.</p>
 
@@ -936,7 +936,7 @@ export default function FinancialCalculatorsPage() {
 
             {/* ── Personal loan ── */}
             {activeTab === "personal" && personalResult && (
-              <div className="rounded-2xl border border-[#1C5472]/10 bg-white p-5 shadow-lg md:p-7">
+              <div className="rounded-2xl p-5 md:p-7 sq-card">
                 <h2 className="text-xl font-bold text-[#1C5472] md:text-2xl">Personal loan calculator</h2>
                 <p className="mt-1 text-sm text-[#1C5472]/70">Estimate the repayments and total interest on a personal loan.</p>
 
@@ -1008,7 +1008,7 @@ export default function FinancialCalculatorsPage() {
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               {GOOGLE_REVIEWS.map((review, i) => (
-                <div key={i} className="rounded-xl bg-white p-5 text-[#1C5472] shadow-md">
+                <div key={i} className="rounded-xl p-5 text-[#1C5472] sq-card">
                   <div className="flex gap-0.5 text-[#FFD700]">
                     {[0, 1, 2, 3, 4].map((j) => (
                       <svg key={j} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
@@ -1025,7 +1025,7 @@ export default function FinancialCalculatorsPage() {
               ))}
             </div>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-7 py-3 font-bold text-[#1C5472] transition hover:scale-105 hover:opacity-90">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-lg bg-[#00FCB8] px-7 py-3 font-bold text-[#1C5472] transition hover:scale-105 hover:opacity-90 sq-btn-aqua">
                 Book a free consultation
               </Link>
               <Link href="/about" className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-7 py-3 font-bold text-white transition hover:bg-white/10">

@@ -105,7 +105,7 @@ export default function FreeCreditReportClaim() {
           </ul>
         </div>
 
-        <form onSubmit={onSubmit} className="rounded-2xl bg-white p-6 text-[#1C5472] shadow-[0_30px_70px_-25px_rgba(10,22,40,0.75)] sm:p-8">
+        <form onSubmit={onSubmit} className="rounded-2xl p-6 text-[#1C5472] sm:p-8 sq-card sq-edge">
           <p className="text-2xl font-bold leading-tight">Get your free report</p>
           <p className="mt-1 text-sm text-[#1C5472]/75">It takes a minute. Someone from our team calls within one business day.</p>
 

@@ -45,7 +45,7 @@ const isBrokers = team === "brokers";
                 </p>
               </>
             )}
-            <div className="mt-10 rounded-2xl bg-[#1C5472] px-6 py-10 text-white shadow-xl md:px-10 md:py-12">
+            <div className="mt-10 rounded-2xl px-6 py-10 text-white md:px-10 md:py-12 sq-panel">
               <h2 className="text-2xl font-bold md:text-3xl">Thanks — we&apos;ll be in touch soon.</h2>
               <p className="mt-3 text-lg text-white/95">
                 A member of our team will contact you shortly.
@@ -81,7 +81,7 @@ const isBrokers = team === "brokers";
               <Link href="/" className="inline-flex rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition hover:bg-[#1C5472]/10">
                 Back to Home
               </Link>
-              <Link href={isBrokers ? "/brokers" : "/assetsolutions"} className="inline-flex rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition hover:opacity-90">
+              <Link href={isBrokers ? "/brokers" : "/assetsolutions"} className="inline-flex rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition hover:opacity-90 sq-btn-blue">
                 {isBrokers ? "Home loans" : "Asset Solutions"}
               </Link>
             </div>
@@ -116,7 +116,7 @@ const isBrokers = team === "brokers";
           Someone from our team will be in touch within one business day.
         </p>
         {isHassan && (
-          <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-[#0A1628] p-8">
+          <div className="mx-auto mt-8 max-w-lg rounded-2xl p-8 sq-panel-navy">
             <div className="flex items-center gap-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#00FCB8] bg-[#1C5472] font-bold text-white">HA</span>
               <div>
@@ -131,13 +131,13 @@ const isBrokers = team === "brokers";
         )}
         {isHassan && <HomeLoanBooking tone="dark" className="mx-auto mt-6 w-full max-w-lg" />}
         {isSham && (
-          <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-[#0A1628] p-8">
+          <div className="mx-auto mt-8 max-w-lg rounded-2xl p-8 sq-panel-navy">
             <div className="flex items-center gap-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#00FCB8] bg-[#1C5472] font-bold text-white">SH</span>
               <div>
                 <p className="font-bold text-white">Sham</p>
                 <p className="text-sm text-[#39B2B2]">Frontline Financial Asset Solutions</p>
-                <span className="mt-1 inline-block rounded-full border border-[#00FCB8] px-2 py-0.5 text-xs text-[#00FCB8]">🏆 Fintelligence Award Winner FY25</span>
+                <span className="mt-1 inline-block rounded-md border border-[#00FCB8] px-2 py-0.5 text-xs text-[#00FCB8]">🏆 Fintelligence Award Winner FY25</span>
               </div>
             </div>
             <p className="mt-4 text-sm italic text-gray-400">
@@ -147,12 +147,12 @@ const isBrokers = team === "brokers";
         )}
         <div className="my-10 h-px w-full max-w-md bg-white/20" />
         <div className="flex flex-wrap justify-center gap-3">
-          <a href="tel:+61422959486" className="rounded-full bg-[#0A1628] px-5 py-2 text-sm text-white">📞 +61 422 959 486</a>
-          <a href="mailto:operations@frontline.financial" className="rounded-full bg-[#0A1628] px-5 py-2 text-sm text-white">📧 operations@frontline.financial</a>
-          <span className="rounded-full bg-[#0A1628] px-5 py-2 text-sm text-white">📍 Parramatta NSW 2150</span>
+          <a href="tel:+61422959486" className="rounded-md bg-[#0A1628] px-5 py-2 text-sm text-white">📞 +61 422 959 486</a>
+          <a href="mailto:operations@frontline.financial" className="rounded-md bg-[#0A1628] px-5 py-2 text-sm text-white">📧 operations@frontline.financial</a>
+          <span className="rounded-md bg-[#0A1628] px-5 py-2 text-sm text-white">📍 Parramatta NSW 2150</span>
         </div>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="/" className="inline-flex rounded-xl bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:scale-105 hover:shadow-lg">Back to Home</Link>
+          <Link href="/" className="inline-flex rounded-xl bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:scale-105 hover:shadow-lg sq-btn-aqua">Back to Home</Link>
           <Link href="/brokers" className="inline-flex rounded-xl border-2 border-white px-6 py-3 font-medium text-white transition hover:bg-white/10">Our Services</Link>
         </div>
         <p className="mt-10 text-center text-xs text-gray-400">While you wait, feel free to explore our services and see how we can help.</p>

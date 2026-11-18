@@ -203,7 +203,7 @@ function ThankYou({ result }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track("vf_privacy_click")}
-            className="group mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02]"
+            className="group mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] sq-btn-aqua"
           >
             Sign your privacy consent
             <ArrowIcon />
@@ -460,7 +460,7 @@ export default function AssessmentForm() {
     <>
       <div ref={cardRef} id="application" className="relative scroll-mt-3">
         <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#00FCB8] via-[#39B2B2] to-[#1C5472] opacity-70 blur-sm" aria-hidden />
-        <div className="relative rounded-3xl bg-white p-5 shadow-2xl md:p-8">
+        <div className="relative rounded-3xl p-5 md:p-8 sq-card sq-edge">
           {result ? (
             <ThankYou result={result} />
           ) : (
@@ -476,7 +476,7 @@ export default function AssessmentForm() {
               <div className="mt-3.5">
                 <div className="flex items-center justify-between text-xs font-bold text-[#1C5472]">
                   <span>{SECTIONS[step.section]} · Step {step.section + 1} of {SECTIONS.length}</span>
-                  <span className="rounded-full bg-[#00FCB8]/20 px-2 py-0.5 text-[#00614a]">2 min</span>
+                  <span className="rounded-md bg-[#00FCB8]/20 px-2 py-0.5 text-[#00614a]">2 min</span>
                 </div>
                 <div
                   className="mt-1.5 grid grid-cols-3 gap-1.5"
@@ -487,8 +487,8 @@ export default function AssessmentForm() {
                   aria-valuenow={stepIndex + 1}
                 >
                   {SECTIONS.map((label, i) => (
-                    <div key={label} className="h-1.5 overflow-hidden rounded-full bg-gray-200">
-                      <div className="h-full rounded-full bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300" style={{ width: `${sectionFill(i)}%` }} />
+                    <div key={label} className="h-1.5 overflow-hidden rounded-xs bg-gray-200">
+                      <div className="h-full rounded-xs bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300" style={{ width: `${sectionFill(i)}%` }} />
                     </div>
                   ))}
                 </div>
@@ -608,7 +608,7 @@ export default function AssessmentForm() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group mt-4 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait disabled:hover:scale-100"
+                      className="group mt-4 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait disabled:hover:scale-100 sq-btn-aqua"
                     >
                       {submitting ? (
                         <SendingUte message={SENDING_MESSAGES[sendingMsg]} messageKey={sendingMsg} />
@@ -636,7 +636,7 @@ export default function AssessmentForm() {
 
       {showSticky && !result && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#00FCB8]/30 bg-[#0A1628]/95 p-3 backdrop-blur md:hidden">
-          <a href="#application" className="flex w-full items-center justify-center rounded-lg bg-[#00FCB8] py-3.5 font-bold text-[#0A1628]">
+          <a href="#application" className="flex w-full items-center justify-center rounded-lg bg-[#00FCB8] py-3.5 font-bold text-[#0A1628] sq-btn-aqua">
             {started ? "Finish my free assessment" : "Get my free assessment"}
           </a>
         </div>

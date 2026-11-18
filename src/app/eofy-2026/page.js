@@ -87,7 +87,7 @@ function pad(n) {
 
 function CountdownCell({ value, label }) {
   return (
-    <div className="w-20 rounded-xl border border-[#00FCB8]/30 bg-white/5 px-2 py-4 md:w-24">
+    <div className="w-20 rounded-xl border border-[#00FCB8]/30 bg-white/5 px-2 py-4 md:w-24 sq-glass">
       <div className="text-3xl font-bold tabular-nums text-[#00FCB8] md:text-4xl">{value}</div>
       <div className="mt-1 text-[10px] font-bold uppercase tracking-widest text-[#39B2B2]">{label}</div>
     </div>
@@ -133,7 +133,7 @@ export default function Eofy2026Page() {
         <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#00FCB8] opacity-[0.08] blur-[100px]" aria-hidden />
         <div className="pointer-events-none absolute bottom-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[#39B2B2] opacity-[0.08] blur-[100px]" aria-hidden />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
+          <p className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8]/40 bg-[#00FCB8]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#00FCB8]">
             EOFY 2026 &middot; Asset Finance
           </p>
           <h1 className="mt-6 text-5xl font-bold leading-tight text-white md:text-6xl">
@@ -150,7 +150,7 @@ export default function Eofy2026Page() {
             <p className="mt-3 text-sm text-white/60">Until the end of the 2025&ndash;26 financial year</p>
           </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="tel:+61450553877" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href="tel:+61450553877" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua">
               Call Sham: 0450 553 877
             </a>
             <a href="mailto:sham@frontline.financial?subject=EOFY%202026%20asset%20finance%20enquiry" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
@@ -206,7 +206,7 @@ export default function Eofy2026Page() {
             {REASONS.map((reason) => (
               <article
                 key={reason.title}
-                className="flex flex-col rounded-xl border-t-[3px] border-[#39B2B2] bg-white p-6 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                className="flex flex-col rounded-xl border-t-[3px] border-t-[#39B2B2] p-6 transition-all duration-200 hover:-translate-y-1 sq-card"
               >
                 {reason.icon}
                 <h3 className="mt-4 text-xl font-bold text-[#1C5472]">{reason.title}</h3>
@@ -233,7 +233,7 @@ export default function Eofy2026Page() {
             {ASSET_TYPES.map((type) => (
               <span
                 key={type}
-                className="rounded-full border border-[#39B2B2]/60 bg-white/5 px-5 py-2.5 text-sm font-medium text-white"
+                className="rounded-md border border-[#39B2B2]/60 bg-white/5 px-5 py-2.5 text-sm font-medium text-white sq-glass"
               >
                 {type}
               </span>
@@ -257,7 +257,7 @@ export default function Eofy2026Page() {
             Get in touch with Sham today to discuss what&apos;s possible before 30 June.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="tel:+61450553877" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href="tel:+61450553877" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Call Sham: 0450 553 877
             </a>
             <a href="mailto:sham@frontline.financial?subject=EOFY%202026%20asset%20finance%20enquiry" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

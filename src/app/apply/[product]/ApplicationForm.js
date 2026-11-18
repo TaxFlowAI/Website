@@ -457,7 +457,7 @@ export default function ApplicationForm({ slug }) {
       <div className="min-w-0">
         <div ref={cardRef} className="relative scroll-mt-20">
         <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#00FCB8] via-[#39B2B2] to-[#1C5472] opacity-70 blur-sm" aria-hidden />
-        <div className="relative min-h-[420px] rounded-3xl bg-white p-6 shadow-2xl md:p-8">
+        <div className="relative min-h-[420px] rounded-3xl p-6 md:p-8 sq-card sq-edge">
           {submitted ? (
             <div className="py-6 text-center">
               <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#00FCB8]/15">
@@ -498,7 +498,7 @@ export default function ApplicationForm({ slug }) {
                     href={privacy.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] transition hover:scale-[1.02]"
+                    className="mt-4 flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] transition hover:scale-[1.02] sq-btn-aqua"
                   >
                     Sign your privacy consent
                   </a>
@@ -546,9 +546,9 @@ export default function ApplicationForm({ slug }) {
                   aria-valuenow={Math.round(progress)}
                 >
                   {sectionLabels.map((label, i) => (
-                    <div key={label} className="h-1.5 overflow-hidden rounded-full bg-gray-200">
+                    <div key={label} className="h-1.5 overflow-hidden rounded-xs bg-gray-200">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300"
+                        className="h-full rounded-xs bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300"
                         style={{ width: `${sectionFill(i)}%` }}
                       />
                     </div>
@@ -758,7 +758,7 @@ export default function ApplicationForm({ slug }) {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="mt-5 flex w-full items-center justify-center gap-3 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait disabled:hover:scale-100"
+                      className="mt-5 flex w-full items-center justify-center gap-3 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait disabled:hover:scale-100 sq-btn-aqua"
                     >
                       {submitting ? (
                         <>
@@ -794,7 +794,7 @@ export default function ApplicationForm({ slug }) {
 
       {showSticky && !submitted && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#00FCB8]/30 bg-[#0A1628]/95 p-3 backdrop-blur md:hidden">
-          <a href="#application" className="flex w-full items-center justify-center rounded-lg bg-[#00FCB8] py-3.5 font-bold text-[#0A1628]">
+          <a href="#application" className="flex w-full items-center justify-center rounded-lg bg-[#00FCB8] py-3.5 font-bold text-[#0A1628] sq-btn-aqua">
             {summaryRows.length > 1 ? "Continue your application" : "Start your application"}
           </a>
         </div>

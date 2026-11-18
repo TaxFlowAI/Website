@@ -276,7 +276,7 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12">
           {/* FORM */}
           <div>
-            <div className="rounded-2xl bg-white p-6 shadow-[0_14px_36px_-18px_rgba(10,22,40,0.35)] sm:p-8">
+            <div className="rounded-2xl p-6 sm:p-8 sq-card sq-edge">
               <h2 className="text-2xl font-bold text-[#1C5472]">Send us a message</h2>
               <p className="mt-1 text-sm text-[#1C5472]/85">
                 Tell us a little about what you need and someone from our team will contact you within one business day.
@@ -398,7 +398,7 @@ export default function ContactPage() {
                           type="button"
                           aria-pressed={services.includes(s)}
                           onClick={() => toggleService(s)}
-                          className={`rounded-full px-4 py-2 text-sm transition ${FOCUS} ${
+                          className={`rounded-md px-4 py-2 text-sm transition ${FOCUS} ${
                             services.includes(s)
                               ? "border border-[#00FCB8] bg-[#00FCB8] font-bold text-[#0A1628]"
                               : "border border-[#1C5472]/40 bg-white text-[#1C5472] hover:border-[#1C5472]"
@@ -436,7 +436,7 @@ export default function ContactPage() {
                         type="button"
                         aria-pressed={preferredContact === opt.key}
                         onClick={() => setPreferredContact(opt.key)}
-                        className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${FOCUS} ${
+                        className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm transition ${FOCUS} ${
                           preferredContact === opt.key
                             ? "bg-[#00FCB8] font-medium text-[#0A1628]"
                             : "border border-[#1C5472]/40 bg-white text-[#1C5472] hover:border-[#1C5472]"
@@ -489,7 +489,7 @@ export default function ContactPage() {
 
           {/* OFFICE PANEL (sticky): address, hours, meeting options, reviews */}
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl bg-[#1C5472] p-6 text-white shadow-[0_14px_36px_-18px_rgba(10,22,40,0.45)] sm:p-7">
+            <div className="rounded-2xl p-6 text-white sm:p-7 sq-panel">
               <h2 className="text-xl font-bold">Office and hours</h2>
 
               <div className="mt-5 flex gap-3">

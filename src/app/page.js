@@ -171,7 +171,7 @@ export default function Home() {
               <span className="mt-3 block text-4xl leading-[1.1] sm:mt-4 sm:text-6xl xl:text-7xl">Finance made simple.</span>
             </h1>
             <p className="mt-3 text-4xl font-bold sm:mt-4 sm:text-6xl xl:text-7xl">
-              <span className="hero-highlight-gradient inline-block rounded-3xl px-5 py-3 leading-[1.15] text-[#00FCB8] shadow-lg shadow-[#1C5472]/30">
+              <span className="hero-highlight-gradient inline-block rounded-3xl px-5 py-3 leading-[1.15] text-[#00FCB8]">
                 For every single Australian.
               </span>
             </p>
@@ -185,7 +185,7 @@ export default function Home() {
           </div>
           <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
             {/* proof first: a stranger needs a reason to trust us before they tap anything */}
-            <dl className="hero-highlight-gradient grid divide-y divide-white/15 rounded-2xl text-left text-white shadow-lg shadow-[#1C5472]/30 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-1 lg:divide-x-0 lg:divide-y xl:grid-cols-3 xl:divide-x xl:divide-y-0">
+            <dl className="hero-highlight-gradient grid divide-y divide-white/15 rounded-2xl text-left text-white sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-1 lg:divide-x-0 lg:divide-y xl:grid-cols-3 xl:divide-x xl:divide-y-0">
               <div className="flex min-w-0 flex-col justify-center p-4">
                 <dt className="flex gap-0.5 text-[#FFD700]" aria-label="5 out of 5 stars">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -342,7 +342,7 @@ export default function Home() {
               </p>
             </div>
             {/* the big number */}
-            <div id="review-count" className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm">
+            <div id="review-count" className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm sq-glass">
               <div className="flex justify-center gap-1" aria-hidden>
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg key={i} className="h-7 w-7 text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.6)] md:h-8 md:w-8" fill="currentColor" viewBox="0 0 20 20">
@@ -370,7 +370,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative mt-10 flex items-center gap-2 md:gap-4">
-            <button type="button" onClick={() => setReviewIndex((i) => (i - 1 + GOOGLE_REVIEWS.length) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-full bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Previous reviews">
+            <button type="button" onClick={() => setReviewIndex((i) => (i - 1 + GOOGLE_REVIEWS.length) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-md bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Previous reviews">
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
             <div className="min-w-0 flex-1 overflow-hidden">
@@ -380,7 +380,7 @@ export default function Home() {
               >
                 {[...GOOGLE_REVIEWS, GOOGLE_REVIEWS[0], GOOGLE_REVIEWS[1]].map((review, i) => (
                   <div key={i} className="w-full flex-shrink-0 px-1.5 md:w-1/2 lg:w-1/3">
-                    <div className="rounded-xl bg-white p-4 text-[#1C5472] shadow-md md:p-5 lg:p-6">
+                    <div className="rounded-xl p-4 text-[#1C5472] md:p-5 lg:p-6 sq-card">
                       <div className="flex gap-0.5 text-[#FFD700]">
                         {Array.from({ length: review.stars }).map((_, j) => (
                           <svg key={j} className="h-4 w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -400,7 +400,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button type="button" onClick={() => setReviewIndex((i) => (i + 1) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-full bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Next reviews">
+            <button type="button" onClick={() => setReviewIndex((i) => (i + 1) % GOOGLE_REVIEWS.length)} className="shrink-0 rounded-md bg-white/20 p-2.5 text-white transition hover:bg-white/30" aria-label="Next reviews">
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
@@ -475,7 +475,7 @@ export default function Home() {
                 href="https://fintelligence.com.au/customer-success-story-frontline-financial-group/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sq-btn-aqua"
               >
                 Read the full article
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
@@ -522,7 +522,7 @@ export default function Home() {
                 href={GOOGLE_REVIEW_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sq-btn-aqua"
               >
                 <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
                 Find us on Google
@@ -590,7 +590,7 @@ export default function Home() {
         </div>
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           {/* Badge: + in lime green, "Introducing TaxFlowAI" in white, thin outline */}
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#0A1628]/80 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+          <p className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-[#0A1628]/80 px-4 py-2 text-sm font-medium backdrop-blur-sm">
             <span className="text-[#00FCB8]" aria-hidden>+</span>
             <span className="text-white">Introducing TaxFlowAI</span>
           </p>
@@ -605,7 +605,7 @@ export default function Home() {
           </p>
           {/* Feature cards — rounded outlines, distinct icon colors like TaxFlowAI hero */}
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10 sq-glass">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
                 <svg className="h-6 w-6 text-white/90" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
@@ -613,7 +613,7 @@ export default function Home() {
               </span>
               <span className="font-medium text-white">Track Lodgements</span>
             </div>
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10 sq-glass">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-amber-500/20">
                 <svg className="h-6 w-6 text-amber-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
@@ -621,7 +621,7 @@ export default function Home() {
               </span>
               <span className="font-medium text-white">Manage Documents</span>
             </div>
-            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10">
+            <div className="flex items-center gap-4 rounded-xl border border-white/20 bg-white/5 px-5 py-4 text-left shadow-lg backdrop-blur-sm transition hover:border-[#00FCB8]/30 hover:bg-white/10 sq-glass">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-violet-500/20">
                 <svg className="h-6 w-6 text-violet-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -633,7 +633,7 @@ export default function Home() {
           <div className="mt-12">
             <Link
               href="/taxflow"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-10 py-4 text-lg font-bold text-white shadow-[0_0_30px_rgba(0,252,184,0.25)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,252,184,0.35)]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00FCB8] px-10 py-4 text-lg font-bold text-white shadow-[0_0_30px_rgba(0,252,184,0.25)] transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,252,184,0.35)] sq-btn-aqua"
             >
               Explore TaxFlowAI
               <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

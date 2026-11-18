@@ -111,7 +111,7 @@ function ReviewsAndOffice() {
         <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
           {REVIEWS.map((review) => (
             <li key={review.name} className="w-[82%] shrink-0 snap-center sm:w-[46%] md:w-auto">
-              <figure className="flex h-full flex-col rounded-2xl bg-white p-5 text-[#1C5472] shadow-md">
+              <figure className="flex h-full flex-col rounded-2xl p-5 text-[#1C5472] sq-card">
                 <Stars />
                 <blockquote className="mt-3 flex-1 leading-relaxed">&ldquo;{review.text}&rdquo;</blockquote>
                 <figcaption className="mt-3 text-sm font-bold">{review.name}, Google review</figcaption>

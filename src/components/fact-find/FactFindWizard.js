@@ -192,13 +192,13 @@ export default function FactFindWizard({ contact = {} }) {
       <div className="min-h-screen bg-[#0A1628] font-sans text-white">
         <LayoutNav activeNav="calculators" />
         <section className="px-4 py-20 md:px-6 md:py-28 lg:px-8">
-          <div className="mx-auto max-w-xl rounded-2xl border border-[#00FCB8]/30 bg-[#1C5472] p-8 text-center">
+          <div className="mx-auto max-w-xl rounded-2xl border border-[#00FCB8]/30 p-8 text-center sq-panel">
             <h1 className="text-2xl font-bold text-[#00FCB8] md:text-3xl">You&apos;re all set.</h1>
             <p className="mt-3 text-white/90">
               We&apos;ve saved your details. A member of our team will be in touch to discuss your home loan — no obligation, no cost to you.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link href="/" className="rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90">Back to Home</Link>
+              <Link href="/" className="rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">Back to Home</Link>
               <a href="tel:+61422959486" className="rounded-lg border-2 border-[#00FCB8] px-6 py-3 font-bold text-[#00FCB8] transition hover:bg-[#00FCB8]/10">Call us</a>
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function FactFindWizard({ contact = {} }) {
                 key={s.id}
                 type="button"
                 onClick={() => setStep(s.id)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                className={`rounded-md px-4 py-2 text-sm font-medium transition ${
                   step === s.id ? "bg-[#00FCB8] text-[#0A1628]" : "bg-white/10 text-white/80 hover:bg-white/20"
                 }`}
               >
@@ -244,7 +244,7 @@ export default function FactFindWizard({ contact = {} }) {
       <section className="px-4 py-10 md:px-6 md:py-14 lg:px-8">
         <form onSubmit={handleSubmit} className="mx-auto max-w-2xl">
           {step === 1 && (
-            <div className="space-y-6 rounded-2xl border border-white/10 bg-[#111827] p-6 md:p-8">
+            <div className="space-y-6 rounded-2xl p-6 md:p-8 sq-panel-navy">
               <h2 className="text-xl font-bold text-[#00FCB8]">Step 1 — Loan requirements</h2>
               <p className="text-sm text-white/70">Tell us what you&apos;re looking for. We&apos;ll use this to match you with the right options.</p>
               <div>
@@ -318,7 +318,7 @@ export default function FactFindWizard({ contact = {} }) {
           )}
 
           {step === 2 && (
-            <div className="space-y-8 rounded-2xl border border-white/10 bg-[#111827] p-6 md:p-8">
+            <div className="space-y-8 rounded-2xl p-6 md:p-8 sq-panel-navy">
               <h2 className="text-xl font-bold text-[#00FCB8]">Step 2 — Applicant details</h2>
               <p className="text-sm text-white/70">Who&apos;s applying? Add a second applicant if it&apos;s a joint application.</p>
               <label className="flex items-center gap-3">
@@ -442,7 +442,7 @@ export default function FactFindWizard({ contact = {} }) {
           )}
 
           {step === 3 && (
-            <div className="space-y-8 rounded-2xl border border-white/10 bg-[#111827] p-6 md:p-8">
+            <div className="space-y-8 rounded-2xl p-6 md:p-8 sq-panel-navy">
               <h2 className="text-xl font-bold text-[#00FCB8]">Step 3 — Employment & income</h2>
               <p className="text-sm text-white/70">We need this for both applicants. Income figures: annual, gross.</p>
               {[0, 1].map((i) => (!twoApplicants && i === 1 ? null : (
@@ -497,7 +497,7 @@ export default function FactFindWizard({ contact = {} }) {
           )}
 
           {step === 4 && (
-            <div className="space-y-6 rounded-2xl border border-white/10 bg-[#111827] p-6 md:p-8">
+            <div className="space-y-6 rounded-2xl p-6 md:p-8 sq-panel-navy">
               <h2 className="text-xl font-bold text-[#00FCB8]">Step 4 — Assets</h2>
               <p className="text-sm text-white/70">Property, savings, super, vehicles — anything you own that we should know about.</p>
               <div className="rounded-lg border border-dashed border-white/20 p-6 text-center text-white/60">
@@ -508,7 +508,7 @@ export default function FactFindWizard({ contact = {} }) {
           )}
 
           {step === 5 && (
-            <div className="space-y-6 rounded-2xl border border-white/10 bg-[#111827] p-6 md:p-8">
+            <div className="space-y-6 rounded-2xl p-6 md:p-8 sq-panel-navy">
               <h2 className="text-xl font-bold text-[#00FCB8]">Step 5 — Liabilities</h2>
               <p className="text-sm text-white/70">Existing loans, credit cards, HECS — so we can see the full picture.</p>
               <div className="rounded-lg border border-dashed border-white/20 p-6 text-center text-white/60">
@@ -534,11 +534,11 @@ export default function FactFindWizard({ contact = {} }) {
               Back
             </button>
             {step < 5 ? (
-              <button type="button" onClick={goNext} className="rounded-lg bg-[#00FCB8] px-6 py-2.5 font-bold text-[#0A1628] transition hover:opacity-90">
+              <button type="button" onClick={goNext} className="rounded-lg bg-[#00FCB8] px-6 py-2.5 font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
                 Next step
               </button>
             ) : (
-              <button type="submit" disabled={saving} className="rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90 disabled:opacity-70">
+              <button type="submit" disabled={saving} className="rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition hover:opacity-90 disabled:opacity-70 sq-btn-aqua">
                 {saving ? "Saving…" : "Submit fact find"}
               </button>
             )}

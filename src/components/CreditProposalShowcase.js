@@ -56,7 +56,7 @@ function SamplePage() {
         <div className="flex items-center justify-between gap-3 border-b border-[#1C5472]/10 pb-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logos/frontline-logo.svg" alt="Frontline Financial" width={126} height={32} className="h-7 w-auto" loading="lazy" />
-          <span className="rounded-full bg-[#1C5472] px-2.5 py-1 text-[11px] font-bold tracking-wide text-white">Sample</span>
+          <span className="rounded-md bg-[#1C5472] px-2.5 py-1 text-[11px] font-bold tracking-wide text-white">Sample</span>
         </div>
 
         <h3 className="mt-4 text-xl font-bold sm:text-2xl">Our recommendation</h3>
@@ -164,7 +164,7 @@ export default function CreditProposalShowcase({ ctaHref, ctaLabel, tone = "dark
           {ctaHref && (
             <Link
               href={ctaHref}
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto"
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua"
             >
               {ctaLabel}
               <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>

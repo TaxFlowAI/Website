@@ -142,7 +142,7 @@ const ORG_SCHEMA = {
 export default function TaxFlowLayout({ children }) {
   return (
     <div
-      className={`${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`taxflow-site ${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
       style={{ fontFamily: "var(--font-body-tf), system-ui, sans-serif" }}
     >
       <script

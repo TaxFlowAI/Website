@@ -41,7 +41,7 @@ export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLab
             loading="lazy"
             className="h-auto w-full"
           />
-          <span className="absolute left-0 top-3 rotate-[-8deg] rounded-full bg-[#00FCB8] px-4 py-2 text-sm font-bold text-[#0A1628]">Free*</span>
+          <span className="absolute left-0 top-3 rotate-[-8deg] rounded-md bg-[#00FCB8] px-4 py-2 text-sm font-bold text-[#0A1628]">Free*</span>
         </div>
         <div>
           <h2 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-5xl">
@@ -63,7 +63,7 @@ export default function FreeCreditReportOffer({ ctaHref = "#application", ctaLab
           </ul>
           <a
             href={ctaHref}
-            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua"
           >
             {ctaLabel}
           </a>

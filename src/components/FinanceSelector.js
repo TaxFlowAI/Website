@@ -58,7 +58,7 @@ const COLUMNS = 3;
 const TABS = [...APPLICATION_LIST, { slug: "not-sure", tab: "Not sure" }];
 
 const ROW_CLASS =
-  "group flex min-h-12 items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 text-[15px] font-bold text-[#1C5472] transition-colors duration-150 hover:bg-[#00FCB8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FCB8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C5472]";
+  "sq-row group flex min-h-12 items-center justify-between gap-3 rounded-xl px-4 py-3 text-[15px] font-bold text-[#1C5472] transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FCB8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C5472]";
 
 const Arrow = () => (
   <svg className="h-5 w-5 shrink-0 text-[#39B2B2] transition-[transform,color] duration-200 group-hover:translate-x-1 group-hover:text-[#1C5472]" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
@@ -104,13 +104,13 @@ export default function FinanceSelector({ headingLevel: Heading = "h2" }) {
   const rowProps = (i) => (switched ? { className: "finance-row-in", style: { animationDelay: `${i * 35}ms` } } : {});
 
   return (
-    <div className="hero-highlight-gradient relative overflow-hidden rounded-3xl text-left shadow-[0_28px_60px_-24px_rgba(28,84,114,0.7)]">
+    <div className="hero-highlight-gradient sq-edge relative overflow-hidden rounded-3xl text-left">
       <div className="relative z-10 p-5 pb-4 sm:p-7 sm:pb-5">
         <Heading className="text-2xl font-bold tracking-tight text-white sm:text-3xl">What are you financing?</Heading>
 
-        <div role="tablist" aria-label="Type of finance" className="relative mt-4 grid grid-cols-3 grid-rows-2 rounded-2xl bg-[#0E2E40]/70 p-1" onKeyDown={onTabKeyDown}>
+        <div role="tablist" aria-label="Type of finance" className="relative mt-4 grid grid-cols-3 grid-rows-2 rounded-2xl border border-white/10 bg-[#0E2E40]/70 p-1" onKeyDown={onTabKeyDown}>
           <span
-            className="finance-tab-indicator absolute left-1 top-1 h-[calc((100%-0.5rem)/2)] w-[calc((100%-0.5rem)/3)] rounded-xl bg-[#00FCB8]"
+            className="finance-tab-indicator absolute left-1 top-1 h-[calc((100%-0.5rem)/2)] w-[calc((100%-0.5rem)/3)] rounded-xl sq-btn-aqua"
             style={{ transform: `translate(${(active % COLUMNS) * 100}%, ${Math.floor(active / COLUMNS) * 100}%)` }}
             aria-hidden
           />

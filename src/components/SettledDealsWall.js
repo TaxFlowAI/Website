@@ -82,7 +82,7 @@ export default function SettledDealsWall({ heading, intro, ctaHref, ctaLabel }) 
         {ctaHref && (
           <a
             href={ctaHref}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua"
           >
             {ctaLabel}
             <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
@@ -94,7 +94,7 @@ export default function SettledDealsWall({ heading, intro, ctaHref, ctaLabel }) 
           type="button"
           onClick={() => setPaused((p) => !p)}
           aria-pressed={paused}
-          className="deals-pause inline-flex items-center justify-center gap-2 self-center rounded-full border border-[#1C5472]/30 px-4 py-2 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#1C5472]/5 sm:self-auto"
+          className="deals-pause inline-flex items-center justify-center gap-2 self-center rounded-md border border-[#1C5472]/30 px-4 py-2 text-sm font-bold text-[#1C5472] transition-colors hover:bg-[#1C5472]/5 sm:self-auto"
         >
           {paused ? (
             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden><path d="M8 5v14l11-7z" /></svg>

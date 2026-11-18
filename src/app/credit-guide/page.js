@@ -154,7 +154,7 @@ export default function CreditGuidePage() {
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3 md:grid-cols-4">
             {LENDERS_PANEL.map((name) => (
-              <span key={name} className="rounded-lg border border-white/[0.08] bg-[#111827] px-3 py-2 text-[#9CA3AF]">
+              <span key={name} className="rounded-lg px-3 py-2 text-[#9CA3AF] sq-panel-navy">
                 {name}
               </span>
             ))}
@@ -352,7 +352,7 @@ export default function CreditGuidePage() {
               <p className="mt-2 text-sm text-[#9CA3AF] leading-relaxed">
                 If the issue is not satisfactorily resolved within 5 working days by talking with Hassan, we will apply our internal complaints process to manage your complaint appropriately. In this instance, the complaint will be internally escalated to our Complaints Officer. You may also contact the Complaints Officer directly.
               </p>
-              <dl className="mt-4 space-y-2 rounded-lg border border-white/[0.08] bg-[#0A1628] p-4 text-sm">
+              <dl className="mt-4 space-y-2 rounded-lg p-4 text-sm sq-panel-navy">
                 <div><dt className="text-[#9CA3AF]">Name</dt><dd className="text-white">Complaints Manager</dd></div>
                 <div><dt className="text-[#9CA3AF]">Phone</dt><dd><a href="tel:0894207888" className="text-white hover:text-[#00FCB8]">08 9420 7888</a></dd></div>
                 <div><dt className="text-[#9CA3AF]">Email</dt><dd><a href="mailto:compliance@afgonline.com.au" className="text-white hover:text-[#00FCB8]">compliance@afgonline.com.au</a></dd></div>
@@ -370,7 +370,7 @@ export default function CreditGuidePage() {
               <p className="mt-2 text-sm text-[#9CA3AF] leading-relaxed">
                 The Australian Securities and Investments Commission external dispute resolution (EDR) process is available to you, at no cost at the contact details below.
               </p>
-              <dl className="mt-4 space-y-2 rounded-lg border border-white/[0.08] bg-[#0A1628] p-4 text-sm">
+              <dl className="mt-4 space-y-2 rounded-lg p-4 text-sm sq-panel-navy">
                 <div><dt className="text-[#9CA3AF]">Name</dt><dd className="text-white">AFCA (Australian Financial Complaints Authority)</dd></div>
                 <div><dt className="text-[#9CA3AF]">Phone</dt><dd><a href="tel:1800931678" className="text-white hover:text-[#00FCB8]">1800 931 678</a></dd></div>
                 <div><dt className="text-[#9CA3AF]">Email</dt><dd><a href="mailto:info@afca.org.au" className="text-white hover:text-[#00FCB8]">info@afca.org.au</a></dd></div>
@@ -382,7 +382,7 @@ export default function CreditGuidePage() {
         </Section>
 
         <div className="mt-12 flex flex-wrap gap-4 print:hidden">
-          <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90">
+          <Link href="/brokers" className="inline-flex rounded-lg bg-[#00FCB8] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition hover:opacity-90 sq-btn-aqua">
             Back to Brokers
           </Link>
           <Link href="/" className="inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10">

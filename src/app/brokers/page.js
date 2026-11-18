@@ -83,7 +83,7 @@ export default function BrokersPage() {
             Independent mortgage brokers at Parramatta Square who search 30+ lenders to find the right loan for your situation — at no cost to you.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/contact?team=hassan" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href="/contact?team=hassan" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
@@ -114,7 +114,7 @@ export default function BrokersPage() {
             </a>
           </div>
           <p className="mt-6 text-sm italic text-[#39B2B2]">We work for you — not the banks.</p>
-          <a href="/self-employed-home-loans" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#00FCB8] bg-[#00FCB8]/10 px-5 py-2 text-sm font-bold text-[#00FCB8] transition-colors hover:bg-[#00FCB8] hover:text-[#1C5472]">
+          <a href="/self-employed-home-loans" className="mt-8 inline-flex items-center gap-2 rounded-md border border-[#00FCB8] bg-[#00FCB8]/10 px-5 py-2 text-sm font-bold text-[#00FCB8] transition-colors hover:bg-[#00FCB8] hover:text-[#1C5472]">
             Self-employed? See how we help business owners buy
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </a>
@@ -151,7 +151,7 @@ export default function BrokersPage() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-xl border-l-4 border-[#39B2B2] bg-white p-6 shadow-md">
+            <div className="rounded-xl border-l-4 border-l-[#39B2B2] p-6 sq-card">
               <h3 className="text-lg font-bold text-[#1C5472]">What we actually do for you</h3>
               <ul className="mt-4 space-y-3">
                 {["Access to 30+ lenders and hundreds of products", "We're legally obligated to act in your best interest", "Tailored to your exact situation", "We handle everything end to end", "Clear next steps, in plain English"].map((item) => (
@@ -228,7 +228,7 @@ export default function BrokersPage() {
                   href={card.href}
                   className="group relative flex flex-col gap-6 rounded-xl border-2 border-[#00FCB8] bg-[#00FCB8]/10 p-6 transition-all duration-200 hover:bg-[#00FCB8]/20 sm:col-span-2 md:flex-row md:items-center lg:col-span-4"
                 >
-                  <span className="absolute right-4 top-4 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
+                  <span className="absolute right-4 top-4 rounded-md bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
                     {card.tag}
                   </span>
                   <LoanIcon type={card.icon} className="h-12 w-12 flex-shrink-0 text-[#00FCB8]" />
@@ -244,9 +244,9 @@ export default function BrokersPage() {
               ) : (
                 <article
                   key={card.title}
-                  className="relative rounded-xl border-2 border-[#39B2B2] bg-[#1C5472] p-6 transition-all duration-200 hover:scale-105 hover:border-[#00FCB8]"
+                  className="relative rounded-xl border-2 border-[#39B2B2] p-6 transition-all duration-200 hover:scale-105 hover:border-[#00FCB8] sq-panel"
                 >
-                  <span className="absolute right-4 top-4 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
+                  <span className="absolute right-4 top-4 rounded-md bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
                     {card.tag}
                   </span>
                   <LoanIcon type={card.icon} />
@@ -392,7 +392,7 @@ export default function BrokersPage() {
             We work for you. Not the bank. Not the lender. You. Book a free assessment and find out exactly what you qualify for — at no cost, no obligation.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/contact?team=hassan" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href="/contact?team=hassan" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

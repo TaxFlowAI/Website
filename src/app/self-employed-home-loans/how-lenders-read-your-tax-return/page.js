@@ -137,13 +137,13 @@ function Line({ label, value, add = false }) {
 
 function LenderExample() {
   return (
-    <figure className="my-10 overflow-hidden rounded-2xl bg-white shadow-lg">
+    <figure className="my-10 overflow-hidden rounded-2xl sq-card">
       <div className="flex items-start justify-between gap-4 bg-[#1C5472] px-6 py-5">
         <div>
           <p className="font-bold uppercase tracking-wider text-white">How lenders read it</p>
           <p className="mt-1 text-sm text-[#bfe3df]">Same tax return, two different lenders</p>
         </div>
-        <span className="shrink-0 rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-bold tracking-wider text-[#1C5472]">
+        <span className="shrink-0 rounded-md bg-[#00FCB8] px-3 py-1 text-xs font-bold tracking-wider text-[#1C5472]">
           ILLUSTRATIVE
         </span>
       </div>
@@ -252,11 +252,11 @@ export default function TaxReturnArticlePage() {
                   Filmed at Parramatta Lanes, Saturday 24 October 2026.
                 </figcaption>
               </figure>
-              <div className="mt-6 hidden rounded-xl bg-[#1C5472] p-5 text-center lg:block">
+              <div className="mt-6 hidden rounded-xl p-5 text-center lg:block sq-panel">
                 <p className="font-bold text-white">Self-employed and buying?</p>
                 <a
                   href={CONSULT_HREF}
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90 sq-btn-aqua"
                 >
                   Get a Free Assessment
                 </a>
@@ -362,7 +362,7 @@ export default function TaxReturnArticlePage() {
             things are at.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

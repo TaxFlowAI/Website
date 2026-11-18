@@ -60,7 +60,7 @@ export default function LayoutNav({ activeNav = "home" }) {
                           <span>{svc.label}</span>
                           <span className="flex shrink-0 items-center gap-2">
                             {isHovered && (
-                              <span className="flex items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 text-xs font-semibold text-white">
+                              <span className="flex items-center gap-1 rounded-md bg-white/20 px-2 py-0.5 text-xs font-semibold text-white">
                                 Learn more
                                 <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                               </span>
@@ -89,7 +89,7 @@ export default function LayoutNav({ activeNav = "home" }) {
             <Link href="/financial-calculators" className={linkClass(activeNav === "calculators")}>Financial Calculators</Link>
             <Link href="/contact" className={linkClass(activeNav === "contact")}>Contact</Link>
           </div>
-          <Link href="/contact" className="shrink-0 rounded-lg bg-[#00FCB8] px-4 py-2.5 text-sm font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90">Book a Consultation</Link>
+          <Link href="/contact" className="shrink-0 rounded-lg bg-[#00FCB8] px-4 py-2.5 text-sm font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sq-btn-aqua">Book a Consultation</Link>
           <button type="button" className="inline-flex items-center justify-center rounded-lg p-2 text-[#1C5472] lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
@@ -106,7 +106,7 @@ export default function LayoutNav({ activeNav = "home" }) {
               <Link href="/about" className={`py-2 font-medium ${activeNav === "about" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>About Us</Link>
               <Link href="/financial-calculators" className={`py-2 font-medium ${activeNav === "calculators" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Financial Calculators</Link>
               <Link href="/contact" className={`py-2 font-medium ${activeNav === "contact" ? "text-[#00FCB8]" : "text-[#1C5472]"}`} onClick={() => setMobileMenuOpen(false)}>Contact</Link>
-              <Link href="/contact" className="mt-2 rounded-lg bg-[#00FCB8] py-3 text-center font-bold text-[#1C5472] transition-all duration-200 hover:scale-105" onClick={() => setMobileMenuOpen(false)}>Book a Consultation</Link>
+              <Link href="/contact" className="mt-2 rounded-lg bg-[#00FCB8] py-3 text-center font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 sq-btn-aqua" onClick={() => setMobileMenuOpen(false)}>Book a Consultation</Link>
             </div>
           </div>
         )}

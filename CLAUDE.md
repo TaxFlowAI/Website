@@ -25,6 +25,13 @@ live, so push only with the user's OK.
 - Tokens are in `src/app/globals.css`: dark blue #1C5472, teal #39B2B2, aqua #00FCB8. The off-white here is #F5F5EF;
   the guide's is #F6F8F2.
 - Components: `FrontlineLogoFull.js`, `FrontlineLogoMark.js` and `WaveDivider.js` in `src/components/`.
+- Square theme (Hassan, 18 Nov 2026, matching the TaxFlowAI portal): every `rounded-*` class is 4px (set in
+  `globals.css`), so corners are square without thinking about it. `rounded-full` is only for photos, dots and step
+  numbers, never a padded label or button. Surfaces use the classes there: `sq-card` (white card), `sq-panel` (dark
+  blue), `sq-panel-navy`, `sq-glass` (box on a coloured section), `sq-btn-aqua` and `sq-btn-blue` (gradient buttons),
+  `sq-row` (white choice row on a dark panel) and `sq-edge` (the fading aqua line down the left of the panels people
+  act in: the finance selector and form cards). They bring their own gradient, hairline border and shadow, so don't
+  add `bg-white`, `shadow-*` or a plain `border` next to them. `/taxflow` keeps Tailwind's default radii.
 - Licence wording is on the credit-guide and calculator-disclaimer pages. Quote it exactly as the marketing
   `CLAUDE.md` gives it.
 

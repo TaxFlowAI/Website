@@ -138,7 +138,7 @@ export default function AssetSolutionsPage() {
             Your award-winning asset finance broker in Parramatta, for car loans, equipment finance and fleet solutions for everyday Australians and growing businesses.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-8 py-4 text-lg font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-aqua">
               Get your free assessment
             </Link>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 sm:w-auto">
@@ -181,12 +181,12 @@ export default function AssetSolutionsPage() {
             {FINANCE_CARDS.map((card) => (
               <article
                 key={card.title}
-                className="flex flex-col rounded-xl border-t-[3px] border-[#39B2B2] bg-white p-6 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                className="flex flex-col rounded-xl border-t-[3px] border-t-[#39B2B2] p-6 transition-all duration-200 hover:-translate-y-1 sq-card"
               >
                 <div className="flex items-start gap-4">
                   {card.icon}
                   <div className="min-w-0 flex-1">
-                    <span className="inline-block rounded-full bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
+                    <span className="inline-block rounded-md bg-[#00FCB8] px-3 py-1 text-xs font-medium text-[#1C5472]">
                       {card.tag}
                     </span>
                     <h3 className="mt-3 text-xl font-bold text-[#1C5472]">{card.title}</h3>
@@ -337,7 +337,7 @@ export default function AssetSolutionsPage() {
                 href="https://fintelligence.com.au/customer-success-story-frontline-financial-group/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sq-btn-aqua"
               >
                 Read the full article
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
@@ -370,7 +370,7 @@ export default function AssetSolutionsPage() {
                 single one gave us five stars.
               </p>
             </div>
-            <div className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/25 bg-white/10 px-10 py-8 text-center shadow-[0_20px_60px_-20px_rgba(10,22,40,0.5)] backdrop-blur-sm sq-glass">
               <div className="flex justify-center gap-1" aria-hidden>
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg key={i} className="h-7 w-7 text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]" fill="currentColor" viewBox="0 0 20 20">
@@ -397,7 +397,7 @@ export default function AssetSolutionsPage() {
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {ASSET_REVIEWS.map((review) => (
-              <figure key={review.name} className="rounded-xl bg-white p-5 text-[#1C5472] shadow-md md:p-6">
+              <figure key={review.name} className="rounded-xl p-5 text-[#1C5472] md:p-6 sq-card">
                 <div className="flex gap-0.5 text-[#FFD700]" aria-label="5 out of 5 stars">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <svg key={i} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
@@ -442,7 +442,7 @@ export default function AssetSolutionsPage() {
                 href={GOOGLE_REVIEW_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#0A1628] transition-all duration-200 hover:scale-105 hover:opacity-90 sq-btn-aqua"
               >
                 <span className="text-lg font-bold text-[#4285F4]" aria-hidden>G</span>
                 Find us on Google
@@ -500,7 +500,7 @@ export default function AssetSolutionsPage() {
             30+ lenders. A team that actually gives a damn. Any situation welcome. Let&apos;s get you moving.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <Link href="/apply" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-6 py-3 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get your free assessment
             </Link>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

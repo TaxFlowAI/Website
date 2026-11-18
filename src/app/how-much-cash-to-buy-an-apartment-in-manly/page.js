@@ -175,7 +175,7 @@ function CashComparison() {
           >
             <div className="flex items-center justify-between gap-3 bg-[#1C5472] px-5 py-4">
               <p className="text-lg font-bold text-white">{r.title}</p>
-              <span className={`rounded-full px-3 py-1 text-xs font-bold tracking-wider ${r.tagClass}`}>{r.tag}</span>
+              <span className={`rounded-md px-3 py-1 text-xs font-bold tracking-wider ${r.tagClass}`}>{r.tag}</span>
             </div>
             <dl className="px-5 pt-3 text-base">
               {r.rows.map(([label, value]) => (
@@ -245,7 +245,7 @@ export default function ManlyCashPage() {
       <article className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mx-auto grid max-w-6xl text-lg leading-relaxed text-[#1C5472] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-x-14">
           <div className="lg:col-start-1 lg:row-start-1">
-            <div className="rounded-2xl border-2 border-[#00FCB8] bg-white p-6 shadow-md">
+            <div className="rounded-2xl border-2 border-[#00FCB8] p-6 sq-card">
               <p className="text-sm font-bold uppercase tracking-widest text-[#39B2B2]">The short answer</p>
               <p className="mt-2">
                 The median Manly apartment is about $1.96 million. With a 20% deposit, you&apos;d need about $490,000 in
@@ -278,11 +278,11 @@ export default function ManlyCashPage() {
                 </video>
                 <figcaption className="mt-3 text-center text-sm text-gray-500">Manly Cove, Sydney.</figcaption>
               </figure>
-              <div className="mt-6 hidden rounded-xl bg-[#1C5472] p-5 text-center lg:block">
+              <div className="mt-6 hidden rounded-xl p-5 text-center lg:block sq-panel">
                 <p className="font-bold text-white">Want your own numbers?</p>
                 <a
                   href={CONSULT_HREF}
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-[#00FCB8] px-4 py-3 text-base font-bold text-[#1C5472] transition-opacity duration-200 hover:opacity-90 sq-btn-aqua"
                 >
                   Get a Free Assessment
                 </a>
@@ -402,7 +402,7 @@ export default function ManlyCashPage() {
             just call and tell me where things are at.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <a href={CONSULT_HREF} className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-10 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Get a Free Assessment
             </a>
             <a href="tel:+61422959486" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-10 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

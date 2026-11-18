@@ -119,7 +119,7 @@ export default function AboutPage() {
                 <div className="h-64 w-64 rounded-full bg-[#39B2B2] opacity-10 lg:h-80 lg:w-80" aria-hidden />
               </div>
               <div className="relative flex flex-col gap-4">
-                <div className="rounded-2xl bg-[#1C5472] px-8 py-10 shadow-xl" style={{ transform: "rotate(-2deg)" }}>
+                <div className="rounded-2xl px-8 py-10 sq-panel" style={{ transform: "rotate(-2deg)" }}>
                   <p className="text-4xl font-bold text-[#00FCB8] md:text-5xl">500+</p>
                   <p className="mt-1 text-white">Clients Helped</p>
                 </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
               : "The TaxFlowAI platform is owned and developed by Frontline Holdings Group Pty Ltd trading as TaxFlowAI by Frontline Financial."}
           </p>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <article className="rounded-2xl border-t-4 border-[#00FCB8] bg-[#1a5f7a] p-8">
+            <article className="rounded-2xl border-t-4 border-t-[#00FCB8] p-8 sq-panel">
               <svg className="h-12 w-12 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
@@ -171,7 +171,7 @@ export default function AboutPage() {
                 Learn more →
               </Link>
             </article>
-            <article className="rounded-2xl border-t-4 border-[#39B2B2] bg-[#1a5f7a] p-8">
+            <article className="rounded-2xl border-t-4 border-t-[#39B2B2] p-8 sq-panel">
               <svg className="h-12 w-12 text-[#39B2B2]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
                 <circle cx="7" cy="17" r="2" />
@@ -191,7 +191,7 @@ export default function AboutPage() {
                 ))}
               </ul>
               <div className="mt-6 block">
-                <p className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-3 py-1.5 text-xs font-medium text-[#00FCB8]">
+                <p className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8] px-3 py-1.5 text-xs font-medium text-[#00FCB8]">
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><polyline points="14 9 14 2 10 2 10 9" /><path d="M6 2h12" /><path d="M6 9H4a2 2 0 0 0-2 2v1a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6v-1a2 2 0 0 0-2-2h-2" /><line x1="12" y1="18" x2="12" y2="22" /><line x1="8" y1="22" x2="16" y2="22" /></svg>
                   Fintelligence Award Winner FY25 — Vehicle & Equipment Finance
                 </p>
@@ -216,7 +216,7 @@ export default function AboutPage() {
           <p className="mt-6 leading-relaxed text-[#1C5472]">
             Before we talk products, rates, or lenders — we talk about you. What are your goals? What does success look like for you? What&apos;s standing in the way? Only once we truly understand your situation do we start looking at options.
           </p>
-          <div className="mt-12 rounded-2xl bg-[#1C5472] px-6 py-8 md:px-10 md:py-10">
+          <div className="mt-12 rounded-2xl px-6 py-8 md:px-10 md:py-10 sq-panel">
             <svg className="h-12 w-12 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
@@ -228,10 +228,10 @@ export default function AboutPage() {
               Book an appointment to visit us at our Parramatta office for a completely free, no-obligation consultation. Bring your goals, your questions, and your situation — we&apos;ll take the time to understand exactly what you need and walk you through all available options. No pressure. No cost. No obligation.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-4 py-2 text-sm text-white">📍 Level 49, 8 Parramatta Square, Parramatta 2150</span>
-              <a href="tel:+61422959486" className="inline-flex items-center gap-2 rounded-full border border-[#00FCB8] px-4 py-2 text-sm text-white transition-colors hover:bg-[#00FCB8]/10">📞 +61 422 959 486</a>
+              <span className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8] px-4 py-2 text-sm text-white">📍 Level 49, 8 Parramatta Square, Parramatta 2150</span>
+              <a href="tel:+61422959486" className="inline-flex items-center gap-2 rounded-md border border-[#00FCB8] px-4 py-2 text-sm text-white transition-colors hover:bg-[#00FCB8]/10">📞 +61 422 959 486</a>
             </div>
-            <Link href="/contact" className="mt-6 inline-block rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105">
+            <Link href="/contact" className="mt-6 inline-block rounded-lg bg-[#00FCB8] px-6 py-3 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 sq-btn-aqua">
               Book a Free Consultation
             </Link>
           </div>
@@ -266,7 +266,7 @@ export default function AboutPage() {
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {VALUES.map((v) => (
-              <article key={v.title} className="rounded-xl border-2 border-[#39B2B2] bg-[#0A1628] p-6 transition-all duration-200 hover:border-[#00FCB8]">
+              <article key={v.title} className="rounded-xl border-2 border-[#39B2B2] p-6 transition-all duration-200 hover:border-[#00FCB8] sq-panel-navy">
                 <ValueIcon type={v.icon} />
                 <h3 className="mt-4 text-lg font-bold text-white">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#39B2B2]">{v.desc}</p>
@@ -286,7 +286,7 @@ export default function AboutPage() {
             The people behind Frontline Financial.
           </h2>
           <div className="mt-12 grid gap-10 md:grid-cols-2">
-            <article id="hassan" className="scroll-mt-28 rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
+            <article id="hassan" className="scroll-mt-28 rounded-2xl p-6 sq-card">
               <div className="aspect-square w-full max-w-[240px] overflow-hidden rounded-2xl bg-[#1C5472] mx-auto flex items-center justify-center">
                 <img
                   src="/images/hassan-portrait.webp"
@@ -306,12 +306,12 @@ export default function AboutPage() {
                 <span className="text-[#00FCB8]">★★★★★</span> &quot;Hassan was proactive and professional throughout the process of home loan applications and settlement leading to a successful settlement. Highly recommend his services.&quot; — Brendan Piech
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Link href="/contact?team=hassan" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Enquire</Link>
-                <a href="tel:+61422959486" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Phone</a>
-                <a href="https://www.linkedin.com/in/hassan-arif-555382354/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">LinkedIn</a>
+                <Link href="/contact?team=hassan" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Enquire</Link>
+                <a href="tel:+61422959486" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">Phone</a>
+                <a href="https://www.linkedin.com/in/hassan-arif-555382354/" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition-colors hover:bg-[#39B2B2]/10">LinkedIn</a>
               </div>
             </article>
-            <article className="rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
+            <article className="rounded-2xl p-6 sq-card">
               <div className="aspect-square w-full max-w-[240px] overflow-hidden rounded-2xl bg-[#1C5472] mx-auto flex items-center justify-center">
                 <img
                   src="/images/sham-portrait.webp"
@@ -325,7 +325,7 @@ export default function AboutPage() {
               <h3 className="mt-4 text-2xl font-bold text-[#1C5472]">Sham</h3>
               <p className="text-[#39B2B2]">Director — Frontline Financial Asset Solutions</p>
               <p className="mt-1 text-sm text-gray-500">Asset Finance Specialist · Award Winner FY25</p>
-              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#00FCB8] px-3 py-1 text-xs font-medium text-[#00FCB8]">
+              <p className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-[#00FCB8] px-3 py-1 text-xs font-medium text-[#00FCB8]">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><polyline points="14 9 14 2 10 2 10 9" /><path d="M6 2h12" /><path d="M6 9H4a2 2 0 0 0-2 2v1a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6v-1a2 2 0 0 0-2-2h-2" /><line x1="12" y1="18" x2="12" y2="22" /><line x1="8" y1="22" x2="16" y2="22" /></svg>
                 Fintelligence Award Winner FY25
               </p>
@@ -336,9 +336,9 @@ export default function AboutPage() {
                 <span className="text-[#00FCB8]">★★★★★</span> &quot;Sham was phenomenal to say the least. He got my loan approved in less than 24 hours. Absolute legend!&quot; — Mikhail A.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <a href="mailto:sham@frontline.financial" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">Email</a>
-                <a href="tel:+61450553877" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">Phone</a>
-                <a href="https://www.linkedin.com/in/sham-frontline/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">LinkedIn</a>
+                <a href="mailto:sham@frontline.financial" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">Email</a>
+                <a href="tel:+61450553877" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">Phone</a>
+                <a href="https://www.linkedin.com/in/sham-frontline/" target="_blank" rel="noopener noreferrer" className="rounded-md border border-[#39B2B2] px-3 py-1.5 text-sm text-[#1C5472] transition hover:bg-[#39B2B2]/10">LinkedIn</a>
               </div>
             </article>
           </div>
@@ -354,7 +354,7 @@ export default function AboutPage() {
           <h2 className="mt-2 text-3xl font-bold text-white md:text-4xl">
             Award winning service.
           </h2>
-          <div className="mt-12 rounded-2xl bg-[#0A1628] px-8 py-12">
+          <div className="mt-12 rounded-2xl px-8 py-12 sq-panel-navy">
             <svg className="mx-auto h-20 w-20 text-[#00FCB8]" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
               <polyline points="14 9 14 2 10 2 10 9" />
               <path d="M6 2h12" />
@@ -419,7 +419,7 @@ export default function AboutPage() {
             Book a free in-office consultation at our Parramatta office — no cost, no obligation, no pressure.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
-            <Link href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-8 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto">
+            <Link href="/contact" className="inline-flex w-full items-center justify-center rounded-lg bg-[#1C5472] px-8 py-4 font-bold text-white transition-all duration-200 hover:scale-105 hover:opacity-90 sm:w-auto sq-btn-blue">
               Book a Free Consultation
             </Link>
             <Link href="/brokers" className="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#1C5472] bg-transparent px-8 py-4 font-bold text-[#1C5472] transition-all duration-200 hover:scale-105 hover:bg-[#1C5472]/10 sm:w-auto">

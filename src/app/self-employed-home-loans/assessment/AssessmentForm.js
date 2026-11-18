@@ -247,16 +247,16 @@ export default function AssessmentForm() {
     <>
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-2xl font-bold text-[#1C5472]">Get your free assessment</h2>
-        <span className="shrink-0 rounded-full bg-[#00FCB8]/15 px-3 py-1 text-xs font-bold text-[#00795c]">2 MIN</span>
+        <span className="shrink-0 rounded-md bg-[#00FCB8]/15 px-3 py-1 text-xs font-bold text-[#00795c]">2 MIN</span>
       </div>
       <div className="mt-4">
         <div className="flex items-center justify-between text-xs font-bold text-[#39B2B2]">
           <span>{step < FINAL_STEP ? `Question ${step + 1} of ${FINAL_STEP}` : "Last step"}</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-gray-200">
+        <div className="mt-1.5 h-1.5 overflow-hidden rounded-xs bg-gray-200">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300"
+            className="h-full rounded-xs bg-gradient-to-r from-[#39B2B2] to-[#00FCB8] transition-all duration-300"
             style={{ width: `${Math.max(6, progress)}%` }}
           />
         </div>
@@ -330,7 +330,7 @@ export default function AssessmentForm() {
               {errors[s.key] && <p className="mt-1 text-sm text-red-600">{errors[s.key]}</p>}
               <button
                 type="submit"
-                className="group mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-3.5 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40"
+                className="group mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-3.5 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 sq-btn-aqua"
               >
                 Next
                 <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24" aria-hidden>
@@ -370,7 +370,7 @@ export default function AssessmentForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait"
+              className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00FCB8] py-4 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-wait sq-btn-aqua"
             >
               {submitting ? (
                 <span className="flex items-center gap-3" role="status" aria-live="polite">

@@ -121,7 +121,7 @@ export default function CarLoanForm() {
               href={result.privacyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02]"
+              className="mt-4 flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-base font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] sq-btn-aqua"
             >
               Sign your privacy consent
             </a>
@@ -142,7 +142,7 @@ export default function CarLoanForm() {
     <>
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-2xl font-bold text-[#1C5472]">Get a call from our team</h2>
-        <span className="shrink-0 rounded-full bg-[#00FCB8]/15 px-3 py-1 text-xs font-bold text-[#00795c]">1 MIN</span>
+        <span className="shrink-0 rounded-md bg-[#00FCB8]/15 px-3 py-1 text-xs font-bold text-[#00795c]">1 MIN</span>
       </div>
 
       <form onSubmit={handleSubmit} className="mt-5 space-y-4" noValidate>
@@ -205,7 +205,7 @@ export default function CarLoanForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-not-allowed disabled:opacity-70"
+          className="flex w-full items-center justify-center rounded-xl bg-[#00FCB8] py-3.5 text-lg font-bold text-[#0A1628] shadow-lg shadow-[#00FCB8]/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-[#00FCB8]/40 disabled:cursor-not-allowed disabled:opacity-70 sq-btn-aqua"
         >
           {submitting ? "Sending…" : "Send my enquiry"}
         </button>
